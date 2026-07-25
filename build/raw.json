@@ -1,0 +1,1106 @@
+{
+  "fetched_at": "2026-07-25T14:37:11+08:00",
+  "sources": {
+    "arxiv_sd": [
+      {
+        "source": "arxiv",
+        "title": "An Evaluation Framework for Structured Audio Captions Validated by Controlled Perturbations",
+        "summary": "Recent advancements in automated audio captioning (AAC) have shifted from monolithic sentence generation toward structured formats that explicitly disentangle distinct acoustic and semantic properties. However, evaluating this heterogeneous data remains a significant challenge. Existing caption metrics focus on flat textual outputs and fail to reliably assess multimodal attributes. To bridge this gap, we propose a multi-axis evaluation framework tailored for structured audio descriptions. Building on the AudioCards dataset, we evaluate outputs across five orthogonal axes: tag-sets, descriptions, logical reasoning, numeric measurements, and spectral profiles. Our approach combines Large Language Model (LLM) judges to capture semantic nuance with deterministic computational metrics to precisely measure acoustic deviations. To rigorously validate the reliability of this framework, we introduce a controlled perturbation testing protocol that injects typed, graded errors into groundtruth annotations. Our results demonstrate that this framework successfully distinguishes meaning-preserving paraphrases from genuine semantic and acoustic corruptions.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.21424v1",
+        "authors": [
+          "Liang-Yuan Wu",
+          "Sripathi Sridhar"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "From Read Speech to Spoken Digits: A Task-Specific Evaluation of Speech Privacy With Informed Attackers",
+        "summary": "Protecting speech privacy in real-life audio recordings is a growing concern. This contribution evaluates the effectiveness of three obfuscation techniques in protecting linguistic speech content, using digit recognition as a task-specific and practically motivated evaluation scenario. As a first baseline, a general-purpose speech recognition model and a digit-specific classifier were applied as informed attackers to recognise both single digits and concatenated digit sequences. Our experimental results demonstrate significant differences in recognition performance across digit modality, speech rate, and attack model. These findings emphasize the need for more comprehensive and application-oriented evaluation methods to ensure speech privacy.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.21393v1",
+        "authors": [
+          "Jule Pohlhausen",
+          "Anjana Rajasekhar"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Investigating Codec-Internal Latent Audio Watermarking for Neural Codec Robustness",
+        "summary": "Neural audio codecs are challenging transformations for audio watermarking because they re-encode, quantize, and resynthesize speech. This paper investigates continuous latent-space watermarking for codec robustness. Instead of adding a watermark only to the waveform or spectrogram, we embed a 32-bit message into the continuous latent representation of a codec-like speech autoencoder. The pipeline uses a SEANet-style encoder-decoder, a Conformer-based message embedder, RVQ-guided latent decomposition, and a latent-domain detector trained under signal-processing and neural-codec transformations. Rather than proposing a final universal watermarking baseline, we characterize the trade-offs that appear when the watermark carrier is moved before neural decoding. On 48 kHz speech, EnCodec-aware training improves EnCodec-24k bit accuracy from 78.8% to 95.6% and 97.1%, while PESQ decreases from 3.727 to 3.514 and 3.427.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.21132v1",
+        "authors": [
+          "Zi Hu",
+          "Houmin Sun"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "TF-MossFormer: Integrating Convolution Gated Local-Global Attentions for Enhanced Time-Frequency Domain Monaural Speech Separation",
+        "summary": "Transformers with global attention capture long-range dependencies but can miss the fine-grained local continuity crucial for speech separation. We propose TF-MossFormer, a time-frequency transformer that combines local and global attention to jointly model short- and long-range contexts for monaural speech separation. At its core is a content-aware sliding-window attention mechanism that dynamically adapts receptive fields for stronger local interactions, avoiding the rigidity of static convolutions. Unlike time-domain chunk-based methods, TF-MossFormer leverages the 2D spectrogram to model structure along both time and frequency axes. Convolutional gating between attention layers further improves feature selection and information flow. TF-MossFormer achieves SI-SDRi of 22.6, 24.0, and 24.4 dB on WSJ0-2Mix with 5.9M, 16.9M, and 25.4M parameters, respectively, outperforming prior approaches.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.21128v1",
+        "authors": [
+          "Shengkui Zhao",
+          "Zexu Pan"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Toward Interpretable Speech Deepfake Detection using Artifact-Specific Experts and Calibrated Detection Scores",
+        "summary": "In this work, we propose an interpretable framework for speech deepfake detection based on artifact-specific expert models. Rather than relying on black-box decisions, the framework provides human-understandable evidence, which is critical in high-stakes settings. Each expert is trained to detect a specific speech synthesis artifact, and its output is calibrated into a log-likelihood ratio that serves as an interpretable evidence score. We evaluate five artifact-specific experts and show that, with proper calibration, they can capture their target artifacts and produce meaningful evidence. Importantly, each expert estimates only the presence of its assigned artifact rather than directly performing the final decision. Their outputs are aggregated into an ensemble to produce the actual real-versus-fake classification, while maintaining interpretability by indicating how strongly each expert supports or contradicts a fake classification. Results show that artifact-specific experts capture interpretable signals of synthetic speech across multiple generation pipelines.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.21127v1",
+        "authors": [
+          "Viola Negroni",
+          "Xin Wang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "VibeVoice-ASR-BitNet Technical Report",
+        "summary": "We present VibeVoice-ASR-BitNet, a compressed variant of VibeVoice-ASR optimized for real-time inference on edge CPUs. We apply heterogeneous quantization tailored to the computational characteristics of each stage: the VAE acoustic tokenizer uses full-pipeline INT8 quantization (I8_S) with kernel fusion and SIMD optimization, while the autoregressive language model adopts BitNet-style ternary weights (I2_S). To preserve accuracy under aggressive compression, we employ a progressive quantization-aware training strategy. For inference, we implement custom SIMD kernels and fused operators within the ggml framework targeting both ARM and x86 platforms, achieving real-time recognition with RTF < 1 using as few as 3 CPU threads. VibeVoice-ASR-BitNet is 1.6-2.3x faster than Whisper.cpp at comparable model sizes (~1.6 GB), with only modest accuracy degradation compared to the FP16 baseline.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.21075v1",
+        "authors": [
+          "Songchen Xu",
+          "Ting Song"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Designed Vocalizations Dataset: Sound-Designed Human and Animal Voices for Non-human Voice Conversion",
+        "summary": "Advances in AI-based voice conversion have enabled a wide range of media applications, including films, audiobooks, and games. However, most research and public benchmarks still focus on natural human speech, leaving designed vocalizations, such as monster growls and robotic voices, underexplored, partly due to the lack of publicly available resources. To address this gap, we introduce the Designed Vocalizations Dataset, constructed by curating diverse raw vocal sources, including speech and animal vocalizations, and applying professional vocal effects processing to produce corresponding effect modified variants. We further provide a standardized test set with explicit seen/unseen splits over source timbre groups and preset styles to assess generalization under controlled conditions. Finally, we report baseline benchmark results to support reproducible evaluation and future research. The dataset and demo samples are available at https://ncai-official.github.io/speech/publications/designed-vocalizations-dataset/.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.20951v1",
+        "authors": [
+          "Seolhee Lee",
+          "Minsu Kang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Spectrogram-Based Joint Detection, Localization, and Classification of Events in Continuously Recorded IBR Waveforms",
+        "summary": "Continuously recorded high-resolution waveform measurements provide rich information about fast power system dynamics. However, they require automated methods to identify events. This problem is addressed by developing a spectrogram-based framework to jointly detect, localize, and classify events in real-world continuously recorded waveforms at the terminal of an Inverter-Based Resource. We recast this problem as a temporal object detection problem on spectrogram images, as they capture the transient and harmonic signatures more explicitly than in raw waveform data. Each time-series waveform is transformed using the short-time Fourier transform, and the resulting per-channel spectrograms are stacked as a tensor for event detection. We benchmark this method against a detector operating directly on raw time-series measurements. Experiments on single-phase disturbances and three-phase faults demonstrate that the proposed spectrogram method consistently improves event detection, localization, and classification over the raw waveform baseline.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.20817v1",
+        "authors": [
+          "Shivanshu Tripathi",
+          "Maziar Raissi"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Improving the performance of an ASV system using hybrid speech features",
+        "summary": "The growing need for secure and convenient authentication methods has led to the increasing popularity of biometric solutions. In addition to traditional and popular methods, such as fingerprint or iris scanning, voice-based approaches are also employed. User identity verification based on voice is conducted using Automatic Speaker Verification (ASV) systems. Despite their many advantages, these systems are sensitive to various types of attacks and acoustic noises, which can reduce verification accuracy. This work examines the potential to improve the performance of ASV systems by using hybrid feature sets that combine different signal representations, starting with widely-used Mel-Frequency Cepstral Coefficients (MFCC), through Constant Q Cepstral Coefficients (CQCC) and ending with the innovative RAB descriptor. Experiments were conducted on recordings from the Google Speech Commands dataset under two scenarios: in clean conditions and in the presence of acoustic noise. Finally, the systems' performance was compared using the EER metric to determine whether hybrid feature sets decrease verification error. The results show that using a hybrid feature set (PNCC+RAB) improves speaker verification performance under noisy conditions.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.20706v1",
+        "authors": [
+          "Stanisław Ciszkiewicz",
+          "Artur Janicki"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Improved Monitoring of Honey bee Colony Strength via Audio IoT Sensors, Modulation Tensorgrams and Recurrent Neural Networks",
+        "summary": "Honey bees (Apis mellifera) play a crucial role in agriculture and ecosystem stability as key pollinators of crops and wild plants. As such, monitoring hive strength remotely with Internet of Things (IoT) sensors has become a crucial task. Previously, handcrafted features extracted from the modulation spectrum of audio IoT devices were shown to improve acoustic monitoring of colony strength. In this paper, we hypothesize that important discriminative information is present in the temporal dynamics of the modulation spectrum, but this information is discarded with prior methods. As such, we explore the use of a new modulation tensorgram where the time dimension is kept. This new representation is used as input to a convolutional neural network (CNN) and a convolutional recurrent deep neural networks (CRDNN). Using the public UrBAN dataset, which contains more than 3,000 hours of beehive audio recordings, we show that the proposed method improves both accuracy and cross-hive generalizability over prior benchmark methods, and the results further suggest improved robustness to noisy in-the-wild recording conditions. We use saliency maps and gradient-weighted class activation maps for explainability and show the importance of the modulation spectral temporal dynamics for the task at hand. Overall, our results suggest that accurate, generalizable, and robust acoustic monitoring of honey bee colony strength is possible.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.20386v1",
+        "authors": [
+          "Mahsa Abdollahi",
+          "Yi Zhu"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Pushing the Frontier of Full-Song Generation: Hierarchical Autoregressive Planning Meets Flow-Matching Rendering",
+        "summary": "In this report, we present a unified song generation framework capable of producing high-quality full-length music from lyrics, text descriptions, and musical attributes. The proposed framework supports three tasks: Lyrics-to-Song Generation, which generates complete songs from text descriptions, lyrics, and musical attributes; Instrumental Music Generation, which creates music without vocals; and Cover Song Generation, which reinterprets existing songs with different styles while preserving their melodic content. Architecturally, our system consists of four main components: a semantic-aware tokenizer, hybird-LM, FullDiT, and a two-level melody module. The tokenizer encodes audio into 8-codebook RVQ tokens for efficient discrete music representation. Based on these tokens, hybird-LM performs hierarchical autoregressive audio-token modeling for full-song generation. To improve audio fidelity, FullDiT performs full-song flow matching in a continuous VAE latent space conditioned on codec tokens, lyrics, and text captions. For cover song generation, the melody module extracts and discretizes melody cues from reference audio to guide generation while preserving the original melodic content. Finally, we investigate DPO, GRPO, and OPD as reward-based post-training strategies for hybird-LM and apply flow-based GRPO to FullDiT to improve musicality and rendering quality. Experimental results on a multilingual automatic benchmark, complemented by the Artificial Analysis Music with Vocals leaderboard, show that the proposed framework achieves competitive performance in the evaluated settings.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.20253v2",
+        "authors": [
+          "Junyu Dai",
+          "Xinyue Fan"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Audio-Zero: Label-Free Self-Evolution for Fine-Grained Audio Reasoning",
+        "summary": "Large Audio Language models (LALMs) have made rapid progress on acoustic understanding, yet they still struggle with fine-grained audio reasoning (e.g., recognizing event order, repetitions and duration). Existing post-training methods heavily rely on expensive external labels or provide only coarse semantic signals. To bridge this gap, we introduce Audio-Zero, the first label-free self-evolution framework in the field of LALMs that improves fine-grained auditory perception and reasoning. Audio-Zero constructs an auditory self-play game from unlabeled audio contrast pairs: most players hear a reference audio, while one odd listener hears a subtle variant. The model first generates clues describing what it hears and then identifies the odd listener by reasoning over inconsistencies among clues. Since the odd listener is known by construction, the game provides verifiable rewards without any annotated answers. Experiments with Qwen2-Audio-7B-Instruct and Qwen2.5-Omni-7B on TREA, MMAU Test-mini and MMAR show that Audio-Zero improves fine-grained audio reasoning while preserving broad audio understanding. Evolutionary and diagnostic analyses further reveal that increasingly fine-grained auditory descriptions emerge naturally from game pressure.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.20166v1",
+        "authors": [
+          "Siqian Tong",
+          "Xuan Li"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Cumsum-Composable Phase Transport for Low-Cost Streaming Keyword Spotting",
+        "summary": "State-space sequence models are attractive for streaming speech because they maintain compact recurrent state, but scan-style training kernels can have unfavorable constants for short audio tasks. We study cumsum-composable phase transport, a streaming-native temporal layer for keyword spotting. Each layer projects acoustic frames to complex channels, transports them by learned unitary rotations, accumulates a finite window using prefix differences, and applies a gated residual update. The same prefix representation gives exact batched training with ordinary cumulative sums and exact online inference with one prefix update per frame. Unitary transport is the key constraint: inverse rotations have norm one, keeping prefix terms well conditioned while memory is supplied by windows or block readouts. On Google Speech Commands v2 with 12 labels, mel+cumsum models retain competitive accuracy with compact baselines. The strongest single-seed run reaches 97.3\\% test accuracy; a 51.6K-parameter tied model also reaches 97.3\\%, and a 24.8K tied model reaches 96.8\\% versus 97.1\\% for a 25.6K MelCNNMaxPool baseline. In a matched cumsum-versus-scan benchmark, cumsum+window gives comparable accuracy, 94.82\\% versus 94.33\\%, while training 1.07x faster and reducing single-example latency from 7.09 ms to 5.01 ms on a Tesla T4. These results support cumsum phase transport as a simple low-cost temporal primitive for streaming keyword spotting.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.20086v1",
+        "authors": [
+          "Mahesh Godavarti"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Layer-Wise Decision Fusion for Fake Audio Detection Using XLS-R",
+        "summary": "Recent fake audio detection methods often leverage large speech models to achieve robust speech representations. These models are typically very deep, providing multiple layer-wise representations. However, current works often rely solely on single layer representation or feature fusion to extract one utterance-level representation for decision making. These methods risk underutilizing rich information from multiple layers and might induce feature collapse. We propose a novel layer-wise decision fusion method that applies fusion after per-layer decision making and achieves the best cross-dataset performance on In-the-Wild dataset (EER 6.90%) compared to other strong baselines. Our model design also makes the model more transparent, allowing us to conduct detailed analysis to reveal the underlying mechanism of decision making.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.20023v1",
+        "authors": [
+          "Yixuan Xiao",
+          "Ngoc Thang Vu"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Efficient Chain-of-Modality Reasoning via Progressive Compression for Spoken Language Models",
+        "summary": "Spoken language models (SLMs) enable natural human-computer interaction, but their reasoning ability still lags behind that of text-based large language models, especially on spoken mathematical question answering tasks. One important reason is that SLMs reason over purely verbalized mathematical expressions, which are harder to interpret than symbolic text. However, directly transferring text-based reasoning to SLMs is nontrivial due to architectural constraints and the additional computational requirements. To address this challenge, we propose Efficient Chain-of-Modality Reasoning (ECoM Reasoning), the first framework to introduce compressed reasoning into SLMs. By compressing the textual component so that it jointly serves as speech guidance and reasoning representation, ECoM Reasoning improves reasoning accuracy while using a smaller token budget than the standard Chain-of-Modality (CoM) architecture, which generates intermediate text before speech. To train this capability, we further propose Progressive Compression, a curriculum-based strategy that gradually trains the model from full-form reasoning to compressed reasoning. Experiments on spoken mathematical question answering benchmarks show that ECoM Reasoning improves accuracy by 21% over standard CoM without explicit reasoning, and by 3% over CoM with full reasoning traces while using only 40% of the text tokens, demonstrating that it enhances SLM reasoning while remaining inference-efficient.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19932v1",
+        "authors": [
+          "Pengchao Feng",
+          "Chao-Hong Tan"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Scalable Keyword Spotting via Modular Network Expansion",
+        "summary": "Keyword spotting (KWS) models on embedded devices often need to add new keywords after deployment, but updates are difficult when original training data are unavailable and regressions on existing triggers are unacceptable. At a fixed operating point, our method reduces average new-keyword false reject rate (FRR) from 6.46 to 4.37 versus a parameter-matched separate-model baseline and outperforms parameter-efficient tuning baselines (adapters, LoRA), while using fewer multiply-accumulate operations (MACs) under the same added-parameter budget ($\\leq$10k): 16.34M vs 18.45M/20.52M. We achieve this via parameter-capped modular expansion: the base network, including batch-normalization statistics and the core classifier, is frozen, and only a lightweight expansion branch with a separate new-keyword head is trained, preserving core logits, shipped outputs, and thresholds for existing keywords.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19918v1",
+        "authors": [
+          "Viktor Khaymonenko",
+          "Dzmitry Saladukha"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Nonlinear Bias-Compensated Adaptive Filter and Its Application for Time-Series Prediction",
+        "summary": "Most existing nonlinear adaptive filtering algorithms only account for output noise, neglecting the fact that input noise is also prevalent in practice. Although the recently proposed bias-compensated kernel least mean square (BCKLMS) algorithm addresses input noise in the nonlinear errors-in-variables (EIV) model, it still suffers from two major limitations. First, the use of a fixed-size dictionary restricts network growth but also prevents it from fully capturing the characteristics of the input signal. Second, as an least mean square (LMS) based algorithm, it exhibits poor robustness in the presence of non-Gaussian noise in the output signal. To overcome these issues, this paper proposes the random Fourier bias-compensated filter under general adaptive function (RFFBCGA) algorithm. Within the random Fourier feature based bias-compensated (RFFBC) framework, the proposed algorithm not only maintains a fixed network structure and effectively mitigates input noise interference through the BC term, but also achieves improved characterization of the input signal. Moreover, by leveraging the flexible form of the general adaptive (GA) function, the algorithm's robustness across various noise scenarios is further enhanced. Extensive simulations, including real-world time series prediction tasks, demonstrate the superiority of the proposed method.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19902v1",
+        "authors": [
+          "Yi Peng",
+          "Haiquan Zhao"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "StellarTTS: Sparse Temporal Embedding for Low-Latency and Robust Speech Synthesis",
+        "summary": "The trade-off between robustness, latency, and prosody critically challenges text-to-speech (TTS) systems. Autoregressive models, despite fidelity, are slow and error-prone; non-autoregressive (NAR) alternatives, while fast, often sacrifice prosodic naturalness via rigid alignments. This paper introduces StellarTTS, a novel mobile-optimized NAR TTS framework based on a sparse temporal embedding strategy, enabling granular control of phoneme duration, pronunciation, and prosody. Furthermore, we propose a semantic-aware codec that facilitates efficient single-stage decoding. Conditioned on the sparse temporal embedding, our 83M-parameter lightweight masked generative transformer achieves a real-time factor (RTF) of 0.08. Experiments demonstrate that StellarTTS attains lower latency and stronger robustness compared to state-of-the-art TTS systems, while maintaining competitive performance in audio quality, prosodic naturalness, and speaker similarity.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19859v1",
+        "authors": [
+          "Kaicheng Luo",
+          "Xuefei Gong"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "SimulS2ST-Omni: Data-Efficient Streaming Speech-to-Speech Translation via Explicit Trajectory Supervision",
+        "summary": "Long-form streaming speech-to-speech translation (S2ST) requires incremental, unbounded translation under strict latency constraints. Existing methods typically suffer from sentence-bounded supervision or demand massive paired-S2ST supervision. We introduce a training recipe enabling a speech language model for sentence-level and long-form streaming S2ST using only $\\sim$2k hours of paired cross-lingual S2ST data, layered atop auxiliary supervision. Anchored by auxiliary multitask training, our approach remains robust even when the paired-S2ST budget itself is reduced by 90\\%. Our core contribution, joint text-code trajectory supervision, schedules target text and acoustic semantic codes as a unified commitment path, eliminating the need for separate, unstable speech-side emission controllers. Furthermore, our two-stream Thinker--Talker factorization significantly outperforms unified-decoder baselines by decoupling linguistic reasoning from dense acoustic prediction to mitigate modality interference. Finally, our system achieves highly competitive quality-latency trade-offs on RealSI and ACL60/60-dev, matching state-of-the-art, closed-source S2ST systems such as LiveInterpret~2.0 on ASR-BLEU.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19810v1",
+        "authors": [
+          "Rongshen He",
+          "Xinyu Liang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "RPPNet: Perceptually-Grouped Rhythm-Pitch Primitives for Long-Term Structure Melody Generation via Boundary-Aware Modeling",
+        "summary": "Existing symbolic music generation models typically use bars as the basic structural unit. However, human perception of musical phrases often does not align with notated bar lines, leading to long-term structural fragmentation. This paper proposes RPPNet-a two-stage deep learning architecture with variable structural boundaries. It first generates variable-length Rhythm-Pitch Primitive (RPP) sequences, where each RPP encodes note count, rhythm, and contour; then decodes the RPP sequences into concrete notes. The grouping of RPPs is automatically derived from acoustic cues, auditory inertia, and similarity perception based on music psychology. Experiments show that melodies generated by RPPNet are superior in both long-term structure and musicality, with significant improvements across all subjective evaluation dimensions. Ablation studies confirm that the performance gain stems from the structural correctness of the psychological representation, rather than from model capacity. This work offers an interdisciplinary perspective for music generation, integrating music theory, computational modeling, and music psychology.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19776v1",
+        "authors": [
+          "Tieyao Zhang",
+          "Yuke Liu"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Ultra-Compact CNN Architectures for Tropical Bird Audio Detection on Microcontrollers",
+        "summary": "Passive acoustic monitoring of tropical biodiversity is bottlenecked by the storage and battery cost of continuously recording soundscapes in which bird vocalisations typically occupy less than 10% of the audio. Autonomous recording units built on low-power microcontrollers (typically ARM Cortex-M with $\\leq$256 kB of RAM) address this by triggering only on likely-positive segments, but the on-device options are unsatisfying: coarse frequency-energy triggers such as Goertzel filters flood SD cards with false positives at $\\sim$71% precision, whereas neural detectors developed for temperate single-species tasks are either too large to deploy or transfer poorly to species-rich tropical settings. We present DrongoNet, a family of three INT8 CNN detectors sized for this envelope and validated on a 50,000-clip, 1,677-species Southeast Asian tropical dataset (SEABAD). The headline model, DrongoNet-Micro (919 parameters, 6.26 kB, 0.9810 AUC, 98.3\\% mean recall at τ = 0.35), is a drop-in replacement for the Goertzel trigger used in commodity field recorders: at α = 0.10 tropical prevalence it captures 8 pp more bird vocalisations than Goertzel and extends a 32 GB card from $\\sim$28 to $\\sim$45 days of monitoring. DrongoNet-Nano (5.09 kB) bounds the ultra-low-flash extreme; DrongoNet-Edge (33.06 kB, 0.9991 AUC) targets Linux SBCs. On SEABAD, Micro matches a retrained TinyChirp CNN-Mel baseline within 0.1 pp AUC at 28$\\times$ fewer parameters, confirming that the family is deployment-agnostic across mel-spectrogram bird corpora but requires per-environment retraining. Full INT8 quantisation costs $<$0.12% AUC across all three variants.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19721v1",
+        "authors": [
+          "Muhammad Mun'im Ahmad Zabidi",
+          "Mohd Yamani Idna Idris"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "A Diagnostic Evaluation Framework for AI-Generated Cover Songs Using Music-Theoretic and Acoustic Features",
+        "summary": "AI-generated covers often fail through local musical errors that a global quality score cannot locate: the vocal contour may remain recognizable while the accompaniment uses the wrong harmonic function, or the output may stay in key while the arrangement remains incomplete. We present a five-dimensional diagnostic framework covering melodic pitch, harmonic progression, key consistency, style consistency, and arrangement/production quality. The benchmark contains 30 covers generated from 5 source songs by 6 systems, with expert severity ratings and 9 symbolic or acoustic features. Harmonic progression and arrangement had the highest severe-error rates (53% and 47%), whereas key consistency was better preserved. Six covers combined acceptable key consistency with severe harmonic errors. Large-leap ratio had a nominal association with melodic ratings (Spearman rho = -0.429, uncorrected p = 0.018), but no feature correlation survived the nine-test multiplicity reference. An interpretable percentile-rule pilot likewise failed to outperform a fixed majority baseline reliably across 16 dimension-level comparisons. The results separate useful diagnostic evidence from dependable automatic scoring: low-level and symbolic summaries can expose particular symptoms, but they do not replace context-aware musical judgment.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19688v1",
+        "authors": [
+          "Yingxin Liang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Black-Box Optimization for Identifying and Inverting Audio Dynamic Range Control Effects",
+        "summary": "Dynamic Range Compression (DRC) is a widely used nonlinear audio effect whose parameters are often unknown, making blind estimation and inversion challenging. In this work, we formulate DRC parameter estimation as a black-box optimization problem in a perceptually motivated feature space. Given an observed signal and a reference representation, we estimate the parameters that minimize the distance between feature descriptors of the reconstructed and reference signals. Unlike gradient-based approaches, the proposed method does not require differentiability of the DRC model or the feature extraction pipeline, enabling the use of nonlinear and histogram-based descriptors. Experimental results demonstrate that the proposed method achieves competitive performance in blind parameter estimation and dry signal recovery, outperforming or matching state-of-the-art models in terms of reconstruction quality.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19645v1",
+        "authors": [
+          "Haoran Sun",
+          "Dominique Fourer"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Multimodal Speaker Verification as a Threat to Speaker Anonymization",
+        "summary": "Most automatic speaker verification (ASV) systems operate on individual utterances, despite real-world interactions typically consisting of multiple utterances. As speech accumulates, increasingly rich speaker information becomes available through acoustic, prosodic, and linguistic cues, potentially challenging speaker anonymization methods that primarily target vocal characteristics. We investigate ASV in a multi-utterance, multimodal setting and examine whether aggregating information across anonymized speech impacts privacy. We first study audio-only aggregation across multiple anonymized utterances and observe consistent performance improvements as more speech becomes available. We then incorporate prosodic and linguistic information, showing that multimodal systems outperform unimodal approaches. Finally, we compare aggregation strategies and find that frame-level aggregation yields the lowest EERs. Even with only five anonymized utterances, combining audio and text reduces EER by over 15% relative to audio-only aggregation, demonstrating that substantial speaker-discriminative information remains accessible despite anonymization.",
+        "published": "2026-07-22",
+        "url": "http://arxiv.org/abs/2607.19636v1",
+        "authors": [
+          "Ashi Garg",
+          "Cristina Aggazzotti"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "RIME: Enabling Large-Scale Agentic Music Post-Production",
+        "summary": "Almost every piece of recorded music you have ever heard was modified before it reached you; commercial releases rarely spring fully-formed from the mind of a musician. Despite the promise of music generation models for one-shot output, such fine-grained iterative refinement workflows are a complementary problem, and largely out of their reach. There is also a gap for musicians: while they can express what they want to hear, not all have the facility with studio production tools to implement the complex set of actions needed to realize these intuitions. We formalize this task as agentic post-production, wherein individual aspects of a song are targeted, refined, and combined into a final track. We argue the bottleneck is data: existing corpora do not reflect how realistic post-production chains map onto the vocabulary musicians and engineers actually use. We argue there is a language for modifying recorded music that is dense, consistent, and learnable. We introduce the Rule-based Instructions for Music Editing (RIME) framework, which generates realistic paired edit-instruction data from any baseline music dataset grounded in canonical methods, design patterns, and constraints derived from real production workflows. RIME leverages POEMS, a new toolkit that combines stem separation, mixing, and common studio effects for use by multimodal agents. We use RIME and POEMS to generate 3,000 pairs of edit instructions and ground truth audio, and use this data to evaluate existing multimodal LLMs as agents on this task, showing persistent challenges in current models' post-production capabilities. We also demonstrate RIME's ability to improve post-production agent performance via supervised fine-tuning. We see RIME as an early step toward iterative musical agents, collaborative systems that could transform music production much as interactive coding agents have reshaped software engineering.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.19605v2",
+        "authors": [
+          "Noah Schaffer",
+          "Nikhil Singh"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Teleportation Game: Quantum Teleportation in Multi-Agent Systems for Interactive Music",
+        "summary": "This paper introduces an interactive music system with quantum musical agents that communicate by teleporting quantum states to one another. Human performers interact in real time with agents whose melodic and rhythmic behaviours are encoded as quantum states using Single Qubit Probability Amplitude Modulation (SQPAM) and structured through Quantum Phase Estimation (QPE). Up to three agents are combined within a single quantum circuit, with directed communication via quantum teleportation. We are interested in supporting ambiguous, transformative interactions reminiscent of free Jazz improvisation. Therefore, rather than treating noise and decoherence as limitations, the system embraces NISQ-era constraints as creative affordances, framing agent communication as quantum whispers, that is, deliberate, musically expressive imperfections in state transfer. We provide demonstrations and analyses based on melodic correlation, pitch-set distance, and state fidelity, where a continuum between imitation and divergence can be observed. We developed a tunable interpretation method to assess how agents reinterpret teleported states. This work positions teleportation as a promising interaction mechanism for agent-based quantum computer music and outlines future directions toward distributed ensembles connected via the Quantum Internet.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.19212v1",
+        "authors": [
+          "Eduardo Reck Miranda",
+          "Scott Yeiichi Oshiro"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Towards a reproducible cross-venue method for quantifying crowd noise in stadiums",
+        "summary": "Public claims about the loudest stadium have been based on an instantaneous peak dB(A) reading measured at a single point, as popularised by the Guinness World Records \"loudest crowd roar\" category. The current record dates from 2014, where a maximum level of 142.2 dB(A) was registered. While compelling, those measurements lack standardisation, omitting relevant information such as the specific instrument that was used, the usage of time weighting, and the number of measurement positions that were tested. This lack of information does not allow a well-founded scientific comparison across sport venues. This study proposes a measurement framework in which spatially distributed acoustic measurement is the recommended route for a representative cross-venue comparison, while a single-anchor measurement can only serve as a minimum reporting baseline when distributed measurements are not feasible.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18922v1",
+        "authors": [
+          "Alejandro Osses",
+          "Bente Ackermans"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Summary of DCASE 2026 Task 5: Audio-Dependent Question Answering",
+        "summary": "DCASE~2026 Task~5 introduces Audio-Dependent Question Answering (ADQA), which tests whether large audio-language models answer from the audio rather than from textual priors. An Audio-Dependency Filtering (ADF) pipeline combines silent-audio probing, per-option perplexity, a large language model (LLM) commonsense check, and human review to remove items solvable from text alone. The 3000 items that pass form the ADQA-Bench evaluation set, spanning music, speech, and environmental audio. The inaugural edition draws 14 teams and 36 submissions across two tracks defined by total parameter count (up to 100B and under 10B). A Chung-Ang University ensemble of MOSS-Audio-8B-Thinking and Qwen3-Omni-30B reaches the top overall accuracy at \\pct{58.33}, and a MOSS-only configuration from the same team leads the sub-10B track at \\pct{57.30}. Across the 30 submissions with a comparable development score, evaluation accuracy falls by 11.91 percentage points (pp) on average (median 10.91\\,pp) on the hidden evaluation split, which is designed to be harder than the development split. The most common building blocks are: the MOSS-Audio-8B-Thinking backbone (13 of 36 submissions), Low-Rank Adaptation (LoRA) fine-tuning on AudioMCQ-StrongAC, and preference or reinforcement-learning objectives -- Group Relative Policy Optimization (GRPO) in five teams, Group reward-Decoupled Normalization Policy Optimization (GDPO) in two. At test time, prompt engineering is near-universal, and majority or choice-permutation voting is common. Every system misses the same set of 233 evaluation items.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18718v1",
+        "authors": [
+          "Haolin He",
+          "Renhe Sun"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "What the Waveform Knows: Transparent-first Speech and Audio Intelligence with Caption Studio",
+        "summary": "Caption Studio is a transparency-first speech and audio intelligence platform that transforms spoken audio and video into structured, searchable content through automated transcription, speaker diarization, speech analytics, signal-level audio analysis, and subtitle generation. The system is built on a FastAPI backend with a real-time dashboard and adopts a three-layer architecture comprising (i) a transcription and diarization core based on Whisper-class automatic speech recognition and pyannote speaker diarization, (ii) an audio intelligence layer that extracts acoustic and linguistic features, including waveforms, spectrograms, pitch, speaking rate, silence, filler-word frequency, and sentiment, directly from the audio signal, and (iii) an integration layer that supports data export and downstream workflow integration. A principal contribution of this work is the transparency-first framework, in which every reported metric is explicitly identified as measured, derived, or unavailable, thereby improving the traceability, interpretability, and reliability of speech analytics. The paper presents the system architecture, benchmarking methodology, explainability and uncertainty framework, and key considerations for enterprise-scale deployment.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18704v1",
+        "authors": [
+          "Cheng Siong Chin",
+          "Jianhua Zhang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Fusion Embedding: A Unified Embedding Space for Text, Image, Video, and Audio",
+        "summary": "A single embedding space that covers text, images, video, and audio lets one index serve every query a user can pose. Embedding models built on vision-language backbones now lead text/image/video retrieval benchmarks but lack audio entirely, while audio-text retrieval is led by specialist systems that serve no other modality. We present the Fusion Embedding family, which adds audio to a frozen vision-language embedding base whose parameters are never updated: generation 1 (fusion-embedding-1) trains only a 16.4M-parameter connector between a frozen audio tower and the frozen base, and generation 2 (fusion-embedding-2) adds modality-gated deep adapters (44.2M parameters) whose branch never executes on text, image, or video inputs: their outputs are bit-for-bit those of the released base, verified after every training run. Because the base already binds text, images, and video, aligning audio to text alone makes audio-image retrieval emerge, with zero paired audio-visual training data. Alongside the recipe we map its design space with controlled negative results (rewriting training captions with an LLM, substituting a leaderboard-stronger audio tower, and widening the connector each reduce retrieval) and with training-protocol findings that we expect to transfer to any frozen decoder-LM embedding backbone. Both generations train in hours on a single GPU. Weights, code, and the evaluation harness are openly released.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18666v1",
+        "authors": [
+          "Abdul Basit Tonmoy",
+          "Kazi Fardinul Hoque"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Towards Array-Invariant Speech Enhancement via Geometry-Aware Dynamic Convolution",
+        "summary": "Multi-channel speech enhancement (SE) systems exhibit superior performance over single-channel methods but are constrained to fixed microphone array configurations. This restricts their real-world deployment across devices with diverse array geometries. While recent array-agnostic SE methods address variable microphone numbers and permutations, they largely fail to exploit explicit array geometry priors when available, missing a crucial cue for optimal spatial filtering. A Geometry-Aware Dynamic Convolution (Geo-DConv) framework is proposed, which explicitly leverages microphone coordinates to transform standard fixed-array SE models into robust array-invariant systems. Experiments are conducted on the recent real-recorded RealMAN multi-channel speech dataset. Results demonstrate that the proposed architecture enables two widely used fixed-array models to adapt to array-invariant settings, with consistent performance improvements across diverse array topologies.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18658v1",
+        "authors": [
+          "Zhenglong Liu",
+          "Wangyou Zhang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "CAPS: A Cascaded Reconstruction Model to Power Saving in Hearables Using Sub-Nyquist Sampling with Bandwidth Extension",
+        "summary": "Hearables are wearable computers worn on the ear. Bone conduction microphones are used with air conduction microphones in hearables for multimodal speech enhancement in noisy conditions. Despite this potential, current models largely fail to explore how jointly reducing sampling bit resolution and sampling frequency in analog-to-digital converters (ADCs) of hearables impacts both power usage and audio quality. Furthermore, current frameworks cannot do sub-Nyquist sampling in hearables because they lack a method to reconstruct wideband signals from narrowband components. We therefore propose CAPS, which (i) intentionally employs sub-Nyquist sampling and low bit resolution in ADCs, achieving a 3.3x reduction in power consumption in hearables, and (ii) supports streaming operation on mobile platforms with an inference time of 1.36 ms and a memory footprint of 11.04 MB. CAPS ensures robust speech intelligibility in real-world settings, bridging the gap between efficiency and power savings.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.19434v1",
+        "authors": [
+          "Tarikul Islam Tamiti",
+          "Sajid Fardin Dipto"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "CS-ETS: Chaos-Inspired Samba-Based EMG-To-Speech Synthesis with Nonlinear Chaotic Losses",
+        "summary": "We propose a chaos-inspired new architecture for EMG-to-Speech (ETS) synthesis called CS-ETS, which combines a Samba-based encoder with two novel chaos-inspired loss functions -- Lyapunov Exponent Regularization (LER) and Multi-Scale Detrended Fluctuation Analysis (MSDFA). LER is designed based on Lyapunov exponents to capture nonlinear fluctuations and sensitivity to initial conditions. MSDFA exploits detrended fluctuation analysis to quantify fractal-like, long-range temporal chaotic correlation. CS-ETS surpasses prior work with a 40.79\\% lower parameter count (32M vs 54.1M) and introduces a new Post-Vocoder Alignment approach that improves LSD by 2.1x, STOI by 4.7x, and SI-SDR by 1.25x. CS-ETS reduces computation by 13.33\\% while maintaining improved performance. To the best of our knowledge, for the first time, we show how ETS can be supervised by the subtle non-linear chaotic physics with Samba attention to achieve a significantly smaller model with superior performance.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18629v1",
+        "authors": [
+          "Sajid Fardin Dipto",
+          "Tarikul Islam Tamiti"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "End-to-End Markov State Sequence Learning for Auditory Attention Decoding",
+        "summary": "Auditory attention decoding (AAD) identifies the speaker a listener attends to from neural responses like electroencephalography (EEG), making it a key algorithm in neuro-steered hearing aids. However, most neural AAD models are trained as independent short-window classifiers, despite auditory attention being a temporally persistent cognitive state and short-window EEG--audio evidence often being noisy and ambiguous. We propose an end-to-end Markov AAD framework based on conditional random field (CRF) that trains window-level neural emissions under a two-state attention prior. The framework treats the logits of any AAD backbone as Markov emissions, learns the transition rate from a standard HMM initialization, and jointly optimizes cross-entropy and CRF objectives, allowing temporal continuity to guide representation learning rather than merely smoothing predictions after training. We also introduce ESCNet, an EEG--speech correlation backbone that preserves time-aligned features and converts the difference between two mean Pearson correlations into state logits. We evaluate the framework with four emission backbones spanning correlation-based, convolutional, recurrent, and attention-based designs. On the dynamic AVGC dataset, CRF training generally outperforms post-hoc HMM smoothing; with ESCNet, it achieves $86.5\\%$ causal and $92.4\\%$ non-causal accuracy using $1$s windows. On the static KUL and USTC datasets, it improves causal decoding over fixed-rate post-hoc HMM baselines by $5.6\\%$ and $2.0\\%$, respectively, showing the superiority of learning AAD as attention state sequence over isolated-window classification.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18614v1",
+        "authors": [
+          "Yushan Yashengjiang",
+          "Jie Zhang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Audio Cross Verification Using Dual Alignment Likelihood Ratio Test",
+        "summary": "This paper explores a way to verify that audio has not been maliciously tampered in a specific context: short viral videos taken from news recordings. Rather than trying to detect artifacts of tampering (internal inconsistency), we focus on positively verifying a query against a trusted source such as a news recording (external consistency). We propose a method for cross verifying a short audio query against a reference recording from which it was taken. Our approach is to define two hypotheses (non-tampered vs tampered), calculate the most likely alignment between query and reference for each hypothesis, and then perform a likelihood ratio test on the two alignments. We show that this method is fast to compute, much more robust than using MFCC features with Euclidean distance, and has the key benefit of explainability. Our cross verification approach provides an alternative perspective and complementary tool to existing tampering detection methods.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.18190v1",
+        "authors": [
+          "Heidi Lei",
+          "Arm Wonghirundacha"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Dense-Sparse Dynamic Time Warping for Customizing Piano Concerto Accompaniments",
+        "summary": "In this study, we explore how pianists can customize Music Minus One (MMO) concerto accompaniments to match their playing style. Bypassing the need for a symbolic score, often not available digitally, we use three types of audio data: solo piano recordings, MMO orchestra-only recordings, and mixed recordings of both piano and orchestra (e.g., from YouTube). The mixed recording serves as an intermediary reference to align the solo and orchestra parts, with only the orchestral part being adjusted through time-scale modification to synchronize with the user's playing. The main challenge with estimating these alignments is the spectral mismatch between recordings containing different musical parts. Motivated by this application scenario, we introduce Dense-Sparse DTW, a variant of Dynamic Time Warping (DTW) that is designed to improve robustness of alignments to spectral mismatch by focusing on aligning a selected subset of audio frames containing prominent timing cues. We collect and annotate data from four piano concerto movements and establish a framework for generating and evaluating customized accompaniment recordings. On this benchmark, we show that Dense-Sparse DTW has better or comparable performance than more complex approaches based on source separation and spectral subtraction techniques.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.18189v1",
+        "authors": [
+          "TJ Tsai",
+          "Kavi Dey"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Harness TTS: Towards Context-Aware Expressive Speech Synthesis with Harness Layer",
+        "summary": "Expressive speech synthesis for voice assistants requires flexible style control that adapts to explicit requests and broader interaction context. We propose Harness TTS, a lightweight control layer that wraps around a TTS engine to externalize and govern its expressive behavior. It reformulates style control as closed-set prompt-tool routing: offline, a compact registry of stylistic prompt tools is constructed with structured metadata; online, an LLM planner selects the appropriate tool based on a priority-aware observation schema, and the TTS executor synthesizes speech using the corresponding prompt audio. We evaluate Harness TTS on both routing and synthesis tasks. In routing, Qwen3-4B achieves Top-1 accuracies of 74.3%, 43.0%, and 64.6% on explicit, implicit, and conflict subsets. For synthesis, experiments on CosyVoice3 and VoxCPM2 show that Harness TTS outperforms instruction-only control, achieving higher instruction-following win rates (margins of 23.1-35.6 points on CosyVoice3 and 13.8-20.0 points on VoxCPM2) and improving UTMOSv2 scores by 0.11-0.38. Moreover, the 4B planner delivers its first tool recommendation in under 50 ms in standard mode, introducing negligible latency for real-time interaction. These results demonstrate that equipping TTS engines with a dedicated Harness layer offers a practical, auditable, and context-aware solution for voice assistant expression control.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.17900v2",
+        "authors": [
+          "Shengfan Shen",
+          "Di Wu"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "The tttAI System for the TSA-ASR Task of the SmartGlasses Challenge 2026",
+        "summary": "This paper presents the tttAI system submitted to the TSA-ASR task of the SmartGlasses Challenge 2026, evaluated on both two-person dialogues (Track 1) and multi-party meetings (Track 2). The task requires time-stamped speaker-attributed speech recognition from smart-glasses recordings. This is particularly challenging due to long-form audio, multiple speakers, and frequent overlapping speech. We proposed a cascaded architecture consisting of speaker diarization, overlap detection, target-speaker extraction, post-processing, and automatic speech recognition. The diarization module extracts features via WavLM-Large, performs frame-wise speaker classification with a Conformer encoder, and then generates global speaker segments through embedding clustering. For overlapped regions, we apply a WeSep-based target-speaker extraction model with ECAPA-TDNN speaker embeddings. When the extraction is unreliable, a dominant-speaker fallback strategy is used. The final system uses FireRedASR2-AED with the first microphone channel. The submitted system has a total parameter count of approximately 1.53B. On Track 1, our system achieves a tcpCER of 7.10%. On Track 2, it achieves a tcpCER of 34.04% and ranks second on the leaderboard.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.17867v1",
+        "authors": [
+          "Xuanji He",
+          "Gaoyang Dong"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Time-Frequency Consistency Learning for Robust Speech Deepfake Detection",
+        "summary": "Recently, speech deepfake detection (SDD) has achieved significant progress. However, its robustness evaluation remains largely confined to controlled additive noise scenarios, lacking systematic investigation of the complex distortions introduced by acoustic front-end (AFE) processing pipelines in real-world deployments. In this work, we simulate a unified AFE pipeline comprising acoustic echo cancellation, noise suppression, automatic gain control, and voice activity detection (VAD), and conduct a comprehensive evaluation of current state-of-the-art models. The results show that the nonlinear and time-frequency coupled distortions introduced by AFE significantly degrade detection performance. To address this issue, we propose a Time-Frequency Consistency Learning (TFCL) framework, which aims to learn invariant spoofing representations that remain stable before and after AFE processing. We observe that AFE not only introduces temporal misalignment (e.g., segment-level shifts caused by VAD), but also weakens or distorts critical frequency-domain cues. To this end, TFCL employs an attention-driven soft alignment mechanism to capture cross-temporal dependencies, along with frequency-domain structural consistency constraints to enforce feature invariance. As a result, the model is able to maintain stable representations under both temporal perturbations and spectral distortions. Extensive experimental results demonstrate that the proposed method effectively mitigates the performance degradation caused by AFE processing, significantly improving the robustness of SDD in real-world scenarios. The code is available at https://github.com/JunXue-tech/TFCL.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.17761v1",
+        "authors": [
+          "Jun Xue",
+          "Zhuolin Yi"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Addressing Limited Data in Auditory Attention Decoding with Diffusion Generative Models",
+        "summary": "Limited training data constrains deep learning models for Auditory Attention Decoding (AAD) in hearing aids (HAs). AAD uses electroencephalogram (EEG) data to decode listener's attention, enabling real-time tracking of specific sound sources. However, achieving high AAD performance with short time windows typical in HAs (<=1s) is challenging due to the scarcity of real-world speech-evoked EEG data. To address this issue, we investigate diffusion probabilistic models (DPMs) for generating synthetic speech-evoked EEG data. DPMs learn the underlying complex data structure through a denoising process and can generate realistic samples suitable for data augmentation. We evaluate the use of synthetic EEG data for augmenting datasets in locus-of-attention (LoA) classification tasks. Our experiments demonstrate that DPMs can generate realistic EEG signals and that incorporating synthetic data significantly improves AAD performance compared to models trained solely on measured EEG data (p<0.05). These results highlight the potential of diffusion-based data augmentation to mitigate training data limitations and improve the robustness of short-window AAD models in HA applications.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.18345v1",
+        "authors": [
+          "David Rannaleet",
+          "Victor Gunnarsson"
+        ]
+      }
+    ],
+    "arxiv_hc": [
+      {
+        "source": "arxiv",
+        "title": "Sidewalk Moments: Are Richer Representations Always More Human-Aligned? Evidence from City-Walk Videos",
+        "summary": "We examine whether richer visual representations yield more human-aligned measures of urban engagement, using 61 first-person city-walk videos from YouTube segmented into over 50,000 ten-second clips and represented across four modalities: spatiotemporal video features, temporally averaged images (TAIs), audio embeddings, and text-based semantic descriptions. Spearman correlation analysis reveals the expected ordering along the temporal-richness continuum, with video features showing the strongest continuous alignment. However, this ordering breaks down under binary classification of high- versus low-engagement moments (the paradigm most commonly used to train perceptual scoring models), where TAIs consistently match or outperform video across most classifiers and quantile thresholds. An independent two-alternative forced-choice study on Amazon Mechanical Turk confirms that this parity reflects human judgment: participants identified engaging moments with comparable accuracy from TAIs and full video clips, while text performed substantially worse and audio remained near chance. Gap analysis reveals a functional dissociation: video features are advantaged in activity-driven scenes with dynamic content, whereas TAIs better align with human judgments in composition-driven scenes dominated by stable spatial structure. These findings challenge the assumption that richer representations are inherently more human-aligned, and suggest that perceptually grounded temporal compression can be a principled alternative to full video encoding.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.20903v1",
+        "authors": [
+          "Liu Liu",
+          "Freya Huying Tan"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Sonic Stage: Automatically Generating Interactive Spatial Soundscapes to Facilitate Dialogue Video Comprehension for Blind Viewers",
+        "summary": "Audio description (AD) makes film and television accessible to blind and low-vision (BLV) audiences by narrating characters' actions. However, in scenes with lots of dialogue, AD often omits important actions because it is constrained not to overlap with speech. It is not yet known how to convey characters' actions during dialogue. We present Sonic Stage, a system that transforms dialogue videos into interactive spatial soundscapes, enabling BLV audiences to intuitively understand characters' actions and movements through immersive auditory cues. Sonic Stage conveys essential visual information during dialogue through three auditory techniques: (1) spatialized dialogue to represent spatial layout, (2) diegetic sound to convey character actions, and (3) interactive descriptions to provide context-specific visual details. Evaluation with 12 BLV viewers showed that Sonic Stage significantly improved video comprehension, spatial presence, and narrative engagement. We highlight opportunities for enhancing video accessibility across diverse genres through immersive, interactive audio representations.",
+        "published": "2026-07-23",
+        "url": "http://arxiv.org/abs/2607.20835v1",
+        "authors": [
+          "Shuchang Xu",
+          "Xiaofu Jin"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "End-to-End Markov State Sequence Learning for Auditory Attention Decoding",
+        "summary": "Auditory attention decoding (AAD) identifies the speaker a listener attends to from neural responses like electroencephalography (EEG), making it a key algorithm in neuro-steered hearing aids. However, most neural AAD models are trained as independent short-window classifiers, despite auditory attention being a temporally persistent cognitive state and short-window EEG--audio evidence often being noisy and ambiguous. We propose an end-to-end Markov AAD framework based on conditional random field (CRF) that trains window-level neural emissions under a two-state attention prior. The framework treats the logits of any AAD backbone as Markov emissions, learns the transition rate from a standard HMM initialization, and jointly optimizes cross-entropy and CRF objectives, allowing temporal continuity to guide representation learning rather than merely smoothing predictions after training. We also introduce ESCNet, an EEG--speech correlation backbone that preserves time-aligned features and converts the difference between two mean Pearson correlations into state logits. We evaluate the framework with four emission backbones spanning correlation-based, convolutional, recurrent, and attention-based designs. On the dynamic AVGC dataset, CRF training generally outperforms post-hoc HMM smoothing; with ESCNet, it achieves $86.5\\%$ causal and $92.4\\%$ non-causal accuracy using $1$s windows. On the static KUL and USTC datasets, it improves causal decoding over fixed-rate post-hoc HMM baselines by $5.6\\%$ and $2.0\\%$, respectively, showing the superiority of learning AAD as attention state sequence over isolated-window classification.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18614v1",
+        "authors": [
+          "Yushan Yashengjiang",
+          "Jie Zhang"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Designing for What Cannot Be Seen: Supporting Embodied String Learning for Musicians with Blindness and Low-Vision",
+        "summary": "Bowed string instruments demand fine-grained bodily coordination that is typically taught through visual demonstration, creating persistent barriers for musicians with blindness and low-vision (BLV). To understand these challenges and explore new design opportunities, we conducted a design study with four advanced string musicians with BLV and three of their instructors. Our team, spanning violin performance and music education, disability studies in music, HCI design, and engineering employed a qualitative, multi-method approach including practice video analysis, lesson observation, expert interviews. Our analysis identifies recurring difficulties in right-hand bow control, left-hand coordination, score access, and memory-intensive practice. Building on these findings, we conducted an exploratory design ideation phase informed by empirical findings and feedback from one musician with BLV. We developed speculative design directions that could potentially address identified breakdowns, while acknowledging that these concepts require further evaluation with instructors and in deployed contexts.",
+        "published": "2026-07-21",
+        "url": "http://arxiv.org/abs/2607.18598v2",
+        "authors": [
+          "Shi Shi",
+          "Lingyun Chen"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "FillGauss: Fine-Grained Filling-Aware Impact Sound Generation for 3D Gaussian Splatting",
+        "summary": "Synthesizing physically plausible impact sounds from visual observations remains a great challenge in multi-modal AI. Existing 3D-aware audio generation methods primarily model the surface geometry of hollow rigid bodies. However, they fundamentally overlook internal filling states, a critical physical factor that drastically modulates acoustic resonance and damping. To address this issue, we have defined a new task called Fine-Grained Filling-Aware Impact Sound Generation. As a foundational step, we first introduce the fine-grained fill-aware dataset (FillImpact), a pioneering multi-modal collection comprising over 5,000 rigorous acoustic recordings from 88 diverse real-world objects. It captures impact interactions with varying internal contents (i.e., water, rice), a continuous range of fill levels, and distinct striker materials. Furthermore, comprehensive acoustic analysis confirms that the collected data closely aligns with established physical laws governing acoustic resonance and damping, indicating its suitability for physically grounded modeling. Building on this dataset, we propose a novel generative framework (FillGauss) that integrates 3D Gaussian Splatting (3DGS) with internal state conditioning for sound generation. By fusing 3DGS geometric features, precise 3D spatial strike coordinates, and fine-grained textual physical conditions within a latent diffusion architecture, FillGauss enables position-aware, striker-aware, and filling-aware audio generation. Extensive experiments demonstrate that our approach could generate high-fidelity impact sounds that adhere to underlying physical principles, establishing a new state-of-the-art for physically grounded cross-modal audio generation.",
+        "published": "2026-07-20",
+        "url": "http://arxiv.org/abs/2607.17773v1",
+        "authors": [
+          "Chen Yang",
+          "Ganye Wen"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Is One Score Enough? Assessing Singing Quality of Songs with Temporal Score Curves",
+        "summary": "Singing Quality Assessment (SQA) has become increasingly important for practical multimedia applications and Music AI systems, yet existing studies predominantly focus on short singing clips and remain insufficient for full-length songs. Unlike clip-level assessment, full-length song SQA requires modeling how singing quality varies across different audio segments and how these local variations influence the overall evaluation of vocal performance. Moreover, the scarcity of segment-level annotations makes effective supervision challenging, as directly assigning a single overall score label to every segment tends to treat different segment qualities as equivalent. To address these challenges, we propose SongSQA, a two-stage framework for full-length song SQA. In the first stage, a Segment Score Predictor is trained with pseudo labels generated by a pre-trained teacher model, enabling segment-level singing quality prediction without requiring manual segment annotations. In the second stage, a Song Quality Aggregator integrates segment features and predicted segment scores into unified segment embeddings, and employs a learnable song embedding together with self-attention to capture the connection between segment-level vocal performance and overall song quality. In this way, SongSQA dynamically aggregates critical quality cues across the song to produce a holistic quality prediction, while also generating a temporal segment-level quality curve. Experimental results demonstrate the effectiveness of SongSQA for full-length song SQA, achieving up to a 13.95% relative improvement in KTAU over the strongest baseline, while consistently improving other evaluation metrics across all datasets.",
+        "published": "2026-07-18",
+        "url": "http://arxiv.org/abs/2607.16599v1",
+        "authors": [
+          "Yishan Lv",
+          "Jing Luo"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "SceneBind: Binding What and Where Across Vision, Audio and Language",
+        "summary": "We present SceneBind, an omni-modal representation of realistic scenes with joint semantic and 3D spatial understanding across vision, audio and language. Existing omni-modal encoders excel at instance-level semantics (i.e., what is present), but often lack explicit spatial structure (i.e., where it is). SceneBind addresses this gap by representing each scene as a semantic-spatial entity, combining a global semantic embedding with object-centric semantic-spatial slots. This representation explicitly captures object-level semantics, spatial attributes, and uncertainty. We further propose SceneBind Matching, a semantic-spatial matching scheme that integrates global scene similarity with object alignment, supporting cross-modal scene retrieval and object grounding. To train and evaluate SceneBind, we curate a novel real-world binaural audio-visual dataset with structured semantic and spatial annotations, and propose a training protocol for aligning semantic and spatial signals across modalities. SceneBind is compatible with large-scale pretrained semantic encoders, adds lightweight spatial modeling with only a few additional tokens. It achieves state-of-the-art scene and spatial retrieval while enabling strong zero-shot transfer to downstream tasks such as audio-visual localization.",
+        "published": "2026-07-16",
+        "url": "http://arxiv.org/abs/2607.15265v1",
+        "authors": [
+          "Mingfei Chen",
+          "Zijun Cui"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "VIP-MINGLE: A Corpus for Videoconference and In-Person Multimodal Interaction in Group Language Engagement",
+        "summary": "Group conversations are a fundamental yet complex form of social interaction central to human cognition and telecommunication technology. While understanding and facilitating these interactions has been a long-standing goal, findings are often isolated within specific in-person or videoconferencing settings due to a scarcity of datasets that bridge the two. We introduce VIP-MINGLE, a multimodal dataset comprising 59 hours of recordings (32 groups, 105 participants), featuring paired within-subject sessions in both settings. The dataset includes raw audio/video, psychometric data, processed multimodal features (e.g., diarized speech, facial expressions, transcriptions), and time-resolved human annotations. Our analysis reveals significant behavioral distribution shifts across multiple modalities between settings, reinforcing the need for a cross-setting corpus. VIP-MINGLE serves as a critical resource for developing robust models of group conversations across settings.",
+        "published": "2026-07-15",
+        "url": "http://arxiv.org/abs/2607.13614v1",
+        "authors": [
+          "Andrew Chang",
+          "Abhinay K Bodi"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Bring Music The Horizon: Music-Driven 360$^\\circ$ Video Generation",
+        "summary": "Music visualization offers a powerful way to enhance listeners' understanding and experience of music by translating auditory signals into visual forms. However, most existing approaches either rely heavily on lyrics or generate flat, non-immersive videos similar to conventional music videos, which limits their ability to convey the emotional dynamics of music and provide an immersive listening experience. We propose Bring Music The Horizon, an emotion-aware pipeline for music-driven 360$^\\circ$ video generation. Given an input song, our work first estimates its emotional trajectory by predicting valence-arousal values at the level of every four bars. These values are then converted into emotion-aware visual guidance using EmotiCrafter, and these guidance vectors can be manipulated by the SEGA framework, which provides fine-grained semantic control for keyframe generation. Finally, image-to-video models are applied to the generated keyframes to synthesize temporally continuous 360$^\\circ$ videos for immersive music visualization. Our pipeline generates 360$^\\circ$ music visualization videos that reflect the emotional progression and temporal structure of the input song. We demonstrate its capability using songs from different genres and provide qualitative comparisons with From-Sound-To-Sight, a representative audio-to-visual generation baseline, on our project page at https://etoile-et-toi-mp3.github.io/BMTH_Project_Page/.",
+        "published": "2026-07-15",
+        "url": "http://arxiv.org/abs/2607.13471v1",
+        "authors": [
+          "Kai Hsu Tsai",
+          "Yong Wei Fu"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "CD-MED: Cross-Domain Multimodal Emotion Descriptor for Visual Comparison of Digital Objects",
+        "summary": "Digital objects express emotions through different modalities. For example, a movie may include visual scenes, audio, dialogue, and facial expressions, while a song may contain melody, rhythm, lyrics, and vocal tone. Because existing emotion recognition models are usually modality-specific, it is difficult to compare such objects directly. This paper proposes CD-MED, a Cross-Domain Multimodal Emotion Descriptor for representing heterogeneous digital objects in a common emotional space. Each modality can be processed by its own emotion recognition model, and the resulting emotional outputs are transformed into a shared descriptor. The descriptor preserves information from individual modalities while also allowing an integrated emotional profile of the object. For interpretation, CD-MED is visualized in the valence-arousal space: position represents affective coordinates, color denotes emotion category, size indicates intensity, and shape shows the modality. This unified representation enables emotion-based comparison, retrieval, recommendation, and visualization across different domains such as movies, songs, images, and books.",
+        "published": "2026-07-14",
+        "url": "http://arxiv.org/abs/2607.12958v1",
+        "authors": [
+          "Elnara Kadyrgali",
+          "Muragul Muratbekova"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?",
+        "summary": "Recent advances in multimodal large language models (MLLMs) have significantly improved the performance of multimodal emotion recognition (MER) and enabled interpretable description generation by jointly modeling video, audio, and language, etc. However, these performance improvements are often accompanied by an increase in model parameter size (e.g, at least 7B), which simultaneously incurs high computational costs and reduces inference efficiency, thereby hindering real-time deployment on resource-constrained platforms such as robots and mobile devices. This raises a fundamental question: do we really need the multimodal MER model larger than 1B parameters for high-quality MER? In this paper, we challenge the assumption that larger models are inherently necessary and proposes a lightweight MER framework (called Light-MER), which achieves better and faster multimodal sentiment understanding and recognition through knowledge distillation. It can transfer knowledge from a strong, large-scale teacher model to a lightweight sub-billion-parameter student model, aiming to preserve rich multimodal emotion reasoning and recognition while substantially improving deployment efficiency. Specifically, we introduce two new optimization strategies to enhance knowledge transfer: (1) a new optimal transport loss that combines Sliced Wasserstein Distance with hidden-state alignment, and (2) a new multi-reward optimization strategy based on GRPO that balances MER performance and efficiency, aimed at further enhancing the learning capabilities of student models. Extensive experiments on nine benchmark datasets demonstrate that Light-MER achieves state-of-the-art performance while significantly improving inference efficiency. This highlights the strong potential of small multimodal emotion language models for future research. Code is available at https://github.com/GAIR-Lab/Light-MER.",
+        "published": "2026-07-14",
+        "url": "http://arxiv.org/abs/2607.12787v1",
+        "authors": [
+          "Kaiwen Zheng",
+          "Junchen Fu"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Explainable-by-Design Audio Deepfake Detection via Wiener-Hopf Linear Prediction",
+        "summary": "The rapid advancement of synthetic speech generation methods has made audio deepfake detection a critical challenge in multimedia forensics. While recent approaches achieve high detection accuracy, they typically rely on black-box architectures that offer limited interpretability and high computational complexity. In this paper, we propose an explainable-by-design audio deepfake detection framework based on Wiener-Hopf linear prediction, processed by a lightweight 2D Convolutional Neural Network (CNN). This design enables a direct and transparent connection between classification outcomes and the acoustic properties of the signal. Experimental results on benchmark datasets demonstrate competitive detection performance while maintaining significantly lower computational complexity compared to state-of-the-art solutions. The interpretability analysis using Grad-CAM reveals that the classifier focuses on low-order predictor coefficients and on silence and transitional regions, suggesting that the Wiener-Hopf predictor captures reverberation characteristics and subtle statistical inconsistencies in synthetic speech. Finally, robustness experiments show that fine-tuning effectively recovers detection performance under common post-processing degradations, including additive noise, MP3 compression, and telephone filtering.",
+        "published": "2026-07-14",
+        "url": "http://arxiv.org/abs/2607.12584v1",
+        "authors": [
+          "Mattia Tamiazzo",
+          "Simone Milani"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "From Chaos to Clarity: A Framework for Program-Level AI Learning Outcomes",
+        "summary": "Industry is leaning into generative artificial intelligence (GenAI), and higher education is under pressure to prepare graduates for a GenAI-augmented workforce. Yet, there is still no clear structure for defining AI readiness across disciplines, programs, courses, and assignments. Current approaches often rely on broad institutional policies or individual course-level decisions, which can also create mixed messages for students, fragmented expectations across programs, and limited visibility for university leaders. In this paper, we argue that higher education needs a more coherent way to connect institutional priorities to curriculum-level action. We propose Program-Level AI Learning Outcomes (PLAI-LOs) as a framework for defining what students graduating from a program should know and be able to do with, without, and about GenAI in a given discipline. The PLAI-LOs framework complements existing program-level learning outcomes and supports alignment across institutional priorities, program-level AI learning outcomes, course-level learning outcomes, and assignment-level objectives. We illustrate the framework with examples from computing and music and show how PLAI-LOs can be implemented through artifact-level GenAI policies, helping programs decide where GenAI should be taught and used, and when students should be expected to work without GenAI. We offer PLAI-LOs as a concrete, measurable, and adaptable path for moving higher education from scattered GenAI rules toward a strategy with clear, learning-centered alignment.",
+        "published": "2026-07-13",
+        "url": "http://arxiv.org/abs/2607.12221v1",
+        "authors": [
+          "Grace Barkhuff",
+          "Ian Pruitt"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "LightMem-Ego: Your AI Memory for Everyday Life",
+        "summary": "Personal AI assistants on mobile and wearable devices continuously perceive users' daily lives through visual and audio streams. However, answering queries about past experiences requires lightweight multimodal memory that can continuously accumulate, organize, and retrieve long-term experiences, which remains challenging. To address this challenge, we present LightMem-Ego, a lightweight streaming multimodal memory system for everyday-life assistance. The system continuously captures egocentric visual and audio streams, aligns them on a shared timeline, and organizes them into a hierarchical memory consisting of current, short-term, and long-term memory. Given a user query, LightMem-Ego dynamically routes retrieval to the appropriate memory level and generates answers grounded in multimodal evidence. The demonstration can be deployed on smartphones and AI glasses, supporting object finding, conversation recall, life summarization, routine discovery, and personalized assistance. Code is available at https://github.com/zjunlp/LightMem-Ego.",
+        "published": "2026-07-13",
+        "url": "http://arxiv.org/abs/2607.11487v1",
+        "authors": [
+          "Yijun Chen",
+          "Boyi Xiao"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "BackgroundMellow: A Multi-Modal Cohesive Framework for Narrative-Driven Rich Cinematic Soundscape Generation",
+        "summary": "Generating immersive, synchronized and cinematic audio for long-form textual narratives remains a significant challenge in multi-modal AI. While current Text-to-Audio (TTA) frameworks successfully synthesize isolated sound effects, they struggle with narrative cohesion, temporal alignment, and cinematic emotional depth. We present BackgroundMellow, a framework that treats story-to-audio generation as a precise orchestration and signal processing problem. This framework is enabled without ground-truth through a master-specialist agent architecture that decomposes text into precise and multi-layered audio cues, generates each category of sounds with suitable specialist model, and superimposes the soundscapes to create a unified and aligned audio segment. Our pipeline is built over Tango2 latent diffusion model for environmental synthesis alongside a novel Cinematic BGM Retriever mined from professional soundtracks. To automate the sound mixing process, we use an NLP based module that predicts precise audio parameters, like start time, duration, and relative loudness, based on the narrative timeline. We further empirically evaluate and show the efficacy of the proposed framework leveraging nearest-neighbor retrieval against a curated dataset of YouTube cinematic trailers to measure temporal synchronization, coverage, and spectral richness.",
+        "published": "2026-07-13",
+        "url": "http://arxiv.org/abs/2607.11364v1",
+        "authors": [
+          "Ajitesh Jamulkar",
+          "Aritra Hazra"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Lottery and Sprint Arcade: Enabling Player-Driven Game Editing with Generative AI",
+        "summary": "Large language models (LLMs) are shifting game generation from offline automation toward play-driven modification through natural language interaction. In this work, we present a play-driven game editing system that enables players to modify a retro Space Invaders - style arcade game through voice-based natural-language commands during play. Spoken instructions are interpreted by an LLM and translated into structured updates of internal configuration parameters, allowing iterative play - edit - feedback cycles in an invader-style game environment without exposing underlying system details. The game includes approximately 100 editable configuration fields controlling mechanics, visuals, interaction patterns, and audio behavior, enabling gameplay transformation through incremental parameter changes. To investigate how users experience play-driven AI-mediated editing (RQ1) and how emergent editing patterns relate to variations in player experience (RQ2), we conducted a user study combining subjective evaluations, workload measures, and log-based analysis of editing behavior. Participants were able to modify gameplay with generally positive experiences and moderate workload, and interaction outcomes did not strongly depend on prior programming experience. Editing-log analysis revealed distinct experiential tendencies: adjustments to immediately perceptible parameters were associated with higher usability, whereas edits affecting core gameplay structures were more closely associated with enjoyment. Post-session reflections further identified diverse editing strategies, including exploratory experimentation, goal-driven structural modification, and iterative parameter tuning. These findings demonstrate that voice-driven editing can support accessible, play-driven human - AI co-creation within a structured invader-style arcade game environment.",
+        "published": "2026-07-12",
+        "url": "http://arxiv.org/abs/2607.10711v1",
+        "authors": [
+          "Maya Grace Torii",
+          "Takahito Murakami"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Anamnesis: An Open-Source Platform for Large-Scale Backstory-Conditioned Survey Simulation",
+        "summary": "We present Anamnesis, an interactive system for demographically controllable survey simulation using large language models. Open-source, and designed for non-technical users/researchers, Anamnesis enables the prototyping and stress-testing of survey instruments on virtual populations rather than real human subjects. The platform operationalizes the recently introduced Anthology and Alterity frameworks, which use structured narrative backstories to condition model responses, within a unified web interface. It supports open-ended generation, probabilistic demographic resampling, and multimodal (image and audio) surveys. We evaluate the system through two case studies: (1) replicating segments of Pew Research Center's American Trends Panel (ATP) on political typology and biomedical issues and (2) emulating human preference in the New Yorker Caption Contest. In both cases, Anamnesis produces opinion distributions that more closely match real-world survey data than standard persona-prompting baselines, offering a transparent, reproducible, and open-source alternative to proprietary simulation services.",
+        "published": "2026-07-12",
+        "url": "http://arxiv.org/abs/2607.10628v1",
+        "authors": [
+          "Song-Ze Yu",
+          "Joseph Suh"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Dance to Music Generation leveraging Pre-training with Unpaired data and Contrastive Alignment",
+        "summary": "Dance-to-music generation is a promising task for applications such as choreography support and automatic accompaniment, where temporal coordination between body movement and sound is essential. In particular, using human joint positions as the motion representation is attractive because they explicitly capture body dynamics while being lightweight, privacy-preserving, and easy to integrate with motion capture and pose-estimation pipelines. A central challenge in this setting, however, is the scarcity of high-quality paired dance-music data, since collecting accurately synchronized pairs is costly and often constrained by copyright and performance rights. This makes it difficult to train end-to-end models solely from paired data. To address this issue, we propose a dance-conditioned music generation framework that efficiently exploits both unpaired and paired data. Our method combines pretrained unimodal encoders for motion and music, beat-guided contrastive pretraining to align their feature spaces, and a ControlNet-style conditioning module on top of a pretrained text-to-audio diffusion model. Experiments on AIST++ demonstrate that the proposed techniques improve both dance-music alignment and audio quality, as confirmed by quantitative and qualitative evaluations. Compared to a state-of-the-art method, our approach achieves superior dance alignment performance and competitive audio quality. Code is available at https://github.com/kmraven/AudioLDM-ControlNet .",
+        "published": "2026-07-12",
+        "url": "http://arxiv.org/abs/2607.10537v1",
+        "authors": [
+          "Ryota Kimura",
+          "Sangheon Park"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Local Multimodal Music Alignment from Global Supervision",
+        "summary": "Understanding music requires understanding localized relationships across data modalities, e.g., how time in performance audio maps onto position in a score image. Yet supervision for such local correspondences is difficult to obtain-in practice, we often only have access to coarser global supervision like paired segments of audio and images. To address this gap, we propose FuSiLi (Fused Sinkhorn-Localized Similarity), a similarity score for multimodal contrastive learning operating directly on local image patch and audio frame features via Sinkhorn-based soft alignment. We show that FuSiLi (i) effectively learns local relationships, (ii) requires only global supervision, and (iii) retains the global alignment capabilities of conventional contrastive approaches. We fine-tune pretrained CLIP and CLAP encoders on pairs of raw sheet music images and audio using a hybrid contrastive objective combining FuSiLi with conventional global similarity. We evaluate on cross-modal retrieval and frame-level alignment tasks against a range of global and local baselines, showing that our approach outperforms them on local alignment while remaining competitive on retrieval.",
+        "published": "2026-07-10",
+        "url": "http://arxiv.org/abs/2607.10023v1",
+        "authors": [
+          "Irmak Bukey",
+          "Zachary Novack"
+        ]
+      },
+      {
+        "source": "arxiv",
+        "title": "Event-Based Token Sequences for Audio-Conditioned Music-Game Level Modeling",
+        "summary": "Procedural generation of music game levels is an exciting yet challenging problem, as levels must translate musical structure into interactive sequences of timed gameplay events. Most existing approaches formulate this task by frame-based representations, dividing audio into uniform time grids and predicting events at each frame. This makes gameplay events implicit across many frames. As a result, it is hard to describe event-level timing relations and longer-range structure found in human-authored levels. We use procedural generation as a practical setting to study how musical cues map to interactive event sequences. Inspired by event-based symbolic music modeling, we propose a token-level sequence formulation that casts level generation as a multimodal sequence-to-sequence problem. Conditioned on an audio excerpt and level metadata, the model generates a token sequence alternating gameplay-event and beat-shift tokens. This explicitly represents actions and their relative timing in beat space. Based on this formulation, we build a Transformer model. It outperforms representative frame-level baselines under event-level evaluation. It also enables systematic analysis of how audio supports rhythm-aligned event prediction beyond metadata conditioning.",
+        "published": "2026-07-10",
+        "url": "http://arxiv.org/abs/2607.09095v1",
+        "authors": [
+          "Ke Zhang",
+          "Chu-Hsuan Hsueh"
+        ]
+      }
+    ],
+    "hn_music": [
+      {
+        "source": "hn",
+        "title": "Show HN: Audio Player with \"Binaural Beats\" tuned to the same key as your music",
+        "url": "https://github.com/henrygabriels/binaural-studio",
+        "points": 18,
+        "published": "2026-07-24"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Palmier Pro – Open-source macOS video editor built for AI",
+        "url": "https://github.com/palmier-io/palmier-pro",
+        "points": 185,
+        "published": "2026-07-23"
+      },
+      {
+        "source": "hn",
+        "title": "Why do we love music? (2018)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6353111/",
+        "points": 19,
+        "published": "2026-07-20"
+      },
+      {
+        "source": "hn",
+        "title": "I tried to record music onto a cassette tape using modern tech",
+        "url": "https://swiftrocks.com/i-tried-to-record-music-onto-a-cassette-tape-using-modern-tech",
+        "points": 24,
+        "published": "2026-07-17"
+      },
+      {
+        "source": "hn",
+        "title": "$100 AI Music Video: Claude Fable 5 vs. GPT-5.6 Sol",
+        "url": "https://www.tryai.dev/blog/ai-music-video-arena-claude-vs-gpt-5.6",
+        "points": 396,
+        "published": "2026-07-16"
+      },
+      {
+        "source": "hn",
+        "title": "As a musician, I prefer illegal downloading over Spotify (2011)",
+        "url": "https://derekwebb.tumblr.com/post/13503899950/giving-it-away-how-free-music-makes-more-than",
+        "points": 75,
+        "published": "2026-07-16"
+      },
+      {
+        "source": "hn",
+        "title": "The lost joy of music piracy",
+        "url": "https://www.pigeonsandplanes.com/read/music-piracy-what-cd-oink-nine-inch-nails-streaming",
+        "points": 852,
+        "published": "2026-07-16"
+      },
+      {
+        "source": "hn",
+        "title": "Hack Reveals Suno AI Music Generator Scraped YouTube, Deezer, and Genius",
+        "url": "https://www.404media.co/hack-reveals-suno-ai-music-generator-scraped-youtube-deezer-and-genius/",
+        "points": 34,
+        "published": "2026-07-15"
+      },
+      {
+        "source": "hn",
+        "title": "The Music of Destruction",
+        "url": "https://thebaffler.com/latest/the-music-of-destruction-fuelling",
+        "points": 19,
+        "published": "2026-07-14"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: An Interactive Guide for Castlevania II: Simon's Quest",
+        "url": "https://theultimatesimonsquestguide.com/",
+        "points": 11,
+        "published": "2026-07-14"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: YouTube Guitar Tab Parser",
+        "url": "https://github.com/marcelpanse/youtube-guitar-tab-parser",
+        "points": 108,
+        "published": "2026-07-13"
+      },
+      {
+        "source": "hn",
+        "title": "Auditory and spontaneous movement responses to music over first postnatal year",
+        "url": "https://elifesciences.org/articles/107088",
+        "points": 28,
+        "published": "2026-07-09"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Chiptune Radio",
+        "url": "https://chiptune-radio.alephvoid.com/",
+        "points": 77,
+        "published": "2026-07-08"
+      },
+      {
+        "source": "hn",
+        "title": "'Weird Al' Yankovic Pulled Out of AI Ad",
+        "url": "https://variety.com/2026/music/news/weird-al-yankovic-rejected-ai-commercial-money-offer-1236800794/",
+        "points": 27,
+        "published": "2026-07-02"
+      },
+      {
+        "source": "hn",
+        "title": "The Music of Destruction",
+        "url": "https://thebaffler.com/latest/the-music-of-destruction-fuelling",
+        "points": 27,
+        "published": "2026-07-02"
+      },
+      {
+        "source": "hn",
+        "title": "24-bit/192kHz music downloads and why they make no sense (2012)",
+        "url": "https://people.xiph.org/~xiphmont/demo/neil-young.html#toc_wd2bm",
+        "points": 135,
+        "published": "2026-07-02"
+      },
+      {
+        "source": "hn",
+        "title": "Turning music into a chore is how I became a musician (2022)",
+        "url": "https://the.scapegoat.dev/turning-music-into-a-chore-is-what-made-me-an-artist/",
+        "points": 101,
+        "published": "2026-06-28"
+      },
+      {
+        "source": "hn",
+        "title": "Pre-2022 Books",
+        "url": "https://notes.lorenzogravina.com/musings/pre-2022-books",
+        "points": 211,
+        "published": "2026-06-20"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Music from every single country on Earth, generated in Esperanto",
+        "url": "https://elevenexperiments.com/around-the-world?lang=eo&genre=de",
+        "points": 13,
+        "published": "2026-06-19"
+      }
+    ],
+    "hn_audio": [
+      {
+        "source": "hn",
+        "title": "The Collapse at Netflix Signals the End of Audience Capture",
+        "url": "https://www.honest-broker.com/p/the-collapse-at-netflix-signals-the",
+        "points": 32,
+        "published": "2026-07-24"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Audio Player with \"Binaural Beats\" tuned to the same key as your music",
+        "url": "https://github.com/henrygabriels/binaural-studio",
+        "points": 18,
+        "published": "2026-07-24"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: OneCLI – OSS credential gateway that keeps secrets out of AI agents",
+        "url": "https://github.com/onecli/onecli",
+        "points": 103,
+        "published": "2026-07-23"
+      },
+      {
+        "source": "hn",
+        "title": "Flux 3: One multi-modal model for Image, Video, Audio and Action-Prediction",
+        "url": "https://bfl.ai/blog/flux-3",
+        "points": 11,
+        "published": "2026-07-23"
+      },
+      {
+        "source": "hn",
+        "title": "Honey Bee Colony Monitoring via Audio IoT Sensors, Tensorgrams and RNNs",
+        "url": "https://arxiv.org/abs/2607.20386",
+        "points": 29,
+        "published": "2026-07-23"
+      },
+      {
+        "source": "hn",
+        "title": "'The Odyssey' Proves It: Audiences Want Movies Made the Hard Way",
+        "url": "https://www.hollywoodreporter.com/movies/movie-news/odyssey-box-office-2026-practical-effects-1236652219/",
+        "points": 34,
+        "published": "2026-07-22"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong",
+        "url": "https://github.com/cactus-compute/cactus-hybrid",
+        "points": 185,
+        "published": "2026-07-22"
+      },
+      {
+        "source": "hn",
+        "title": "Apple Private Cloud Compute SoC 3 audit reports",
+        "url": "https://support.apple.com/guide/certifications/apple-private-cloud-compute-soc-3-audit-apc95a31b9d8/web",
+        "points": 139,
+        "published": "2026-07-21"
+      },
+      {
+        "source": "hn",
+        "title": "Less Is More: Why Audio on SoundCloud Looks Different",
+        "url": "https://developers.soundcloud.com/blog/less-is-more-why-soundcloud-low-passes-its-aac-transcodings/",
+        "points": 28,
+        "published": "2026-07-19"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: AI Law Tracker – one audited API for US, EU and global AI law",
+        "url": "https://ai-law-tracker.com",
+        "points": 20,
+        "published": "2026-07-16"
+      },
+      {
+        "source": "hn",
+        "title": "Launch HN: Coasty (YC S26) – An API for computer-use agents",
+        "url": "https://coasty.ai/docs",
+        "points": 44,
+        "published": "2026-07-15"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: An Interactive Guide for Castlevania II: Simon's Quest",
+        "url": "https://theultimatesimonsquestguide.com/",
+        "points": 11,
+        "published": "2026-07-14"
+      },
+      {
+        "source": "hn",
+        "title": "Launch HN: Agnost AI (YC S26) – Extract user feedback from agent conversations",
+        "url": "https://agnost.ai",
+        "points": 85,
+        "published": "2026-07-14"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Real-time avatars that change emotions as you talk",
+        "url": "https://anam.ai/",
+        "points": 12,
+        "published": "2026-07-14"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Self-hosted voice AI agent for Asterisk/FreePBX",
+        "url": "https://github.com/hkjarral/AVA-AI-Voice-Agent-for-Asterisk",
+        "points": 31,
+        "published": "2026-07-13"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Juggler – an open-source GUI coding agent, by the creator of JUCE",
+        "url": "https://github.com/juggler-ai/juggler",
+        "points": 280,
+        "published": "2026-07-12"
+      },
+      {
+        "source": "hn",
+        "title": "Allstate accuses Broadcom of auditing it because it quit VMware",
+        "url": "https://arstechnica.com/information-technology/2026/07/allstate-accuses-broadcom-of-auditing-it-because-it-quit-vmware-ca/",
+        "points": 13,
+        "published": "2026-07-09"
+      }
+    ],
+    "github": [
+      {
+        "source": "github",
+        "full_name": "Danilaa1/cuelume",
+        "url": "https://github.com/Danilaa1/cuelume",
+        "description": "Cuelume is a curated sound palette, not an audio engine. It gives buttons, links, toggles, and completed actions clear feedback without asking developers to design sounds themselves. Add an attribute, call bind(), done.",
+        "stars": 1015,
+        "language": "TypeScript",
+        "published": "2026-07-02"
+      },
+      {
+        "source": "github",
+        "full_name": "muscriptor/muscriptor",
+        "url": "https://github.com/muscriptor/muscriptor",
+        "description": "MuScriptor is a multi-instrument music transcription model developed by Kyutai and Mirelo.",
+        "stars": 848,
+        "language": "Python",
+        "published": "2026-07-02"
+      },
+      {
+        "source": "github",
+        "full_name": "Jane-xiaoer/paper-collage-ad-codex",
+        "url": "https://github.com/Jane-xiaoer/paper-collage-ad-codex",
+        "description": "Codex skill for complete paper-cut collage ad production, local IndexTTS-2 voice cloning, animation, audio and MP4 QC",
+        "stars": 328,
+        "language": "JavaScript",
+        "published": "2026-07-10"
+      },
+      {
+        "source": "github",
+        "full_name": "adam-s/car-diagnosis",
+        "url": "https://github.com/adam-s/car-diagnosis",
+        "description": "Diagnose a car fault from its sound — an honest, end-to-end audio-ML pipeline (scrape → clean → CLAP → calibrated triage). Proof of concept.",
+        "stars": 275,
+        "language": "Python",
+        "published": "2026-06-29"
+      },
+      {
+        "source": "github",
+        "full_name": "ww085213/Mineradio-LX-Music",
+        "url": "https://github.com/ww085213/Mineradio-LX-Music",
+        "description": "MR：可独立运行的本地音乐播放器与音乐可视化工具，支持本地音乐、歌词舞台、桌面歌词和 3D 可视化；LX Music 歌单导入与本机联动为可选扩展。",
+        "stars": 230,
+        "language": "HTML",
+        "published": "2026-06-30"
+      },
+      {
+        "source": "github",
+        "full_name": "kigner/audio.cpp-webui",
+        "url": "https://github.com/kigner/audio.cpp-webui",
+        "description": "audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. TTS, ASR/STT, VAD, voice conversion, speaker diarization, music generation. No Python dependency.",
+        "stars": 225,
+        "language": "C++",
+        "published": "2026-07-12"
+      },
+      {
+        "source": "github",
+        "full_name": "NUber-dev/YTubic",
+        "url": "https://github.com/NUber-dev/YTubic",
+        "description": "Fast, responsive YouTube Music desktop client for Windows — Tauri 2 + React",
+        "stars": 222,
+        "language": "TypeScript",
+        "published": "2026-07-05"
+      },
+      {
+        "source": "github",
+        "full_name": "dososo/blcaptain-lingjian-video",
+        "url": "https://github.com/dososo/blcaptain-lingjian-video",
+        "description": "一句话生成可逐关审核的发布级中文短视频：脚本·配音·画面·配乐·字幕·音效全自动 | One sentence → a publish-grade Chinese short video — script, voiceover, visuals, music, subtitles & SFX automated, auditable at every gate",
+        "stars": 216,
+        "language": "Python",
+        "published": "2026-07-02"
+      },
+      {
+        "source": "github",
+        "full_name": "gdstudio-org/Embeat",
+        "url": "https://github.com/gdstudio-org/Embeat",
+        "description": "Content-based music recommendation system, training on Spotify 45M tracks & 1.8M playlists.",
+        "stars": 201,
+        "language": "Python",
+        "published": "2026-06-26"
+      },
+      {
+        "source": "github",
+        "full_name": "dk8827/ra-port",
+        "url": "https://github.com/dk8827/ra-port",
+        "description": "Unofficial working port of Command & Conquer: Red Alert running natively on iOS, Android, Linux and macOS. SDL2 video/audio/input. No game assets included.",
+        "stars": 157,
+        "language": "C++",
+        "published": "2026-07-07"
+      },
+      {
+        "source": "github",
+        "full_name": "jtr21300/MAGIX-Music-Maker-Quickstart",
+        "url": "https://github.com/jtr21300/MAGIX-Music-Maker-Quickstart",
+        "description": "Best MAGIX Music Maker Premium Setup 2026 AI Music Production Suite",
+        "stars": 154,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "Boske2751/fl-studio-music-workstation",
+        "url": "https://github.com/Boske2751/fl-studio-music-workstation",
+        "description": "FL Studio 25.2 Download for Windows 2026: Best DAW for Music Production",
+        "stars": 154,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "boboskon/media-savant",
+        "url": "https://github.com/boboskon/media-savant",
+        "description": "Best Android Video Downloader with Browser & Live Stream M3U8 MPD Support 2026",
+        "stars": 153,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "rizki-haridputra/Melody-Forge-Engine",
+        "url": "https://github.com/rizki-haridputra/Melody-Forge-Engine",
+        "description": "AI-Powered Music Production & Live Coding Software 2026",
+        "stars": 152,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "annaisebala/Spotify-Quality-Archiver",
+        "url": "https://github.com/annaisebala/Spotify-Quality-Archiver",
+        "description": "Download High-Res FLAC Music from All Major Platforms 2026",
+        "stars": 152,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "mahi64675/SpotSync-Web",
+        "url": "https://github.com/mahi64675/SpotSync-Web",
+        "description": "MeTify 2026: Self-Hosted Music Downloader with Spotify Web UI Integration",
+        "stars": 152,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "MarceloProf77/Media-Orchestrator",
+        "url": "https://github.com/MarceloProf77/Media-Orchestrator",
+        "description": "Best Self-Hosted yt-dlp Web GUI for Bulk Media Archiving 2026",
+        "stars": 152,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "eliuditau001ch/weeb-index",
+        "url": "https://github.com/eliuditau001ch/weeb-index",
+        "description": "Best Otaku Anime & Manga Directory 2026",
+        "stars": 152,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "roghithar18-netizen/luna-mood-music-sync",
+        "url": "https://github.com/roghithar18-netizen/luna-mood-music-sync",
+        "description": "Sunnify Playlist Manager 2026 - Batch Audio Saver for Spotify",
+        "stars": 151,
+        "language": "HTML",
+        "published": "2026-06-28"
+      },
+      {
+        "source": "github",
+        "full_name": "mahdi5040/yougra-sync",
+        "url": "https://github.com/mahdi5040/yougra-sync",
+        "description": "Smart YouTube Playlist to Audio Converter 2026",
+        "stars": 151,
+        "language": "HTML",
+        "published": "2026-06-28"
+      }
+    ]
+  },
+  "warnings": []
+}
