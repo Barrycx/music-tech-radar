@@ -51,7 +51,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 | 变量 | 用途 | 缺省行为 |
 |---|---|---|
-| `MOONSHOT_API_KEY` | Kimi(Moonshot)API key | 缺失时 edit_issue 报错(可用 `--mock` 绕过) |
+| `KIMI_API_KEY` | Kimi Code API key(`sk-kimi-` 开头,端点 `api.kimi.com/coding/v1`,模型 `kimi-for-coding`) | 缺失时 edit_issue 报错(可用 `--mock` 绕过) |
 | `QQ_MAIL_USER` | QQ 邮箱发件账号 | 缺失则不发送,报错退出 |
 | `QQ_SMTP_AUTH` | QQ 邮箱 SMTP 授权码 | 同上 |
 | `MAIL_TO` | 收件人(多个用逗号分隔) | 同上 |
@@ -62,7 +62,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 由 GitHub Actions 定时触发,workflow:`.github/workflows/daily.yml`。
 主班次 cron UTC `5 23 * * *`(北京 07:05),补刊班次 UTC `5 0 * * *`(北京 08:05,幂等)。
-四个环境变量存到仓库 Secrets(`MOONSHOT_API_KEY` / `QQ_MAIL_USER` / `QQ_SMTP_AUTH` / `MAIL_TO`),
+四个环境变量存到仓库 Secrets(`KIMI_API_KEY` / `QQ_MAIL_USER` / `QQ_SMTP_AUTH` / `MAIL_TO`),
 Pages source 选 GitHub Actions;`archive.json` / `state.json` / `index.html` / `word/` 由 workflow 提交回仓库。
 
 ## 数据文件

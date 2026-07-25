@@ -1,3 +1,463 @@
+<title>音乐科技雷达</title>
+<style>
+  :root {
+    --desk: #dcdcd9;          /* 报纸下面的桌面 */
+    --paper: #fcfcfa;         /* 现代白报纸 */
+    --ink: #1a1a1a;           /* 油墨 */
+    --ink-soft: #454545;
+    --ink-faint: #7b7b78;
+    --hairline: #dbd9d4;      /* 细线 */
+    --red: #c1301c;           /* 报头红 */
+    --red-soft: #c1301c1f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --desk: #0d0d0d;
+      --paper: #1c1c1e;
+      --ink: #e6e5e1;
+      --ink-soft: #b3b2ad;
+      --ink-faint: #7c7b76;
+      --hairline: #38383a;
+      --red: #e2604e;
+      --red-soft: #e2604e26;
+    }
+  }
+  :root[data-theme="light"] {
+    --desk: #dcdcd9; --paper: #fcfcfa; --ink: #1a1a1a; --ink-soft: #454545;
+    --ink-faint: #7b7b78; --hairline: #dbd9d4; --red: #c1301c; --red-soft: #c1301c1f;
+  }
+  :root[data-theme="dark"] {
+    --desk: #0d0d0d; --paper: #1c1c1e; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+    --ink-faint: #7c7b76; --hairline: #38383a; --red: #e2604e; --red-soft: #e2604e26;
+  }
+
+  body {
+    background: var(--desk);
+    color: var(--ink);
+    font-family: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
+    line-height: 1.72;
+    padding: 2.2rem .8rem 3rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: "SF Mono", Menlo, Consolas, monospace; }
+
+  /* ---- 报纸纸张 ---- */
+  .sheet {
+    max-width: 70rem; margin: 0 auto;
+    background:
+      repeating-linear-gradient(2deg, transparent 0 6px, rgba(0,0,0,.006) 6px 7px),
+      var(--paper);
+    box-shadow: 0 1px 2px rgba(0,0,0,.14), 0 10px 30px rgba(0,0,0,.16);
+    padding: 2rem 2.4rem 2.2rem;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  /* ---- 报头 ---- */
+  .baoyan-row {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .baoyan {
+    flex: 1;
+    border: 1px solid var(--hairline);
+    padding: .35rem .7rem;
+    font-size: .72rem; line-height: 1.8; color: var(--ink-soft);
+    text-align: center;
+  }
+  .baoyan .mono { font-size: .68rem; color: var(--ink-faint); letter-spacing: .1em; }
+  h1 {
+    flex: 0 0 auto;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    font-weight: 900; letter-spacing: .12em; line-height: 1.15;
+    color: var(--red);
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .mast-sub {
+    text-align: center; font-size: .78rem; color: var(--ink-soft);
+    letter-spacing: .35em; margin-top: .5rem;
+  }
+  #wave { display: block; width: 100%; height: 26px; margin: .8rem 0 .6rem; opacity: .85; }
+  /* 文武线 */
+  .wenwu { border-top: 3px solid var(--ink); margin-bottom: 2px; }
+  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: 1.6rem; }
+
+  /* ---- 栏头(标题反白) ---- */
+  .sec-head { display: flex; align-items: center; gap: .7rem; margin-bottom: .9rem; }
+  .sec-head h2 {
+    font-size: .98rem; font-weight: 700; letter-spacing: .3em;
+    background: var(--ink); color: var(--paper);
+    padding: .05rem .7rem .05rem 1rem;
+  }
+  .sec-head .en {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .sec-head .rule { flex: 1; border-top: 1px solid var(--hairline); }
+  .sec-head .note { font-size: .72rem; color: var(--ink-faint); }
+
+  /* ---- 本报头条 ---- */
+  .focus {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+    margin-bottom: 1.8rem;
+  }
+  .focus article { padding: 1.1rem 1.4rem 1rem; }
+  .focus article + article { border-left: 1px solid var(--hairline); }
+  .focus h3 {
+    font-size: 1.5rem; font-weight: 900; line-height: 1.45;
+    margin: .35rem 0 .4rem; text-wrap: balance; letter-spacing: .02em;
+  }
+  .focus h3 a:hover, .focus h3 a:focus-visible { color: var(--red); outline: none; }
+  .focus p.body { font-size: .86rem; color: var(--ink-soft); text-align: justify; margin-bottom: .3rem; }
+
+  .meta {
+    display: flex; flex-wrap: wrap; gap: .3rem .8rem; align-items: baseline;
+    font-size: .7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums;
+    margin-bottom: .25rem;
+  }
+  .meta .mono-part { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .64rem; letter-spacing: .06em; }
+  .tag { color: var(--ink-soft); }
+  .tag::before { content: "〔"; color: var(--ink-faint); }
+  .tag::after { content: "〕"; color: var(--ink-faint); }
+  .hot {
+    color: var(--paper); background: var(--red);
+    padding: .02rem .55rem; font-size: .68rem; letter-spacing: .18em;
+  }
+
+  /* ---- 主区:学术双列 + 右侧窄栏,栏间竖线 ---- */
+  .cols { display: grid; grid-template-columns: 1fr 19rem; }
+  .cols > section { padding-right: 1.6rem; }
+  .rail { border-left: 1px solid var(--hairline); padding-left: 1.6rem; }
+
+  .paper-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.4rem; }
+  .paper-grid::before {
+    content: ""; position: absolute; top: .4rem; bottom: .4rem; left: 50%;
+    border-left: 1px solid var(--hairline);
+  }
+  .paper-grid article { border-top: 1px solid var(--hairline); padding: .65rem 0 .7rem; }
+  .paper-grid h3 { font-size: 1.02rem; font-weight: 700; line-height: 1.5; margin-bottom: .15rem; text-wrap: balance; }
+  h3 a:hover, h3 a:focus-visible { color: var(--red); outline: none; }
+  .orig {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: .68rem; color: var(--ink-faint); font-style: italic;
+    margin-bottom: .25rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .why { font-size: .8rem; color: var(--ink-soft); text-align: justify; }
+  .why b { color: var(--ink); font-weight: 700; }
+  .why b::before { content: ""; }
+
+  /* ---- 右侧窄栏 ---- */
+  .rail section { margin-bottom: 1.6rem; }
+  .rail-item { border-top: 1px solid var(--hairline); padding: .5rem 0 .55rem; }
+  .rail-item h3 { font-size: .9rem; font-weight: 700; line-height: 1.5; margin-bottom: .1rem; }
+  .rail-item .why { font-size: .76rem; }
+  .rail-item .meta { margin-bottom: .1rem; }
+
+  /* ---- 选题灵感:尾版 ---- */
+  .ideas { margin-top: 2rem; }
+  .ideas-rule-thick { border-top: 2px solid var(--ink); margin-bottom: 2px; }
+  .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: 1rem; }
+  .idea-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .idea { padding: .2rem 1.1rem .3rem; display: flex; flex-direction: column; gap: .3rem; }
+  .idea:first-child { padding-left: 0; }
+  .idea + .idea { border-left: 1px solid var(--hairline); }
+  .idea .diff {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: .66rem; letter-spacing: .12em; color: var(--red);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .idea .diff .kind { color: var(--ink-faint); }
+  .idea h3 { font-size: .95rem; font-weight: 700; line-height: 1.5; text-wrap: balance; }
+  .idea .body { font-size: .76rem; color: var(--ink-soft); text-align: justify; flex: 1; }
+  .idea .uses, .idea .skills { font-size: .7rem; color: var(--ink-faint); line-height: 1.7; }
+  .idea .uses b, .idea .skills b { color: var(--ink-soft); font-weight: 700; }
+  .idea .uses a { border-bottom: 1px solid var(--hairline); }
+  .idea .uses a:hover, .idea .uses a:focus-visible { color: var(--red); border-bottom-color: var(--red); outline: none; }
+
+  /* ---- 往期回顾 ---- */
+  .backissues { margin-top: 2rem; }
+  .bi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: .7rem; }
+  .backissue {
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+    background: none; border: 1px solid var(--hairline);
+    padding: .5rem .75rem .55rem;
+    display: flex; flex-direction: column; gap: .15rem;
+  }
+  .backissue:hover, .backissue:focus-visible { border-color: var(--red); outline: none; }
+  .bi-no {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: .64rem; letter-spacing: .1em; color: var(--red);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .bi-no .bi-date { color: var(--ink-faint); }
+  .bi-cur { color: var(--paper); background: var(--red); padding: 0 .35rem; }
+  .backissue h3 { font-size: .84rem; font-weight: 700; line-height: 1.5; }
+  .bi-count { font-size: .66rem; color: var(--ink-faint); }
+
+  /* ---- 往期全版浮层 ---- */
+  .issue-overlay {
+    position: fixed; inset: 0; background: rgba(15,15,15,.58);
+    z-index: 60; overflow-y: auto; padding: 2.2rem 1rem;
+  }
+  .issue-sheet {
+    background: var(--paper); max-width: 44rem; margin: 0 auto;
+    padding: 1.5rem 2rem 1.8rem; position: relative;
+    box-shadow: 0 12px 40px rgba(0,0,0,.35);
+  }
+  .issue-close {
+    position: absolute; top: .7rem; right: .8rem;
+    font: inherit; line-height: 1; font-size: .95rem;
+    background: none; border: 1px solid var(--hairline); color: var(--ink-soft);
+    width: 1.7rem; height: 1.7rem; cursor: pointer;
+  }
+  .issue-close:hover, .issue-close:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+  .iv-head { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: .55rem; margin-bottom: 1rem; }
+  .iv-head .t { font-size: 1.25rem; font-weight: 900; color: var(--red); letter-spacing: .12em; }
+  .iv-head .m {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: .66rem; color: var(--ink-faint); letter-spacing: .12em; margin-top: .2rem;
+  }
+  .iv-sec {
+    display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .3em;
+    background: var(--ink); color: var(--paper); padding: .02rem .55rem .02rem .85rem;
+    margin: 1rem 0 .3rem;
+  }
+  .iv-item { border-top: 1px solid var(--hairline); padding: .45rem 0 .5rem; }
+  .iv-item:first-of-type { border-top: none; }
+  .iv-item .meta { margin-bottom: .1rem; }
+  .iv-item h5 { font-size: .92rem; font-weight: 700; line-height: 1.55; margin-bottom: .05rem; }
+  .iv-item h5 a:hover, .iv-item h5 a:focus-visible { color: var(--red); outline: none; }
+  .iv-item .orig { margin-bottom: .15rem; }
+  .iv-item .why { font-size: .78rem; }
+  .iv-idea-level {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: .64rem; letter-spacing: .1em; color: var(--red); margin-right: .5rem;
+  }
+
+  /* ---- 条目详情 ---- */
+  .has-detail { cursor: pointer; }
+  .has-detail:hover { background: var(--red-soft); }
+  .more {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: .66rem; color: var(--red); margin-left: .45rem; white-space: nowrap;
+  }
+  .dv-title { font-size: 1.15rem; font-weight: 900; line-height: 1.5; margin: .15rem 0 .1rem; text-wrap: balance; }
+  .dv-detail { margin-top: .5rem; }
+  .dv-detail p { font-size: .87rem; color: var(--ink-soft); text-align: justify; margin: 0 0 .6rem; }
+  .dv-detail b { color: var(--red); font-weight: 700; }
+  .dv-link { margin-top: .9rem; border-top: 1px solid var(--hairline); padding-top: .6rem; }
+  .dv-link a { color: var(--red); border-bottom: 1px solid var(--red); }
+
+  /* ---- 报尾 ---- */
+  footer {
+    margin-top: 2rem; border-top: 1px solid var(--ink); padding-top: .55rem;
+    font-size: .7rem; color: var(--ink-faint); text-align: center; line-height: 2;
+  }
+  footer::before {
+    content: ""; display: block; border-top: 3px solid var(--ink);
+    margin: -0.55rem 0 2px; transform: translateY(-3px);
+  }
+
+  @media (max-width: 900px) {
+    .sheet { padding: 1.4rem 1.2rem 1.6rem; }
+    .cols { grid-template-columns: 1fr; }
+    .cols > section { padding-right: 0; }
+    .rail { border-left: none; padding-left: 0; border-top: 2px solid var(--ink); padding-top: 1rem; margin-top: 1.4rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; align-items: start; }
+    .focus { grid-template-columns: 1fr; }
+    .focus article + article { border-left: none; border-top: 1px solid var(--hairline); }
+    .idea-grid { grid-template-columns: 1fr 1fr; }
+    .idea { padding: .2rem 1.1rem .8rem 0; }
+    .idea + .idea { border-left: none; }
+    .idea:nth-child(even) { border-left: 1px solid var(--hairline); padding-left: 1.1rem; }
+  }
+  @media (max-width: 640px) {
+    body { padding: 0; }
+    .sheet { box-shadow: none; }
+    .paper-grid { grid-template-columns: 1fr; }
+    .paper-grid::before { display: none; }
+    .rail { grid-template-columns: 1fr; }
+    .idea-grid { grid-template-columns: 1fr; }
+    .idea, .idea:nth-child(even) { border-left: none; padding-left: 0; }
+    .baoyan { display: none; }
+    h1 { flex: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="sheet">
+  <header>
+    <div class="baoyan-row">
+      <div class="baoyan">
+        <span class="mono">VOL.002</span><br>
+        2026年7月25日<br>星期六
+      </div>
+      <h1>音乐科技雷达</h1>
+      <div class="baoyan">
+        每日 07:00 出版<br>
+        <span class="mono">收录 10 条</span><br>
+        <span class="mono">选题 4 个</span>
+      </div>
+    </div>
+    <p class="mast-sub">数字音乐智能处理 · 学术前沿 × 开源工具 × 行业动态</p>
+    <canvas id="wave" aria-hidden="true"></canvas>
+    <div class="wenwu"></div>
+    <div class="wenwu-thin"></div>
+  </header>
+
+  <!-- ==================== 本报头条 ==================== -->
+  <div class="focus">
+    <article>
+      <div class="meta"><span class="hot">本报头条</span><span class="tag">音频理解</span><span class="mono-part">arXiv · cs.SD · 07-22</span></div>
+      <h3><a href="http://arxiv.org/abs/2607.20166v1" target="_blank" rel="noopener">Audio-Zero：不用人工标注，让音频大模型自己学会精细推理</a></h3>
+      <p class="orig">Audio-Zero: Label-Free Self-Evolution for Fine-Grained Audio Reasoning</p>
+      <p class="body">现有音频大模型常被诟病只能做粗粒度识别，难以判断声音事件的先后顺序、重复和时长。</p>
+      <p class="why"><b>为什么值得看:</b>Audio-Zero 提出一种无需人工标注的自我进化方法，让模型自己生成并筛选高质量训练信号，从而提升对音频细节的推理能力。</p>
+    </article>
+    <article>
+      <div class="meta"><span class="hot">行业要闻</span><span class="tag">流媒体/音频质量</span><span class="mono-part">HN 28pt · 07-19</span></div>
+      <h3><a href="https://developers.soundcloud.com/blog/less-is-more-why-soundcloud-low-passes-its-aac-transcodings/" target="_blank" rel="noopener">SoundCloud 解释 AAC 转码为何低通滤波：平台音质与兼容性的权衡</a></h3>
+      <p class="body">SoundCloud 官方披露在 AAC 转码过程中主动低通滤波，以控制编码伪影并兼容旧设备。</p>
+      <p class="why"><b>为什么值得看:</b>这为音乐人、母带工程师和流媒体研究者讨论平台音质与交付标准提供了第一手资料。</p>
+    </article>
+  </div>
+
+  <div class="cols">
+    <!-- ==================== 学术前沿(双列) ==================== -->
+    <section>
+      <div class="sec-head">
+        <h2>学术前沿</h2><span class="en">Papers</span><span class="rule"></span>
+      </div>
+      <div class="paper-grid">
+
+        <article>
+          <div class="meta"><span class="tag">音频描述/评测</span><span class="mono-part">arXiv · cs.SD · 07-23</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.21424v1" target="_blank" rel="noopener">结构化音频描述评测框架：用可控扰动验证模型是否真听懂</a></h3>
+          <p class="orig">An Evaluation Framework for Structured Audio Captions Validated by Controlled Perturbations</p>
+          <p class="why">现有自动音频描述模型开始输出结构化的多属性描述，但传统指标只能比较整句文本，没法分别衡量音色、事件、空间等维度。<b>这篇论文提出用可控扰动生成已知错误的描述，来检验评测指标是否能准确发现对应缺陷。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音乐×视觉/无障碍</span><span class="mono-part">arXiv · cs.HC · 07-23</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.20835v1" target="_blank" rel="noopener">Sonic Stage：把对话视频变成可交互的空间声景，帮助视障观众理解场景</a></h3>
+          <p class="orig">Sonic Stage: Automatically Generating Interactive Spatial Soundscapes to Facilitate Dialogue Video Comprehension for Blind Viewers</p>
+          <p class="why">传统口述影像在对话密集场景会盖住台词，这篇工作把视频中的动作、位置和互动转成空间化的声音环境，让视障观众用耳朵“看见”画面。</p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">声音设计/歌声转换</span><span class="mono-part">arXiv · cs.SD · 07-23</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.20951v1" target="_blank" rel="noopener">Designed Vocalizations 数据集：为电影、游戏里的怪物/机器人声音转换铺路</a></h3>
+          <p class="orig">Designed Vocalizations Dataset: Sound-Designed Human and Animal Voices for Non-human Voice Conversion</p>
+          <p class="why">现有声音转换研究多聚焦自然语音，忽略了电影、游戏里常用的设计化人声。<b>这个数据集收集了怪物低吼、机器人声等声音，为可控的非人类声音转换提供基准。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音频水印/版权</span><span class="mono-part">arXiv · cs.SD · 07-23</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.21132v1" target="_blank" rel="noopener">在神经音频编解码器潜伏空间里藏水印，保护 AI 生成音频</a></h3>
+          <p class="orig">Investigating Codec-Internal Latent Audio Watermarking for Neural Codec Robustness</p>
+          <p class="why">神经音频编解码器会重新量化与合成声音，传统水印容易被破坏。<b>这篇论文把 32 位消息嵌入编解码器内部的连续隐变量，让水印在多次转码后仍能被检出。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音频处理/音效</span><span class="mono-part">arXiv · eess.AS · 07-22</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.19645v1" target="_blank" rel="noopener">用黑箱优化逆向音频压缩器参数，让处理过的录音重现原始动态</a></h3>
+          <p class="orig">Black-Box Optimization for Identifying and Inverting Audio Dynamic Range Control Effects</p>
+          <p class="why">动态范围压缩是音乐制作里最常用的效果之一，但参数未知时很难去除。<b>这篇论文把参数估计变成黑箱优化问题，在感知特征空间里搜索，使恢复的信号更接近原始录音。</b></p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== 右栏:开源 + 行业 ==================== -->
+    <div class="rail">
+      <section>
+        <div class="sec-head">
+          <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音频推理/音乐生成</span><span class="mono-part">C++ · 225★</span></div>
+          <h3><a href="https://github.com/kigner/audio.cpp-webui" target="_blank" rel="noopener">audio.cpp-webui：纯 C++ 音频模型推理引擎的完整网页界面</a></h3>
+          <p class="why">它在纯 C++ 的 audio.cpp 推理引擎上加了一个全任务 WebUI，支持语音合成、语音识别、音乐生成等，无需依赖 Python。</p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐可视化/播放器</span><span class="mono-part">HTML · 230★</span></div>
+          <h3><a href="https://github.com/ww085213/Mineradio-LX-Music" target="_blank" rel="noopener">Mineradio：带 3D 可视化的本地音乐播放器</a></h3>
+          <p class="why">这是一个可独立运行的本地音乐播放器，支持歌词舞台、桌面歌词和 3D 可视化，还能导入 LX Music 歌单。</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="sec-head">
+          <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">产品发布</span><span class="mono-part">HN 18pt · 07-24</span></div>
+          <h3><a href="https://github.com/henrygabriels/binaural-studio" target="_blank" rel="noopener">Binaural Studio 亮相：自动匹配音乐调性的双耳节拍播放器</a></h3>
+          <p class="why">一位独立开发者在 Hacker News 展示了这个小工具，它能识别当前音乐的调性并叠加同调双耳节拍，吸引了不少关注音频体验的网友。</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ==================== 选题灵感 ==================== -->
+  <section class="ideas">
+    <div class="ideas-rule-thick"></div>
+    <div class="ideas-rule-thin"></div>
+    <div class="sec-head">
+      <h2>选题灵感</h2><span class="en">Project Ideas</span>
+      <span class="rule"></span><span class="note">基于近期各期积累 · 按难度从低到高</span>
+    </div>
+    <div class="idea-grid">
+
+      <article class="idea">
+        <div class="diff"><span>▮▯▯ 入门</span><span class="kind">工具</span></div>
+        <h3>一句话音乐点评小工具</h3>
+        <p class="body">做一个网页或命令行小工具：上传一段录音，自动生成包含结构、乐器、情绪等维度的结构化短评，并高亮可能听错的地方。可以从开源音频语言模型或 API 入手，先用几首自己熟悉的歌做快速验证。需要：Python 基础 · 音频大模型 API 或本地模型 · 前端基础。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.20166v1" target="_blank" rel="noopener">Audio-Zero：不用人工标注，让音频大模型自己学会精细推理</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
+        <h3>效果器参数逆向小工具</h3>
+        <p class="body">参考黑箱优化 DRC 论文，做一个网页或插件：上传一段被压缩过的鼓点或人声，自动猜测压缩器的阈值、比率、起音/释音参数，并生成一个尽量恢复动态的反向版本。可以先用简化参数空间做离线实验。需要：Python · 音频处理库 · 优化库（如 scipy/nevergrad）· 效果器基础。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.19645v1" target="_blank" rel="noopener">用黑箱优化逆向音频压缩器参数，让处理过的录音重现原始动态</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">交互作品</span></div>
+        <h3>舞蹈/剧情短片的空间声景增强版</h3>
+        <p class="body">参考 Sonic Stage，为一段没有密集对话的舞蹈或短片自动生成空间声景，让戴耳机的观众能靠声音判断动作方向和位置。可以做成可佩戴耳机体验的网页。需要：Python · 空间音频工具（Ambisonics/HOA）· 视频分析。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.20835v1" target="_blank" rel="noopener">Sonic Stage：把对话视频变成可交互的空间声景，帮助视障观众理解场景</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▮ 硬核</span><span class="kind">研究</span></div>
+        <h3>AI 生成音乐的诊断式评测研究</h3>
+        <p class="body">构建中文流行歌评测集，用乐理和声学特征分析 AI 生成作品的局部错误，瞄准 ISMIR 或 ICASSP。可以从翻唱/伴奏生成开始，再扩展到完整歌曲。需要：乐理 + MIR 工具链 · 实验设计 · 统计分析。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2607.19688v1" target="_blank" rel="noopener">基于乐理与声学特征的 AI 生成翻唱诊断评测框架 (VOL.001)</a></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==================== 往期回顾 ==================== -->
+  <section class="backissues">
+    <div class="sec-head">
+      <h2>往期回顾</h2><span class="en">Archives</span>
+      <span class="rule"></span><span class="note">点击任意一期查看当期全版</span>
+    </div>
+    <div class="bi-grid" id="bi-grid"></div>
+  </section>
+
+  <footer>
+    <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按"数字音乐智能处理"相关度筛选,宁缺毋滥</span><br>
+    <span class="mono">音乐科技雷达 · GENERATED 2026-07-25 · 每日 07:00 出版</span>
+  </footer>
+</div>
+
+<script type="application/json" id="radar-archive">
 {
   "note": "机器可读存档:历期收录条目与选题,供每日编辑 agent 跨期去重、积累素材池、生成选题,并供页内「往期回顾」脚本渲染往期全版。字段必须填全(items: vol/pub/date/sec/tag/title/url/src/orig/why/hot/detail(通俗三段:【这是什么】【为什么值得关注】【怎么入手】,段间以\\n分隔);ideas: vol/level/kind/title/body)。每期追加当期内容,保留最近 90 天且 items 不超过 400 条,超出删最旧。pub 是该条所属期的出版日期。",
   "items": [
@@ -416,3 +876,201 @@
     }
   ]
 }
+</script>
+<script>
+(function () {
+  var c = document.getElementById('wave');
+  var ctx = c.getContext('2d');
+
+  function bars() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var style = getComputedStyle(document.documentElement);
+    var color = style.getPropertyValue('--ink').trim();
+    var n = Math.floor(w / 4);
+    for (var i = 0; i < n; i++) {
+      // 静态"印刷"波形:确定性伪随机包络,不做动画
+      var x = i / n;
+      var env = Math.sin(x * Math.PI) * (0.5 + 0.5 * Math.sin(x * 23 + 1.7) * Math.sin(x * 53 + 0.6));
+      var amp = Math.max(0.06, Math.abs(env)) * (h * 0.92);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.28 + 0.6 * Math.abs(env);
+      ctx.fillRect(i * 4, (h - amp) / 2, 1.6, amp);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  bars();
+  window.addEventListener('resize', bars);
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', bars);
+  }
+  new MutationObserver(bars).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+<script>
+/* 往期回顾 + 条目详情:全部从 radar-archive 存档渲染 */
+(function () {
+  var raw = document.getElementById('radar-archive');
+  if (!raw) return;
+  var data;
+  try { data = JSON.parse(raw.textContent); } catch (e) { return; }
+  var items = data.items || [], ideas = data.ideas || [];
+  if (!items.length) return;
+
+  var byUrl = {};
+  items.forEach(function (it) { if (it.url && !byUrl[it.url]) byUrl[it.url] = it; });
+
+  var vols = {};
+  items.forEach(function (it) {
+    (vols[it.vol] = vols[it.vol] || { items: [], ideas: [] }).items.push(it);
+  });
+  ideas.forEach(function (id) { if (vols[id.vol]) vols[id.vol].ideas.push(id); });
+  var volNos = Object.keys(vols).map(Number).sort(function (a, b) { return b - a; });
+  var currentVol = volNos[0];
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function pubDate(v) {
+    var d = '';
+    vols[v].items.forEach(function (it) { if ((it.pub || it.date || '') > d) d = it.pub || it.date || ''; });
+    return d;
+  }
+  function metaHtml(it) {
+    return '<div class="meta">' +
+      (it.hot ? '<span class="hot">' + esc(it.hot) + '</span>' : '') +
+      '<span class="tag">' + esc(it.tag) + '</span>' +
+      '<span class="mono-part">' + esc(it.src || '') + (it.date ? ' · ' + esc(it.date) : '') + '</span></div>';
+  }
+
+  /* 浮层基础:支持叠放(详情可以开在往期之上) */
+  var openCount = 0;
+  function isTop(ov) {
+    var os = document.querySelectorAll('.issue-overlay');
+    return os.length && os[os.length - 1] === ov;
+  }
+  function makeOverlay(label, inner) {
+    var ov = document.createElement('div');
+    ov.className = 'issue-overlay';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-label', label);
+    ov.innerHTML = '<div class="issue-sheet"><button class="issue-close" aria-label="关闭">✕</button>' + inner + '</div>';
+    function close() {
+      document.removeEventListener('keydown', onKey);
+      ov.remove();
+      if (--openCount <= 0) { openCount = 0; document.body.style.overflow = ''; }
+    }
+    function onKey(e) { if (e.key === 'Escape' && isTop(ov)) close(); }
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    ov.querySelector('.issue-close').addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(ov);
+    openCount++;
+    document.body.style.overflow = 'hidden';
+    ov.querySelector('.issue-close').focus();
+    return ov;
+  }
+
+  /* 条目详情页 */
+  function openDetail(it) {
+    var text = it.detail || it.why || '';
+    var paras = String(text).split(/\n+/).filter(Boolean).map(function (p) {
+      var m = p.match(/^【[^】]{1,12}】/);
+      if (m) return '<p><b>' + esc(m[0]) + '</b>' + esc(p.slice(m[0].length)) + '</p>';
+      return '<p>' + esc(p) + '</p>';
+    }).join('');
+    var inner = '<div class="iv-head"><div class="t">音乐科技雷达</div>' +
+      '<div class="m">条目详情 · VOL.' + pad(it.vol) + '</div></div>' +
+      metaHtml(it) +
+      '<h5 class="dv-title">' + esc(it.title) + '</h5>' +
+      (it.orig ? '<p class="orig" style="white-space:normal">' + esc(it.orig) + '</p>' : '') +
+      '<div class="dv-detail">' + paras + '</div>' +
+      '<p class="dv-link"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">阅读原文 ↗</a></p>';
+    makeOverlay('条目详情:' + it.title, inner);
+  }
+
+  /* 主版面条目 → 点击开详情(标题链接仍直达原文) */
+  document.querySelectorAll('.focus article, .paper-grid article, .rail-item').forEach(function (el) {
+    var a = el.querySelector('h3 a');
+    if (!a) return;
+    var it = byUrl[a.getAttribute('href')];
+    if (!it || !it.detail) return;
+    el.classList.add('has-detail');
+    var more = document.createElement('span');
+    more.className = 'more';
+    more.textContent = '详情 ▸';
+    (el.querySelector('.why') || el).appendChild(more);
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      openDetail(it);
+    });
+  });
+
+  /* 缩略入口 */
+  var grid = document.getElementById('bi-grid');
+  if (grid) {
+    volNos.forEach(function (v) {
+      var g = vols[v];
+      var head = g.items.filter(function (it) { return it.hot; })[0] || g.items[0];
+      var b = document.createElement('button');
+      b.className = 'backissue';
+      b.setAttribute('aria-haspopup', 'dialog');
+      b.innerHTML =
+        '<span class="bi-no"><span>VOL.' + pad(v) + (v === currentVol ? ' <span class="bi-cur">本期</span>' : '') +
+        '</span><span class="bi-date">' + esc(pubDate(v)) + '</span></span>' +
+        '<h3>' + esc(head ? head.title : '') + '</h3>' +
+        '<span class="bi-count">收录 ' + g.items.length + ' 条 · 选题 ' + g.ideas.length + ' 个</span>';
+      b.addEventListener('click', function () { openIssue(v); });
+      grid.appendChild(b);
+    });
+  }
+
+  /* 往期全版浮层(条目同样可点开详情) */
+  var SEC = [
+    { key: 'papers', label: '学术前沿' },
+    { key: 'oss', label: '开源工具' },
+    { key: 'industry', label: '行业动态' }
+  ];
+  function openIssue(v) {
+    var g = vols[v];
+    var html = '<div class="iv-head"><div class="t">音乐科技雷达</div>' +
+      '<div class="m">VOL.' + pad(v) + ' · ' + esc(pubDate(v)) + ' · 收录 ' + g.items.length + ' 条</div></div>';
+    SEC.forEach(function (s) {
+      var list = g.items.filter(function (it) { return it.sec === s.key; });
+      if (!list.length) return;
+      list.sort(function (a, b) { return (b.hot ? 1 : 0) - (a.hot ? 1 : 0); });
+      html += '<div class="iv-sec">' + s.label + '</div>';
+      list.forEach(function (it) {
+        var canDetail = !!it.detail;
+        html += '<div class="iv-item' + (canDetail ? ' has-detail' : '') + '" data-url="' + esc(it.url) + '">' +
+          metaHtml(it) +
+          '<h5><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a>' +
+          (canDetail ? ' <span class="more">详情 ▸</span>' : '') + '</h5>' +
+          (it.orig ? '<p class="orig">' + esc(it.orig) + '</p>' : '') +
+          (it.why ? '<p class="why">' + esc(it.why) + '</p>' : '') + '</div>';
+      });
+    });
+    if (g.ideas.length) {
+      html += '<div class="iv-sec">选题灵感</div>';
+      g.ideas.forEach(function (id) {
+        html += '<div class="iv-item"><h5><span class="iv-idea-level">' + esc(id.level) + ' · ' + esc(id.kind) + '</span>' +
+          esc(id.title) + '</h5>' + (id.body ? '<p class="why">' + esc(id.body) + '</p>' : '') + '</div>';
+      });
+    }
+    var ov = makeOverlay('音乐科技雷达 第' + pad(v) + '期', html);
+    ov.addEventListener('click', function (e) {
+      var itEl = e.target.closest('.iv-item.has-detail');
+      if (!itEl || e.target.closest('a')) return;
+      var it = byUrl[itEl.getAttribute('data-url')];
+      if (it) openDetail(it);
+    });
+  }
+})();
+</script>

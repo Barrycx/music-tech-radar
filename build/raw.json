@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-25T14:37:11+08:00",
+  "fetched_at": "2026-07-25T15:17:41+08:00",
   "sources": {
     "arxiv_sd": [
       {
@@ -925,7 +925,7 @@
         "full_name": "Danilaa1/cuelume",
         "url": "https://github.com/Danilaa1/cuelume",
         "description": "Cuelume is a curated sound palette, not an audio engine. It gives buttons, links, toggles, and completed actions clear feedback without asking developers to design sounds themselves. Add an attribute, call bind(), done.",
-        "stars": 1015,
+        "stars": 1016,
         "language": "TypeScript",
         "published": "2026-07-02"
       },

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""每日编辑:读存档 + 候选素材,调 Kimi(Moonshot)API 产出当期内容(JSON)。
+"""每日编辑:读存档 + 候选素材,调 Kimi Code API 产出当期内容(JSON)。
 
-- 接口:OpenAI 兼容 https://api.moonshot.cn/v1/chat/completions,模型 kimi-k2-0711-preview
-- key 从环境变量 MOONSHOT_API_KEY 读,代码中不出现任何密钥字面量
+- 接口:OpenAI 兼容 https://api.kimi.com/coding/v1/chat/completions,模型 kimi-for-coding
+  (sk-kimi- 开头的 key 走 Kimi Code 端点;若改用 moonshot 开放平台按量 key,
+   把 API_URL 换成 https://api.moonshot.cn/v1/chat/completions、模型换 kimi-k2-0711-preview 即可)
+- key 从环境变量 KIMI_API_KEY 读,代码中不出现任何密钥字面量
 - --mock 模式:不调 API,产出内置假 issue,用于无 key 时跑通链路
 输出:radar/build/issue.json
 """
@@ -20,8 +22,8 @@ ARCHIVE = ROOT / "archive.json"
 RAW = ROOT / "build" / "raw.json"
 OUT = ROOT / "build" / "issue.json"
 
-API_URL = "https://api.moonshot.cn/v1/chat/completions"
-MODEL = "kimi-k2-0711-preview"
+API_URL = "https://api.kimi.com/coding/v1/chat/completions"
+MODEL = "kimi-for-coding"
 
 
 def _ssl_context():
@@ -151,24 +153,30 @@ def build_prompt(archive, raw):
         for c in arr:
             c = dict(c)
             if isinstance(c.get("summary"), str):
-                c["summary"] = c["summary"][:600]
+                c["summary"] = c["summary"][:400]
             c["_from"] = name
             cand.append(c)
     candidates = json.dumps(cand, ensure_ascii=False, indent=1)
-    return PROMPT_TMPL.format(known_urls=known_urls, known_ideas=known_ideas,
-                              candidates=candidates)
+    # 不用 str.format(prompt 里 JSON schema 含大量花括号),直接替换占位符
+    return (PROMPT_TMPL.replace("{known_urls}", known_urls)
+                       .replace("{known_ideas}", known_ideas)
+                       .replace("{candidates}", candidates))
 
 
 def call_kimi(prompt, api_key):
-    """调 Moonshot chat completions,120s 超时,失败重试 2 次。"""
+    """调 Kimi chat completions(SSE 流式,防止整期 JSON 生成太久被网关 504)。
+
+    流式持续有字节流动,网关不会判超时;总耗时可达数分钟。失败重试 2 次。
+    """
     body = json.dumps({
         "model": MODEL,
         "messages": [
             {"role": "system", "content": "你是「音乐科技雷达」的每日编辑,只输出符合契约的 JSON。"},
             {"role": "user", "content": prompt},
         ],
-        "temperature": 0.6,
+        # kimi-for-coding 只允许 temperature=1,不传(用默认)
         "response_format": {"type": "json_object"},
+        "stream": True,
     }).encode("utf-8")
     last_err = None
     for attempt in range(3):  # 首次 + 重试 2 次
@@ -176,10 +184,27 @@ def call_kimi(prompt, api_key):
             req = urllib.request.Request(API_URL, data=body, method="POST", headers={
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {api_key}",
+                "Accept": "text/event-stream",
             })
-            with urllib.request.urlopen(req, timeout=120, context=SSL_CTX) as resp:
-                data = json.loads(resp.read())
-            return data["choices"][0]["message"]["content"]
+            chunks = []
+            with urllib.request.urlopen(req, timeout=900, context=SSL_CTX) as resp:
+                for raw_line in resp:
+                    line = raw_line.decode("utf-8", "replace").strip()
+                    if not line.startswith("data:"):
+                        continue
+                    payload = line[5:].strip()
+                    if payload == "[DONE]":
+                        break
+                    try:
+                        delta = json.loads(payload)["choices"][0].get("delta") or {}
+                    except (json.JSONDecodeError, IndexError, KeyError):
+                        continue
+                    if delta.get("content"):
+                        chunks.append(delta["content"])
+            content = "".join(chunks)
+            if not content.strip():
+                raise RuntimeError("流式响应为空")
+            return content
         except Exception as exc:
             last_err = exc
             print(f"[edit] API 调用失败(第 {attempt + 1} 次): {exc}", file=sys.stderr)
@@ -259,9 +284,9 @@ def main():
         issue = dict(MOCK_ISSUE)
         print("[edit] --mock 模式:使用内置假 issue(未调用 API)")
     else:
-        api_key = os.environ.get("MOONSHOT_API_KEY")
+        api_key = os.environ.get("KIMI_API_KEY")
         if not api_key:
-            print("[edit] 错误:未设置环境变量 MOONSHOT_API_KEY", file=sys.stderr)
+            print("[edit] 错误:未设置环境变量 KIMI_API_KEY", file=sys.stderr)
             sys.exit(1)
         if not RAW.exists():
             print(f"[edit] 错误:候选素材不存在 {RAW},请先运行 fetch_sources.py", file=sys.stderr)
