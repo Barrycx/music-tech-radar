@@ -60,9 +60,10 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 ## 每天自动运行
 
-由 GitHub Actions 定时触发(cron UTC `0 23 * * *` = 北京 07:00),workflow 文件:
-`.github/workflows/`(另行配置;上述四个环境变量存到仓库 Secrets,
-`archive.json` / `state.json` / `index.html` / `word/` 由 workflow 提交回仓库)。
+由 GitHub Actions 定时触发,workflow:`.github/workflows/daily.yml`。
+主班次 cron UTC `5 23 * * *`(北京 07:05),补刊班次 UTC `5 0 * * *`(北京 08:05,幂等)。
+四个环境变量存到仓库 Secrets(`MOONSHOT_API_KEY` / `QQ_MAIL_USER` / `QQ_SMTP_AUTH` / `MAIL_TO`),
+Pages source 选 GitHub Actions;`archive.json` / `state.json` / `index.html` / `word/` 由 workflow 提交回仓库。
 
 ## 数据文件
 
