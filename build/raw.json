@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-26T08:07:14+08:00",
+  "fetched_at": "2026-07-27T08:09:06+08:00",
   "sources": {
     "arxiv_sd": [],
     "arxiv_hc": [],
@@ -15,7 +15,14 @@
         "source": "hn",
         "title": "Show HN: Palmier Pro – Open-source macOS video editor built for AI",
         "url": "https://github.com/palmier-io/palmier-pro",
-        "points": 187,
+        "points": 189,
+        "published": "2026-07-23"
+      },
+      {
+        "source": "hn",
+        "title": "I learned PCB design, 3D printing and C just to listen to music",
+        "url": "https://pentaton.app/blog/2026-07-12-introducing-pentaton-lp/",
+        "points": 169,
         "published": "2026-07-23"
       },
       {
@@ -129,21 +136,42 @@
         "url": "https://notes.lorenzogravina.com/musings/pre-2022-books",
         "points": 211,
         "published": "2026-06-20"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Music from every single country on Earth, generated in Esperanto",
-        "url": "https://elevenexperiments.com/around-the-world?lang=eo&genre=de",
-        "points": 13,
-        "published": "2026-06-19"
       }
     ],
     "hn_audio": [
       {
         "source": "hn",
+        "title": "Simulate cassette tape audio profiles using FFmpeg",
+        "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
+        "points": 50,
+        "published": "2026-07-26"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: The Occult Gatsby",
+        "url": "https://occultgatsby.work",
+        "points": 17,
+        "published": "2026-07-26"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: A browser-based video editor that renders videos directly with FFmpeg",
+        "url": "https://github.com/thiagoalbrecht/weave",
+        "points": 13,
+        "published": "2026-07-26"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Reproducibility Benchmark a Risk Quantitative Model",
+        "url": "https://github.com/Fluxara-GOD/fluxara1-audit-verification-pack",
+        "points": 11,
+        "published": "2026-07-26"
+      },
+      {
+        "source": "hn",
         "title": "The Collapse at Netflix Signals the End of Audience Capture",
         "url": "https://www.honest-broker.com/p/the-collapse-at-netflix-signals-the",
-        "points": 33,
+        "points": 34,
         "published": "2026-07-24"
       },
       {
@@ -157,7 +185,7 @@
         "source": "hn",
         "title": "Show HN: OneCLI – OSS credential gateway that keeps secrets out of AI agents",
         "url": "https://github.com/onecli/onecli",
-        "points": 105,
+        "points": 109,
         "published": "2026-07-23"
       },
       {
@@ -222,34 +250,6 @@
         "url": "https://theultimatesimonsquestguide.com/",
         "points": 11,
         "published": "2026-07-14"
-      },
-      {
-        "source": "hn",
-        "title": "Launch HN: Agnost AI (YC S26) – Extract user feedback from agent conversations",
-        "url": "https://agnost.ai",
-        "points": 85,
-        "published": "2026-07-14"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Real-time avatars that change emotions as you talk",
-        "url": "https://anam.ai/",
-        "points": 12,
-        "published": "2026-07-14"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Self-hosted voice AI agent for Asterisk/FreePBX",
-        "url": "https://github.com/hkjarral/AVA-AI-Voice-Agent-for-Asterisk",
-        "points": 31,
-        "published": "2026-07-13"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Juggler – an open-source GUI coding agent, by the creator of JUCE",
-        "url": "https://github.com/juggler-ai/juggler",
-        "points": 280,
-        "published": "2026-07-12"
       }
     ],
     "github": [
@@ -258,7 +258,7 @@
         "full_name": "Danilaa1/cuelume",
         "url": "https://github.com/Danilaa1/cuelume",
         "description": "Cuelume is a curated sound palette, not an audio engine. It gives buttons, links, toggles, and completed actions clear feedback without asking developers to design sounds themselves. Add an attribute, call bind(), done.",
-        "stars": 1034,
+        "stars": 1053,
         "language": "TypeScript",
         "published": "2026-07-02"
       },
@@ -267,7 +267,7 @@
         "full_name": "muscriptor/muscriptor",
         "url": "https://github.com/muscriptor/muscriptor",
         "description": "MuScriptor is a multi-instrument music transcription model developed by Kyutai and Mirelo.",
-        "stars": 869,
+        "stars": 881,
         "language": "Python",
         "published": "2026-07-02"
       },
@@ -276,7 +276,7 @@
         "full_name": "Jane-xiaoer/paper-collage-ad-codex",
         "url": "https://github.com/Jane-xiaoer/paper-collage-ad-codex",
         "description": "Codex skill for complete paper-cut collage ad production, local IndexTTS-2 voice cloning, animation, audio and MP4 QC",
-        "stars": 334,
+        "stars": 339,
         "language": "JavaScript",
         "published": "2026-07-10"
       },
@@ -285,34 +285,34 @@
         "full_name": "adam-s/car-diagnosis",
         "url": "https://github.com/adam-s/car-diagnosis",
         "description": "Diagnose a car fault from its sound — an honest, end-to-end audio-ML pipeline (scrape → clean → CLAP → calibrated triage). Proof of concept.",
-        "stars": 277,
+        "stars": 278,
         "language": "Python",
         "published": "2026-06-29"
-      },
-      {
-        "source": "github",
-        "full_name": "ww085213/Mineradio-LX-Music",
-        "url": "https://github.com/ww085213/Mineradio-LX-Music",
-        "description": "MR：可独立运行的本地音乐播放器与音乐可视化工具，支持本地音乐、歌词舞台、桌面歌词和 3D 可视化；LX Music 歌单导入与本机联动为可选扩展。",
-        "stars": 231,
-        "language": "HTML",
-        "published": "2026-06-30"
       },
       {
         "source": "github",
         "full_name": "kigner/audio.cpp-webui",
         "url": "https://github.com/kigner/audio.cpp-webui",
         "description": "audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. TTS, ASR/STT, VAD, voice conversion, speaker diarization, music generation. No Python dependency.",
-        "stars": 229,
+        "stars": 237,
         "language": "C++",
         "published": "2026-07-12"
+      },
+      {
+        "source": "github",
+        "full_name": "ww085213/Mineradio-LX-Music",
+        "url": "https://github.com/ww085213/Mineradio-LX-Music",
+        "description": "MR：可独立运行的本地音乐播放器与音乐可视化工具，支持本地音乐、歌词舞台、桌面歌词和 3D 可视化；LX Music 歌单导入与本机联动为可选扩展。",
+        "stars": 234,
+        "language": "HTML",
+        "published": "2026-06-30"
       },
       {
         "source": "github",
         "full_name": "NUber-dev/YTubic",
         "url": "https://github.com/NUber-dev/YTubic",
         "description": "Fast, responsive YouTube Music desktop client for Windows — Tauri 2 + React",
-        "stars": 222,
+        "stars": 226,
         "language": "TypeScript",
         "published": "2026-07-05"
       },
@@ -321,7 +321,7 @@
         "full_name": "dososo/blcaptain-lingjian-video",
         "url": "https://github.com/dososo/blcaptain-lingjian-video",
         "description": "一句话生成可逐关审核的发布级中文短视频：脚本·配音·画面·配乐·字幕·音效全自动 | One sentence → a publish-grade Chinese short video — script, voiceover, visuals, music, subtitles & SFX automated, auditable at every gate",
-        "stars": 218,
+        "stars": 220,
         "language": "Python",
         "published": "2026-07-02"
       },
@@ -330,7 +330,7 @@
         "full_name": "dk8827/ra-port",
         "url": "https://github.com/dk8827/ra-port",
         "description": "Unofficial working port of Command & Conquer: Red Alert running natively on iOS, Android, Linux and macOS. SDL2 video/audio/input. No game assets included.",
-        "stars": 157,
+        "stars": 159,
         "language": "C++",
         "published": "2026-07-07"
       },
@@ -437,6 +437,6 @@
   },
   "warnings": [
     "arxiv_sd: The read operation timed out",
-    "arxiv_hc: HTTP Error 429: Unknown Error"
+    "arxiv_hc: The read operation timed out"
   ]
 }
