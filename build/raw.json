@@ -1,229 +1,23 @@
 {
-  "fetched_at": "2026-07-28T08:07:54+08:00",
+  "fetched_at": "2026-07-29T08:05:25+08:00",
   "sources": {
     "arxiv_sd": [],
-    "arxiv_hc": [
-      {
-        "source": "arxiv",
-        "title": "Kutti AI: A Voice-First, Offline-Capable Learning Companion with Real-Time Struggle Detection for Visually-Impaired Children",
-        "summary": "Most educational technology for children is built around visual interfaces, which excludes the many children worldwide who live with visual impairment -- an estimated 1.4 million children are blind and many more have low vision. We present Kutti AI, a voice-first learning companion designed so that audio is the primary and sufficient interface: children learn curriculum concepts through spoken conversation, respond by speaking, and receive spoken feedback, with no reliance on visual elements. The system contributes three practical mechanisms for accessible, adaptive learning on commodity mobile hardware: (1) a multi-signal struggle-detection engine that combines response-latency analysis, wrong-attempt tracking, and keyword-based hesitation detection to decide, in real time, when to offer hints or simplify a question; (2) a multi-layered cross-language answer-matching pipeline that combines language-aware translation/transliteration, Levenshtein-based fuzzy matching, and text normalization so that children are not penalized for code-switching or pronunciation variation; and (3) an offline-first speech pipeline using an on-device automatic speech recognition (ASR) model, enabling use in low-connectivity settings common in underserved communities. We describe the architecture, the interaction flow, and the design decisions that prioritize accessibility, and we report qualitative observations from a hackathon prototype supporting English and Tamil. We discuss lessons learned and outline a path toward formal evaluation with target users. Kutti AI illustrates how a small, carefully-engineered voice-first system can lower both accessibility and financial barriers to early education.",
-        "published": "2026-07-24",
-        "url": "http://arxiv.org/abs/2607.22377v1",
-        "authors": [
-          "Kadharmoideen Fadurudeen"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "VisionPulse: A Virtual Reality System Enabling Accessible Discovery and Navigation for Blind and Low Vision Users",
-        "summary": "Free exploration is an important aspect of many engaging virtual reality (VR) experiences, yet remains largely inaccessible to blind and low vision (BLV) users due to its reliance on visual feedback. Existing approaches support BLV navigation through prebuilt menus of environment and audio beacons, but offer limited support for free-form discovery. We present VisionPulse, an accessible VR system that enables BLV users to explore virtual environments through natural head and hand movements, combined with auditory, haptic, and text-to-speech feedback. VisionPulse introduces a discovery-driven approach that allows users to progressively uncover regions and objects, alongside navigation support through waypoint guidance and object localization via responsive audio and orientation-based haptics. A study with 12 BLV participants showed a strong preference for VisionPulse's discovery-based exploration and multimodal feedback, without negatively impacting task performance or perceived workload. Our findings underscore the importance of accessible, free-form VR experiences, and contribute insights for inclusive VR design.",
-        "published": "2026-07-24",
-        "url": "http://arxiv.org/abs/2607.21944v1",
-        "authors": [
-          "Samuel Martin",
-          "Pooyan Fazli"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Sidewalk Moments: Are Richer Representations Always More Human-Aligned? Evidence from City-Walk Videos",
-        "summary": "We examine whether richer visual representations yield more human-aligned measures of urban engagement, using 61 first-person city-walk videos from YouTube segmented into over 50,000 ten-second clips and represented across four modalities: spatiotemporal video features, temporally averaged images (TAIs), audio embeddings, and text-based semantic descriptions. Spearman correlation analysis reveals the expected ordering along the temporal-richness continuum, with video features showing the strongest continuous alignment. However, this ordering breaks down under binary classification of high- versus low-engagement moments (the paradigm most commonly used to train perceptual scoring models), where TAIs consistently match or outperform video across most classifiers and quantile thresholds. An independent two-alternative forced-choice study on Amazon Mechanical Turk confirms that this parity reflects human judgment: participants identified engaging moments with comparable accuracy from TAIs and full video clips, while text performed substantially worse and audio remained near chance. Gap analysis reveals a functional dissociation: video features are advantaged in activity-driven scenes with dynamic content, whereas TAIs better align with human judgments in composition-driven scenes dominated by stable spatial structure. These findings challenge the assumption that richer representations are inherently more human-aligned, and suggest that perceptually grounded temporal compression can be a principled alternative to full video encoding.",
-        "published": "2026-07-23",
-        "url": "http://arxiv.org/abs/2607.20903v1",
-        "authors": [
-          "Liu Liu",
-          "Freya Huying Tan"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Sonic Stage: Automatically Generating Interactive Spatial Soundscapes to Facilitate Dialogue Video Comprehension for Blind Viewers",
-        "summary": "Audio description (AD) makes film and television accessible to blind and low-vision (BLV) audiences by narrating characters' actions. However, in scenes with lots of dialogue, AD often omits important actions because it is constrained not to overlap with speech. It is not yet known how to convey characters' actions during dialogue. We present Sonic Stage, a system that transforms dialogue videos into interactive spatial soundscapes, enabling BLV audiences to intuitively understand characters' actions and movements through immersive auditory cues. Sonic Stage conveys essential visual information during dialogue through three auditory techniques: (1) spatialized dialogue to represent spatial layout, (2) diegetic sound to convey character actions, and (3) interactive descriptions to provide context-specific visual details. Evaluation with 12 BLV viewers showed that Sonic Stage significantly improved video comprehension, spatial presence, and narrative engagement. We highlight opportunities for enhancing video accessibility across diverse genres through immersive, interactive audio representations.",
-        "published": "2026-07-23",
-        "url": "http://arxiv.org/abs/2607.20835v1",
-        "authors": [
-          "Shuchang Xu",
-          "Xiaofu Jin"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "End-to-End Markov State Sequence Learning for Auditory Attention Decoding",
-        "summary": "Auditory attention decoding (AAD) identifies the speaker a listener attends to from neural responses like electroencephalography (EEG), making it a key algorithm in neuro-steered hearing aids. However, most neural AAD models are trained as independent short-window classifiers, despite auditory attention being a temporally persistent cognitive state and short-window EEG--audio evidence often being noisy and ambiguous. We propose an end-to-end Markov AAD framework based on conditional random field (CRF) that trains window-level neural emissions under a two-state attention prior. The framework treats the logits of any AAD backbone as Markov emissions, learns the transition rate from a standard HMM initialization, and jointly optimizes cross-entropy and CRF objectives, allowing temporal continuity to guide representation learning rather than merely smoothing predictions after training. We also introduce ESCNet, an EEG--speech correlation backbone that preserves time-aligned features and converts the difference between two mean Pearson correlations into state logits. We evaluate the framework with four emission backbones spanning correlation-based, convolutional, recurrent, and attention-based designs. On the dynamic AVGC dataset, CRF training generally outperforms post-hoc HMM smoothing; with ESCNet, it achieves $86.5\\%$ causal and $92.4\\%$ non-causal accuracy using $1$s windows. On the static KUL and USTC datasets, it improves causal decoding over fixed-rate post-hoc HMM baselines by $5.6\\%$ and $2.0\\%$, respectively, showing the superiority of learning AAD as attention state sequence over isolated-window classification.",
-        "published": "2026-07-21",
-        "url": "http://arxiv.org/abs/2607.18614v1",
-        "authors": [
-          "Yushan Yashengjiang",
-          "Jie Zhang"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Designing for What Cannot Be Seen: Supporting Embodied String Learning for Musicians with Blindness and Low-Vision",
-        "summary": "Bowed string instruments demand fine-grained bodily coordination that is typically taught through visual demonstration, creating persistent barriers for musicians with blindness and low-vision (BLV). To understand these challenges and explore new design opportunities, we conducted a design study with four advanced string musicians with BLV and three of their instructors. Our team, spanning violin performance and music education, disability studies in music, HCI design, and engineering employed a qualitative, multi-method approach including practice video analysis, lesson observation, expert interviews. Our analysis identifies recurring difficulties in right-hand bow control, left-hand coordination, score access, and memory-intensive practice. Building on these findings, we conducted an exploratory design ideation phase informed by empirical findings and feedback from one musician with BLV. We developed speculative design directions that could potentially address identified breakdowns, while acknowledging that these concepts require further evaluation with instructors and in deployed contexts.",
-        "published": "2026-07-21",
-        "url": "http://arxiv.org/abs/2607.18598v2",
-        "authors": [
-          "Shi Shi",
-          "Lingyun Chen"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "FillGauss: Fine-Grained Filling-Aware Impact Sound Generation for 3D Gaussian Splatting",
-        "summary": "Synthesizing physically plausible impact sounds from visual observations remains a great challenge in multi-modal AI. Existing 3D-aware audio generation methods primarily model the surface geometry of hollow rigid bodies. However, they fundamentally overlook internal filling states, a critical physical factor that drastically modulates acoustic resonance and damping. To address this issue, we have defined a new task called Fine-Grained Filling-Aware Impact Sound Generation. As a foundational step, we first introduce the fine-grained fill-aware dataset (FillImpact), a pioneering multi-modal collection comprising over 5,000 rigorous acoustic recordings from 88 diverse real-world objects. It captures impact interactions with varying internal contents (i.e., water, rice), a continuous range of fill levels, and distinct striker materials. Furthermore, comprehensive acoustic analysis confirms that the collected data closely aligns with established physical laws governing acoustic resonance and damping, indicating its suitability for physically grounded modeling. Building on this dataset, we propose a novel generative framework (FillGauss) that integrates 3D Gaussian Splatting (3DGS) with internal state conditioning for sound generation. By fusing 3DGS geometric features, precise 3D spatial strike coordinates, and fine-grained textual physical conditions within a latent diffusion architecture, FillGauss enables position-aware, striker-aware, and filling-aware audio generation. Extensive experiments demonstrate that our approach could generate high-fidelity impact sounds that adhere to underlying physical principles, establishing a new state-of-the-art for physically grounded cross-modal audio generation.",
-        "published": "2026-07-20",
-        "url": "http://arxiv.org/abs/2607.17773v1",
-        "authors": [
-          "Chen Yang",
-          "Ganye Wen"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Is One Score Enough? Assessing Singing Quality of Songs with Temporal Score Curves",
-        "summary": "Singing Quality Assessment (SQA) has become increasingly important for practical multimedia applications and Music AI systems, yet existing studies predominantly focus on short singing clips and remain insufficient for full-length songs. Unlike clip-level assessment, full-length song SQA requires modeling how singing quality varies across different audio segments and how these local variations influence the overall evaluation of vocal performance. Moreover, the scarcity of segment-level annotations makes effective supervision challenging, as directly assigning a single overall score label to every segment tends to treat different segment qualities as equivalent. To address these challenges, we propose SongSQA, a two-stage framework for full-length song SQA. In the first stage, a Segment Score Predictor is trained with pseudo labels generated by a pre-trained teacher model, enabling segment-level singing quality prediction without requiring manual segment annotations. In the second stage, a Song Quality Aggregator integrates segment features and predicted segment scores into unified segment embeddings, and employs a learnable song embedding together with self-attention to capture the connection between segment-level vocal performance and overall song quality. In this way, SongSQA dynamically aggregates critical quality cues across the song to produce a holistic quality prediction, while also generating a temporal segment-level quality curve. Experimental results demonstrate the effectiveness of SongSQA for full-length song SQA, achieving up to a 13.95% relative improvement in KTAU over the strongest baseline, while consistently improving other evaluation metrics across all datasets.",
-        "published": "2026-07-18",
-        "url": "http://arxiv.org/abs/2607.16599v1",
-        "authors": [
-          "Yishan Lv",
-          "Jing Luo"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "SceneBind: Binding What and Where Across Vision, Audio and Language",
-        "summary": "We present SceneBind, an omni-modal representation of realistic scenes with joint semantic and 3D spatial understanding across vision, audio and language. Existing omni-modal encoders excel at instance-level semantics (i.e., what is present), but often lack explicit spatial structure (i.e., where it is). SceneBind addresses this gap by representing each scene as a semantic-spatial entity, combining a global semantic embedding with object-centric semantic-spatial slots. This representation explicitly captures object-level semantics, spatial attributes, and uncertainty. We further propose SceneBind Matching, a semantic-spatial matching scheme that integrates global scene similarity with object alignment, supporting cross-modal scene retrieval and object grounding. To train and evaluate SceneBind, we curate a novel real-world binaural audio-visual dataset with structured semantic and spatial annotations, and propose a training protocol for aligning semantic and spatial signals across modalities. SceneBind is compatible with large-scale pretrained semantic encoders, adds lightweight spatial modeling with only a few additional tokens. It achieves state-of-the-art scene and spatial retrieval while enabling strong zero-shot transfer to downstream tasks such as audio-visual localization.",
-        "published": "2026-07-16",
-        "url": "http://arxiv.org/abs/2607.15265v1",
-        "authors": [
-          "Mingfei Chen",
-          "Zijun Cui"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "VIP-MINGLE: A Corpus for Videoconference and In-Person Multimodal Interaction in Group Language Engagement",
-        "summary": "Group conversations are a fundamental yet complex form of social interaction central to human cognition and telecommunication technology. While understanding and facilitating these interactions has been a long-standing goal, findings are often isolated within specific in-person or videoconferencing settings due to a scarcity of datasets that bridge the two. We introduce VIP-MINGLE, a multimodal dataset comprising 59 hours of recordings (32 groups, 105 participants), featuring paired within-subject sessions in both settings. The dataset includes raw audio/video, psychometric data, processed multimodal features (e.g., diarized speech, facial expressions, transcriptions), and time-resolved human annotations. Our analysis reveals significant behavioral distribution shifts across multiple modalities between settings, reinforcing the need for a cross-setting corpus. VIP-MINGLE serves as a critical resource for developing robust models of group conversations across settings.",
-        "published": "2026-07-15",
-        "url": "http://arxiv.org/abs/2607.13614v1",
-        "authors": [
-          "Andrew Chang",
-          "Abhinay K Bodi"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Bring Music The Horizon: Music-Driven 360$^\\circ$ Video Generation",
-        "summary": "Music visualization offers a powerful way to enhance listeners' understanding and experience of music by translating auditory signals into visual forms. However, most existing approaches either rely heavily on lyrics or generate flat, non-immersive videos similar to conventional music videos, which limits their ability to convey the emotional dynamics of music and provide an immersive listening experience. We propose Bring Music The Horizon, an emotion-aware pipeline for music-driven 360$^\\circ$ video generation. Given an input song, our work first estimates its emotional trajectory by predicting valence-arousal values at the level of every four bars. These values are then converted into emotion-aware visual guidance using EmotiCrafter, and these guidance vectors can be manipulated by the SEGA framework, which provides fine-grained semantic control for keyframe generation. Finally, image-to-video models are applied to the generated keyframes to synthesize temporally continuous 360$^\\circ$ videos for immersive music visualization. Our pipeline generates 360$^\\circ$ music visualization videos that reflect the emotional progression and temporal structure of the input song. We demonstrate its capability using songs from different genres and provide qualitative comparisons with From-Sound-To-Sight, a representative audio-to-visual generation baseline, on our project page at https://etoile-et-toi-mp3.github.io/BMTH_Project_Page/.",
-        "published": "2026-07-15",
-        "url": "http://arxiv.org/abs/2607.13471v1",
-        "authors": [
-          "Kai Hsu Tsai",
-          "Yong Wei Fu"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "CD-MED: Cross-Domain Multimodal Emotion Descriptor for Visual Comparison of Digital Objects",
-        "summary": "Digital objects express emotions through different modalities. For example, a movie may include visual scenes, audio, dialogue, and facial expressions, while a song may contain melody, rhythm, lyrics, and vocal tone. Because existing emotion recognition models are usually modality-specific, it is difficult to compare such objects directly. This paper proposes CD-MED, a Cross-Domain Multimodal Emotion Descriptor for representing heterogeneous digital objects in a common emotional space. Each modality can be processed by its own emotion recognition model, and the resulting emotional outputs are transformed into a shared descriptor. The descriptor preserves information from individual modalities while also allowing an integrated emotional profile of the object. For interpretation, CD-MED is visualized in the valence-arousal space: position represents affective coordinates, color denotes emotion category, size indicates intensity, and shape shows the modality. This unified representation enables emotion-based comparison, retrieval, recommendation, and visualization across different domains such as movies, songs, images, and books.",
-        "published": "2026-07-14",
-        "url": "http://arxiv.org/abs/2607.12958v1",
-        "authors": [
-          "Elnara Kadyrgali",
-          "Muragul Muratbekova"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?",
-        "summary": "Recent advances in multimodal large language models (MLLMs) have significantly improved the performance of multimodal emotion recognition (MER) and enabled interpretable description generation by jointly modeling video, audio, and language, etc. However, these performance improvements are often accompanied by an increase in model parameter size (e.g, at least 7B), which simultaneously incurs high computational costs and reduces inference efficiency, thereby hindering real-time deployment on resource-constrained platforms such as robots and mobile devices. This raises a fundamental question: do we really need the multimodal MER model larger than 1B parameters for high-quality MER? In this paper, we challenge the assumption that larger models are inherently necessary and proposes a lightweight MER framework (called Light-MER), which achieves better and faster multimodal sentiment understanding and recognition through knowledge distillation. It can transfer knowledge from a strong, large-scale teacher model to a lightweight sub-billion-parameter student model, aiming to preserve rich multimodal emotion reasoning and recognition while substantially improving deployment efficiency. Specifically, we introduce two new optimization strategies to enhance knowledge transfer: (1) a new optimal transport loss that combines Sliced Wasserstein Distance with hidden-state alignment, and (2) a new multi-reward optimization strategy based on GRPO that balances MER performance and efficiency, aimed at further enhancing the learning capabilities of student models. Extensive experiments on nine benchmark datasets demonstrate that Light-MER achieves state-of-the-art performance while significantly improving inference efficiency. This highlights the strong potential of small multimodal emotion language models for future research. Code is available at https://github.com/GAIR-Lab/Light-MER.",
-        "published": "2026-07-14",
-        "url": "http://arxiv.org/abs/2607.12787v1",
-        "authors": [
-          "Kaiwen Zheng",
-          "Junchen Fu"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Explainable-by-Design Audio Deepfake Detection via Wiener-Hopf Linear Prediction",
-        "summary": "The rapid advancement of synthetic speech generation methods has made audio deepfake detection a critical challenge in multimedia forensics. While recent approaches achieve high detection accuracy, they typically rely on black-box architectures that offer limited interpretability and high computational complexity. In this paper, we propose an explainable-by-design audio deepfake detection framework based on Wiener-Hopf linear prediction, processed by a lightweight 2D Convolutional Neural Network (CNN). This design enables a direct and transparent connection between classification outcomes and the acoustic properties of the signal. Experimental results on benchmark datasets demonstrate competitive detection performance while maintaining significantly lower computational complexity compared to state-of-the-art solutions. The interpretability analysis using Grad-CAM reveals that the classifier focuses on low-order predictor coefficients and on silence and transitional regions, suggesting that the Wiener-Hopf predictor captures reverberation characteristics and subtle statistical inconsistencies in synthetic speech. Finally, robustness experiments show that fine-tuning effectively recovers detection performance under common post-processing degradations, including additive noise, MP3 compression, and telephone filtering.",
-        "published": "2026-07-14",
-        "url": "http://arxiv.org/abs/2607.12584v1",
-        "authors": [
-          "Mattia Tamiazzo",
-          "Simone Milani"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "From Chaos to Clarity: A Framework for Program-Level AI Learning Outcomes",
-        "summary": "Industry is leaning into generative artificial intelligence (GenAI), and higher education is under pressure to prepare graduates for a GenAI-augmented workforce. Yet, there is still no clear structure for defining AI readiness across disciplines, programs, courses, and assignments. Current approaches often rely on broad institutional policies or individual course-level decisions, which can also create mixed messages for students, fragmented expectations across programs, and limited visibility for university leaders. In this paper, we argue that higher education needs a more coherent way to connect institutional priorities to curriculum-level action. We propose Program-Level AI Learning Outcomes (PLAI-LOs) as a framework for defining what students graduating from a program should know and be able to do with, without, and about GenAI in a given discipline. The PLAI-LOs framework complements existing program-level learning outcomes and supports alignment across institutional priorities, program-level AI learning outcomes, course-level learning outcomes, and assignment-level objectives. We illustrate the framework with examples from computing and music and show how PLAI-LOs can be implemented through artifact-level GenAI policies, helping programs decide where GenAI should be taught and used, and when students should be expected to work without GenAI. We offer PLAI-LOs as a concrete, measurable, and adaptable path for moving higher education from scattered GenAI rules toward a strategy with clear, learning-centered alignment.",
-        "published": "2026-07-13",
-        "url": "http://arxiv.org/abs/2607.12221v1",
-        "authors": [
-          "Grace Barkhuff",
-          "Ian Pruitt"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "LightMem-Ego: Your AI Memory for Everyday Life",
-        "summary": "Personal AI assistants on mobile and wearable devices continuously perceive users' daily lives through visual and audio streams. However, answering queries about past experiences requires lightweight multimodal memory that can continuously accumulate, organize, and retrieve long-term experiences, which remains challenging. To address this challenge, we present LightMem-Ego, a lightweight streaming multimodal memory system for everyday-life assistance. The system continuously captures egocentric visual and audio streams, aligns them on a shared timeline, and organizes them into a hierarchical memory consisting of current, short-term, and long-term memory. Given a user query, LightMem-Ego dynamically routes retrieval to the appropriate memory level and generates answers grounded in multimodal evidence. The demonstration can be deployed on smartphones and AI glasses, supporting object finding, conversation recall, life summarization, routine discovery, and personalized assistance. Code is available at https://github.com/zjunlp/LightMem-Ego.",
-        "published": "2026-07-13",
-        "url": "http://arxiv.org/abs/2607.11487v1",
-        "authors": [
-          "Yijun Chen",
-          "Boyi Xiao"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "BackgroundMellow: A Multi-Modal Cohesive Framework for Narrative-Driven Rich Cinematic Soundscape Generation",
-        "summary": "Generating immersive, synchronized and cinematic audio for long-form textual narratives remains a significant challenge in multi-modal AI. While current Text-to-Audio (TTA) frameworks successfully synthesize isolated sound effects, they struggle with narrative cohesion, temporal alignment, and cinematic emotional depth. We present BackgroundMellow, a framework that treats story-to-audio generation as a precise orchestration and signal processing problem. This framework is enabled without ground-truth through a master-specialist agent architecture that decomposes text into precise and multi-layered audio cues, generates each category of sounds with suitable specialist model, and superimposes the soundscapes to create a unified and aligned audio segment. Our pipeline is built over Tango2 latent diffusion model for environmental synthesis alongside a novel Cinematic BGM Retriever mined from professional soundtracks. To automate the sound mixing process, we use an NLP based module that predicts precise audio parameters, like start time, duration, and relative loudness, based on the narrative timeline. We further empirically evaluate and show the efficacy of the proposed framework leveraging nearest-neighbor retrieval against a curated dataset of YouTube cinematic trailers to measure temporal synchronization, coverage, and spectral richness.",
-        "published": "2026-07-13",
-        "url": "http://arxiv.org/abs/2607.11364v1",
-        "authors": [
-          "Ajitesh Jamulkar",
-          "Aritra Hazra"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Lottery and Sprint Arcade: Enabling Player-Driven Game Editing with Generative AI",
-        "summary": "Large language models (LLMs) are shifting game generation from offline automation toward play-driven modification through natural language interaction. In this work, we present a play-driven game editing system that enables players to modify a retro Space Invaders - style arcade game through voice-based natural-language commands during play. Spoken instructions are interpreted by an LLM and translated into structured updates of internal configuration parameters, allowing iterative play - edit - feedback cycles in an invader-style game environment without exposing underlying system details. The game includes approximately 100 editable configuration fields controlling mechanics, visuals, interaction patterns, and audio behavior, enabling gameplay transformation through incremental parameter changes. To investigate how users experience play-driven AI-mediated editing (RQ1) and how emergent editing patterns relate to variations in player experience (RQ2), we conducted a user study combining subjective evaluations, workload measures, and log-based analysis of editing behavior. Participants were able to modify gameplay with generally positive experiences and moderate workload, and interaction outcomes did not strongly depend on prior programming experience. Editing-log analysis revealed distinct experiential tendencies: adjustments to immediately perceptible parameters were associated with higher usability, whereas edits affecting core gameplay structures were more closely associated with enjoyment. Post-session reflections further identified diverse editing strategies, including exploratory experimentation, goal-driven structural modification, and iterative parameter tuning. These findings demonstrate that voice-driven editing can support accessible, play-driven human - AI co-creation within a structured invader-style arcade game environment.",
-        "published": "2026-07-12",
-        "url": "http://arxiv.org/abs/2607.10711v1",
-        "authors": [
-          "Maya Grace Torii",
-          "Takahito Murakami"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Anamnesis: An Open-Source Platform for Large-Scale Backstory-Conditioned Survey Simulation",
-        "summary": "We present Anamnesis, an interactive system for demographically controllable survey simulation using large language models. Open-source, and designed for non-technical users/researchers, Anamnesis enables the prototyping and stress-testing of survey instruments on virtual populations rather than real human subjects. The platform operationalizes the recently introduced Anthology and Alterity frameworks, which use structured narrative backstories to condition model responses, within a unified web interface. It supports open-ended generation, probabilistic demographic resampling, and multimodal (image and audio) surveys. We evaluate the system through two case studies: (1) replicating segments of Pew Research Center's American Trends Panel (ATP) on political typology and biomedical issues and (2) emulating human preference in the New Yorker Caption Contest. In both cases, Anamnesis produces opinion distributions that more closely match real-world survey data than standard persona-prompting baselines, offering a transparent, reproducible, and open-source alternative to proprietary simulation services.",
-        "published": "2026-07-12",
-        "url": "http://arxiv.org/abs/2607.10628v1",
-        "authors": [
-          "Song-Ze Yu",
-          "Joseph Suh"
-        ]
-      },
-      {
-        "source": "arxiv",
-        "title": "Dance to Music Generation leveraging Pre-training with Unpaired data and Contrastive Alignment",
-        "summary": "Dance-to-music generation is a promising task for applications such as choreography support and automatic accompaniment, where temporal coordination between body movement and sound is essential. In particular, using human joint positions as the motion representation is attractive because they explicitly capture body dynamics while being lightweight, privacy-preserving, and easy to integrate with motion capture and pose-estimation pipelines. A central challenge in this setting, however, is the scarcity of high-quality paired dance-music data, since collecting accurately synchronized pairs is costly and often constrained by copyright and performance rights. This makes it difficult to train end-to-end models solely from paired data. To address this issue, we propose a dance-conditioned music generation framework that efficiently exploits both unpaired and paired data. Our method combines pretrained unimodal encoders for motion and music, beat-guided contrastive pretraining to align their feature spaces, and a ControlNet-style conditioning module on top of a pretrained text-to-audio diffusion model. Experiments on AIST++ demonstrate that the proposed techniques improve both dance-music alignment and audio quality, as confirmed by quantitative and qualitative evaluations. Compared to a state-of-the-art method, our approach achieves superior dance alignment performance and competitive audio quality. Code is available at https://github.com/kmraven/AudioLDM-ControlNet .",
-        "published": "2026-07-12",
-        "url": "http://arxiv.org/abs/2607.10537v1",
-        "authors": [
-          "Ryota Kimura",
-          "Sangheon Park"
-        ]
-      }
-    ],
+    "arxiv_hc": [],
     "hn_music": [
+      {
+        "source": "hn",
+        "title": "Xenharmlib (music theory library) adds support for Just Intonation",
+        "url": "https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html",
+        "points": 14,
+        "published": "2026-07-28"
+      },
+      {
+        "source": "hn",
+        "title": "Harmony Explained: Progress Towards a Scientific Theory of Music (2012)",
+        "url": "https://arxiv.org/abs/1202.4212",
+        "points": 93,
+        "published": "2026-07-28"
+      },
       {
         "source": "hn",
         "title": "Show HN: Audio Player with \"Binaural Beats\" tuned to the same key as your music",
@@ -242,7 +36,7 @@
         "source": "hn",
         "title": "I learned PCB design, 3D printing and C just to listen to music",
         "url": "https://pentaton.app/blog/2026-07-12-introducing-pentaton-lp/",
-        "points": 226,
+        "points": 230,
         "published": "2026-07-23"
       },
       {
@@ -277,7 +71,7 @@
         "source": "hn",
         "title": "The lost joy of music piracy",
         "url": "https://www.pigeonsandplanes.com/read/music-piracy-what-cd-oink-nine-inch-nails-streaming",
-        "points": 852,
+        "points": 853,
         "published": "2026-07-16"
       },
       {
@@ -342,28 +136,28 @@
         "url": "https://people.xiph.org/~xiphmont/demo/neil-young.html#toc_wd2bm",
         "points": 135,
         "published": "2026-07-02"
-      },
-      {
-        "source": "hn",
-        "title": "Turning music into a chore is how I became a musician (2022)",
-        "url": "https://the.scapegoat.dev/turning-music-into-a-chore-is-what-made-me-an-artist/",
-        "points": 101,
-        "published": "2026-06-28"
-      },
-      {
-        "source": "hn",
-        "title": "Pre-2022 Books",
-        "url": "https://notes.lorenzogravina.com/musings/pre-2022-books",
-        "points": 211,
-        "published": "2026-06-20"
       }
     ],
     "hn_audio": [
       {
         "source": "hn",
+        "title": "Show HN: Cynative – Read-only CLI in Go that explains your live infrastructure",
+        "url": "https://github.com/cynative/cynative",
+        "points": 13,
+        "published": "2026-07-28"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Yap – OSS on-device voice dictation for macOS with no model to download",
+        "url": "https://github.com/FrigadeHQ/yap",
+        "points": 97,
+        "published": "2026-07-27"
+      },
+      {
+        "source": "hn",
         "title": "Simulate cassette tape audio profiles using FFmpeg",
         "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
-        "points": 168,
+        "points": 173,
         "published": "2026-07-26"
       },
       {
@@ -377,7 +171,7 @@
         "source": "hn",
         "title": "Show HN: A browser-based video editor that renders videos directly with FFmpeg",
         "url": "https://github.com/thiagoalbrecht/weave",
-        "points": 16,
+        "points": 17,
         "published": "2026-07-26"
       },
       {
@@ -405,7 +199,7 @@
         "source": "hn",
         "title": "Show HN: OneCLI – OSS credential gateway that keeps secrets out of AI agents",
         "url": "https://github.com/onecli/onecli",
-        "points": 109,
+        "points": 110,
         "published": "2026-07-23"
       },
       {
@@ -433,7 +227,7 @@
         "source": "hn",
         "title": "Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong",
         "url": "https://github.com/cactus-compute/cactus-hybrid",
-        "points": 186,
+        "points": 189,
         "published": "2026-07-22"
       },
       {
@@ -456,20 +250,6 @@
         "url": "https://ai-law-tracker.com",
         "points": 20,
         "published": "2026-07-16"
-      },
-      {
-        "source": "hn",
-        "title": "Launch HN: Coasty (YC S26) – An API for computer-use agents",
-        "url": "https://coasty.ai/docs",
-        "points": 44,
-        "published": "2026-07-15"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: An Interactive Guide for Castlevania II: Simon's Quest",
-        "url": "https://theultimatesimonsquestguide.com/",
-        "points": 11,
-        "published": "2026-07-14"
       }
     ],
     "github": [
@@ -478,7 +258,7 @@
         "full_name": "Danilaa1/cuelume",
         "url": "https://github.com/Danilaa1/cuelume",
         "description": "Cuelume is a curated sound palette, not an audio engine. It gives buttons, links, toggles, and completed actions clear feedback without asking developers to design sounds themselves. Add an attribute, call bind(), done.",
-        "stars": 1068,
+        "stars": 1110,
         "language": "TypeScript",
         "published": "2026-07-02"
       },
@@ -487,26 +267,26 @@
         "full_name": "muscriptor/muscriptor",
         "url": "https://github.com/muscriptor/muscriptor",
         "description": "MuScriptor is a multi-instrument music transcription model developed by Kyutai and Mirelo.",
-        "stars": 900,
+        "stars": 915,
         "language": "Python",
         "published": "2026-07-02"
+      },
+      {
+        "source": "github",
+        "full_name": "AARomanov1985/Audio-Cassette-Simulation",
+        "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
+        "description": "This project simulates cassette tape audio profiles using ffmpeg",
+        "stars": 391,
+        "language": "Shell",
+        "published": "2026-07-22"
       },
       {
         "source": "github",
         "full_name": "MartinDelophy/ai-video-editor",
         "url": "https://github.com/MartinDelophy/ai-video-editor",
         "description": "Local-first browser AI video editor with WebGPU AI music, AI repair, voiceovers, captions, talking avatars, and deterministic export.",
-        "stars": 352,
+        "stars": 376,
         "language": "JavaScript",
-        "published": "2026-07-09"
-      },
-      {
-        "source": "github",
-        "full_name": "guardcustodianwedge/ableton",
-        "url": "https://github.com/guardcustodianwedge/ableton",
-        "description": "Digital audio workstation for music production and live performance with session-based workflow.",
-        "stars": 347,
-        "language": "",
         "published": "2026-07-09"
       },
       {
@@ -514,34 +294,25 @@
         "full_name": "Jane-xiaoer/paper-collage-ad-codex",
         "url": "https://github.com/Jane-xiaoer/paper-collage-ad-codex",
         "description": "Codex skill for complete paper-cut collage ad production, local IndexTTS-2 voice cloning, animation, audio and MP4 QC",
-        "stars": 342,
+        "stars": 344,
         "language": "JavaScript",
         "published": "2026-07-10"
       },
       {
         "source": "github",
-        "full_name": "AARomanov1985/Audio-Cassette-Simulation",
-        "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
-        "description": "This project simulates cassette tape audio profiles using ffmpeg",
-        "stars": 323,
-        "language": "Shell",
-        "published": "2026-07-22"
-      },
-      {
-        "source": "github",
-        "full_name": "adam-s/car-diagnosis",
-        "url": "https://github.com/adam-s/car-diagnosis",
-        "description": "Diagnose a car fault from its sound — an honest, end-to-end audio-ML pipeline (scrape → clean → CLAP → calibrated triage). Proof of concept.",
-        "stars": 278,
-        "language": "Python",
-        "published": "2026-06-29"
+        "full_name": "wassgha/rescript",
+        "url": "https://github.com/wassgha/rescript",
+        "description": "🎬 Open source, transcript-based video/audio editor that lives in the browser.",
+        "stars": 294,
+        "language": "TypeScript",
+        "published": "2026-07-26"
       },
       {
         "source": "github",
         "full_name": "kigner/audio.cpp-webui",
         "url": "https://github.com/kigner/audio.cpp-webui",
         "description": "audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. TTS, ASR/STT, VAD, voice conversion, speaker diarization, music generation. No Python dependency.",
-        "stars": 244,
+        "stars": 246,
         "language": "C++",
         "published": "2026-07-12"
       },
@@ -550,7 +321,7 @@
         "full_name": "ww085213/Mineradio-LX-Music",
         "url": "https://github.com/ww085213/Mineradio-LX-Music",
         "description": "MR：可独立运行的本地音乐播放器与音乐可视化工具，支持本地音乐、歌词舞台、桌面歌词和 3D 可视化；LX Music 歌单导入与本机联动为可选扩展。",
-        "stars": 239,
+        "stars": 245,
         "language": "HTML",
         "published": "2026-06-30"
       },
@@ -568,94 +339,104 @@
         "full_name": "NUber-dev/YTubic",
         "url": "https://github.com/NUber-dev/YTubic",
         "description": "Fast, responsive YouTube Music desktop client for Windows — Tauri 2 + React",
-        "stars": 227,
+        "stars": 226,
         "language": "TypeScript",
         "published": "2026-07-05"
       },
       {
         "source": "github",
-        "full_name": "HexagonOrdinary/kontakt",
-        "url": "https://github.com/HexagonOrdinary/kontakt",
-        "description": "Industry-standard software sampler for music production by Native Instruments",
-        "stars": 199,
-        "language": "",
-        "published": "2026-07-09"
+        "full_name": "dk8827/ra-port",
+        "url": "https://github.com/dk8827/ra-port",
+        "description": "Unofficial working port of Command & Conquer: Red Alert running natively on iOS, Android, Linux and macOS. SDL2 video/audio/input. No game assets included.",
+        "stars": 160,
+        "language": "C++",
+        "published": "2026-07-07"
       },
       {
         "source": "github",
-        "full_name": "ProvostManage/music-software",
-        "url": "https://github.com/ProvostManage/music-software",
-        "description": "Professional music production software including DAWs, virtual instruments, and audio plugin bundles",
-        "stars": 198,
-        "language": "",
-        "published": "2026-07-09"
+        "full_name": "tetsuo-ai/voice_clone_lab",
+        "url": "https://github.com/tetsuo-ai/voice_clone_lab",
+        "description": "Clone a voice from a few minutes of audio and generate speech locally — Qwen3-TTS fine-tuning pipeline with CLI and web UI",
+        "stars": 146,
+        "language": "Python",
+        "published": "2026-07-18"
       },
       {
         "source": "github",
-        "full_name": "Sewthroughditch/sony-vegas",
-        "url": "https://github.com/Sewthroughditch/sony-vegas",
-        "description": "Professional video editing and audio production software for Windows with real-time editing capabilities.",
-        "stars": 195,
-        "language": "",
-        "published": "2026-07-01"
+        "full_name": "SansNope/UnleashedRecomp-Android",
+        "url": "https://github.com/SansNope/UnleashedRecomp-Android",
+        "description": "Unofficial Android port of Unleashed Recompiled, built with Anthropic's Fable 5 AI under human direction, device testing and debugging. Artifacts, freezes and audio issues possible. SPECIAL THANKS to everyone testing and reporting.",
+        "stars": 140,
+        "language": "C",
+        "published": "2026-07-04"
       },
       {
         "source": "github",
-        "full_name": "BurrowGradeSafeguard/yt-dlp",
-        "url": "https://github.com/BurrowGradeSafeguard/yt-dlp",
-        "description": "Open-source command-line video and audio downloader for YouTube and thousands of other sites",
-        "stars": 194,
-        "language": "",
-        "published": "2026-07-01"
+        "full_name": "youshen2/MeloX",
+        "url": "https://github.com/youshen2/MeloX",
+        "description": "专为 iOS 原生开发的第三方网易云客户端，使用 SwiftUI 并基于液体玻璃设计，参考 iOS26 版 Apple Music 的 UI 并提供特色功能。",
+        "stars": 123,
+        "language": "Swift",
+        "published": "2026-07-21"
       },
       {
         "source": "github",
-        "full_name": "Orangephopeace/notebooklm",
-        "url": "https://github.com/Orangephopeace/notebooklm",
-        "description": "Google's AI research tool that answers questions and creates audio summaries grounded in your uploaded documents",
-        "stars": 194,
-        "language": "",
-        "published": "2026-07-09"
+        "full_name": "flatkey-ai/flatkey-cli",
+        "url": "https://github.com/flatkey-ai/flatkey-cli",
+        "description": "Flatkey media generation CLI for images, videos, audio, text, credits, and model discovery.",
+        "stars": 122,
+        "language": "JavaScript",
+        "published": "2026-07-17"
       },
       {
         "source": "github",
-        "full_name": "stadiummonitorwrench/suno-ai",
-        "url": "https://github.com/stadiummonitorwrench/suno-ai",
-        "description": "AI music generation platform that creates complete songs with vocals and instruments from text prompts",
-        "stars": 193,
-        "language": "",
-        "published": "2026-07-01"
+        "full_name": "shwj114514/audio_eval",
+        "url": "https://github.com/shwj114514/audio_eval",
+        "description": "A composable toolkit for evaluating generated and reconstructed audio",
+        "stars": 113,
+        "language": "Python",
+        "published": "2026-07-13"
       },
       {
         "source": "github",
-        "full_name": "OuterMillipede/qwen",
-        "url": "https://github.com/OuterMillipede/qwen",
-        "description": "Alibaba Cloud's open-weight AI model family spanning text, vision, audio, and code",
-        "stars": 192,
-        "language": "",
-        "published": "2026-07-09"
+        "full_name": "zhuyao-opendeveloper/musicist",
+        "url": "https://github.com/zhuyao-opendeveloper/musicist",
+        "description": "一个开源在线音乐网站",
+        "stars": 112,
+        "language": "Vue",
+        "published": "2026-07-08"
       },
       {
         "source": "github",
-        "full_name": "Piececluslip/spitfire-audio",
-        "url": "https://github.com/Piececluslip/spitfire-audio",
-        "description": "Premium virtual instruments and orchestral sample libraries",
-        "stars": 191,
-        "language": "",
-        "published": "2026-07-01"
+        "full_name": "HaseebKhalid1507/Myx",
+        "url": "https://github.com/HaseebKhalid1507/Myx",
+        "description": "Spotify player for the terminal. With reactive themes.",
+        "stars": 107,
+        "language": "Rust",
+        "published": "2026-07-23"
       },
       {
         "source": "github",
-        "full_name": "CometBreakerClash/fl-studio",
-        "url": "https://github.com/CometBreakerClash/fl-studio",
-        "description": "Digital audio workstation for music production, beat making, and audio recording.",
-        "stars": 190,
-        "language": "",
-        "published": "2026-07-09"
+        "full_name": "bozhouDev/video-skills-toolkit",
+        "url": "https://github.com/bozhouDev/video-skills-toolkit",
+        "description": "Video skills toolkit for Remotion talking-head, sketch story, and audio-to-subtitles workflows.",
+        "stars": 106,
+        "language": "JavaScript",
+        "published": "2026-07-08"
+      },
+      {
+        "source": "github",
+        "full_name": "calesthio/generative-media-skills",
+        "url": "https://github.com/calesthio/generative-media-skills",
+        "description": "Research-backed agent skills and tools for premium image, video, audio, voice, and generative media production across AI coding assistants.",
+        "stars": 105,
+        "language": "Python",
+        "published": "2026-07-11"
       }
     ]
   },
   "warnings": [
-    "arxiv_sd: HTTP Error 429: Too Many Requests"
+    "arxiv_sd: The read operation timed out",
+    "arxiv_hc: The read operation timed out"
   ]
 }
