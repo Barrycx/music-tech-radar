@@ -291,13 +291,13 @@
   <header>
     <div class="baoyan-row">
       <div class="baoyan">
-        <span class="mono">VOL.006</span><br>
-        2026年7月29日<br>星期三
+        <span class="mono">VOL.007</span><br>
+        2026年7月31日<br>星期五
       </div>
       <h1>音乐科技雷达</h1>
       <div class="baoyan">
         每日 07:00 出版<br>
-        <span class="mono">收录 5 条</span><br>
+        <span class="mono">收录 10 条</span><br>
         <span class="mono">选题 4 个</span>
       </div>
     </div>
@@ -310,17 +310,18 @@
   <!-- ==================== 本报头条 ==================== -->
   <div class="focus">
     <article>
-      <div class="meta"><span class="hot">本报头条</span><span class="tag">音乐理论</span><span class="mono-part">arXiv · 2012 · HN 93pt · 07-28</span></div>
-      <h3><a href="https://arxiv.org/abs/1202.4212" target="_blank" rel="noopener">《和声的科学解释》十四年后再引热议：音乐和声能否被数学建模</a></h3>
-      <p class="orig">Harmony Explained: Progress Towards a Scientific Theory of Music</p>
-      <p class="body">这篇论文尝试用数学模型解释为什么某些和弦听起来和谐。</p>
-      <p class="why"><b>为什么值得看:</b>它把音乐理论从经验法则推向可计算框架，对 AI 音乐生成和理解有启发。</p>
+      <div class="meta"><span class="hot">本报头条</span><span class="tag">歌声合成</span><span class="mono-part">arXiv · cs.SD · 07-30</span></div>
+      <h3><a href="http://arxiv.org/abs/2607.27768v1" target="_blank" rel="noopener">VocalRender：从真实作曲流程出发的歌声合成</a></h3>
+      <p class="orig">VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition</p>
+      <p class="body">VocalRender 提出一种直接读取歌词、音高、符点音符与时速的「谱原生」歌声合成系统，不需要预先给出每个音的精确时长，也不再依赖人工对齐的声学参考。</p>
+      <p class="why"><b>为什么值得看:</b>它对音乐学院学生最直接的启示是：写谱软件里打出的音符，可以直接唱出来，而不必先录 demo 再对节奏。</p>
     </article>
     <article>
-      <div class="meta"><span class="hot">行业要闻</span><span class="tag">音乐产品</span><span class="mono-part">Swift · 123★ · 07-21</span></div>
-      <h3><a href="https://github.com/youshen2/MeloX" target="_blank" rel="noopener">MeloX：参考 Apple Music 设计的第三方网易云客户端</a></h3>
-      <p class="body">这是一款第三方网易云音乐客户端，用 SwiftUI 复刻了 Apple Music 的界面与动效。</p>
-      <p class="why"><b>为什么值得看:</b>它展示了音乐流媒体产品从界面到播放的完整工程实现，适合学习音乐 App 的交互设计。</p>
+      <div class="meta"><span class="hot">行业要闻</span><span class="tag">产品发布</span><span class="mono-part">arXiv · 技术报告 · 07-29</span></div>
+      <h3><a href="http://arxiv.org/abs/2607.27011v2" target="_blank" rel="noopener">通义千问 Qwen-Audio-3.0-Gen-Preview：统一音频生成预览</a></h3>
+      <p class="orig">Qwen-Audio-3.0-Gen-Preview Technical Report</p>
+      <p class="body">阿里通义实验室发布 Qwen-Audio-3.0-Gen-Preview，用 Diffusion Transformer 和共享 VAE 把语音、音效、音乐等异构音频元素组织成长时混合场景。</p>
+      <p class="why"><b>为什么值得看:</b>这意味着一个模型就能从提示词直接生成包含多角色对白、环境声和背景音乐的完整音频，对影视、游戏配乐工作流有参考价值。</p>
     </article>
   </div>
 
@@ -332,6 +333,55 @@
       </div>
       <div class="paper-grid">
 
+        <article>
+          <div class="meta"><span class="tag">空间音频</span><span class="mono-part">arXiv · cs.SD · 07-30</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.27775v1" target="_blank" rel="noopener">RIPPLE：直接生成多通道相位，而不是事后再恢复</a></h3>
+          <p class="orig">RIPPLE: Generating Multi-Channel Phase, Not Recovering It</p>
+          <p class="why">RIPPLE 把多通道音频的相位关系也交给生成模型同步学习，而不是先产生幅度谱再靠 Griffin-Lim 或声码器补相位。<b>空间音频、Ambisonics 和地震波等场景里，通道之间的相位差才是「位置感」的来源，所以这项工作对沉浸声很重要。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">声源分离</span><span class="mono-part">arXiv · cs.SD · 07-30</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.27828v1" target="_blank" rel="noopener">CrowdioSet 与 PaRIRset：面向现场演出的音乐声源分离数据集</a></h3>
+          <p class="orig">CrowdioSet and PaRIRset: Two Datasets Towards Live Music Source Separation</p>
+          <p class="why">论文发布两个真实现场演出噪声数据集，并训练了一个对观众噪声、场馆混响更鲁棒的声源分离模型。<b>因为现有分离模型多在干净录音室数据上训练，到演唱会现场往往崩掉，所以这个工作直接补上了从录音室到现场之间的鸿沟。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">符号音乐/评测</span><span class="mono-part">arXiv · cs.SD · 07-30</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.27909v1" target="_blank" rel="noopener">用上下文嵌入评估富有表现力的钢琴 MIDI 演奏</a></h3>
+          <p class="orig">Integrating Contextual Embeddings into Evaluation of Expressive MIDI Piano Performances</p>
+          <p class="why">研究者把音符之间的上下文信息编码进嵌入向量，用来比较两段钢琴演奏在表情处理上的相似度。<b>传统方法只看单个音的时长、力度统计，忽略音与音之间的依赖，这篇论文给生成式钢琴演奏评测补上了缺失的一块。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">AIGC检测</span><span class="mono-part">arXiv · cs.SD · 07-29</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.26874v1" target="_blank" rel="noopener">检测混合人-AI 音乐中的 AI 生成声部</a></h3>
+          <p class="orig">Detection of AI-generated stems within hybrid human-AI music</p>
+          <p class="why">研究首次关注「人声、鼓、贝斯等分轨中哪些来自 AI」的细粒度检测问题。<b>随着 AI 编曲工具越来越流行，未来一首歌可能只有几个轨是 AI 生成，这项研究给版权审核和平台标注提供了新工具。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">数据集</span><span class="mono-part">arXiv · cs.SD · 07-29</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.27296v1" target="_blank" rel="noopener">SKY-Piano：包含动作与多视角视频的钢琴演奏多模态数据集</a></h3>
+          <p class="orig">SKY-Piano: A Multimodal Piano Performance Dataset</p>
+          <p class="why">数据集收集了 19 位演奏者共 11 小时的音频、MIDI、动作捕捉、多视角视频和 MusicXML 乐谱。<b>对于想做钢琴表演分析、人机对比或视听同步研究的同学，这是一份难得的「全要素」素材。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">转谱</span><span class="mono-part">arXiv · cs.SD · 07-29</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.26440v1" target="_blank" rel="noopener">显式音符事件化 + 音高有效性约束的吉他谱转写</a></h3>
+          <p class="orig">Explicit Note-Event Tokenization and Pitch-Validity Constrained Decoding for MIDI-to-Tablature Transcription</p>
+          <p class="why">论文把 MIDI 转吉他谱的任务改成显式音符事件序列，并在解码时加入「这把吉他真能按出来」的约束。<b>吉他同音高可出现在多根弦多个把位，过去模型容易输出违反乐器物理的指法，这篇方法让结果更 playable。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音乐生成</span><span class="mono-part">arXiv · cs.SD · 07-29</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.26698v1" target="_blank" rel="noopener">MPEcho：旋律与音素感知的可控翻唱生成</a></h3>
+          <p class="orig">MPEcho: A Melody and Phoneme-Aware Generative Framework for Controllable Cover Song Generation</p>
+          <p class="why">MPEcho 在翻唱生成中显式加入音素信息，减少 AI 把原唱歌词唱错的问题。<b>它让模型既保留原曲旋律，又能按目标风格重唱，对虚拟歌手和改编创作都有用。</b></p>
+        </article>
+
       </div>
     </section>
 
@@ -341,28 +391,18 @@
         <div class="sec-head">
           <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
         </div>
-        <div class="rail-item">
-          <div class="meta"><span class="tag">音频编辑</span><span class="mono-part">TypeScript · 294★</span></div>
-          <h3><a href="https://github.com/wassgha/rescript" target="_blank" rel="noopener">Rescript：浏览器里的基于转写稿的音频/视频编辑器</a></h3>
-          <p class="why">开源浏览器端音视频编辑器，通过转写稿让粗剪像改文档一样简单，适合快速处理播客和录音素材。</p>
-        </div>
-        <div class="rail-item">
-          <div class="meta"><span class="tag">评测</span><span class="mono-part">Python · 113★</span></div>
-          <h3><a href="https://github.com/shwj114514/audio_eval" target="_blank" rel="noopener">audio_eval：可组合的开源音频生成与重建评测工具箱</a></h3>
-          <p class="why">把音频评测指标拆成可组合模块，方便系统对比 AI 生成音乐与真实录音的客观质量。</p>
-        </div>
-        <div class="rail-item">
-          <div class="meta"><span class="tag">符号音乐</span><span class="mono-part">Python · HN 14pt</span></div>
-          <h3><a href="https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html" target="_blank" rel="noopener">Xenharmlib 0.4.0：支持纯律的微分音音乐理论库</a></h3>
-          <p class="why">音乐理论计算库新增纯律支持，可生成和可视化微分音阶与和弦，适合探索非平均律系统。</p>
-        </div>
+
       </section>
 
       <section>
         <div class="sec-head">
           <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
         </div>
-
+        <div class="rail-item">
+          <div class="meta"><span class="tag">讣闻</span><span class="mono-part">euronews / HN 337pt · 07-29</span></div>
+          <h3><a href="https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home" target="_blank" rel="noopener">法国音乐人 Kavinsky 去世，年仅 41 岁</a></h3>
+          <p class="why">以《Nightcall》等合成器流行作品闻名的法国音乐人 Kavinsky 在巴黎家中去世。<b>他的复古合成器美学与 Daft Punk 等艺术家共同塑造了 2010 年代电子乐视觉风格，对电子音乐制作和影视配乐影响深远。</b></p>
+        </div>
       </section>
     </div>
   </div>
@@ -379,30 +419,30 @@
 
       <article class="idea">
         <div class="diff"><span>▮▯▯ 入门</span><span class="kind">工具</span></div>
-        <h3>微分音和弦查询器</h3>
-        <p class="body">基于 Xenharmlib 0.4.0 的纯律支持，做一个网页小工具：输入和弦名，自动计算纯律频率比、与十二平均律的音分差，并播放对比。需要：Python 基础 · Xenharmlib · 少量前端。</p>
-        <p class="uses"><b>基于:</b><a href="https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html" target="_blank" rel="noopener">Xenharmlib 0.4.0：支持纯律的微分音音乐理论库</a></p>
-      </article>
-
-      <article class="idea">
-        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">工具</span></div>
-        <h3>基于转写稿的音频粗剪增强版</h3>
-        <p class="body">在 Rescript 的转写稿编辑基础上，加入静音检测和节拍切分，让音乐人或播客主可以按句子、段落或拍子快速粗剪音频。可以先做离线版。需要：JavaScript/TypeScript · FFmpeg · 基础音频特征。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/wassgha/rescript" target="_blank" rel="noopener">Rescript：浏览器里的基于转写稿的音频/视频编辑器</a> · <a href="https://github.com/thiagoalbrecht/weave" target="_blank" rel="noopener">Weave (VOL.005)</a></p>
+        <h3>变速/变调下的 AI 生成音乐检测小工具</h3>
+        <p class="body">参考《Improved Robustness in AI-Generated Music Detection》的思路，写一个命令行或网页小工具：上传一段怀疑是 AI 生成的音乐，自动做 ±3 半音移调和 ±10% 变速，再调用检测模型看置信度是否还稳定，输出一份「鲁棒性报告」。需要：Python 基础 · librosa/pydub · 现成的 AI 音乐检测模型或 API · 少量前端。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.27454v1" target="_blank" rel="noopener">Improved Robustness in AI-Generated Music Detection</a></p>
       </article>
 
       <article class="idea">
         <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
-        <h3>液体玻璃风格本地音乐播放器</h3>
-        <p class="body">参考 MeloX 的视觉设计，用网页或桌面技术做一个本地 FLAC 播放器，支持专辑封面、歌词舞台和3D可视化，重点复刻液体玻璃动效。需要：前端/桌面开发 · 本地文件读取 · 音频播放。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/youshen2/MeloX" target="_blank" rel="noopener">MeloX：参考 Apple Music 设计的第三方网易云客户端</a> · <a href="https://github.com/ww085213/Mineradio-LX-Music" target="_blank" rel="noopener">Mineradio-LX-Music (VOL.004)</a></p>
+        <h3>谱原生歌声合成 Demo</h3>
+        <p class="body">参考 VocalRender，把歌词、音高、符点音符和速度打包成一个简单输入格式，调用开源歌声合成模型生成 demo，并支持在网页上试听和微调换气点。可以从几首自己写的旋律开始，验证「写完谱就能听人声」的 workflow。需要：Python · 歌声合成工具链（如 DiffSinger/RVS）· MusicXML/MIDI 解析 · 前端基础。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.27768v1" target="_blank" rel="noopener">VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">交互作品</span></div>
+        <h3>自然语言指挥的 Ableton / Max 参数控制器</h3>
+        <p class="body">参考 LLM4OSC，做一个本地优先的小工具：用自然语言描述「把鼓组音量推大、加入一点混响」，由大模型生成 OSC 指令并实时发送给 Ableton Live 或 Max，同时校验地址和类型标签，避免演出时出错。可以先做离线指令生成，再接入 MIDI/OSC 发送。需要：Python · OSC 协议基础 · LLM API · Ableton/Max 基础。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.26024v1" target="_blank" rel="noopener">LLM4OSC: Profile-Bound Natural Language Control with Deterministic Validation for Open Sound Control</a></p>
       </article>
 
       <article class="idea">
         <div class="diff"><span>▮▮▮ 硬核</span><span class="kind">研究</span></div>
-        <h3>AI 生成音乐的多维诊断评测</h3>
-        <p class="body">基于 audio_eval 工具箱，扩展音乐专用指标（和弦进行、旋律轮廓、节奏稳定性），构建中文流行歌评测集，系统对比几个开源模型。需要：乐理 + Python MIR 工具链 · 统计评测 · 实验设计。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/shwj114514/audio_eval" target="_blank" rel="noopener">audio_eval：可组合的开源音频生成与重建评测工具箱</a> · <a href="https://elifesciences.org/articles/107088" target="_blank" rel="noopener">Auditory and spontaneous movement responses to music over first postnatal year (VOL.003)</a></p>
+        <h3>多模态钢琴演奏的视听一致性评测</h3>
+        <p class="body">基于 SKY-Piano 数据集，设计实验比较专业与业余演奏在手部动作幅度、轨迹和力度起伏上的可区分模式，并构建一个用动作特征预测表情标记的基准。结果可投向 ISMIR 或 NIME。需要：Python · 动作/视频特征提取 · 统计分析 · 钢琴演奏基础。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.27296v1" target="_blank" rel="noopener">SKY-Piano: A Multimodal Piano Performance Dataset</a></p>
       </article>
 
     </div>
@@ -419,7 +459,7 @@
 
   <footer>
     <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按"数字音乐智能处理"相关度筛选,宁缺毋滥</span><br>
-    <span class="mono">音乐科技雷达 · GENERATED 2026-07-29 · 每日 07:00 出版</span>
+    <span class="mono">音乐科技雷达 · GENERATED 2026-07-31 · 每日 07:00 出版</span>
   </footer>
 </div>
 
@@ -1084,6 +1124,137 @@
       "detail": "【这是什么】MeloX 是一个为 iOS 原生开发的第三方网易云音乐客户端。作者用 SwiftUI 复刻了 iOS26 版 Apple Music 的液体玻璃设计，同时保留了网易云的歌单、播放等核心功能。\n【为什么值得关注】它展示了一个音乐 App 从界面到播放的完整工程：登录授权、歌单同步、播放器状态管理、视觉动效。对于想了解音乐流媒体产品如何落地的学生，这是一个很好的解剖样本。\n【怎么入手】如果你有 Mac 和 iOS 开发环境，可以克隆仓库编译运行，观察它的播放控制、歌词展示和歌单导入逻辑。重点看 SwiftUI 的动画和 Apple Music 式布局如何移植到第三方音乐服务。",
       "vol": 6,
       "pub": "2026-07-29"
+    },
+    {
+      "date": "2026-07-30",
+      "sec": "papers",
+      "tag": "歌声合成",
+      "title": "VocalRender：从真实作曲流程出发的歌声合成",
+      "url": "http://arxiv.org/abs/2607.27768v1",
+      "src": "arXiv · cs.SD",
+      "orig": "VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition",
+      "why": "VocalRender 提出一种直接读取歌词、音高、符点音符与时速的「谱原生」歌声合成系统，不需要预先给出每个音的精确时长，也不再依赖人工对齐的声学参考。它对音乐学院学生最直接的启示是：写谱软件里打出的音符，可以直接唱出来，而不必先录 demo 再对节奏。",
+      "hot": "本报头条",
+      "detail": "【这是什么】现有的歌声合成系统通常要求你先标好每个音唱多久，或者提供一段参考歌声来对齐；VocalRender 改成直接读取歌词、音高、符点音符和速度，像一位视唱练耳极好的歌手，看着谱子就能把歌哼出来。\n【为什么值得关注】对作曲者来说，这意味着写谱软件和 AI 歌手之间的墙被拆掉了一大部分；你只需要输出标准的 MusicXML 或 MIDI，就能获得一版可听的人声 demo，特别适合快速验证旋律与歌词的咬合。\n【怎么入手】可以先找几首熟悉的流行歌，把旋律和歌词整理成简单的音符序列，看看论文附带的模型或类似开源 SVS 工具能否直接读谱生成；重点观察切分音、附点节奏和换气处是否自然。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-30",
+      "sec": "papers",
+      "tag": "空间音频",
+      "title": "RIPPLE：直接生成多通道相位，而不是事后再恢复",
+      "url": "http://arxiv.org/abs/2607.27775v1",
+      "src": "arXiv · cs.SD",
+      "orig": "RIPPLE: Generating Multi-Channel Phase, Not Recovering It",
+      "why": "RIPPLE 把多通道音频的相位关系也交给生成模型同步学习，而不是先产生幅度谱再靠 Griffin-Lim 或声码器补相位。空间音频、Ambisonics 和地震波等场景里，通道之间的相位差才是「位置感」的来源，所以这项工作对沉浸声很重要。",
+      "detail": "【这是什么】多数音频生成模型只负责生成各个通道的幅度谱，相位要靠后处理算法硬补；RIPPLE 让模型在学习过程中就把不同通道之间的相位关系一起生成出来，相当于同时画出每个声道的波形位置。\n【为什么值得关注】空间音频、VR 声景和 Ambisonics 的沉浸感很大程度上取决于左右或上下声道到达时间的细微差别，也就是相位差；补出来的相位往往会让声像发虚，而直接生成相位有望让虚拟声源更稳定。\n【怎么入手】可以用一组立体声或四声道录音做实验：先分离各通道的相位差，再用论文思路训练一个简化版扩散模型，听听生成结果的空间定位是否比传统后处理更清晰。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-30",
+      "sec": "papers",
+      "tag": "声源分离",
+      "title": "CrowdioSet 与 PaRIRset：面向现场演出的音乐声源分离数据集",
+      "url": "http://arxiv.org/abs/2607.27828v1",
+      "src": "arXiv · cs.SD",
+      "orig": "CrowdioSet and PaRIRset: Two Datasets Towards Live Music Source Separation",
+      "why": "论文发布两个真实现场演出噪声数据集，并训练了一个对观众噪声、场馆混响更鲁棒的声源分离模型。因为现有分离模型多在干净录音室数据上训练，到演唱会现场往往崩掉，所以这个工作直接补上了从录音室到现场之间的鸿沟。",
+      "detail": "【这是什么】现有的音乐声源分离模型大多在录音室多轨上训练，遇到演唱会现场就水土不服；这套工作采集了真实场馆的环境声和观众噪声，还做了麦克风与扬声器的脉冲响应模拟，让模型见过「现场」。\n【为什么值得关注】如果你做伴奏提取、现场混音或直播分轨，常常会遇到观众欢呼和场馆混响把鼓和人声糊在一起；这套数据和方法能让分离结果在真实演出中少出很多伪影。\n【怎么入手】可以先从论文发布的数据集下载几条场馆噪声，把它叠到自己的录音室多轨上，看看现有分离模型会退化成什么样；再用作者提供的训练方案做少量微调，对比混响抑制效果。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-30",
+      "sec": "papers",
+      "tag": "符号音乐/评测",
+      "title": "用上下文嵌入评估富有表现力的钢琴 MIDI 演奏",
+      "url": "http://arxiv.org/abs/2607.27909v1",
+      "src": "arXiv · cs.SD",
+      "orig": "Integrating Contextual Embeddings into Evaluation of Expressive MIDI Piano Performances",
+      "why": "研究者把音符之间的上下文信息编码进嵌入向量，用来比较两段钢琴演奏在表情处理上的相似度。传统方法只看单个音的时长、力度统计，忽略音与音之间的依赖，这篇论文给生成式钢琴演奏评测补上了缺失的一块。",
+      "detail": "【这是什么】评价一段钢琴演奏弹得「像不像」某个人，传统做法是比较每个音的力度、时长等数字；这篇论文把相邻音符的上下文也一起编码，形成能反映乐句呼吸和连断关系的向量。\n【为什么值得关注】对 AI 生成的钢琴演奏来说，单个音再准，如果乐句不会呼吸也会显得机械；加入上下文后，评测结果更接近人耳对「表情」的判断。\n【怎么入手】可以拿几位钢琴家的同一首曲子 MIDI，先用论文方法提取上下文嵌入，再做相似度排序，看看和你主观感受是否一致；也可以把它当成损失函数，训练一个更会「呼吸」的生成模型。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-29",
+      "sec": "papers",
+      "tag": "AIGC检测",
+      "title": "检测混合人-AI 音乐中的 AI 生成声部",
+      "url": "http://arxiv.org/abs/2607.26874v1",
+      "src": "arXiv · cs.SD",
+      "orig": "Detection of AI-generated stems within hybrid human-AI music",
+      "why": "研究首次关注「人声、鼓、贝斯等分轨中哪些来自 AI」的细粒度检测问题。随着 AI 编曲工具越来越流行，未来一首歌可能只有几个轨是 AI 生成，这项研究给版权审核和平台标注提供了新工具。",
+      "detail": "【这是什么】现在判断一首歌是不是 AI 生成，通常针对整首；这篇论文把人声、鼓、贝斯、其他伴奏拆开，看能不能只挑出其中被 AI 生成的分轨。\n【为什么值得关注】未来很多作品是人录一轨、AI 补一轨的混合体，只标「整首歌 AI」或「整首歌人工」都不公平；能定位到具体声部，对平台审核和音乐人自证都更实用。\n【怎么入手】可以用 MUSDB18-HQ 这样的分轨数据集，把其中一轨替换成 AI 模型生成的同类型音轨，训练一个二分类器；再试试跨模型、跨风格的泛化能力，观察哪些声学痕迹最容易暴露。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-29",
+      "sec": "papers",
+      "tag": "数据集",
+      "title": "SKY-Piano：包含动作与多视角视频的钢琴演奏多模态数据集",
+      "url": "http://arxiv.org/abs/2607.27296v1",
+      "src": "arXiv · cs.SD",
+      "orig": "SKY-Piano: A Multimodal Piano Performance Dataset",
+      "why": "数据集收集了 19 位演奏者共 11 小时的音频、MIDI、动作捕捉、多视角视频和 MusicXML 乐谱。对于想做钢琴表演分析、人机对比或视听同步研究的同学，这是一份难得的「全要素」素材。",
+      "detail": "【这是什么】SKY-Piano 不仅录了钢琴声音和 MIDI，还同步拍了多视角视频、手部动作捕捉，并配上 MusicXML 乐谱，覆盖了专业与业余演奏者。\n【为什么值得关注】想要研究「钢琴家为什么这样弹」或让 AI 学会带肢体动作的表演，过去需要自己去实验室搭设备；这个数据集把音视频、运动和乐谱对齐好，直接可以动手分析。\n【怎么入手】可以从数据集中挑几段同一曲目的专业与业余版本，对比他们力度变化、速度起伏和手部动作的关系；也可以试着用动作特征预测音色或表情标记。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-29",
+      "sec": "papers",
+      "tag": "转谱",
+      "title": "显式音符事件化 + 音高有效性约束的吉他谱转写",
+      "url": "http://arxiv.org/abs/2607.26440v1",
+      "src": "arXiv · cs.SD",
+      "orig": "Explicit Note-Event Tokenization and Pitch-Validity Constrained Decoding for MIDI-to-Tablature Transcription",
+      "why": "论文把 MIDI 转吉他谱的任务改成显式音符事件序列，并在解码时加入「这把吉他真能按出来」的约束。吉他同音高可出现在多根弦多个把位，过去模型容易输出违反乐器物理的指法，这篇方法让结果更 playable。",
+      "detail": "【这是什么】把 MIDI 转成吉他六线谱，关键是给每个音分配弦和品；这篇论文让模型按「音符事件」来生成，并在解码时排除这把吉他按不出来的组合。\n【为什么值得关注】很多自动生成的吉他谱会出现同一个手指要同时按两处、或者超出指板范围的情况；加入可演奏性约束后，出来的谱子更接近乐手真正会弹的版本。\n【怎么入手】可以先用一组带六线标注的 MIDI 数据集训练一个小模型，重点观察开放和弦、横按大横把位和滑音的预测；再请会吉他的同学盲测，看加了约束后错误率下降多少。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-29",
+      "sec": "papers",
+      "tag": "音乐生成",
+      "title": "MPEcho：旋律与音素感知的可控翻唱生成",
+      "url": "http://arxiv.org/abs/2607.26698v1",
+      "src": "arXiv · cs.SD",
+      "orig": "MPEcho: A Melody and Phoneme-Aware Generative Framework for Controllable Cover Song Generation",
+      "why": "MPEcho 在翻唱生成中显式加入音素信息，减少 AI 把原唱歌词唱错的问题。它让模型既保留原曲旋律，又能按目标风格重唱，对虚拟歌手和改编创作都有用。",
+      "detail": "【这是什么】翻唱生成希望保留原曲的旋律和歌词，只换掉伴奏和唱法；MPEcho 除了用音高线索，还显式建模音素，让 AI 不易把歌词唱串或吞掉。\n【为什么值得关注】很多 AI 翻唱听起来调子对，但仔细听会发现词含糊或错字；加入音素约束后，虚拟歌手做中文翻唱时咬字会更靠谱。\n【怎么入手】可以选几首歌词清晰的流行歌，用音素对齐工具生成标注，再训练一个轻量翻唱模型；重点评测副歌重复段和快速咬字的准确率。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-29",
+      "sec": "industry",
+      "tag": "产品发布",
+      "title": "通义千问 Qwen-Audio-3.0-Gen-Preview：统一音频生成预览",
+      "url": "http://arxiv.org/abs/2607.27011v2",
+      "src": "arXiv · 技术报告",
+      "orig": "Qwen-Audio-3.0-Gen-Preview Technical Report",
+      "why": "阿里通义实验室发布 Qwen-Audio-3.0-Gen-Preview，用 Diffusion Transformer 和共享 VAE 把语音、音效、音乐等异构音频元素组织成长时混合场景。这意味着一个模型就能从提示词直接生成包含多角色对白、环境声和背景音乐的完整音频，对影视、游戏配乐工作流有参考价值。",
+      "hot": "行业要闻",
+      "detail": "【这是什么】Qwen-Audio-3.0-Gen-Preview 是一个非自回归的统一音频生成框架，能把人声、环境声、音乐等不同成分按提示词混合成一段完整音频。\n【为什么值得关注】过去做一段带对白、音效和背景音乐的场景，需要分别调用 TTS、SFX 和音乐生成模型再混音；这个预览版试图让一个大模型一次生成混好的长音频，省掉很多后期拼接。\n【怎么入手】可以下载预览模型，用几段游戏或短片脚本做提示词，听听它怎么处理背景音乐不压过人声；同时记录不同提示结构下音乐成分的稳定性。",
+      "vol": 7,
+      "pub": "2026-07-31"
+    },
+    {
+      "date": "2026-07-29",
+      "sec": "industry",
+      "tag": "讣闻",
+      "title": "法国音乐人 Kavinsky 去世，年仅 41 岁",
+      "url": "https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home",
+      "src": "euronews / HN 337pt",
+      "why": "以《Nightcall》等合成器流行作品闻名的法国音乐人 Kavinsky 在巴黎家中去世。他的复古合成器美学与 Daft Punk 等艺术家共同塑造了 2010 年代电子乐视觉风格，对电子音乐制作和影视配乐影响深远。",
+      "detail": "【这是什么】法国电子音乐人 Kavinsky 因电影《Drive》配乐《Nightcall》广为人知，近日被发现在巴黎住所去世，年仅 41 岁。\n【为什么值得关注】他的音乐把 80 年代合成器音色与电影感旋律结合，影响了后来很多电子乐和影视配乐的审美；对于研究电子音色、复古合成器编曲的同学，他是一个重要参考样本。\n【怎么入手】可以重新听一遍《Nightcall》和《OutRun》专辑，分析其中的合成器分层、侧链压缩和旋律写作；也可以试着用软件合成器复刻他标志性的厚重贝斯与混响人声。",
+      "vol": 7,
+      "pub": "2026-07-31"
     }
   ],
   "ideas": [
@@ -1409,6 +1580,58 @@
           "vol": 3,
           "url": "https://elifesciences.org/articles/107088",
           "title": "Auditory and spontaneous movement responses to music over first postnatal year"
+        }
+      ]
+    },
+    {
+      "vol": 7,
+      "level": "入门",
+      "kind": "工具",
+      "title": "变速/变调下的 AI 生成音乐检测小工具",
+      "body": "参考《Improved Robustness in AI-Generated Music Detection》的思路，写一个命令行或网页小工具：上传一段怀疑是 AI 生成的音乐，自动做 ±3 半音移调和 ±10% 变速，再调用检测模型看置信度是否还稳定，输出一份「鲁棒性报告」。需要：Python 基础 · librosa/pydub · 现成的 AI 音乐检测模型或 API · 少量前端。",
+      "based_on": [
+        {
+          "url": "http://arxiv.org/abs/2607.27454v1",
+          "title": "Improved Robustness in AI-Generated Music Detection"
+        }
+      ]
+    },
+    {
+      "vol": 7,
+      "level": "进阶",
+      "kind": "产品原型",
+      "title": "谱原生歌声合成 Demo",
+      "body": "参考 VocalRender，把歌词、音高、符点音符和速度打包成一个简单输入格式，调用开源歌声合成模型生成 demo，并支持在网页上试听和微调换气点。可以从几首自己写的旋律开始，验证「写完谱就能听人声」的 workflow。需要：Python · 歌声合成工具链（如 DiffSinger/RVS）· MusicXML/MIDI 解析 · 前端基础。",
+      "based_on": [
+        {
+          "url": "http://arxiv.org/abs/2607.27768v1",
+          "title": "VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition"
+        }
+      ]
+    },
+    {
+      "vol": 7,
+      "level": "进阶",
+      "kind": "交互作品",
+      "title": "自然语言指挥的 Ableton / Max 参数控制器",
+      "body": "参考 LLM4OSC，做一个本地优先的小工具：用自然语言描述「把鼓组音量推大、加入一点混响」，由大模型生成 OSC 指令并实时发送给 Ableton Live 或 Max，同时校验地址和类型标签，避免演出时出错。可以先做离线指令生成，再接入 MIDI/OSC 发送。需要：Python · OSC 协议基础 · LLM API · Ableton/Max 基础。",
+      "based_on": [
+        {
+          "url": "http://arxiv.org/abs/2607.26024v1",
+          "title": "LLM4OSC: Profile-Bound Natural Language Control with Deterministic Validation for Open Sound Control"
+        }
+      ]
+    },
+    {
+      "vol": 7,
+      "level": "硬核",
+      "kind": "研究",
+      "title": "多模态钢琴演奏的视听一致性评测",
+      "body": "基于 SKY-Piano 数据集，设计实验比较专业与业余演奏在手部动作幅度、轨迹和力度起伏上的可区分模式，并构建一个用动作特征预测表情标记的基准。结果可投向 ISMIR 或 NIME。需要：Python · 动作/视频特征提取 · 统计分析 · 钢琴演奏基础。",
+      "based_on": [
+        {
+          "url": "http://arxiv.org/abs/2607.27296v1",
+          "title": "SKY-Piano: A Multimodal Piano Performance Dataset"
         }
       ]
     }
