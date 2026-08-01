@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-31T11:21:12+08:00",
+  "fetched_at": "2026-08-01T11:19:37+08:00",
   "sources": {
     "arxiv_sd": [
       {
@@ -662,9 +662,23 @@
     "hn_music": [
       {
         "source": "hn",
+        "title": "Google Flow Music launches Lyria 3.5 with advances in musicality, lyrics, vocals",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5/",
+        "points": 12,
+        "published": "2026-07-30"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Local text, image, video, music and 3D from one CLI, no Python",
+        "url": "https://github.com/sawfwair/mere-run",
+        "points": 14,
+        "published": "2026-07-30"
+      },
+      {
+        "source": "hn",
         "title": "French musician Kavinsky found dead",
         "url": "https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home",
-        "points": 337,
+        "points": 338,
         "published": "2026-07-29"
       },
       {
@@ -778,35 +792,42 @@
         "url": "https://github.com/marcelpanse/youtube-guitar-tab-parser",
         "points": 108,
         "published": "2026-07-13"
-      },
-      {
-        "source": "hn",
-        "title": "Auditory and spontaneous movement responses to music over first postnatal year",
-        "url": "https://elifesciences.org/articles/107088",
-        "points": 28,
-        "published": "2026-07-09"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Chiptune Radio",
-        "url": "https://chiptune-radio.alephvoid.com/",
-        "points": 77,
-        "published": "2026-07-08"
       }
     ],
     "hn_audio": [
       {
         "source": "hn",
+        "title": "Show HN: Penca – branchable, versioned OLTP+OLAP on one open copy of your data",
+        "url": "https://github.com/penca-io/penca",
+        "points": 12,
+        "published": "2026-07-31"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: I built a cross-browser extension that controls fingerprinting surfaces",
+        "url": "https://privacything.com/en/",
+        "points": 19,
+        "published": "2026-07-31"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Gander, an Android file viewer that asks for no permissions",
+        "url": "https://github.com/mokshablr/gander",
+        "points": 195,
+        "published": "2026-07-31"
+      },
+      {
+        "source": "hn",
         "title": "Show HN: Distilling DeepSeek into GPT-OSS doesn't transfer censorship. Try it",
         "url": "https://www.ctgt.ai/research/distillation-censorship-transfer",
-        "points": 92,
+        "points": 163,
         "published": "2026-07-30"
       },
       {
         "source": "hn",
         "title": "Launch HN: Prized (YC S26) – Let non-engineer staff build secure internal tools",
         "url": "https://prized.dev",
-        "points": 68,
+        "points": 77,
         "published": "2026-07-30"
       },
       {
@@ -899,25 +920,190 @@
         "url": "https://www.hollywoodreporter.com/movies/movie-news/odyssey-box-office-2026-practical-effects-1236652219/",
         "points": 34,
         "published": "2026-07-22"
+      }
+    ],
+    "github": [
+      {
+        "source": "github",
+        "full_name": "QwenAudio/qwen-audio-agent",
+        "url": "https://github.com/QwenAudio/qwen-audio-agent",
+        "description": "A realtime voice runtime that keeps Agents talking, working, and present.  Real-time Voice Runtime for AI Agents",
+        "stars": 618,
+        "language": "JavaScript",
+        "published": "2026-07-27"
       },
       {
-        "source": "hn",
-        "title": "Show HN: Cactus Hybrid: We taught Gemma 4 to know when it's wrong",
-        "url": "https://github.com/cactus-compute/cactus-hybrid",
-        "points": 190,
+        "source": "github",
+        "full_name": "wassgha/rescript",
+        "url": "https://github.com/wassgha/rescript",
+        "description": "🎬 Open source, transcript-based video/audio editor that lives in the browser.",
+        "stars": 473,
+        "language": "TypeScript",
+        "published": "2026-07-26"
+      },
+      {
+        "source": "github",
+        "full_name": "AARomanov1985/Audio-Cassette-Simulation",
+        "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
+        "description": "This project simulates cassette tape audio profiles using ffmpeg",
+        "stars": 454,
+        "language": "Shell",
         "published": "2026-07-22"
       },
       {
-        "source": "hn",
-        "title": "Apple Private Cloud Compute SoC 3 audit reports",
-        "url": "https://support.apple.com/guide/certifications/apple-private-cloud-compute-soc-3-audit-apc95a31b9d8/web",
-        "points": 139,
+        "source": "github",
+        "full_name": "MartinDelophy/ai-video-editor",
+        "url": "https://github.com/MartinDelophy/ai-video-editor",
+        "description": "Local-first browser AI video editor with WebGPU AI music, AI repair, voiceovers, captions, talking avatars, and deterministic export.",
+        "stars": 414,
+        "language": "JavaScript",
+        "published": "2026-07-09"
+      },
+      {
+        "source": "github",
+        "full_name": "Jane-xiaoer/paper-collage-ad-codex",
+        "url": "https://github.com/Jane-xiaoer/paper-collage-ad-codex",
+        "description": "Codex skill for complete paper-cut collage ad production, local IndexTTS-2 voice cloning, animation, audio and MP4 QC",
+        "stars": 363,
+        "language": "JavaScript",
+        "published": "2026-07-10"
+      },
+      {
+        "source": "github",
+        "full_name": "kigner/audio.cpp-webui",
+        "url": "https://github.com/kigner/audio.cpp-webui",
+        "description": "audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. TTS, ASR/STT, VAD, voice conversion, speaker diarization, music generation. No Python dependency.",
+        "stars": 272,
+        "language": "C++",
+        "published": "2026-07-12"
+      },
+      {
+        "source": "github",
+        "full_name": "NUber-dev/YTubic",
+        "url": "https://github.com/NUber-dev/YTubic",
+        "description": "Fast, responsive YouTube Music desktop client for Windows — Tauri 2 + React",
+        "stars": 230,
+        "language": "TypeScript",
+        "published": "2026-07-05"
+      },
+      {
+        "source": "github",
+        "full_name": "redheadesign/music-island",
+        "url": "https://github.com/redheadesign/music-island",
+        "description": "Windows top-edge music island: SMTC for any player + opt-in direct link to the native Yandex Music desktop app. Local-first, GPL-3.0.",
+        "stars": 226,
+        "language": "Rust",
+        "published": "2026-07-08"
+      },
+      {
+        "source": "github",
+        "full_name": "mokshablr/gander",
+        "url": "https://github.com/mokshablr/gander",
+        "description": "Take a gander at any file. Offline, zero-permission Android viewer for PDF, Word, Excel, PowerPoint, photos, video, audio, Markdown and code.",
+        "stars": 220,
+        "language": "JavaScript",
+        "published": "2026-07-19"
+      },
+      {
+        "source": "github",
+        "full_name": "Audio8-AI/Audio8_TTS",
+        "url": "https://github.com/Audio8-AI/Audio8_TTS",
+        "description": "SOTA-Class TTS at Compact Scale",
+        "stars": 203,
+        "language": "Python",
+        "published": "2026-07-29"
+      },
+      {
+        "source": "github",
+        "full_name": "flatkey-ai/flatkey-cli",
+        "url": "https://github.com/flatkey-ai/flatkey-cli",
+        "description": "Flatkey media generation CLI for images, videos, audio, text, credits, and model discovery.",
+        "stars": 185,
+        "language": "JavaScript",
+        "published": "2026-07-17"
+      },
+      {
+        "source": "github",
+        "full_name": "dk8827/ra-port",
+        "url": "https://github.com/dk8827/ra-port",
+        "description": "Unofficial working port of Command & Conquer: Red Alert running natively on iOS, Android, Linux and macOS. SDL2 video/audio/input. No game assets included.",
+        "stars": 161,
+        "language": "C++",
+        "published": "2026-07-07"
+      },
+      {
+        "source": "github",
+        "full_name": "tetsuo-ai/voice_clone_lab",
+        "url": "https://github.com/tetsuo-ai/voice_clone_lab",
+        "description": "Clone a voice from a few minutes of audio and generate speech locally — Qwen3-TTS fine-tuning pipeline with CLI and web UI",
+        "stars": 146,
+        "language": "Python",
+        "published": "2026-07-18"
+      },
+      {
+        "source": "github",
+        "full_name": "SansNope/UnleashedRecomp-Android",
+        "url": "https://github.com/SansNope/UnleashedRecomp-Android",
+        "description": "Unofficial Android port of Unleashed Recompiled, built with Anthropic's Fable 5 AI under human direction, device testing and debugging. Artifacts, freezes and audio issues possible. SPECIAL THANKS to everyone testing and reporting.",
+        "stars": 145,
+        "language": "C",
+        "published": "2026-07-04"
+      },
+      {
+        "source": "github",
+        "full_name": "HaseebKhalid1507/Myx",
+        "url": "https://github.com/HaseebKhalid1507/Myx",
+        "description": "Spotify player for the terminal. With reactive themes.",
+        "stars": 139,
+        "language": "Rust",
+        "published": "2026-07-23"
+      },
+      {
+        "source": "github",
+        "full_name": "youshen2/MeloX",
+        "url": "https://github.com/youshen2/MeloX",
+        "description": "专为 iOS 原生开发的第三方网易云客户端，使用 SwiftUI 并基于液体玻璃设计，参考 iOS26 版 Apple Music 的 UI 并提供特色功能。",
+        "stars": 136,
+        "language": "Swift",
         "published": "2026-07-21"
+      },
+      {
+        "source": "github",
+        "full_name": "romainsimon/uisfx",
+        "url": "https://github.com/romainsimon/uisfx",
+        "description": "UI Sound Effects for your interfaces",
+        "stars": 135,
+        "language": "Vue",
+        "published": "2026-07-12"
+      },
+      {
+        "source": "github",
+        "full_name": "zhuyao-opendeveloper/musicist",
+        "url": "https://github.com/zhuyao-opendeveloper/musicist",
+        "description": "一个开源在线音乐网站",
+        "stars": 115,
+        "language": "Vue",
+        "published": "2026-07-08"
+      },
+      {
+        "source": "github",
+        "full_name": "shwj114514/audio_eval",
+        "url": "https://github.com/shwj114514/audio_eval",
+        "description": "A composable toolkit for evaluating generated and reconstructed audio",
+        "stars": 115,
+        "language": "Python",
+        "published": "2026-07-13"
+      },
+      {
+        "source": "github",
+        "full_name": "calesthio/generative-media-skills",
+        "url": "https://github.com/calesthio/generative-media-skills",
+        "description": "Research-backed agent skills and tools for premium image, video, audio, voice, and generative media production across AI coding assistants.",
+        "stars": 111,
+        "language": "Python",
+        "published": "2026-07-11"
       }
-    ],
-    "github": []
+    ]
   },
-  "warnings": [
-    "github: HTTP Error 403: rate limit exceeded"
-  ]
+  "warnings": []
 }
