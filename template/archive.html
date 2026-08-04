@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>往期回顾 · 音乐科技雷达</title>
+<style>
+  /* 音乐科技雷达 · 往期索引页(与每期页同一套设计令牌) */
+  :root {
+    --desk: #dcdcd9;
+    --paper: #fcfcfa;
+    --ink: #1a1a1a;
+    --ink-soft: #454545;
+    --ink-faint: #7b7b78;
+    --hairline: #dbd9d4;
+    --red: #c1301c;
+    --red-soft: #c1301c1f;
+
+    --font-serif: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
+    --font-en: Georgia, "Times New Roman", serif;
+
+    --fs-meta: .8125rem;
+    --fs-body: 1.0625rem;
+    --fs-title: 1.25rem;
+    --fs-focus: clamp(1.375rem, 1.05rem + 1.6vw, 1.625rem);
+    --fs-mast: clamp(2.2rem, 8vw + .5rem, 3.4rem);
+
+    --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2.5rem;
+    --measure: 34rem;
+    --sheet-pad: 1.25rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --desk: #121212; --paper: #1d1d1b; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+      --ink-faint: #8a8984; --hairline: #3a3a37; --red: #e2604e; --red-soft: #e2604e26;
+    }
+  }
+  :root[data-theme="light"] {
+    --desk: #dcdcd9; --paper: #fcfcfa; --ink: #1a1a1a; --ink-soft: #454545;
+    --ink-faint: #7b7b78; --hairline: #dbd9d4; --red: #c1301c; --red-soft: #c1301c1f;
+  }
+  :root[data-theme="dark"] {
+    --desk: #121212; --paper: #1d1d1b; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+    --ink-faint: #8a8984; --hairline: #3a3a37; --red: #e2604e; --red-soft: #e2604e26;
+  }
+
+  html { overflow-x: clip; }
+  body {
+    overflow-x: clip;
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    padding: 0 0 var(--s-6);
+    -webkit-font-smoothing: antialiased;
+  }
+  body, .sheet, .u-btn, .arow {
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+  a { color: var(--ink); text-decoration: none; }
+
+  .sheet {
+    max-width: 44rem; margin: 0 auto;
+    background: var(--paper);
+    padding: var(--s-4) var(--sheet-pad) var(--s-6);
+    min-height: 100dvh;
+  }
+
+  /* ---- 小报头 ---- */
+  .utility {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: var(--s-3); margin-bottom: var(--s-4);
+  }
+  .brand {
+    font-size: var(--fs-title); font-weight: 900; letter-spacing: .12em; color: var(--red);
+  }
+  .brand a:hover, .brand a:focus-visible { color: var(--red); outline: none; }
+  .u-nav { display: flex; gap: var(--s-2); }
+  .u-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; min-height: 44px; padding: 0 var(--s-3);
+    border: 1px solid var(--hairline); background: none; cursor: pointer;
+    font-family: inherit; font-size: var(--fs-meta); color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .u-btn:hover, .u-btn:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+
+  .arch-head { text-align: center; margin-bottom: var(--s-4); }
+  .arch-head h1 {
+    font-size: var(--fs-mast); font-weight: 900; letter-spacing: .3em;
+    margin: 0 0 var(--s-2); line-height: 1.2;
+  }
+  .arch-head .sub {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums; margin: 0;
+  }
+  .wenwu { border-top: 3px solid var(--ink); margin-bottom: 2px; }
+  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-5); }
+
+  /* ---- 搜索 ---- */
+  .arch-search { margin-bottom: var(--s-5); }
+  .arch-search input {
+    width: 100%; min-height: 44px; box-sizing: border-box;
+    padding: 0 var(--s-3);
+    font-family: inherit; font-size: var(--fs-body); color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--hairline); border-radius: 0;
+  }
+  .arch-search input:focus { outline: none; border-color: var(--red); }
+  .arch-search input::placeholder { color: var(--ink-faint); }
+
+  /* ---- 月份分组 ---- */
+  .amonth {
+    font-size: var(--fs-body); font-weight: 700; letter-spacing: .3em;
+    background: var(--ink); color: var(--paper);
+    display: inline-block; padding: .05rem var(--s-3) .05rem var(--s-4);
+    margin: var(--s-5) 0 var(--s-2);
+  }
+  .amonth:first-child { margin-top: 0; }
+
+  .arow {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-3);
+    min-height: 44px; padding: var(--s-2) var(--s-1);
+    border-top: 1px solid var(--hairline);
+  }
+  .arow:hover, .arow:focus-visible { background: var(--red-soft); outline: none; }
+  .arow-vol { font-weight: 700; color: var(--red); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .arow-date { font-size: var(--fs-meta); color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .arow-count { font-size: var(--fs-meta); color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .arow-title { flex-basis: 100%; color: var(--ink-soft); line-height: 1.5; }
+
+  .arch-empty, .arch-fail {
+    font-size: var(--fs-body); color: var(--ink-faint); text-align: center;
+    padding: var(--s-6) 0;
+  }
+
+  footer {
+    margin-top: var(--s-6); border-top: 1px solid var(--ink); padding-top: var(--s-3);
+    font-size: var(--fs-meta); color: var(--ink-faint); text-align: center; line-height: 2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (min-width: 40rem) {
+    body { padding: var(--s-6) var(--s-4); }
+    .sheet {
+      --sheet-pad: 2rem;
+      min-height: auto;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 30px rgba(0, 0, 0, .16);
+    }
+    .arow-title { flex-basis: auto; flex: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('radar-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<div class="sheet">
+  <div class="utility">
+    <span class="brand"><a href="index.html">音乐科技雷达</a></span>
+    <nav class="u-nav" aria-label="站点">
+      <a class="u-btn" href="index.html">最新一期</a>
+      <button class="u-btn" id="theme-toggle" type="button" aria-label="切换深浅色">深色</button>
+    </nav>
+  </div>
+
+  <header class="arch-head">
+    <h1>往期回顾</h1>
+    <p class="sub">共 {{VOL_COUNT}} 期 · 最新 {{LATEST_DATE}}</p>
+  </header>
+  <div class="wenwu"></div>
+  <div class="wenwu-thin"></div>
+
+  <div class="arch-search">
+    <input type="search" id="q" placeholder="搜索期号 / 日期 / 标题…" aria-label="搜索往期">
+  </div>
+
+  <div id="arch-list" aria-live="polite"></div>
+  <p class="arch-fail" id="arch-fail" hidden>存档加载失败,请刷新</p>
+  <p class="arch-empty" id="arch-empty" hidden>没有匹配的期数</p>
+
+  <footer>
+    <span>音乐科技雷达 · 每日 07:00 出版</span><br>
+    <span><a href="index.html" style="border-bottom:1px solid var(--hairline)">返回最新一期</a></span>
+  </footer>
+</div>
+
+<script>
+/* 主题切换 */
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function current() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function sync() { btn.textContent = current() === 'dark' ? '浅色' : '深色'; }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('radar-theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+<script>
+/* 往期索引:fetch 同目录 archive.json,按月分组倒序渲染;页内搜索纯前端过滤 */
+(function () {
+  var list = document.getElementById('arch-list');
+  var fail = document.getElementById('arch-fail');
+  var empty = document.getElementById('arch-empty');
+  var q = document.getElementById('q');
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function render(data) {
+    var items = data.items || [];
+    var vols = {};
+    items.forEach(function (it) {
+      var v = it.vol;
+      if (!vols[v]) vols[v] = { items: [], pub: '' };
+      vols[v].items.push(it);
+      var p = it.pub || it.date || '';
+      if (p > vols[v].pub) vols[v].pub = p;
+    });
+    var volNos = Object.keys(vols).map(Number).sort(function (a, b) { return b - a; });
+    if (!volNos.length) { fail.hidden = false; fail.textContent = '存档加载失败,请刷新'; return; }
+
+    var html = '';
+    var lastMonth = '';
+    volNos.forEach(function (v) {
+      var g = vols[v];
+      var month = g.pub ? g.pub.slice(0, 7) : '未知';
+      if (month !== lastMonth) {
+        lastMonth = month;
+        var label = month === '未知' ? '日期未知'
+          : month.slice(0, 4) + ' 年 ' + Number(month.slice(5, 7)) + ' 月';
+        html += '<h2 class="amonth" data-month="' + esc(month) + '">' + esc(label) + '</h2>';
+      }
+      var head = g.items.filter(function (it) { return it.hot === '本报头条'; })[0]
+        || g.items.filter(function (it) { return it.hot; })[0]
+        || g.items[0];
+      var key = ('vol' + pad(v) + ' ' + g.pub + ' ' + (head ? head.title : '') + ' ' +
+        g.items.map(function (it) { return it.title; }).join(' ')).toLowerCase();
+      html += '<a class="arow" data-key="' + esc(key) + '" href="issues/vol-' + pad(v) + '.html">' +
+        '<span class="arow-vol">VOL.' + pad(v) + '</span>' +
+        '<span class="arow-date">' + esc(g.pub) + '</span>' +
+        '<span class="arow-count">收录 ' + g.items.length + ' 条</span>' +
+        '<span class="arow-title">' + esc(head ? head.title : '') + '</span></a>';
+    });
+    list.innerHTML = html;
+
+    q.addEventListener('input', function () {
+      var needle = q.value.trim().toLowerCase();
+      var anyVisible = false;
+      list.querySelectorAll('.arow').forEach(function (row) {
+        var show = !needle || row.getAttribute('data-key').indexOf(needle) !== -1;
+        row.hidden = !show;
+        if (show) anyVisible = true;
+      });
+      list.querySelectorAll('.amonth').forEach(function (h) {
+        var el = h.nextElementSibling, visible = false;
+        while (el && el.classList.contains('arow')) {
+          if (!el.hidden) { visible = true; break; }
+          el = el.nextElementSibling;
+        }
+        h.hidden = !visible;
+      });
+      empty.hidden = anyVisible;
+    });
+  }
+
+  fetch('archive.json')
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function () { fail.hidden = false; });
+})();
+</script>
+</body>
+</html>

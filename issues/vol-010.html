@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>音乐科技雷达 · 第 010 期</title>
+<style>
+  /* ============================================================
+     音乐科技雷达 · 每期页模板(redesign 2026-08)
+     genre: editorial · 报纸身份:白报纸 + 报头红 #c1301c + 宋体
+     字体 2 族:宋体(标题+正文)/ Georgia(仅英文原题)
+     字号 5 档:--fs-meta / --fs-body / --fs-title / --fs-focus / --fs-mast
+     ============================================================ */
+  :root {
+    /* 色:暖调中性 + 单一报头红 accent */
+    --desk: #dcdcd9;          /* 报纸下面的桌面 */
+    --paper: #fcfcfa;         /* 白报纸 */
+    --ink: #1a1a1a;           /* 油墨 */
+    --ink-soft: #454545;
+    --ink-faint: #7b7b78;
+    --hairline: #dbd9d4;
+    --red: #c1301c;           /* 报头红(品牌,不改) */
+    --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+
+    /* 字 */
+    --font-serif: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
+    --font-en: Georgia, "Times New Roman", serif;   /* 仅英文原题 */
+
+    /* 字号:全页仅此 5 档 */
+    --fs-meta: .8125rem;      /* 13px 元信息/页脚 */
+    --fs-body: 1.0625rem;     /* 17px 正文 */
+    --fs-title: 1.25rem;      /* 20px 条目标题 */
+    --fs-focus: clamp(1.375rem, 1.05rem + 1.6vw, 1.625rem);  /* 头条标题 22–26px */
+    --fs-mast: clamp(2.2rem, 8vw + .5rem, 3.4rem);           /* 报名 */
+
+    /* 间距(4pt 基) */
+    --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2.5rem;
+
+    --measure: 34rem;         /* 17px × 约 32 汉字 */
+    --sheet-pad: 1.25rem;
+    --z-sticky: 200;
+    --z-modal: 400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --desk: #121212;        /* 中性深灰,非纯黑 */
+      --paper: #1d1d1b;
+      --ink: #e6e5e1;
+      --ink-soft: #b3b2ad;
+      --ink-faint: #8a8984;
+      --hairline: #3a3a37;
+      --red: #e2604e;
+      --red-soft: #e2604e26;
+      --scrim: rgba(0, 0, 0, .66);
+    }
+  }
+  :root[data-theme="light"] {
+    --desk: #dcdcd9; --paper: #fcfcfa; --ink: #1a1a1a; --ink-soft: #454545;
+    --ink-faint: #7b7b78; --hairline: #dbd9d4; --red: #c1301c; --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+  }
+  :root[data-theme="dark"] {
+    --desk: #121212; --paper: #1d1d1b; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+    --ink-faint: #8a8984; --hairline: #3a3a37; --red: #e2604e; --red-soft: #e2604e26;
+    --scrim: rgba(0, 0, 0, .66);
+  }
+
+  html { overflow-x: clip; }
+  body {
+    overflow-x: clip;
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    padding: 0 0 var(--s-6);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 深浅切换只做过渡色,0.2s,无其他动画 */
+  body, .sheet, .tabs, .tab, .u-btn, .issue-sheet {
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  /* ---- 报纸纸张 ---- */
+  .sheet {
+    max-width: 70rem; margin: 0 auto;
+    background:
+      repeating-linear-gradient(2deg, transparent 0 6px, rgba(0, 0, 0, .006) 6px 7px),
+      var(--paper);
+    padding: var(--s-4) var(--sheet-pad) var(--s-6);
+  }
+
+  /* ---- 报头 ---- */
+  .utility {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: var(--s-3); margin-bottom: var(--s-2);
+  }
+  .vol-line {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .08em; font-variant-numeric: tabular-nums;
+  }
+  .u-nav { display: flex; gap: var(--s-2); }
+  .u-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; min-height: 44px; padding: 0 var(--s-3);
+    border: 1px solid var(--hairline); background: none; cursor: pointer;
+    font-family: inherit; font-size: var(--fs-meta); color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .u-btn:hover, .u-btn:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+
+  h1 {
+    font-size: var(--fs-mast);
+    font-weight: 900; letter-spacing: .12em; line-height: 1.15;
+    color: var(--red); text-align: center;
+    margin: var(--s-2) 0 0;
+  }
+  h1 a:hover, h1 a:focus-visible { color: var(--red); outline: none; }
+  .mast-sub {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-soft);
+    letter-spacing: .3em; margin: var(--s-2) 0 0;
+  }
+  .mast-counts {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums;
+    margin: var(--s-1) 0 0;
+  }
+  #wave { display: block; width: 100%; height: 26px; margin: var(--s-3) 0 var(--s-2); opacity: .85; }
+  /* 文武线 */
+  .wenwu { border-top: 3px solid var(--ink); margin-bottom: 2px; }
+  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+
+  /* ---- 吸顶分栏 tab ---- */
+  .tabs {
+    position: sticky; top: 0; z-index: var(--z-sticky);
+    display: flex;
+    margin: 0 calc(-1 * var(--sheet-pad)) var(--s-5);
+    padding: 0 var(--sheet-pad);
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tab {
+    flex: 1 1 auto;
+    min-height: 44px; padding: 0 var(--s-2);
+    font-family: inherit; font-size: var(--fs-body);
+    background: none; border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-soft); cursor: pointer; white-space: nowrap;
+  }
+  .tab:hover, .tab:focus-visible { color: var(--red); outline: none; }
+  .tab[aria-selected="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--red); }
+
+  [hidden] { display: none !important; }
+
+  /* ---- 栏头(标题反白) ---- */
+  .sec-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+  .sec-head h2 {
+    font-size: var(--fs-body); font-weight: 700; letter-spacing: .3em;
+    background: var(--ink); color: var(--paper);
+    padding: .05rem var(--s-3) .05rem var(--s-4);
+    margin: 0;
+  }
+  .sec-head .en {
+    font-size: var(--fs-meta); letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .sec-head .rule { flex: 1; border-top: 1px solid var(--hairline); }
+  .sec-head .note { font-size: var(--fs-meta); color: var(--ink-faint); }
+
+  /* ---- 本报头条 ---- */
+  .focus {
+    display: grid; grid-template-columns: 1fr;
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+    margin-bottom: var(--s-6);
+  }
+  .focus article { padding: var(--s-4) var(--s-2) var(--s-4) 0; }
+  .focus article + article { border-top: 1px solid var(--hairline); }
+  .focus h3 {
+    font-size: var(--fs-focus); font-weight: 900; line-height: 1.45;
+    margin: var(--s-2) 0; text-wrap: balance; letter-spacing: .02em;
+    overflow-wrap: anywhere;
+  }
+  .focus p.body { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-2); max-width: var(--measure); }
+
+  .meta {
+    display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); align-items: baseline;
+    font-size: var(--fs-meta); color: var(--ink-faint); font-variant-numeric: tabular-nums;
+    margin-bottom: var(--s-1);
+  }
+  .meta .src-part { letter-spacing: .06em; }
+  .tag { color: var(--ink-soft); }
+  .tag::before { content: "〔"; color: var(--ink-faint); }
+  .tag::after { content: "〕"; color: var(--ink-faint); }
+  .hot {
+    color: var(--paper); background: var(--red);
+    padding: .02rem .55rem; font-size: var(--fs-meta); letter-spacing: .18em;
+  }
+
+  /* ---- 学术/开源/行业 ---- */
+  .cols { display: block; }
+  main[data-filter] .cols { display: block; }
+
+  .paper-grid { display: grid; grid-template-columns: 1fr; }
+  .paper-grid article, .rail-item {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+  }
+  .paper-grid h3, .rail-item h3, .idea h3 {
+    font-size: var(--fs-title); font-weight: 700; line-height: 1.5;
+    margin: 0 0 var(--s-1); text-wrap: balance; overflow-wrap: anywhere;
+  }
+  h3 a:hover, h3 a:focus-visible { color: var(--red); outline: none; }
+  .orig {
+    font-family: var(--font-en);
+    font-size: var(--fs-meta); color: var(--ink-faint); font-style: italic;
+    margin: 0 0 var(--s-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .why { color: var(--ink-soft); text-align: justify; margin: 0; max-width: var(--measure); }
+  .why b { color: var(--ink); font-weight: 700; }
+
+  .rail section { margin-bottom: var(--s-6); }
+
+  /* ---- 选题灵感:尾版 ---- */
+  .ideas { margin-top: var(--s-6); }
+  .ideas-rule-thick { border-top: 2px solid var(--ink); margin-bottom: 2px; }
+  .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+  .idea-grid { display: grid; grid-template-columns: 1fr; }
+  .idea {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-2);
+  }
+  .idea .diff {
+    font-size: var(--fs-meta); letter-spacing: .12em; color: var(--red);
+    font-variant-numeric: tabular-nums;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .idea .diff .kind { color: var(--ink-faint); }
+  .idea h3 { margin: 0; }
+  .idea .body { color: var(--ink-soft); text-align: justify; margin: 0; flex: 1; max-width: var(--measure); }
+  .idea .uses, .idea .skills { font-size: var(--fs-meta); color: var(--ink-faint); line-height: 1.7; margin: 0; }
+  .idea .uses b, .idea .skills b { color: var(--ink-soft); font-weight: 700; }
+  .idea .uses a { border-bottom: 1px solid var(--hairline); }
+  .idea .uses a:hover, .idea .uses a:focus-visible { color: var(--red); border-bottom-color: var(--red); outline: none; }
+  .idea .uses a.volref { color: var(--red); border-bottom-color: var(--red); font-variant-numeric: tabular-nums; }
+
+  /* ---- 条目详情浮层 ---- */
+  .issue-overlay {
+    position: fixed; inset: 0; background: var(--scrim);
+    z-index: var(--z-modal); overflow-y: auto; padding: var(--s-6) var(--s-4);
+  }
+  .issue-sheet {
+    background: var(--paper); max-width: 44rem; margin: 0 auto;
+    padding: var(--s-5) var(--s-5) var(--s-6); position: relative;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+  }
+  .issue-close {
+    position: absolute; top: var(--s-2); right: var(--s-2);
+    font-family: inherit; font-size: var(--fs-body); line-height: 1;
+    background: none; border: 1px solid var(--hairline); color: var(--ink-soft);
+    width: 44px; height: 44px; cursor: pointer;
+  }
+  .issue-close:hover, .issue-close:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+  .iv-head { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: var(--s-2); margin-bottom: var(--s-4); }
+  .iv-head .t { font-size: var(--fs-title); font-weight: 900; color: var(--red); letter-spacing: .12em; }
+  .iv-head .m {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums; margin-top: var(--s-1);
+  }
+  .dv-title {
+    font-size: var(--fs-title); font-weight: 900; line-height: 1.5;
+    margin: var(--s-1) 0; text-wrap: balance; overflow-wrap: anywhere;
+  }
+  .dv-detail { margin-top: var(--s-3); }
+  .dv-detail p { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-3); }
+  .dv-detail b { color: var(--red); font-weight: 700; }
+  .dv-link { margin-top: var(--s-4); border-top: 1px solid var(--hairline); padding-top: var(--s-3); }
+  .dv-link a { color: var(--red); border-bottom: 1px solid var(--red); }
+
+  .has-detail { cursor: pointer; }
+  .more {
+    font-size: var(--fs-meta); color: var(--red); margin-left: var(--s-2); white-space: nowrap;
+  }
+
+  /* ---- 报尾 ---- */
+  footer {
+    margin-top: var(--s-6); border-top: 1px solid var(--ink); padding-top: var(--s-3);
+    font-size: var(--fs-meta); color: var(--ink-faint); text-align: center; line-height: 2;
+    font-variant-numeric: tabular-nums;
+  }
+  footer::before {
+    content: ""; display: block; border-top: 3px solid var(--ink);
+    margin: calc(-1 * var(--s-3)) 0 2px; transform: translateY(-3px);
+  }
+
+  /* ---- ≥40rem:平板,纸张浮起、双列 ---- */
+  @media (min-width: 40rem) {
+    body { padding: var(--s-6) var(--s-4) var(--s-6); }
+    .sheet {
+      --sheet-pad: 2rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 30px rgba(0, 0, 0, .16);
+    }
+    .paper-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-6); position: relative; }
+    .paper-grid::before {
+      content: ""; position: absolute; top: var(--s-2); bottom: var(--s-2); left: 50%;
+      border-left: 1px solid var(--hairline);
+    }
+    .idea-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-5); }
+    .idea:nth-child(odd) { border-top: 1px solid var(--hairline); }
+  }
+
+  /* ---- ≥56.25rem(900px):桌面报纸 ---- */
+  @media (min-width: 56.25rem) {
+    .sheet { --sheet-pad: 2.4rem; }
+    .focus { grid-template-columns: 1.2fr 1fr; }
+    .focus article { padding: var(--s-4) var(--s-5) var(--s-4) 0; }
+    .focus article + article { border-top: none; border-left: 1px solid var(--hairline); padding-left: var(--s-5); padding-right: 0; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; }
+    .cols > section { padding-right: var(--s-5); }
+    .rail { border-left: 1px solid var(--hairline); padding-left: var(--s-5); }
+    main[data-filter] .cols { grid-template-columns: 1fr; }
+    main[data-filter] .cols > section { padding-right: 0; }
+    main[data-filter] .rail { border-left: none; padding-left: 0; }
+    .idea-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+    .idea { border-top: none; padding: var(--s-1) var(--s-4) var(--s-2); }
+    .idea:first-child { padding-left: 0; }
+    .idea + .idea { border-left: 1px solid var(--hairline); }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<script>
+/* 主题初始化:尽早执行避免闪烁。localStorage 记忆,默认跟随系统 */
+(function () {
+  try {
+    var t = localStorage.getItem('radar-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div class="utility">
+      <span class="vol-line">VOL.010 · 2026年8月4日 · 星期二</span>
+      <nav class="u-nav" aria-label="站点">
+        <a class="u-btn" href="../archive.html">往期</a>
+        <button class="u-btn" id="theme-toggle" type="button" aria-label="切换深浅色">深色</button>
+      </nav>
+    </div>
+    <h1><a href="../index.html">音乐科技雷达</a></h1>
+    <p class="mast-sub">数字音乐智能处理 · 学术前沿 × 开源工具 × 行业动态</p>
+    <p class="mast-counts">收录 13 条 · 选题 4 个 · 每日 07:00 出版</p>
+    <canvas id="wave" aria-hidden="true"></canvas>
+    <div class="wenwu"></div>
+    <div class="wenwu-thin"></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="板块分栏">
+    <button class="tab" type="button" role="tab" data-sec="all" aria-selected="true">全部</button>
+    <button class="tab" type="button" role="tab" data-sec="papers" aria-selected="false">学术</button>
+    <button class="tab" type="button" role="tab" data-sec="oss" aria-selected="false">开源</button>
+    <button class="tab" type="button" role="tab" data-sec="industry" aria-selected="false">行业</button>
+    <button class="tab" type="button" role="tab" data-sec="ideas" aria-selected="false">选题</button>
+  </nav>
+
+  <main id="main">
+    <!-- ==================== 本报头条 ==================== -->
+    <section class="focus" data-block="focus" aria-label="本报头条">
+    <article>
+      <div class="meta"><span class="hot">本报头条</span><span class="tag">音乐生成</span><span class="src-part">arXiv · cs.SD · 08-03</span></div>
+      <h3><a href="https://arxiv.org/abs/2608.01920" target="_blank" rel="noopener">P-MUSE：可选MIDI提示的统一器乐音乐合成与编辑模型</a></h3>
+      <p class="orig">P-MUSE: Prompt-MIDI-Optional Model for Unified Instrumental Music Synthesis and Editing</p>
+      <p class="body">P-MUSE 提出了一种提示-MIDI-可选模型，既能仅凭参考音频进行器乐音色克隆与生成，也能在提供对齐 MIDI 时实现更精细的音符级编辑。</p>
+      <p class="why"><b>为什么值得看:</b>它把「只能听小样生成」和「按谱面精修」两条路径统一到一个框架里，对 AI 辅助作曲和编曲研究非常有启发。</p>
+    </article>
+    <article>
+      <div class="meta"><span class="hot">行业要闻</span><span class="tag">版权诉讼</span><span class="src-part">MusicTech · 08-03</span></div>
+      <h3><a href="https://musictech.com/news/industry/suno-copyright-infringement-germany" target="_blank" rel="noopener">德国法院裁定 Suno AI 训练侵权，GEMA 赢得关键版权诉讼</a></h3>
+      <p class="orig">German court says Suno’s AI training infringed copyright in landmark ruling</p>
+      <p class="body">德国慕尼黑法院判定 Suno 在模型训练中使用受版权保护的音乐作品构成侵权，并驳回了合理使用的辩护。</p>
+      <p class="why"><b>为什么值得看:</b>这是欧洲首例针对 AI 音乐生成公司的版权裁决，可能直接影响未来 AI 音乐训练数据的授权与合规模式。</p>
+    </article>
+    </section>
+
+    <div class="cols">
+      <!-- ==================== 学术前沿 ==================== -->
+      <section data-block="papers" aria-label="学术前沿">
+        <div class="sec-head">
+          <h2>学术前沿</h2><span class="en">Papers</span><span class="rule"></span>
+        </div>
+        <div class="paper-grid">
+
+        <article>
+          <div class="meta"><span class="tag">音乐×视觉/交互艺术</span><span class="src-part">arXiv · cs.HC · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.02219" target="_blank" rel="noopener">Sounding Canvas：把画作变成可触摸的多模态声音装置</a></h3>
+          <p class="orig">Sounding Canvas: Embedding Algorithms in Networked, Sensorial Sound Art</p>
+          <p class="why">Sounding Canvas 在画布中嵌入电容传感器、实时决策模型和网络通信，让观众的触摸触发来自画面本身的沉浸式空间化音效。<b>它把算法「藏」进艺术品内部，是音乐科技、交互设计与声音艺术交叉的典型样本。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音频修复</span><span class="src-part">arXiv · cs.SD · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01972" target="_blank" rel="noopener">LOUDAR：用潜在空间优化与扩散先验修复退化音乐</a></h3>
+          <p class="orig">Music Restoration via Latent Operator Optimization and Diffusion Model Priors</p>
+          <p class="why">LOUDAR 把音乐修复当成「未知失真下的反问题」，无需成对训练数据或预先知道失真类型即可恢复干净音频。<b>它摆脱了传统方法对特定失真的依赖，对老唱片、低质量录音和未知损坏的修复都很有想象空间。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">评测/音乐教育</span><span class="src-part">arXiv · cs.AI · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01783" target="_blank" rel="noopener">用 GPT-4o-mini 自动批改和声与曲式分析题</a></h3>
+          <p class="orig">Comparative Validation of GPT-4o-mini and Teacher Mean Scores for Automated Scoring of Music Analysis Responses: Single-Pass Deployment, Repeatability, and Strategy-Specific Bias</p>
+          <p class="why">研究用 300 份大学级别的音乐分析答题，比较 GPT-4o-mini 与教师平均分的评分一致性。<b>它为大规模音乐素养评测提供了自动化参考，也让我们看到大模型在音乐专业知识评估上的边界。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">鼓转录/源分离</span><span class="src-part">arXiv · cs.SD · 08-02</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01093" target="_blank" rel="noopener">Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成</a></h3>
+          <p class="orig">Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion</p>
+          <p class="why">该工作把鼓转录从「直接识别」改成「先分离五种鼓 stem，再检测事件」的两步框架。<b>它同时输出可编辑的分轨和符号事件，直接服务于后期混音、采样和智能编曲。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音乐×VR/交互艺术</span><span class="src-part">arXiv · cs.HC · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01688" target="_blank" rel="noopener">Beyond Score-Based Gamification：为颈椎康复设计时空音乐化 VR 体验</a></h3>
+          <p class="orig">Beyond One-Size-Fits-All: Personalized and Culturally Adaptive Emotional TTS via Interactive Optimization of Individual Emotion Perception Spaces</p>
+          <p class="why">该研究为慢性颈痛康复设计了一套不依赖分数、而以时空音乐体验驱动的 VR 系统。<b>它把枯燥的治疗动作转化为具有情感支持的沉浸式音乐互动，对音乐治疗和运动游戏化都有参考价值。</b></p>
+        </article>
+
+        </div>
+      </section>
+
+      <!-- ==================== 右栏:开源 + 行业 ==================== -->
+      <div class="rail">
+        <section data-block="oss" aria-label="开源工具">
+          <div class="sec-head">
+            <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐生成</span><span class="src-part">Hugging Face · 0★</span></div>
+          <h3><a href="https://huggingface.co/maolandaw/ACE-Step-1.5-burn" target="_blank" rel="noopener">ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face</a></h3>
+          <p class="why">maolandaw 上传了 ACE-Step 1.5 的 burn 版本检查点，面向开放的音乐生成研究。<b>ACE-Step 是近期开源社区中备受关注的端到端音乐生成模型，适合想在本地跑通完整作曲流程的同学。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐生成/浏览器推理</span><span class="src-part">Hugging Face · 0★</span></div>
+          <h3><a href="https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU" target="_blank" rel="noopener">ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现</a></h3>
+          <p class="why">这个仓库把 ACE-Step v1.5 XL Turbo 转换成了 ONNX 格式并支持 WebGPU，能在浏览器里本地跑音乐生成。<b>它降低了音乐生成模型的部署门槛，让前端和交互艺术项目可以直接集成。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音效/音乐生成</span><span class="src-part">Hugging Face · 27★</span></div>
+          <h3><a href="https://huggingface.co/stabilityai/stable-audio-3-optimized" target="_blank" rel="noopener">Stability AI 发布 Stable Audio 3 优化版本</a></h3>
+          <p class="why">stabilityai 放出了 Stable Audio 3 的优化版检查点，适合生成音乐与音效。<b>它代表了开源社区在高质量音频生成模型上的持续迭代，值得关注其架构改进和许可条款。</b></p>
+        </div>
+        </section>
+
+        <section data-block="industry" aria-label="行业动态">
+          <div class="sec-head">
+            <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">行业政策</span><span class="src-part">EDM.com · via Google News · 08-04</span></div>
+          <h3><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE1ha1Y0Qi1NZGhTZWdGa2hKa0V4UmdnZS1QbjhNaEc3X0Q0dFVwRFJ2RndMTjJhanhyXzFsQzJIVFRkS18wMWNOZzBTWElfeTBuMlFuWElWNjFlUXFoNm5KTnZ0Q1pVY004M3Y0VVM4VGg1ZERzMUo4eW1n?oc=5&amp;hl=en-US&amp;gl=US&amp;ceid=US%3Aen" target="_blank" rel="noopener">IFPI 收紧官方榜单规则：无授权 AI 音乐将更难上榜</a></h3>
+          <p class="why">国际唱片业协会 IFPI 宣布在旗下多个关键国际榜单中立即实施更严格的 AI 音乐标识与资格审核。<b>这意味着大规模涌入流媒体的 AI 生成曲目将受到更直接的榜单监管，影响流量分配和产业统计。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐硬件/交互界面</span><span class="src-part">cdm.link · 08-03</span></div>
+          <h3><a href="https://cdm.link/push-hack-very-unauthorized-access-to-push-3s-display-files-midi-and-more" target="_blank" rel="noopener">Push Hack 让 Ableton Push 3 屏幕、文件与 MIDI 全面开放</a></h3>
+          <p class="why">第三方开发者 Federico Pepe 发布了非官方的 Push Hack，可完整接管 Ableton Push 3 的显示屏、存储和 MIDI。<b>它把这款硬件从 Live 专属控制器变成了通用音乐交互平台，对 DIY 乐器和 NIME 研究很有启发。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">版权/政策</span><span class="src-part">조선일보 · via Google News · 08-04</span></div>
+          <h3><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQSGVKTFNWLUhWbXNwMEZHd2dpZXlHalBOODVKbm83ZFBZX1JLdkdaRzBnRUh0TWpZS29qN0JuWktpMk03czBtaUZzVjM0Vnk5V3FmZ2c4bjRCT3dsVEpRZ1lZUFNhYllrek1zRnFIVUpCUzFxeVVIYjlrRzBKdzN5QU9ESFh6ZVh3cjNacA?oc=5&amp;hl=en-US&amp;gl=US&amp;ceid=US%3Aen" target="_blank" rel="noopener">韩国允许在人类参与下为 AI 音乐登记版权</a></h3>
+          <p class="why">韩国著作权委员会发布指南，明确在人类创造性贡献足够的前提下，AI 辅助创作的音乐可以申请版权保护。<b>这为 AI 音乐产业的合规路径提供了亚洲首个较明确的官方指引。</b></p>
+        </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ==================== 选题灵感 ==================== -->
+    <section class="ideas" data-block="ideas" aria-label="选题灵感">
+      <div class="ideas-rule-thick"></div>
+      <div class="ideas-rule-thin"></div>
+      <div class="sec-head">
+        <h2>选题灵感</h2><span class="en">Project Ideas</span>
+        <span class="rule"></span><span class="note">基于近期各期积累 · 按难度从低到高</span>
+      </div>
+      <div class="idea-grid">
+
+      <article class="idea">
+        <div class="diff"><span>▮▯▯ 入门</span><span class="kind">工具</span></div>
+        <h3>和声/曲式 AI 助教网页</h3>
+        <p class="body">做一个小工具：上传学生的和声或曲式分析文字答案，按教师评分细则自动输出四个维度得分，并用不同颜色标出 AI 认为可疑的错误点；最终可导出一份「AI 评分 vs 教师均分」偏差表。第一步：选一道本学期做过的和声/曲式题，准备好参考答案与 1-4 维度的评分细则，用 GPT-4o-mini 对同一答案连续评分 5 次，记录它在哪些子项上最不稳定。需要：Python/JS 基础 · GPT-4o-mini API · 和声/曲式知识 · 基础统计。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2608.01783" target="_blank" rel="noopener">用 GPT-4o-mini 自动批改和声与曲式分析题</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">交互作品</span></div>
+        <h3>可触摸画布的空间声景网页</h3>
+        <p class="body">做一张网页版「会发声的画」：上传一幅画作，点击或触摸画面不同区域会触发对应声源，并通过 Web Audio API 的 PannerNode 让声音听起来从画面相应位置发出。第一步：选一幅自己的画或一张无版权图片，用 HTML Canvas 或 &lt;map&gt; 划定 4-6 个触摸区，为每个区准备一段短音效或乐器 loop，写 50 行 JS 实现位置声像与触发逻辑。需要：HTML/CSS/JS · Web Audio API · 基础声音编辑 · 空间音频概念。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2608.02219" target="_blank" rel="noopener">Sounding Canvas：把画作变成可触摸的多模态声音装置</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
+        <h3>浏览器本地文本到音乐生成器</h3>
+        <p class="body">基于 ACE-Step v1.5 XL Turbo 的 ONNX+WebGPU 实现，做一个单页应用：用户在输入框写提示词，模型在浏览器本地推理生成音乐并直接播放，无需后端服务器。第一步：打开 Hugging Face 上的 ACE-Step ONNX+WebGPU 仓库，用 Chrome/Edge（支持 WebGPU）跑通示例，确认能本地生成 5-10 秒音频；然后把输入框、生成按钮和 audio 标签包成一个可分享页面。需要：JavaScript · ONNX Runtime / WebGPU · Hugging Face 模型加载 · 基础音频播放。</p>
+        <p class="uses"><b>基于:</b><a href="https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU" target="_blank" rel="noopener">ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现</a> · <a href="https://huggingface.co/maolandaw/ACE-Step-1.5-burn" target="_blank" rel="noopener">ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▮ 硬核</span><span class="kind">研究</span></div>
+        <h3>鼓组分离-检测一体化评测工具</h3>
+        <p class="body">复现 Separate-and-Detect 模型，对 5-10 首不同风格歌曲同时输出 5 条鼓 stem 与对应 MIDI 鼓谱，再用 mir_eval 和 audio_eval 计算 onset F1、SDR 等指标，最终生成一份可对比表格与可视化报告，可扩展为 ISMIR/ICASSP 的 demo 或短文。第一步：找到论文主页或 arXiv 附带的代码/数据集链接，跑通官方 demo；如果没有本地 GPU，先在云端用预训练权重对 1 首歌推理，确认能拿到 kick/snare/hat/tom/cymbal 分轨和 MIDI。需要：Python · 鼓转录/源分离基础 · mir_eval · GPU 或云端算力 · 实验设计与统计。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2608.01093" target="_blank" rel="noopener">Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成</a> · <a href="https://github.com/shwj114514/audio_eval" target="_blank" rel="noopener">audio_eval：可组合的开源音频生成与重建评测工具箱</a> <a class="volref" href="../issues/vol-006.html">VOL.006</a></p>
+      </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按“数字音乐智能处理”相关度筛选,宁缺毋滥</span><br>
+    <span>音乐科技雷达 · 第 010 期 · 2026年8月4日 · 每日 07:00 出版 · <a href="../archive.html" style="border-bottom:1px solid var(--hairline)">往期回顾</a></span>
+  </footer>
+</div>
+
+<script type="application/json" id="radar-issue">
+{"vol": 10, "pub": "2026-08-04", "items": [{"date": "2026-08-03", "sec": "papers", "tag": "音乐生成", "title": "P-MUSE：可选MIDI提示的统一器乐音乐合成与编辑模型", "url": "https://arxiv.org/abs/2608.01920", "src": "arXiv · cs.SD", "orig": "P-MUSE: Prompt-MIDI-Optional Model for Unified Instrumental Music Synthesis and Editing", "why": "P-MUSE 提出了一种提示-MIDI-可选模型，既能仅凭参考音频进行器乐音色克隆与生成，也能在提供对齐 MIDI 时实现更精细的音符级编辑。它把「只能听小样生成」和「按谱面精修」两条路径统一到一个框架里，对 AI 辅助作曲和编曲研究非常有启发。", "hot": "本报头条", "detail": "【这是什么】\nP-MUSE 是一个把 MIDI 和音频提示结合起来的器乐音乐生成模型。你可以给它一段目标乐器的演奏录音作为音色提示，也可以再附上一份 MIDI 文件；模型会把它渲染成完整的音乐片段。如果没有 MIDI，它就靠听觉模仿来把握旋律与节奏；如果有 MIDI，它还能做音符级编辑。\n【为什么值得关注】\n以前这类系统要么只能「听音生成」，可控性差；要么必须严格依赖配对的 MIDI 数据，准备工作量大。P-MUSE 让两种输入都可选，相当于给创作者提供了一个能 sketch 也能精修的 AI 乐器。对符号音乐与音频融合感兴趣的同学，可以直接看到它如何把离散音符和连续音色捏合在一起。\n【怎么入手】\n论文已经挂在 arXiv，数据集和模型细节在正文中。建议先读摘要与方法部分，再试着用它理解 MIDI-Optional 的训练策略，并思考能不能套用到自己的编曲工具上。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "音乐×视觉/交互艺术", "title": "Sounding Canvas：把画作变成可触摸的多模态声音装置", "url": "https://arxiv.org/abs/2608.02219", "src": "arXiv · cs.HC", "orig": "Sounding Canvas: Embedding Algorithms in Networked, Sensorial Sound Art", "why": "Sounding Canvas 在画布中嵌入电容传感器、实时决策模型和网络通信，让观众的触摸触发来自画面本身的沉浸式空间化音效。它把算法「藏」进艺术品内部，是音乐科技、交互设计与声音艺术交叉的典型样本。", "detail": "【这是什么】\n研究者做了一块能「听」的画布。观众伸手触碰画面不同位置时，隐藏在画布背后的传感器会捕捉触摸，实时生成并定位空间化音效，听起来就像声音真的从画里发出来一样。系统还集成了联网功能，让多个画布或远程参与者可以协同发声。\n【为什么值得关注】\n这个项目把传感、生成和网络塞进了传统绘画的物理载体，拓展了声音装置的创作语法。对于学习数字音乐智能处理的同学来说，它展示了如何把「可见」的视觉元素转译成「可听」的声场体验，也提示了博物馆、舞台和公共空间里的新交互可能。\n【怎么入手】\n论文给出了系统架构、离线视觉到声音的转译模型，以及硬件部署经验。你可以重点关注它如何把触摸位置映射到声源位置，并尝试用同样的思路改造一幅自己的画作或一个小型装置。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "音频修复", "title": "LOUDAR：用潜在空间优化与扩散先验修复退化音乐", "url": "https://arxiv.org/abs/2608.01972", "src": "arXiv · cs.SD", "orig": "Music Restoration via Latent Operator Optimization and Diffusion Model Priors", "why": "LOUDAR 把音乐修复当成「未知失真下的反问题」，无需成对训练数据或预先知道失真类型即可恢复干净音频。它摆脱了传统方法对特定失真的依赖，对老唱片、低质量录音和未知损坏的修复都很有想象空间。", "detail": "【这是什么】\n音乐修复通常要假设你知道录音是怎么变坏的，比如是磁带饱和、压缩失真还是噪声。LOUDAR 不一样：它先在潜空间里推断造成退化的「算子」，再用扩散模型的先验知识把声音补回来。就像一位修图师先猜照片经历了哪种模糊，再动手把它修清晰。\n【为什么值得关注】\n实际收藏的大量音乐录音，退化原因往往不明或混合多种问题。LOUDAR 提出的通用框架让模型面对未知损坏时也能「见招拆招」，这对数字档案馆、母带修复和音乐考古都是潜在利器。\n【怎么入手】\n论文在 arXiv 上已公开。可以从实验部分看它对哪些退化类型最有效，再想想能不能把它和已有的音频去噪、去混响工具串起来，做一条自动化的老录音修复管线。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "评测/音乐教育", "title": "用 GPT-4o-mini 自动批改和声与曲式分析题", "url": "https://arxiv.org/abs/2608.01783", "src": "arXiv · cs.AI", "orig": "Comparative Validation of GPT-4o-mini and Teacher Mean Scores for Automated Scoring of Music Analysis Responses: Single-Pass Deployment, Repeatability, and Strategy-Specific Bias", "why": "研究用 300 份大学级别的音乐分析答题，比较 GPT-4o-mini 与教师平均分的评分一致性。它为大规模音乐素养评测提供了自动化参考，也让我们看到大模型在音乐专业知识评估上的边界。", "detail": "【这是什么】\n和声与曲式分析题通常需要人工逐句批改，成本高且主观性强。这项研究把 GPT-4o-mini 当成自动阅卷员，按照和声、曲式等四个维度给 300 份学生答卷打分，并与多位老师的平均分对照。\n【为什么值得关注】\n它不只是又一个用大模型改作文的例子，而是把关注点放到音乐专业知识的结构化评估上。结果表明模型在部分维度上重复性不错，但也存在策略性偏差，这对未来设计 AI 辅助音乐教学系统很有借鉴。\n【怎么入手】\n论文附带了评分细则和实验分析。建议对照自己的乐理作业，看看 GPT 的失误集中在哪类和弦或曲式判断上，再思考如何设计更鲁棒的人机混合评分流程。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-02", "sec": "papers", "tag": "鼓转录/源分离", "title": "Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成", "url": "https://arxiv.org/abs/2608.01093", "src": "arXiv · cs.SD", "orig": "Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion", "why": "该工作把鼓转录从「直接识别」改成「先分离五种鼓 stem，再检测事件」的两步框架。它同时输出可编辑的分轨和符号事件，直接服务于后期混音、采样和智能编曲。", "detail": "【这是什么】\n自动鼓转录一般是直接从混音里听出 kick、snare 等打击事件。这篇文章则先让模型把鼓组拆成五条独立音轨，再在每条音轨上检测音符 onset。这样你既能拿到鼓谱，也能拿到可单独拖进 DAW 的鼓 stem。\n【为什么值得关注】\n对于做节拍分析、智能伴奏或自动混音的同学来说，这种分离-检测思路把「听到什么」和「能编辑什么」连在了一起。它让鼓转录不再只是输出标签，而是直接产生可用的制作素材。\n【怎么入手】\n论文模型基于潜扩散，代码和数据集可以关注作者主页或 arXiv 附带的链接。建议先跑通官方 demo，对比它和自己常用的鼓点识别工具在复杂编曲里的表现。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "音乐×VR/交互艺术", "title": "Beyond Score-Based Gamification：为颈椎康复设计时空音乐化 VR 体验", "url": "https://arxiv.org/abs/2608.01688", "src": "arXiv · cs.HC", "orig": "Beyond One-Size-Fits-All: Personalized and Culturally Adaptive Emotional TTS via Interactive Optimization of Individual Emotion Perception Spaces", "why": "该研究为慢性颈痛康复设计了一套不依赖分数、而以时空音乐体验驱动的 VR 系统。它把枯燥的治疗动作转化为具有情感支持的沉浸式音乐互动，对音乐治疗和运动游戏化都有参考价值。", "detail": "【这是什么】\n慢性颈痛患者常因害怕动作而中断康复。研究者用 VR 把颈部运动包装成一段随身体动作展开的音乐旅程：抬头、转头、侧屈都会触发对应的音符、和声或空间声像变化。重点不是打高分，而是让身体动作本身产生音乐表达。\n【为什么值得关注】\n这项工作跳出了「积分排行榜」的常规游戏化思路，展示了音乐如何成为康复动机的内在驱动。它也为设计音乐驱动的身体交互界面提供了新的案例。\n【怎么入手】\n论文详细描述了体验设计、音乐映射机制和用户反馈。可以重点看它如何把颈部活动范围映射到音高和节奏，再思考能否把类似逻辑用在舞蹈、手势音乐或其他体感交互作品中。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "oss", "tag": "音乐生成", "title": "ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face", "url": "https://huggingface.co/maolandaw/ACE-Step-1.5-burn", "src": "Hugging Face · 0★", "why": "maolandaw 上传了 ACE-Step 1.5 的 burn 版本检查点，面向开放的音乐生成研究。ACE-Step 是近期开源社区中备受关注的端到端音乐生成模型，适合想在本地跑通完整作曲流程的同学。", "detail": "【这是什么】\nACE-Step 是一款开源的音乐生成模型，能根据文本或音频提示生成包含旋律、和声与配器的音乐片段。这个仓库放出了 1.5 版本的预训练权重，方便研究者直接下载推理或做二次微调。\n【为什么值得关注】\n相比很多闭源音乐生成服务，开源检查点让你可以看到模型结构、控制生成过程，也更容易做学术研究或开发插件。1.5 版本通常在音质和可控性上有进一步提升。\n【怎么入手】\n打开 Hugging Face 仓库页面，查看模型卡里的许可证和示例代码。确保你有足够的显存或能用提供的量化版本，然后试着用一段文字描述生成一段短音乐。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "oss", "tag": "音乐生成/浏览器推理", "title": "ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现", "url": "https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU", "src": "Hugging Face · 0★", "why": "这个仓库把 ACE-Step v1.5 XL Turbo 转换成了 ONNX 格式并支持 WebGPU，能在浏览器里本地跑音乐生成。它降低了音乐生成模型的部署门槛，让前端和交互艺术项目可以直接集成。", "detail": "【这是什么】\nONNX 是一种让机器学习模型跨平台运行的格式，WebGPU 则让浏览器能调用显卡加速。把两者结合起来，意味着你不用安装 Python 环境，在网页里就能让模型生成音乐。\n【为什么值得关注】\n对于做网页音乐应用、在线乐器或交互装置的同学，这是一条「开箱即用」的路径。模型留在用户本地，也避免了把音频素材上传到云端。\n【怎么入手】\n仓库应该有示例网页或加载脚本。先用支持的浏览器打开 demo，看能否成功生成片段。然后再尝试把生成结果接入 Web Audio API，做成可即时试听的小工具。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-02", "sec": "oss", "tag": "音效/音乐生成", "title": "Stability AI 发布 Stable Audio 3 优化版本", "url": "https://huggingface.co/stabilityai/stable-audio-3-optimized", "src": "Hugging Face · 27★", "why": "stabilityai 放出了 Stable Audio 3 的优化版检查点，适合生成音乐与音效。它代表了开源社区在高质量音频生成模型上的持续迭代，值得关注其架构改进和许可条款。", "detail": "【这是什么】\nStable Audio 3 是 Stability AI 推出的音频生成模型，可以根据文本提示产出音乐或环境声。这个优化版本在推理速度和资源占用上做了改进，更便于在个人设备或服务器上部署。\n【为什么值得关注】\n对研究 AI 音乐生成的同学来说，跟踪官方优化版的更新能帮助你了解当前开源模型的工程天花板。同时，模型的许可证和可商用范围也直接影响后续项目选择。\n【怎么入手】\n访问 Hugging Face 模型卡，阅读使用说明和示例 notebook。可以先从生成 5-10 秒的短片段开始，听一听它在旋律连贯性和音色丰富度上的表现，再决定是否用于课程项目。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "industry", "tag": "版权诉讼", "title": "德国法院裁定 Suno AI 训练侵权，GEMA 赢得关键版权诉讼", "url": "https://musictech.com/news/industry/suno-copyright-infringement-germany", "src": "MusicTech", "orig": "German court says Suno’s AI training infringed copyright in landmark ruling", "why": "德国慕尼黑法院判定 Suno 在模型训练中使用受版权保护的音乐作品构成侵权，并驳回了合理使用的辩护。这是欧洲首例针对 AI 音乐生成公司的版权裁决，可能直接影响未来 AI 音乐训练数据的授权与合规模式。", "hot": "行业要闻", "detail": "【这是什么】\n德国音乐版权协会 GEMA 起诉 AI 音乐平台 Suno，认为其未经许可用大量版权歌曲训练模型。法院最终支持了 GEMA，认定这种训练方式侵犯版权，且不属于合理使用。Suno 可能面临高额赔偿，并需要调整其数据来源。\n【为什么值得关注】\n对音乐科技专业学生而言，这起判例把「AI 训练是否需要授权」这个理论问题变成了现实法律风险。它也可能改变生成式音乐平台的商业模式，让版权许可和数据透明成为行业焦点。\n【怎么入手】\n阅读 MusicTech 的判决报道和法院摘要，关注 Suno 是否会上诉以及美国同类案件的进展。可以结合自己的研究，思考如何在模型训练中合法使用音乐数据，或探索授权数据集与合成数据方案。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-04", "sec": "industry", "tag": "行业政策", "title": "IFPI 收紧官方榜单规则：无授权 AI 音乐将更难上榜", "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1ha1Y0Qi1NZGhTZWdGa2hKa0V4UmdnZS1QbjhNaEc3X0Q0dFVwRFJ2RndMTjJhanhyXzFsQzJIVFRkS18wMWNOZzBTWElfeTBuMlFuWElWNjFlUXFoNm5KTnZ0Q1pVY004M3Y0VVM4VGg1ZERzMUo4eW1n?oc=5&hl=en-US&gl=US&ceid=US%3Aen", "src": "EDM.com · via Google News", "why": "国际唱片业协会 IFPI 宣布在旗下多个关键国际榜单中立即实施更严格的 AI 音乐标识与资格审核。这意味着大规模涌入流媒体的 AI 生成曲目将受到更直接的榜单监管，影响流量分配和产业统计。", "detail": "【这是什么】\nIFPI 是全球唱片行业的代表性组织。面对 AI 音乐在流媒体平台的爆发式增长，IFPI 更新了官方榜单规则，要求对 AI 生成或深度参与的作品进行标注，并可能限制未获授权训练数据生成的曲目进入榜单。\n【为什么值得关注】\n榜单直接影响版权收入、曝光权和行业话语权。新规可能促使流媒体平台、AI 公司和唱片公司之间重新谈判数据使用与收益分配，也关系到未来人类创作者与 AI 生成内容的公平竞争。\n【怎么入手】\n查看 IFPI 官方公告和 EDM.com 的报道，梳理新规则中关于 AI 标注、人类贡献比例和训练数据授权的具体条款。可以把它和韩国、德国近期政策放在一起做比较分析。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "industry", "tag": "音乐硬件/交互界面", "title": "Push Hack 让 Ableton Push 3 屏幕、文件与 MIDI 全面开放", "url": "https://cdm.link/push-hack-very-unauthorized-access-to-push-3s-display-files-midi-and-more", "src": "cdm.link", "why": "第三方开发者 Federico Pepe 发布了非官方的 Push Hack，可完整接管 Ableton Push 3 的显示屏、存储和 MIDI。它把这款硬件从 Live 专属控制器变成了通用音乐交互平台，对 DIY 乐器和 NIME 研究很有启发。", "detail": "【这是什么】\nAbleton Push 3 原本是为 Ableton Live 设计的控制器，屏幕和内部系统对外封闭。Push Hack 通过非官方手段破解了这套系统，让用户可以在 Push 的屏幕上运行自定义界面、读写文件、自由收发 MIDI。相当于给这台硬件装上了开放的 SDK。\n【为什么值得关注】\n对音乐交互设计来说，一台带有彩色显示屏、触控垫和丰富 MIDI 的硬件突然被「解放」，意味着可以把它改造成独立采样器、可视化乐器或演出控制器。这大大降低了自定义 NIME 设备的门槛。\n【怎么入手】\n到 cdm.link 阅读详细报道和作者发布的仓库链接。如果你手边有 Push 3，可以先了解破解风险与保修影响，再从简单的 MIDI 路由和自定义显示界面入手实验。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-04", "sec": "industry", "tag": "版权/政策", "title": "韩国允许在人类参与下为 AI 音乐登记版权", "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQSGVKTFNWLUhWbXNwMEZHd2dpZXlHalBOODVKbm83ZFBZX1JLdkdaRzBnRUh0TWpZS29qN0JuWktpMk03czBtaUZzVjM0Vnk5V3FmZ2c4bjRCT3dsVEpRZ1lZUFNhYllrek1zRnFIVUpCUzFxeVVIYjlrRzBKdzN5QU9ESFh6ZVh3cjNacA?oc=5&hl=en-US&gl=US&ceid=US%3Aen", "src": "조선일보 · via Google News", "why": "韩国著作权委员会发布指南，明确在人类创造性贡献足够的前提下，AI 辅助创作的音乐可以申请版权保护。这为 AI 音乐产业的合规路径提供了亚洲首个较明确的官方指引。", "detail": "【这是什么】\n韩国官方表示，如果人类在歌词、旋律、编曲或整体结构上有实质性创作投入，AI 只是辅助工具，那么作品仍然可以获得版权登记。反过来，主要由 AI 自动生成、缺乏人类贡献的内容则可能不受保护。\n【为什么值得关注】\n全球各国都在摸索 AI 生成内容的版权边界，韩国的表态比单纯禁止或放任更具操作性。它为 AI 音乐创作者、平台和投资者提供了一个可参考的合规框架。\n【怎么入手】\n查找韩国著作权委员会的英文或中文指南原文，整理其认定「人类贡献」的具体标准。可以把它与美国版权局、欧盟的相关立场做成对照表，用于课堂讨论或论文写作。", "vol": 10, "pub": "2026-08-04"}], "ideas": [{"vol": 10, "level": "入门", "kind": "工具", "title": "和声/曲式 AI 助教网页", "body": "做一个小工具：上传学生的和声或曲式分析文字答案，按教师评分细则自动输出四个维度得分，并用不同颜色标出 AI 认为可疑的错误点；最终可导出一份「AI 评分 vs 教师均分」偏差表。第一步：选一道本学期做过的和声/曲式题，准备好参考答案与 1-4 维度的评分细则，用 GPT-4o-mini 对同一答案连续评分 5 次，记录它在哪些子项上最不稳定。需要：Python/JS 基础 · GPT-4o-mini API · 和声/曲式知识 · 基础统计。", "based_on": [{"url": "https://arxiv.org/abs/2608.01783", "title": "用 GPT-4o-mini 自动批改和声与曲式分析题"}]}, {"vol": 10, "level": "进阶", "kind": "交互作品", "title": "可触摸画布的空间声景网页", "body": "做一张网页版「会发声的画」：上传一幅画作，点击或触摸画面不同区域会触发对应声源，并通过 Web Audio API 的 PannerNode 让声音听起来从画面相应位置发出。第一步：选一幅自己的画或一张无版权图片，用 HTML Canvas 或 \u003cmap> 划定 4-6 个触摸区，为每个区准备一段短音效或乐器 loop，写 50 行 JS 实现位置声像与触发逻辑。需要：HTML/CSS/JS · Web Audio API · 基础声音编辑 · 空间音频概念。", "based_on": [{"url": "https://arxiv.org/abs/2608.02219", "title": "Sounding Canvas：把画作变成可触摸的多模态声音装置"}]}, {"vol": 10, "level": "进阶", "kind": "产品原型", "title": "浏览器本地文本到音乐生成器", "body": "基于 ACE-Step v1.5 XL Turbo 的 ONNX+WebGPU 实现，做一个单页应用：用户在输入框写提示词，模型在浏览器本地推理生成音乐并直接播放，无需后端服务器。第一步：打开 Hugging Face 上的 ACE-Step ONNX+WebGPU 仓库，用 Chrome/Edge（支持 WebGPU）跑通示例，确认能本地生成 5-10 秒音频；然后把输入框、生成按钮和 audio 标签包成一个可分享页面。需要：JavaScript · ONNX Runtime / WebGPU · Hugging Face 模型加载 · 基础音频播放。", "based_on": [{"url": "https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU", "title": "ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现"}, {"url": "https://huggingface.co/maolandaw/ACE-Step-1.5-burn", "title": "ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face"}]}, {"vol": 10, "level": "硬核", "kind": "研究", "title": "鼓组分离-检测一体化评测工具", "body": "复现 Separate-and-Detect 模型，对 5-10 首不同风格歌曲同时输出 5 条鼓 stem 与对应 MIDI 鼓谱，再用 mir_eval 和 audio_eval 计算 onset F1、SDR 等指标，最终生成一份可对比表格与可视化报告，可扩展为 ISMIR/ICASSP 的 demo 或短文。第一步：找到论文主页或 arXiv 附带的代码/数据集链接，跑通官方 demo；如果没有本地 GPU，先在云端用预训练权重对 1 首歌推理，确认能拿到 kick/snare/hat/tom/cymbal 分轨和 MIDI。需要：Python · 鼓转录/源分离基础 · mir_eval · GPU 或云端算力 · 实验设计与统计。", "based_on": [{"url": "https://arxiv.org/abs/2608.01093", "title": "Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成"}, {"vol": 6, "url": "https://github.com/shwj114514/audio_eval", "title": "audio_eval：可组合的开源音频生成与重建评测工具箱"}]}]}
+</script>
+<script>
+/* 主题切换:localStorage 记忆,默认跟随 prefers-color-scheme */
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function current() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function sync() { btn.textContent = current() === 'dark' ? '浅色' : '深色'; }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('radar-theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+<script>
+/* 吸顶 tab 分栏:显示/隐藏对应板块,「全部」顺序通读 */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var main = document.getElementById('main');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('[data-block]'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var sec = tab.getAttribute('data-sec');
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      blocks.forEach(function (el) {
+        el.hidden = sec !== 'all' && el.getAttribute('data-block') !== sec;
+      });
+      if (sec === 'all') { main.removeAttribute('data-filter'); }
+      else { main.setAttribute('data-filter', sec); }
+    });
+  });
+})();
+</script>
+<script>
+/* 报头静态“印刷”波形:确定性伪随机包络,不做动画 */
+(function () {
+  var c = document.getElementById('wave');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+
+  function bars() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var style = getComputedStyle(document.documentElement);
+    var color = style.getPropertyValue('--ink').trim();
+    var n = Math.floor(w / 4);
+    for (var i = 0; i < n; i++) {
+      var x = i / n;
+      var env = Math.sin(x * Math.PI) * (0.5 + 0.5 * Math.sin(x * 23 + 1.7) * Math.sin(x * 53 + 0.6));
+      var amp = Math.max(0.06, Math.abs(env)) * (h * 0.92);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.28 + 0.6 * Math.abs(env);
+      ctx.fillRect(i * 4, (h - amp) / 2, 1.6, amp);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  bars();
+  window.addEventListener('resize', bars);
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', bars);
+  }
+  new MutationObserver(bars).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+<script>
+/* 条目详情浮层:数据来自本期内嵌的 radar-issue JSON(仅当期 items+ideas) */
+(function () {
+  var raw = document.getElementById('radar-issue');
+  if (!raw) return;
+  var data;
+  try { data = JSON.parse(raw.textContent); } catch (e) { return; }
+  var items = data.items || [];
+  if (!items.length) return;
+
+  var byUrl = {};
+  items.forEach(function (it) { if (it.url && !byUrl[it.url]) byUrl[it.url] = it; });
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function metaHtml(it) {
+    return '<div class="meta">' +
+      (it.hot ? '<span class="hot">' + esc(it.hot) + '</span>' : '') +
+      '<span class="tag">' + esc(it.tag) + '</span>' +
+      '<span class="src-part">' + esc(it.src || '') + (it.date ? ' · ' + esc(it.date) : '') + '</span></div>';
+  }
+
+  function makeOverlay(label, inner) {
+    var ov = document.createElement('div');
+    ov.className = 'issue-overlay';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-label', label);
+    ov.innerHTML = '<div class="issue-sheet"><button class="issue-close" type="button" aria-label="关闭">✕</button>' + inner + '</div>';
+    function close() {
+      document.removeEventListener('keydown', onKey);
+      ov.remove();
+      document.body.style.overflow = '';
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    ov.querySelector('.issue-close').addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+    ov.querySelector('.issue-close').focus();
+    return ov;
+  }
+
+  function openDetail(it) {
+    var text = it.detail || it.why || '';
+    var paras = String(text).split(/\n+/).filter(Boolean).map(function (p) {
+      var m = p.match(/^【[^】]{1,12}】/);
+      if (m) return '<p><b>' + esc(m[0]) + '</b>' + esc(p.slice(m[0].length)) + '</p>';
+      return '<p>' + esc(p) + '</p>';
+    }).join('');
+    var inner = '<div class="iv-head"><div class="t">音乐科技雷达</div>' +
+      '<div class="m">条目详情 · VOL.' + pad(it.vol) + '</div></div>' +
+      metaHtml(it) +
+      '<h5 class="dv-title">' + esc(it.title) + '</h5>' +
+      (it.orig ? '<p class="orig" style="white-space:normal">' + esc(it.orig) + '</p>' : '') +
+      '<div class="dv-detail">' + paras + '</div>' +
+      '<p class="dv-link"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">阅读原文 ↗</a></p>';
+    makeOverlay('条目详情:' + it.title, inner);
+  }
+
+  /* 主版面条目 → 点击开详情(标题链接仍直达原文) */
+  document.querySelectorAll('.focus article, .paper-grid article, .rail-item').forEach(function (el) {
+    var a = el.querySelector('h3 a');
+    if (!a) return;
+    var it = byUrl[a.getAttribute('href')];
+    if (!it || !it.detail) return;
+    el.classList.add('has-detail');
+    var more = document.createElement('span');
+    more.className = 'more';
+    more.textContent = '详情 ▸';
+    (el.querySelector('.why') || el).appendChild(more);
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      openDetail(it);
+    });
+  });
+})();
+</script>
+</body>
+</html>

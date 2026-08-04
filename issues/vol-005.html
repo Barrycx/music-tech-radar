@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>音乐科技雷达 · 第 005 期</title>
+<style>
+  /* ============================================================
+     音乐科技雷达 · 每期页模板(redesign 2026-08)
+     genre: editorial · 报纸身份:白报纸 + 报头红 #c1301c + 宋体
+     字体 2 族:宋体(标题+正文)/ Georgia(仅英文原题)
+     字号 5 档:--fs-meta / --fs-body / --fs-title / --fs-focus / --fs-mast
+     ============================================================ */
+  :root {
+    /* 色:暖调中性 + 单一报头红 accent */
+    --desk: #dcdcd9;          /* 报纸下面的桌面 */
+    --paper: #fcfcfa;         /* 白报纸 */
+    --ink: #1a1a1a;           /* 油墨 */
+    --ink-soft: #454545;
+    --ink-faint: #7b7b78;
+    --hairline: #dbd9d4;
+    --red: #c1301c;           /* 报头红(品牌,不改) */
+    --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+
+    /* 字 */
+    --font-serif: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
+    --font-en: Georgia, "Times New Roman", serif;   /* 仅英文原题 */
+
+    /* 字号:全页仅此 5 档 */
+    --fs-meta: .8125rem;      /* 13px 元信息/页脚 */
+    --fs-body: 1.0625rem;     /* 17px 正文 */
+    --fs-title: 1.25rem;      /* 20px 条目标题 */
+    --fs-focus: clamp(1.375rem, 1.05rem + 1.6vw, 1.625rem);  /* 头条标题 22–26px */
+    --fs-mast: clamp(2.2rem, 8vw + .5rem, 3.4rem);           /* 报名 */
+
+    /* 间距(4pt 基) */
+    --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2.5rem;
+
+    --measure: 34rem;         /* 17px × 约 32 汉字 */
+    --sheet-pad: 1.25rem;
+    --z-sticky: 200;
+    --z-modal: 400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --desk: #121212;        /* 中性深灰,非纯黑 */
+      --paper: #1d1d1b;
+      --ink: #e6e5e1;
+      --ink-soft: #b3b2ad;
+      --ink-faint: #8a8984;
+      --hairline: #3a3a37;
+      --red: #e2604e;
+      --red-soft: #e2604e26;
+      --scrim: rgba(0, 0, 0, .66);
+    }
+  }
+  :root[data-theme="light"] {
+    --desk: #dcdcd9; --paper: #fcfcfa; --ink: #1a1a1a; --ink-soft: #454545;
+    --ink-faint: #7b7b78; --hairline: #dbd9d4; --red: #c1301c; --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+  }
+  :root[data-theme="dark"] {
+    --desk: #121212; --paper: #1d1d1b; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+    --ink-faint: #8a8984; --hairline: #3a3a37; --red: #e2604e; --red-soft: #e2604e26;
+    --scrim: rgba(0, 0, 0, .66);
+  }
+
+  html { overflow-x: clip; }
+  body {
+    overflow-x: clip;
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    padding: 0 0 var(--s-6);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 深浅切换只做过渡色,0.2s,无其他动画 */
+  body, .sheet, .tabs, .tab, .u-btn, .issue-sheet {
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  /* ---- 报纸纸张 ---- */
+  .sheet {
+    max-width: 70rem; margin: 0 auto;
+    background:
+      repeating-linear-gradient(2deg, transparent 0 6px, rgba(0, 0, 0, .006) 6px 7px),
+      var(--paper);
+    padding: var(--s-4) var(--sheet-pad) var(--s-6);
+  }
+
+  /* ---- 报头 ---- */
+  .utility {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: var(--s-3); margin-bottom: var(--s-2);
+  }
+  .vol-line {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .08em; font-variant-numeric: tabular-nums;
+  }
+  .u-nav { display: flex; gap: var(--s-2); }
+  .u-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; min-height: 44px; padding: 0 var(--s-3);
+    border: 1px solid var(--hairline); background: none; cursor: pointer;
+    font-family: inherit; font-size: var(--fs-meta); color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .u-btn:hover, .u-btn:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+
+  h1 {
+    font-size: var(--fs-mast);
+    font-weight: 900; letter-spacing: .12em; line-height: 1.15;
+    color: var(--red); text-align: center;
+    margin: var(--s-2) 0 0;
+  }
+  h1 a:hover, h1 a:focus-visible { color: var(--red); outline: none; }
+  .mast-sub {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-soft);
+    letter-spacing: .3em; margin: var(--s-2) 0 0;
+  }
+  .mast-counts {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums;
+    margin: var(--s-1) 0 0;
+  }
+  #wave { display: block; width: 100%; height: 26px; margin: var(--s-3) 0 var(--s-2); opacity: .85; }
+  /* 文武线 */
+  .wenwu { border-top: 3px solid var(--ink); margin-bottom: 2px; }
+  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+
+  /* ---- 吸顶分栏 tab ---- */
+  .tabs {
+    position: sticky; top: 0; z-index: var(--z-sticky);
+    display: flex;
+    margin: 0 calc(-1 * var(--sheet-pad)) var(--s-5);
+    padding: 0 var(--sheet-pad);
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tab {
+    flex: 1 1 auto;
+    min-height: 44px; padding: 0 var(--s-2);
+    font-family: inherit; font-size: var(--fs-body);
+    background: none; border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-soft); cursor: pointer; white-space: nowrap;
+  }
+  .tab:hover, .tab:focus-visible { color: var(--red); outline: none; }
+  .tab[aria-selected="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--red); }
+
+  [hidden] { display: none !important; }
+
+  /* ---- 栏头(标题反白) ---- */
+  .sec-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+  .sec-head h2 {
+    font-size: var(--fs-body); font-weight: 700; letter-spacing: .3em;
+    background: var(--ink); color: var(--paper);
+    padding: .05rem var(--s-3) .05rem var(--s-4);
+    margin: 0;
+  }
+  .sec-head .en {
+    font-size: var(--fs-meta); letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .sec-head .rule { flex: 1; border-top: 1px solid var(--hairline); }
+  .sec-head .note { font-size: var(--fs-meta); color: var(--ink-faint); }
+
+  /* ---- 本报头条 ---- */
+  .focus {
+    display: grid; grid-template-columns: 1fr;
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+    margin-bottom: var(--s-6);
+  }
+  .focus article { padding: var(--s-4) var(--s-2) var(--s-4) 0; }
+  .focus article + article { border-top: 1px solid var(--hairline); }
+  .focus h3 {
+    font-size: var(--fs-focus); font-weight: 900; line-height: 1.45;
+    margin: var(--s-2) 0; text-wrap: balance; letter-spacing: .02em;
+    overflow-wrap: anywhere;
+  }
+  .focus p.body { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-2); max-width: var(--measure); }
+
+  .meta {
+    display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); align-items: baseline;
+    font-size: var(--fs-meta); color: var(--ink-faint); font-variant-numeric: tabular-nums;
+    margin-bottom: var(--s-1);
+  }
+  .meta .src-part { letter-spacing: .06em; }
+  .tag { color: var(--ink-soft); }
+  .tag::before { content: "〔"; color: var(--ink-faint); }
+  .tag::after { content: "〕"; color: var(--ink-faint); }
+  .hot {
+    color: var(--paper); background: var(--red);
+    padding: .02rem .55rem; font-size: var(--fs-meta); letter-spacing: .18em;
+  }
+
+  /* ---- 学术/开源/行业 ---- */
+  .cols { display: block; }
+  main[data-filter] .cols { display: block; }
+
+  .paper-grid { display: grid; grid-template-columns: 1fr; }
+  .paper-grid article, .rail-item {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+  }
+  .paper-grid h3, .rail-item h3, .idea h3 {
+    font-size: var(--fs-title); font-weight: 700; line-height: 1.5;
+    margin: 0 0 var(--s-1); text-wrap: balance; overflow-wrap: anywhere;
+  }
+  h3 a:hover, h3 a:focus-visible { color: var(--red); outline: none; }
+  .orig {
+    font-family: var(--font-en);
+    font-size: var(--fs-meta); color: var(--ink-faint); font-style: italic;
+    margin: 0 0 var(--s-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .why { color: var(--ink-soft); text-align: justify; margin: 0; max-width: var(--measure); }
+  .why b { color: var(--ink); font-weight: 700; }
+
+  .rail section { margin-bottom: var(--s-6); }
+
+  /* ---- 选题灵感:尾版 ---- */
+  .ideas { margin-top: var(--s-6); }
+  .ideas-rule-thick { border-top: 2px solid var(--ink); margin-bottom: 2px; }
+  .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+  .idea-grid { display: grid; grid-template-columns: 1fr; }
+  .idea {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-2);
+  }
+  .idea .diff {
+    font-size: var(--fs-meta); letter-spacing: .12em; color: var(--red);
+    font-variant-numeric: tabular-nums;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .idea .diff .kind { color: var(--ink-faint); }
+  .idea h3 { margin: 0; }
+  .idea .body { color: var(--ink-soft); text-align: justify; margin: 0; flex: 1; max-width: var(--measure); }
+  .idea .uses, .idea .skills { font-size: var(--fs-meta); color: var(--ink-faint); line-height: 1.7; margin: 0; }
+  .idea .uses b, .idea .skills b { color: var(--ink-soft); font-weight: 700; }
+  .idea .uses a { border-bottom: 1px solid var(--hairline); }
+  .idea .uses a:hover, .idea .uses a:focus-visible { color: var(--red); border-bottom-color: var(--red); outline: none; }
+  .idea .uses a.volref { color: var(--red); border-bottom-color: var(--red); font-variant-numeric: tabular-nums; }
+
+  /* ---- 条目详情浮层 ---- */
+  .issue-overlay {
+    position: fixed; inset: 0; background: var(--scrim);
+    z-index: var(--z-modal); overflow-y: auto; padding: var(--s-6) var(--s-4);
+  }
+  .issue-sheet {
+    background: var(--paper); max-width: 44rem; margin: 0 auto;
+    padding: var(--s-5) var(--s-5) var(--s-6); position: relative;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+  }
+  .issue-close {
+    position: absolute; top: var(--s-2); right: var(--s-2);
+    font-family: inherit; font-size: var(--fs-body); line-height: 1;
+    background: none; border: 1px solid var(--hairline); color: var(--ink-soft);
+    width: 44px; height: 44px; cursor: pointer;
+  }
+  .issue-close:hover, .issue-close:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+  .iv-head { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: var(--s-2); margin-bottom: var(--s-4); }
+  .iv-head .t { font-size: var(--fs-title); font-weight: 900; color: var(--red); letter-spacing: .12em; }
+  .iv-head .m {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums; margin-top: var(--s-1);
+  }
+  .dv-title {
+    font-size: var(--fs-title); font-weight: 900; line-height: 1.5;
+    margin: var(--s-1) 0; text-wrap: balance; overflow-wrap: anywhere;
+  }
+  .dv-detail { margin-top: var(--s-3); }
+  .dv-detail p { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-3); }
+  .dv-detail b { color: var(--red); font-weight: 700; }
+  .dv-link { margin-top: var(--s-4); border-top: 1px solid var(--hairline); padding-top: var(--s-3); }
+  .dv-link a { color: var(--red); border-bottom: 1px solid var(--red); }
+
+  .has-detail { cursor: pointer; }
+  .more {
+    font-size: var(--fs-meta); color: var(--red); margin-left: var(--s-2); white-space: nowrap;
+  }
+
+  /* ---- 报尾 ---- */
+  footer {
+    margin-top: var(--s-6); border-top: 1px solid var(--ink); padding-top: var(--s-3);
+    font-size: var(--fs-meta); color: var(--ink-faint); text-align: center; line-height: 2;
+    font-variant-numeric: tabular-nums;
+  }
+  footer::before {
+    content: ""; display: block; border-top: 3px solid var(--ink);
+    margin: calc(-1 * var(--s-3)) 0 2px; transform: translateY(-3px);
+  }
+
+  /* ---- ≥40rem:平板,纸张浮起、双列 ---- */
+  @media (min-width: 40rem) {
+    body { padding: var(--s-6) var(--s-4) var(--s-6); }
+    .sheet {
+      --sheet-pad: 2rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 30px rgba(0, 0, 0, .16);
+    }
+    .paper-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-6); position: relative; }
+    .paper-grid::before {
+      content: ""; position: absolute; top: var(--s-2); bottom: var(--s-2); left: 50%;
+      border-left: 1px solid var(--hairline);
+    }
+    .idea-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-5); }
+    .idea:nth-child(odd) { border-top: 1px solid var(--hairline); }
+  }
+
+  /* ---- ≥56.25rem(900px):桌面报纸 ---- */
+  @media (min-width: 56.25rem) {
+    .sheet { --sheet-pad: 2.4rem; }
+    .focus { grid-template-columns: 1.2fr 1fr; }
+    .focus article { padding: var(--s-4) var(--s-5) var(--s-4) 0; }
+    .focus article + article { border-top: none; border-left: 1px solid var(--hairline); padding-left: var(--s-5); padding-right: 0; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; }
+    .cols > section { padding-right: var(--s-5); }
+    .rail { border-left: 1px solid var(--hairline); padding-left: var(--s-5); }
+    main[data-filter] .cols { grid-template-columns: 1fr; }
+    main[data-filter] .cols > section { padding-right: 0; }
+    main[data-filter] .rail { border-left: none; padding-left: 0; }
+    .idea-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+    .idea { border-top: none; padding: var(--s-1) var(--s-4) var(--s-2); }
+    .idea:first-child { padding-left: 0; }
+    .idea + .idea { border-left: 1px solid var(--hairline); }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<script>
+/* 主题初始化:尽早执行避免闪烁。localStorage 记忆,默认跟随系统 */
+(function () {
+  try {
+    var t = localStorage.getItem('radar-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div class="utility">
+      <span class="vol-line">VOL.005 · 2026年7月28日 · 星期二</span>
+      <nav class="u-nav" aria-label="站点">
+        <a class="u-btn" href="../archive.html">往期</a>
+        <button class="u-btn" id="theme-toggle" type="button" aria-label="切换深浅色">深色</button>
+      </nav>
+    </div>
+    <h1><a href="../index.html">音乐科技雷达</a></h1>
+    <p class="mast-sub">数字音乐智能处理 · 学术前沿 × 开源工具 × 行业动态</p>
+    <p class="mast-counts">收录 9 条 · 选题 4 个 · 每日 07:00 出版</p>
+    <canvas id="wave" aria-hidden="true"></canvas>
+    <div class="wenwu"></div>
+    <div class="wenwu-thin"></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="板块分栏">
+    <button class="tab" type="button" role="tab" data-sec="all" aria-selected="true">全部</button>
+    <button class="tab" type="button" role="tab" data-sec="papers" aria-selected="false">学术</button>
+    <button class="tab" type="button" role="tab" data-sec="oss" aria-selected="false">开源</button>
+    <button class="tab" type="button" role="tab" data-sec="industry" aria-selected="false">行业</button>
+    <button class="tab" type="button" role="tab" data-sec="ideas" aria-selected="false">选题</button>
+  </nav>
+
+  <main id="main">
+    <!-- ==================== 本报头条 ==================== -->
+    <section class="focus" data-block="focus" aria-label="本报头条">
+    <article>
+      <div class="meta"><span class="hot">本报头条</span><span class="tag">音乐生成</span><span class="src-part">arXiv · cs.SD · 07-12</span></div>
+      <h3><a href="http://arxiv.org/abs/2607.10537v1" target="_blank" rel="noopener">基于动作预训练与对比对齐的舞蹈转音乐生成</a></h3>
+      <p class="orig">Dance to Music Generation leveraging Pre-training with Unpaired data and Contrastive Alignment</p>
+      <p class="body">提出一种无需成对舞乐数据即可根据人体关节点生成伴奏音乐的方法，通过预训练加对比学习把动作节奏与音乐节奏对齐。</p>
+      <p class="why"><b>为什么值得看:</b>该方法让编舞辅助和实时伴奏更可行，也为音乐生成引入了身体运动这一全新控制维度。</p>
+    </article>
+    <article>
+      <div class="meta"><span class="hot">行业要闻</span><span class="tag">复古录音/硬件</span><span class="src-part">HN 24pt · 07-17</span></div>
+      <h3><a href="https://swiftrocks.com/i-tried-to-record-music-onto-a-cassette-tape-using-modern-tech" target="_blank" rel="noopener">用现代设备把音乐录进磁带的真实体验</a></h3>
+      <p class="body">作者实测用现代声卡和磁带机录制数字音乐，对比了模拟磁带的失真、饱和与噪声特征。</p>
+      <p class="why"><b>为什么值得看:</b>对理解模拟音色和复古效果器设计有直观帮助。</p>
+    </article>
+    </section>
+
+    <div class="cols">
+      <!-- ==================== 学术前沿 ==================== -->
+      <section data-block="papers" aria-label="学术前沿">
+        <div class="sec-head">
+          <h2>学术前沿</h2><span class="en">Papers</span><span class="rule"></span>
+        </div>
+        <div class="paper-grid">
+
+        <article>
+          <div class="meta"><span class="tag">音效生成</span><span class="src-part">arXiv · cs.SD · 07-13</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.11364v1" target="_blank" rel="noopener">面向长篇叙事电影的连贯多模态背景声景生成框架</a></h3>
+          <p class="orig">BackgroundMellow: A Multi-Modal Cohesive Framework for Narrative-Driven Rich Cinematic Soundscape Generation</p>
+          <p class="why">把小说或剧本段落自动扩展成一段有情节推进感、情绪起伏的电影级环境音效和背景音乐，解决现有文本到音频模型只生产孤立音效的痛点。<b>对影视配乐、游戏剧情音频和有声内容制作有直接参考价值。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音效生成</span><span class="src-part">arXiv · cs.CV / eess.AS · 07-20</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.17773v1" target="_blank" rel="noopener">面向3D高斯场景的填充感知撞击音效生成</a></h3>
+          <p class="orig">FillGauss: Fine-Grained Filling-Aware Impact Sound Generation for 3D Gaussian Splatting</p>
+          <p class="why">根据物体内部的填充状态生成更真实的碰撞声，填补了现有视觉到音频方法只考虑外壳的空白。<b>对虚拟乐器、交互装置中的物理建模声音有启发。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">MIR/情感</span><span class="src-part">arXiv · cs.MM · 07-14</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.12958v1" target="_blank" rel="noopener">跨域多模态情感描述符，用于数字对象的视觉对比</a></h3>
+          <p class="orig">CD-MED: Cross-Domain Multimodal Emotion Descriptor for Visual Comparison of Digital Objects</p>
+          <p class="why">提出一个统一情感描述空间，让电影、歌曲等不同模态对象能在同一语义坐标下比较情绪强度。<b>对自动配乐、跨模态推荐和音乐情绪标注都有用。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">评测/情感识别</span><span class="src-part">arXiv · cs.CL · 07-14</span></div>
+          <h3><a href="http://arxiv.org/abs/2607.12787v1" target="_blank" rel="noopener">多模态情绪识别真的需要超过10亿参数的大模型吗</a></h3>
+          <p class="orig">Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?</p>
+          <p class="why">通过蒸馏和模态对齐，在不到10亿参数的小模型上取得与7B以上多模态大模型相当的多模态情绪识别效果。<b>对音乐情绪分析轻量部署和低资源研究有参考意义。</b></p>
+        </article>
+
+        </div>
+      </section>
+
+      <!-- ==================== 右栏:开源 + 行业 ==================== -->
+      <div class="rail">
+        <section data-block="oss" aria-label="开源工具">
+          <div class="sec-head">
+            <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐视频/工具</span><span class="src-part">HN 16pt · TypeScript / FFmpeg</span></div>
+          <h3><a href="https://github.com/thiagoalbrecht/weave" target="_blank" rel="noopener">Weave：浏览器内用 FFmpeg 直接渲染的视频编辑器</a></h3>
+          <p class="why">一个完全在浏览器里运行、调用 FFmpeg 完成导出的开源剪辑工具，适合做轻量级音乐 MV 或演出回顾视频，不需要安装专业软件。</p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">AI音乐视频</span><span class="src-part">JavaScript · 352★</span></div>
+          <h3><a href="https://github.com/MartinDelophy/ai-video-editor" target="_blank" rel="noopener">AI 驱动的本地优先浏览器视频编辑器</a></h3>
+          <p class="why">集成 WebGPU 加速的 AI 音乐生成、语音旁白和自动字幕，目标是让个人创作者在浏览器里完成一条带配乐的视频。</p>
+        </div>
+        </section>
+
+        <section data-block="industry" aria-label="行业动态">
+          <div class="sec-head">
+            <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐文化</span><span class="src-part">HN 19pt · 07-14</span></div>
+          <h3><a href="https://thebaffler.com/latest/the-music-of-destruction-fuelling" target="_blank" rel="noopener">毁灭之声：音乐如何被冲突与灾害征用</a></h3>
+          <p class="why">一篇文化评论，探讨战争、灾难影像中音乐的使用伦理和传播机制，提醒技术人在做 AI 配乐和自动推荐时也要考虑语境与情感后果。</p>
+        </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ==================== 选题灵感 ==================== -->
+    <section class="ideas" data-block="ideas" aria-label="选题灵感">
+      <div class="ideas-rule-thick"></div>
+      <div class="ideas-rule-thin"></div>
+      <div class="sec-head">
+        <h2>选题灵感</h2><span class="en">Project Ideas</span>
+        <span class="rule"></span><span class="note">基于近期各期积累 · 按难度从低到高</span>
+      </div>
+      <div class="idea-grid">
+
+      <article class="idea">
+        <div class="diff"><span>▮▯▯ 入门</span><span class="kind">工具</span></div>
+        <h3>节拍对齐的短视频粗剪器</h3>
+        <p class="body">基于 Weave 或 ai-video-editor，做一个浏览器插件：上传视频和参考音乐，自动在强拍位置切分镜头并渲染成片。可以先从固定 BPM 的歌曲开始，避免复杂变速。需要：JavaScript 基础 · FFmpeg/视频时间线概念 · 节拍检测库（如 librosa）。</p>
+        <p class="uses"><b>基于:</b><a href="https://github.com/thiagoalbrecht/weave" target="_blank" rel="noopener">Weave：浏览器内用 FFmpeg 直接渲染的视频编辑器</a> · <a href="https://github.com/MartinDelophy/ai-video-editor" target="_blank" rel="noopener">AI 驱动的本地优先浏览器视频编辑器</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">交互作品</span></div>
+        <h3>用舞蹈动作实时驱动电子伴奏</h3>
+        <p class="body">用摄像头捕捉身体骨架，把关节速度、重心高低映射到鼓机触发、合成器滤波和音阶选择，让舞者成为乐器。可以先做离线版：录一段舞蹈，再生成 MIDI，最后接入硬件合成器演奏。需要：Python · MediaPipe/OpenPose · 基础 MIDI/合成器知识 · 舞蹈动作标注。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.10537v1" target="_blank" rel="noopener">基于动作预训练与对比对齐的舞蹈转音乐生成</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
+        <h3>情绪曲线自动配乐推荐器</h3>
+        <p class="body">输入一段无声短片或剧本，先用轻量多模态情绪模型提取逐秒情绪向量，再从本地音乐库检索情绪轨迹最相近的曲目作为配乐候选。可以扩展到用 BackgroundMellow 生成缺失的情绪段落。需要：Python · 视频/音频特征提取 · 相似度检索 · 基础乐理。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.12958v1" target="_blank" rel="noopener">跨域多模态情感描述符，用于数字对象的视觉对比</a> · <a href="http://arxiv.org/abs/2607.12787v1" target="_blank" rel="noopener">多模态情绪识别真的需要超过10亿参数的大模型吗</a> · <a href="http://arxiv.org/abs/2607.11364v1" target="_blank" rel="noopener">面向长篇叙事电影的连贯多模态背景声景生成框架</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▮ 硬核</span><span class="kind">研究</span></div>
+        <h3>舞蹈—音乐一致性的细粒度评测集</h3>
+        <p class="body">复现并扩展舞蹈转音乐论文的对比对齐思路，收集多组专业舞者的动作视频和人工配乐，构建中文/流行舞种的评测基准，评估节奏、重拍、情绪三个维度。结果可投稿 ISMIR 或 ICASSP。需要：乐理 + MIR 工具链 · 深度学习框架 · 动作捕捉数据 · 统计评测方法。</p>
+        <p class="uses"><b>基于:</b><a href="http://arxiv.org/abs/2607.10537v1" target="_blank" rel="noopener">基于动作预训练与对比对齐的舞蹈转音乐生成</a> · <a href="https://arxiv.org/abs/2607.18598" target="_blank" rel="noopener">AI 生成音乐的诊断式评测研究</a> <a class="volref" href="../issues/vol-002.html">VOL.002</a></p>
+      </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按“数字音乐智能处理”相关度筛选,宁缺毋滥</span><br>
+    <span>音乐科技雷达 · 第 005 期 · 2026年7月28日 · 每日 07:00 出版 · <a href="../archive.html" style="border-bottom:1px solid var(--hairline)">往期回顾</a></span>
+  </footer>
+</div>
+
+<script type="application/json" id="radar-issue">
+{"vol": 5, "pub": "2026-07-28", "items": [{"date": "2026-07-12", "sec": "papers", "tag": "音乐生成", "title": "基于动作预训练与对比对齐的舞蹈转音乐生成", "url": "http://arxiv.org/abs/2607.10537v1", "src": "arXiv · cs.SD", "orig": "Dance to Music Generation leveraging Pre-training with Unpaired data and Contrastive Alignment", "why": "提出一种无需成对舞乐数据即可根据人体关节点生成伴奏音乐的方法，通过预训练加对比学习把动作节奏与音乐节奏对齐。该方法让编舞辅助和实时伴奏更可行，也为音乐生成引入了身体运动这一全新控制维度。", "hot": "本报头条", "detail": "【这是什么】这是一套把舞蹈动作变成音乐的系统。研究者用手机或摄像头就能捕捉到的人体骨架点作为输入，让 AI 根据肢体的速度、重力和节奏生成一段伴奏。它不需要大量一一对应的舞乐数据，而是先用无配对视频和音频做预训练，再用对比学习把动作片段和听起来更搭的音乐片段拉近。\n【为什么值得关注】对音乐学院的同学来说，这意味着可以用身体姿态直接指挥音乐生成。编舞课、即兴演出、甚至舞蹈游戏的实时配乐都能用。动作和音乐之间的节奏、情绪一致性也第一次被量化为可训练的目标。\n【怎么入手】先用 MediaPipe 或 OpenPose 提取一段自己跳舞的视频骨架，再找一段现成的音乐生成模型做对照。重点不是从零训练大模型，而是复现论文里的对比损失和节奏评估指标，看看自己的动作能生成多自然的音乐。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-13", "sec": "papers", "tag": "音效生成", "title": "面向长篇叙事电影的连贯多模态背景声景生成框架", "url": "http://arxiv.org/abs/2607.11364v1", "src": "arXiv · cs.SD", "orig": "BackgroundMellow: A Multi-Modal Cohesive Framework for Narrative-Driven Rich Cinematic Soundscape Generation", "why": "把小说或剧本段落自动扩展成一段有情节推进感、情绪起伏的电影级环境音效和背景音乐，解决现有文本到音频模型只生产孤立音效的痛点。对影视配乐、游戏剧情音频和有声内容制作有直接参考价值。", "detail": "【这是什么】BackgroundMellow 是一个故事到音频的生成框架。你输入一段叙事文本，它不只生成一个门铃声或雨声，而是根据情节发展产出一段连续、有层次的声景，包含环境音、情绪性音效甚至暗示性背景音乐。\n【为什么值得关注】音乐学院做影视配乐或声音设计的同学可以把它当成自动气氛草图工具。它能帮你在拿到画面之前就生成情绪参考轨，也可以作为后期配乐的情绪时间线草稿。\n【怎么入手】用一两段短篇小说或剧本做输入，观察生成音频在情节转折处的变化。对照传统的手动铺音效流程，记录哪些情绪转折被准确表达、哪些被弱化，整理成一份小型的叙事声景评测表。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-20", "sec": "papers", "tag": "音效生成", "title": "面向3D高斯场景的填充感知撞击音效生成", "url": "http://arxiv.org/abs/2607.17773v1", "src": "arXiv · cs.CV / eess.AS", "orig": "FillGauss: Fine-Grained Filling-Aware Impact Sound Generation for 3D Gaussian Splatting", "why": "根据物体内部的填充状态生成更真实的碰撞声，填补了现有视觉到音频方法只考虑外壳的空白。对虚拟乐器、交互装置中的物理建模声音有启发。", "detail": "【这是什么】FillGauss 让计算机在看到或建模一个物体时，能根据它是空心还是装满东西来生成不同的撞击声。比如同样一个木箱，空箱和装满沙子的箱子落地声音明显不同，这个系统能自动学到这种区别。\n【为什么值得关注】音乐科技中的很多交互装置和虚拟乐器都需要可信的物理声音。如果将来做数字打击乐或沉浸式剧场，物体内部材质和填充度会影响音色，这项技术提供了从三维模型直接合成音效的途径。\n【怎么入手】找一些简单的 3D 模型和对应的真实撞击录音，用论文提出的填充感知模块做对比实验。先从单一声源开始，再尝试把生成的声音接入 Unity 或 Blender 做交互原型。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-14", "sec": "papers", "tag": "MIR/情感", "title": "跨域多模态情感描述符，用于数字对象的视觉对比", "url": "http://arxiv.org/abs/2607.12958v1", "src": "arXiv · cs.MM", "orig": "CD-MED: Cross-Domain Multimodal Emotion Descriptor for Visual Comparison of Digital Objects", "why": "提出一个统一情感描述空间，让电影、歌曲等不同模态对象能在同一语义坐标下比较情绪强度。对自动配乐、跨模态推荐和音乐情绪标注都有用。", "detail": "【这是什么】一首歌和一部电影很难直接比较哪个更悲伤，因为它们的信息形态不同。CD-MED 把它们都映射到一个共享的情感描述空间，比如愉悦度、唤起度、支配度等维度，让你可以像看色谱一样对比不同作品。\n【为什么值得关注】做智能配乐时，经常需要把视频情绪曲线和音乐情绪曲线匹配起来。这个框架提供了一种可解释的中间表示，便于设计更透明的推荐和生成系统。\n【怎么入手】选十首不同情绪的流行歌和对应的电影片段，分别用现成的情感识别模型抽取特征，再用论文的方法投影到同一空间，画成散点图，看看同情绪的作品是否聚类。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-14", "sec": "papers", "tag": "评测/情感识别", "title": "多模态情绪识别真的需要超过10亿参数的大模型吗", "url": "http://arxiv.org/abs/2607.12787v1", "src": "arXiv · cs.CL", "orig": "Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?", "why": "通过蒸馏和模态对齐，在不到10亿参数的小模型上取得与7B以上多模态大模型相当的多模态情绪识别效果。对音乐情绪分析轻量部署和低资源研究有参考意义。", "detail": "【这是什么】研究者在视频、音频、文本三种模态上训练了一个很小的多模态情绪识别模型，并用大模型当老师进行蒸馏。他们发现，只要对齐做得好，小模型也能理解复杂情绪。\n【为什么值得关注】音乐情绪分析常常需要实时、低延迟、可本地运行。这个工作说明，不必追求最大模型，精巧的模态融合和数据筛选就能让音频情绪识别跑在普通电脑上。\n【怎么入手】拿一组带情绪标签的音乐短片或MV，用论文开源的轻量模型或类似架构做推理，比较它和 CLAP、LLaVA 等较大模型在情绪分类上的准确率与推理速度。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-26", "sec": "oss", "tag": "音乐视频/工具", "title": "Weave：浏览器内用 FFmpeg 直接渲染的视频编辑器", "url": "https://github.com/thiagoalbrecht/weave", "src": "HN 16pt · TypeScript / FFmpeg", "why": "一个完全在浏览器里运行、调用 FFmpeg 完成导出的开源剪辑工具，适合做轻量级音乐 MV 或演出回顾视频，不需要安装专业软件。", "detail": "【这是什么】Weave 是一个网页视频编辑器，剪辑、转码、导出全部在浏览器里完成。它借助 FFmpeg 的 WebAssembly 版本直接把时间线渲染成 MP4，等于把一个小型后期工作站搬进了网页。\n【为什么值得关注】对做音乐视频的同学来说，这意味着可以在任何电脑上快速剪辑演出素材、加字幕、套模板，再一键导出。不需要担心剪辑软件和素材格式不兼容。\n【怎么入手】fork 项目后，把自己的演出录像导入时间线，尝试加入节拍标记并自动对齐视频切换点。也可以把它和音乐节拍检测库结合，做一个按鼓点自动剪切的插件。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-09", "sec": "oss", "tag": "AI音乐视频", "title": "AI 驱动的本地优先浏览器视频编辑器", "url": "https://github.com/MartinDelophy/ai-video-editor", "src": "JavaScript · 352★", "why": "集成 WebGPU 加速的 AI 音乐生成、语音旁白和自动字幕，目标是让个人创作者在浏览器里完成一条带配乐的视频。", "detail": "【这是什么】这是一个开源的本地优先视频编辑器，强调数据不离开电脑。它内置了基于 WebGPU 的 AI 音乐、AI 修复、语音合成、说话头像和字幕生成功能，等于把多种 AI 能力串成一个剪辑流程。\n【为什么值得关注】音乐学院学生可以用它快速为短片、舞蹈录像或作品集配上原创 AI 音乐，并观察 AI 音乐和视频情绪是否匹配。它还能帮助理解 AI 能力如何嵌入传统剪辑工作流。\n【怎么入手】拉取代码后在本地跑起来，导入一段没有配乐的舞蹈视频，用内置 AI 音乐功能生成几条候选配乐，再邀请同学做盲听打分，记录哪类提示词最能贴合画面。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-17", "sec": "industry", "tag": "复古录音/硬件", "title": "用现代设备把音乐录进磁带的真实体验", "url": "https://swiftrocks.com/i-tried-to-record-music-onto-a-cassette-tape-using-modern-tech", "src": "HN 24pt", "why": "作者实测用现代声卡和磁带机录制数字音乐，对比了模拟磁带的失真、饱和与噪声特征。对理解模拟音色和复古效果器设计有直观帮助。", "hot": "行业要闻", "detail": "【这是什么】这篇文章记录了一位开发者如何把电脑里的数字歌曲转录到磁带，再播放回录。过程中他测量了底噪、频响、饱和失真等指标，相当于给磁带这条模拟链路做了一次可读的实验报告。\n【为什么值得关注】很多同学做电子音乐或声音设计时都喜欢磁带质感，但插件参数往往凭感觉调。文章里的实测数据能帮你把温暖、低保真翻译成可复现的指标，也解释了磁带效果器为什么会那样响。\n【怎么入手】用 Audacity 或类似软件录制自己的作品到磁带再回采，记录频谱变化和总谐波失真。也可以参考 Cassette Simulation 脚本，把数字版本和磁带版本做 AB 对比。", "vol": 5, "pub": "2026-07-28"}, {"date": "2026-07-14", "sec": "industry", "tag": "音乐文化", "title": "毁灭之声：音乐如何被冲突与灾害征用", "url": "https://thebaffler.com/latest/the-music-of-destruction-fuelling", "src": "HN 19pt", "why": "一篇文化评论，探讨战争、灾难影像中音乐的使用伦理和传播机制，提醒技术人在做 AI 配乐和自动推荐时也要考虑语境与情感后果。", "detail": "【这是什么】文章分析了在战争直播、灾难视频和极端内容里，背景音乐如何塑造观众的共情或麻木。它不是在讲技术，而是在讲音乐一旦和传播机器结合，会产生怎样的伦理张力。\n【为什么值得关注】作为音乐科技专业的学生，我们常常只关注生成得更好、推荐得更准，却很少讨论生成的音乐会被用在什么场景。这篇文章提供了一个批判视角，帮助你在设计算法时多想一层。\n【怎么入手】把它当作一次课堂讨论材料：选几条不同平台的短视频，分析其配乐如何影响情绪判断；再讨论如果你是平台算法设计师，会不会对某类音乐使用场景做提示或限制。", "vol": 5, "pub": "2026-07-28"}], "ideas": [{"vol": 5, "level": "入门", "kind": "工具", "title": "节拍对齐的短视频粗剪器", "body": "基于 Weave 或 ai-video-editor，做一个浏览器插件：上传视频和参考音乐，自动在强拍位置切分镜头并渲染成片。可以先从固定 BPM 的歌曲开始，避免复杂变速。需要：JavaScript 基础 · FFmpeg/视频时间线概念 · 节拍检测库（如 librosa）。", "based_on": [{"url": "https://github.com/thiagoalbrecht/weave", "title": "Weave：浏览器内用 FFmpeg 直接渲染的视频编辑器"}, {"url": "https://github.com/MartinDelophy/ai-video-editor", "title": "AI 驱动的本地优先浏览器视频编辑器"}]}, {"vol": 5, "level": "进阶", "kind": "交互作品", "title": "用舞蹈动作实时驱动电子伴奏", "body": "用摄像头捕捉身体骨架，把关节速度、重心高低映射到鼓机触发、合成器滤波和音阶选择，让舞者成为乐器。可以先做离线版：录一段舞蹈，再生成 MIDI，最后接入硬件合成器演奏。需要：Python · MediaPipe/OpenPose · 基础 MIDI/合成器知识 · 舞蹈动作标注。", "based_on": [{"url": "http://arxiv.org/abs/2607.10537v1", "title": "基于动作预训练与对比对齐的舞蹈转音乐生成"}]}, {"vol": 5, "level": "进阶", "kind": "产品原型", "title": "情绪曲线自动配乐推荐器", "body": "输入一段无声短片或剧本，先用轻量多模态情绪模型提取逐秒情绪向量，再从本地音乐库检索情绪轨迹最相近的曲目作为配乐候选。可以扩展到用 BackgroundMellow 生成缺失的情绪段落。需要：Python · 视频/音频特征提取 · 相似度检索 · 基础乐理。", "based_on": [{"url": "http://arxiv.org/abs/2607.12958v1", "title": "跨域多模态情感描述符，用于数字对象的视觉对比"}, {"url": "http://arxiv.org/abs/2607.12787v1", "title": "多模态情绪识别真的需要超过10亿参数的大模型吗"}, {"url": "http://arxiv.org/abs/2607.11364v1", "title": "面向长篇叙事电影的连贯多模态背景声景生成框架"}]}, {"vol": 5, "level": "硬核", "kind": "研究", "title": "舞蹈—音乐一致性的细粒度评测集", "body": "复现并扩展舞蹈转音乐论文的对比对齐思路，收集多组专业舞者的动作视频和人工配乐，构建中文/流行舞种的评测基准，评估节奏、重拍、情绪三个维度。结果可投稿 ISMIR 或 ICASSP。需要：乐理 + MIR 工具链 · 深度学习框架 · 动作捕捉数据 · 统计评测方法。", "based_on": [{"url": "http://arxiv.org/abs/2607.10537v1", "title": "基于动作预训练与对比对齐的舞蹈转音乐生成"}, {"vol": 2, "url": "https://arxiv.org/abs/2607.18598", "title": "AI 生成音乐的诊断式评测研究"}]}]}
+</script>
+<script>
+/* 主题切换:localStorage 记忆,默认跟随 prefers-color-scheme */
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function current() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function sync() { btn.textContent = current() === 'dark' ? '浅色' : '深色'; }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('radar-theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+<script>
+/* 吸顶 tab 分栏:显示/隐藏对应板块,「全部」顺序通读 */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var main = document.getElementById('main');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('[data-block]'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var sec = tab.getAttribute('data-sec');
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      blocks.forEach(function (el) {
+        el.hidden = sec !== 'all' && el.getAttribute('data-block') !== sec;
+      });
+      if (sec === 'all') { main.removeAttribute('data-filter'); }
+      else { main.setAttribute('data-filter', sec); }
+    });
+  });
+})();
+</script>
+<script>
+/* 报头静态“印刷”波形:确定性伪随机包络,不做动画 */
+(function () {
+  var c = document.getElementById('wave');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+
+  function bars() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var style = getComputedStyle(document.documentElement);
+    var color = style.getPropertyValue('--ink').trim();
+    var n = Math.floor(w / 4);
+    for (var i = 0; i < n; i++) {
+      var x = i / n;
+      var env = Math.sin(x * Math.PI) * (0.5 + 0.5 * Math.sin(x * 23 + 1.7) * Math.sin(x * 53 + 0.6));
+      var amp = Math.max(0.06, Math.abs(env)) * (h * 0.92);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.28 + 0.6 * Math.abs(env);
+      ctx.fillRect(i * 4, (h - amp) / 2, 1.6, amp);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  bars();
+  window.addEventListener('resize', bars);
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', bars);
+  }
+  new MutationObserver(bars).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+<script>
+/* 条目详情浮层:数据来自本期内嵌的 radar-issue JSON(仅当期 items+ideas) */
+(function () {
+  var raw = document.getElementById('radar-issue');
+  if (!raw) return;
+  var data;
+  try { data = JSON.parse(raw.textContent); } catch (e) { return; }
+  var items = data.items || [];
+  if (!items.length) return;
+
+  var byUrl = {};
+  items.forEach(function (it) { if (it.url && !byUrl[it.url]) byUrl[it.url] = it; });
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function metaHtml(it) {
+    return '<div class="meta">' +
+      (it.hot ? '<span class="hot">' + esc(it.hot) + '</span>' : '') +
+      '<span class="tag">' + esc(it.tag) + '</span>' +
+      '<span class="src-part">' + esc(it.src || '') + (it.date ? ' · ' + esc(it.date) : '') + '</span></div>';
+  }
+
+  function makeOverlay(label, inner) {
+    var ov = document.createElement('div');
+    ov.className = 'issue-overlay';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-label', label);
+    ov.innerHTML = '<div class="issue-sheet"><button class="issue-close" type="button" aria-label="关闭">✕</button>' + inner + '</div>';
+    function close() {
+      document.removeEventListener('keydown', onKey);
+      ov.remove();
+      document.body.style.overflow = '';
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    ov.querySelector('.issue-close').addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+    ov.querySelector('.issue-close').focus();
+    return ov;
+  }
+
+  function openDetail(it) {
+    var text = it.detail || it.why || '';
+    var paras = String(text).split(/\n+/).filter(Boolean).map(function (p) {
+      var m = p.match(/^【[^】]{1,12}】/);
+      if (m) return '<p><b>' + esc(m[0]) + '</b>' + esc(p.slice(m[0].length)) + '</p>';
+      return '<p>' + esc(p) + '</p>';
+    }).join('');
+    var inner = '<div class="iv-head"><div class="t">音乐科技雷达</div>' +
+      '<div class="m">条目详情 · VOL.' + pad(it.vol) + '</div></div>' +
+      metaHtml(it) +
+      '<h5 class="dv-title">' + esc(it.title) + '</h5>' +
+      (it.orig ? '<p class="orig" style="white-space:normal">' + esc(it.orig) + '</p>' : '') +
+      '<div class="dv-detail">' + paras + '</div>' +
+      '<p class="dv-link"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">阅读原文 ↗</a></p>';
+    makeOverlay('条目详情:' + it.title, inner);
+  }
+
+  /* 主版面条目 → 点击开详情(标题链接仍直达原文) */
+  document.querySelectorAll('.focus article, .paper-grid article, .rail-item').forEach(function (el) {
+    var a = el.querySelector('h3 a');
+    if (!a) return;
+    var it = byUrl[a.getAttribute('href')];
+    if (!it || !it.detail) return;
+    el.classList.add('has-detail');
+    var more = document.createElement('span');
+    more.className = 'more';
+    more.textContent = '详情 ▸';
+    (el.querySelector('.why') || el).appendChild(more);
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      openDetail(it);
+    });
+  });
+})();
+</script>
+</body>
+</html>

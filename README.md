@@ -6,14 +6,17 @@
 ## 架构(文字版)
 
 ```
-数据源(arXiv × 2 / HN × 2 / GitHub)
-        │  fetch_sources.py   → build/raw.json(候选素材,失败源跳过)
+数据源(arXiv × 2 / HN × 2 / GitHub / OpenAlex / Google News 中英 × 2
+       / Hugging Face 论文+模型 / 行业 RSS × 3 / Bluesky,共 14 源)
+        │  fetch_sources.py   → build/raw.json(候选素材,URL 归一化+去重,失败源跳过)
         ▼
 archive.json(历期存档)+ raw.json
-        │  edit_issue.py      → 调 Kimi(Moonshot)API 筛选写作,校验契约
-        ▼                     → build/issue.json(--mock 时用内置假数据)
+        │  edit_issue.py      → 调 Kimi API 两段式:调用 A 选稿写作 → items,
+        ▼                       调用 B 选题策划 → ideas,合并校验 → build/issue.json
+                              (--mock 时用内置假数据)
 build_page.py ── ① 新条目并入 archive.json(去重 / 90 天 / ≤400 条)
-              └ ② template/page.html + issue.json → index.html
+              └ ② 渲染多页静态站:index.html(最新期)+ issues/vol-NNN.html(每期
+                 永久链接)+ archive.html(往期索引,前端 fetch archive.json 渲染)
         ▼
 make_docx.py  → word/音乐科技雷达_第NNN期_YYYY-MM-DD.docx
         ▼
@@ -63,13 +66,16 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 由 GitHub Actions 定时触发,workflow:`.github/workflows/daily.yml`。
 主班次 cron UTC `5 23 * * *`(北京 07:05),补刊班次 UTC `5 0 * * *`(北京 08:05,幂等)。
 四个环境变量存到仓库 Secrets(`KIMI_API_KEY` / `QQ_MAIL_USER` / `QQ_SMTP_AUTH` / `MAIL_TO`),
-Pages source 选 GitHub Actions;`archive.json` / `state.json` / `index.html` / `word/` 由 workflow 提交回仓库。
+Pages source 选 GitHub Actions;`archive.json` / `state.json` / `index.html` / `archive.html` / `issues/` / `word/` 由 workflow 提交回仓库。
 
 ## 数据文件
 
 - `archive.json` — 唯一权威存档:历期 items(含 vol/pub/sec/tag/title/url/src/why/hot/detail)
   与 ideas。只增不减(除 90 天 / 400 条清理),跨期去重与选题积累都靠它;
-  页面内嵌的同内容 `<script id="radar-archive">` 供「往期回顾」浮层渲染。
+  同时原样发布为静态资源,`archive.html` 前端 fetch 它渲染往期列表;
+  每期页内嵌 `#radar-issue`(仅当期 items+ideas)供详情浮层渲染。
 - `state.json` — `{"mailed_vol": N}`,邮件幂等。
-- `template/page.html` — 版式模板,CSS 与页尾脚本与第 001 期逐字符一致,内容区为 `{{占位符}}`。
+- `template/page.html` / `template/archive.html` — 版式模板,内容区为 `{{占位符}}`,
+  设计遵循 `docs/hallmark/`(Nutlope/hallmark 规范,MIT):移动端优先、吸顶 tab 分栏、深浅色主题。
+- `docs/hallmark/` — vendored 的网页设计规范(SKILL.md + references/),改版时遵循。
 - `build/` — 中间产物(raw.json / issue.json),可随时删除重建。

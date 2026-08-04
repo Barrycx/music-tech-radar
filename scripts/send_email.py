@@ -25,7 +25,7 @@ STATE = ROOT / "state.json"
 SEC_NAMES = (("papers", "学术前沿"), ("oss", "开源工具"), ("industry", "行业动态"))
 
 
-def build_html(issue, page_url):
+def build_html(issue, issue_url, archive_url):
     vol, pub = issue["vol"], issue["pub"]
     parts = [
         '<div style="font-family:Georgia,\'Songti SC\',serif;max-width:42rem;'
@@ -49,7 +49,10 @@ def build_html(issue, page_url):
         parts.append('<p style="margin-bottom:.2rem"><b>■ 选题灵感</b></p><ul style="margin-top:.2rem">'
                      + "".join(f"<li>{i['level']} · {i['kind']}|{html.escape(i['title'])}</li>"
                                for i in issue["ideas"]) + "</ul>")
-    parts.append(f'<p>完整页面:<a href="{html.escape(page_url, quote=True)}">{html.escape(page_url)}</a></p>')
+    parts.append(f'<p>完整页面:<a href="{html.escape(issue_url, quote=True)}">{html.escape(issue_url)}</a></p>')
+    parts.append(f'<p style="color:#7b7b78;font-size:.85em">往期回顾:'
+                 f'<a href="{html.escape(archive_url, quote=True)}" style="color:#7b7b78">'
+                 f'{html.escape(archive_url)}</a></p>')
     parts.append('<p style="color:#7b7b78;font-size:.85em">音乐科技雷达 · 每日 07:00 出版 · '
                  "本邮件由自动出版系统发出</p></div>")
     return "\n".join(parts)
@@ -57,7 +60,7 @@ def build_html(issue, page_url):
 
 def main():
     ap = argparse.ArgumentParser(description="发送当期邮件")
-    ap.add_argument("--page-url", default="", help="完整页面地址(邮件正文中的链接)")
+    ap.add_argument("--page-url", default="", help="站点根地址(邮件正文链接拼为 issues/vol-NNN.html 与 archive.html)")
     ap.add_argument("--docx", help="附件路径(默认按 issue.json 的期号日期推算)")
     args = ap.parse_args()
 
@@ -78,13 +81,18 @@ def main():
     if not docx.exists():
         print(f"[mail] 错误:附件不存在 {docx}", file=sys.stderr)
         sys.exit(1)
-    page_url = args.page_url or "(页面地址未配置)"
+    if args.page_url:
+        base = args.page_url if args.page_url.endswith("/") else args.page_url + "/"
+        issue_url = f"{base}issues/vol-{vol:03d}.html"   # 当期永久链接
+        archive_url = f"{base}archive.html"
+    else:
+        issue_url = archive_url = "(页面地址未配置)"
 
     msg = MIMEMultipart()
     msg["Subject"] = Header(f"音乐科技雷达 第{vol:03d}期 {pub}", "utf-8")
     msg["From"] = formataddr((str(Header("音乐科技雷达", "utf-8")), user))
     msg["To"] = mail_to
-    msg.attach(MIMEText(build_html(issue, page_url), "html", "utf-8"))
+    msg.attach(MIMEText(build_html(issue, issue_url, archive_url), "html", "utf-8"))
     with open(docx, "rb") as f:
         att = MIMEApplication(f.read())
     att.add_header("Content-Disposition", "attachment",

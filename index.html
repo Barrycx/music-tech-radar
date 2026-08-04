@@ -1,1873 +1,581 @@
-<title>音乐科技雷达</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>音乐科技雷达 · 第 010 期</title>
 <style>
+  /* ============================================================
+     音乐科技雷达 · 每期页模板(redesign 2026-08)
+     genre: editorial · 报纸身份:白报纸 + 报头红 #c1301c + 宋体
+     字体 2 族:宋体(标题+正文)/ Georgia(仅英文原题)
+     字号 5 档:--fs-meta / --fs-body / --fs-title / --fs-focus / --fs-mast
+     ============================================================ */
   :root {
+    /* 色:暖调中性 + 单一报头红 accent */
     --desk: #dcdcd9;          /* 报纸下面的桌面 */
-    --paper: #fcfcfa;         /* 现代白报纸 */
+    --paper: #fcfcfa;         /* 白报纸 */
     --ink: #1a1a1a;           /* 油墨 */
     --ink-soft: #454545;
     --ink-faint: #7b7b78;
-    --hairline: #dbd9d4;      /* 细线 */
-    --red: #c1301c;           /* 报头红 */
+    --hairline: #dbd9d4;
+    --red: #c1301c;           /* 报头红(品牌,不改) */
     --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+
+    /* 字 */
+    --font-serif: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
+    --font-en: Georgia, "Times New Roman", serif;   /* 仅英文原题 */
+
+    /* 字号:全页仅此 5 档 */
+    --fs-meta: .8125rem;      /* 13px 元信息/页脚 */
+    --fs-body: 1.0625rem;     /* 17px 正文 */
+    --fs-title: 1.25rem;      /* 20px 条目标题 */
+    --fs-focus: clamp(1.375rem, 1.05rem + 1.6vw, 1.625rem);  /* 头条标题 22–26px */
+    --fs-mast: clamp(2.2rem, 8vw + .5rem, 3.4rem);           /* 报名 */
+
+    /* 间距(4pt 基) */
+    --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2.5rem;
+
+    --measure: 34rem;         /* 17px × 约 32 汉字 */
+    --sheet-pad: 1.25rem;
+    --z-sticky: 200;
+    --z-modal: 400;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --desk: #0d0d0d;
-      --paper: #1c1c1e;
+      --desk: #121212;        /* 中性深灰,非纯黑 */
+      --paper: #1d1d1b;
       --ink: #e6e5e1;
       --ink-soft: #b3b2ad;
-      --ink-faint: #7c7b76;
-      --hairline: #38383a;
+      --ink-faint: #8a8984;
+      --hairline: #3a3a37;
       --red: #e2604e;
       --red-soft: #e2604e26;
+      --scrim: rgba(0, 0, 0, .66);
     }
   }
   :root[data-theme="light"] {
     --desk: #dcdcd9; --paper: #fcfcfa; --ink: #1a1a1a; --ink-soft: #454545;
     --ink-faint: #7b7b78; --hairline: #dbd9d4; --red: #c1301c; --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
   }
   :root[data-theme="dark"] {
-    --desk: #0d0d0d; --paper: #1c1c1e; --ink: #e6e5e1; --ink-soft: #b3b2ad;
-    --ink-faint: #7c7b76; --hairline: #38383a; --red: #e2604e; --red-soft: #e2604e26;
+    --desk: #121212; --paper: #1d1d1b; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+    --ink-faint: #8a8984; --hairline: #3a3a37; --red: #e2604e; --red-soft: #e2604e26;
+    --scrim: rgba(0, 0, 0, .66);
   }
 
+  html { overflow-x: clip; }
   body {
+    overflow-x: clip;
+    margin: 0;
     background: var(--desk);
     color: var(--ink);
-    font-family: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
-    line-height: 1.72;
-    padding: 2.2rem .8rem 3rem;
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    padding: 0 0 var(--s-6);
     -webkit-font-smoothing: antialiased;
   }
-  .mono { font-family: "SF Mono", Menlo, Consolas, monospace; }
+  /* 深浅切换只做过渡色,0.2s,无其他动画 */
+  body, .sheet, .tabs, .tab, .u-btn, .issue-sheet {
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
 
   /* ---- 报纸纸张 ---- */
   .sheet {
     max-width: 70rem; margin: 0 auto;
     background:
-      repeating-linear-gradient(2deg, transparent 0 6px, rgba(0,0,0,.006) 6px 7px),
+      repeating-linear-gradient(2deg, transparent 0 6px, rgba(0, 0, 0, .006) 6px 7px),
       var(--paper);
-    box-shadow: 0 1px 2px rgba(0,0,0,.14), 0 10px 30px rgba(0,0,0,.16);
-    padding: 2rem 2.4rem 2.2rem;
+    padding: var(--s-4) var(--sheet-pad) var(--s-6);
   }
-
-  a { color: var(--ink); text-decoration: none; }
 
   /* ---- 报头 ---- */
-  .baoyan-row {
-    display: flex; align-items: center; gap: 1rem;
+  .utility {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: var(--s-3); margin-bottom: var(--s-2);
   }
-  .baoyan {
-    flex: 1;
-    border: 1px solid var(--hairline);
-    padding: .35rem .7rem;
-    font-size: .72rem; line-height: 1.8; color: var(--ink-soft);
-    text-align: center;
+  .vol-line {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .08em; font-variant-numeric: tabular-nums;
   }
-  .baoyan .mono { font-size: .68rem; color: var(--ink-faint); letter-spacing: .1em; }
+  .u-nav { display: flex; gap: var(--s-2); }
+  .u-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; min-height: 44px; padding: 0 var(--s-3);
+    border: 1px solid var(--hairline); background: none; cursor: pointer;
+    font-family: inherit; font-size: var(--fs-meta); color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .u-btn:hover, .u-btn:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+
   h1 {
-    flex: 0 0 auto;
-    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    font-size: var(--fs-mast);
     font-weight: 900; letter-spacing: .12em; line-height: 1.15;
-    color: var(--red);
-    text-align: center;
-    padding: 0 1rem;
+    color: var(--red); text-align: center;
+    margin: var(--s-2) 0 0;
   }
+  h1 a:hover, h1 a:focus-visible { color: var(--red); outline: none; }
   .mast-sub {
-    text-align: center; font-size: .78rem; color: var(--ink-soft);
-    letter-spacing: .35em; margin-top: .5rem;
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-soft);
+    letter-spacing: .3em; margin: var(--s-2) 0 0;
   }
-  #wave { display: block; width: 100%; height: 26px; margin: .8rem 0 .6rem; opacity: .85; }
+  .mast-counts {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums;
+    margin: var(--s-1) 0 0;
+  }
+  #wave { display: block; width: 100%; height: 26px; margin: var(--s-3) 0 var(--s-2); opacity: .85; }
   /* 文武线 */
   .wenwu { border-top: 3px solid var(--ink); margin-bottom: 2px; }
-  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: 1.6rem; }
+  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+
+  /* ---- 吸顶分栏 tab ---- */
+  .tabs {
+    position: sticky; top: 0; z-index: var(--z-sticky);
+    display: flex;
+    margin: 0 calc(-1 * var(--sheet-pad)) var(--s-5);
+    padding: 0 var(--sheet-pad);
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tab {
+    flex: 1 1 auto;
+    min-height: 44px; padding: 0 var(--s-2);
+    font-family: inherit; font-size: var(--fs-body);
+    background: none; border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-soft); cursor: pointer; white-space: nowrap;
+  }
+  .tab:hover, .tab:focus-visible { color: var(--red); outline: none; }
+  .tab[aria-selected="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--red); }
+
+  [hidden] { display: none !important; }
 
   /* ---- 栏头(标题反白) ---- */
-  .sec-head { display: flex; align-items: center; gap: .7rem; margin-bottom: .9rem; }
+  .sec-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
   .sec-head h2 {
-    font-size: .98rem; font-weight: 700; letter-spacing: .3em;
+    font-size: var(--fs-body); font-weight: 700; letter-spacing: .3em;
     background: var(--ink); color: var(--paper);
-    padding: .05rem .7rem .05rem 1rem;
+    padding: .05rem var(--s-3) .05rem var(--s-4);
+    margin: 0;
   }
   .sec-head .en {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+    font-size: var(--fs-meta); letter-spacing: .2em; text-transform: uppercase;
     color: var(--ink-faint);
   }
   .sec-head .rule { flex: 1; border-top: 1px solid var(--hairline); }
-  .sec-head .note { font-size: .72rem; color: var(--ink-faint); }
+  .sec-head .note { font-size: var(--fs-meta); color: var(--ink-faint); }
 
   /* ---- 本报头条 ---- */
   .focus {
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr;
     border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
-    margin-bottom: 1.8rem;
+    margin-bottom: var(--s-6);
   }
-  .focus article { padding: 1.1rem 1.4rem 1rem; }
-  .focus article + article { border-left: 1px solid var(--hairline); }
+  .focus article { padding: var(--s-4) var(--s-2) var(--s-4) 0; }
+  .focus article + article { border-top: 1px solid var(--hairline); }
   .focus h3 {
-    font-size: 1.5rem; font-weight: 900; line-height: 1.45;
-    margin: .35rem 0 .4rem; text-wrap: balance; letter-spacing: .02em;
+    font-size: var(--fs-focus); font-weight: 900; line-height: 1.45;
+    margin: var(--s-2) 0; text-wrap: balance; letter-spacing: .02em;
+    overflow-wrap: anywhere;
   }
-  .focus h3 a:hover, .focus h3 a:focus-visible { color: var(--red); outline: none; }
-  .focus p.body { font-size: .86rem; color: var(--ink-soft); text-align: justify; margin-bottom: .3rem; }
+  .focus p.body { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-2); max-width: var(--measure); }
 
   .meta {
-    display: flex; flex-wrap: wrap; gap: .3rem .8rem; align-items: baseline;
-    font-size: .7rem; color: var(--ink-faint); font-variant-numeric: tabular-nums;
-    margin-bottom: .25rem;
+    display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); align-items: baseline;
+    font-size: var(--fs-meta); color: var(--ink-faint); font-variant-numeric: tabular-nums;
+    margin-bottom: var(--s-1);
   }
-  .meta .mono-part { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: .64rem; letter-spacing: .06em; }
+  .meta .src-part { letter-spacing: .06em; }
   .tag { color: var(--ink-soft); }
   .tag::before { content: "〔"; color: var(--ink-faint); }
   .tag::after { content: "〕"; color: var(--ink-faint); }
   .hot {
     color: var(--paper); background: var(--red);
-    padding: .02rem .55rem; font-size: .68rem; letter-spacing: .18em;
+    padding: .02rem .55rem; font-size: var(--fs-meta); letter-spacing: .18em;
   }
 
-  /* ---- 主区:学术双列 + 右侧窄栏,栏间竖线 ---- */
-  .cols { display: grid; grid-template-columns: 1fr 19rem; }
-  .cols > section { padding-right: 1.6rem; }
-  .rail { border-left: 1px solid var(--hairline); padding-left: 1.6rem; }
+  /* ---- 学术/开源/行业 ---- */
+  .cols { display: block; }
+  main[data-filter] .cols { display: block; }
 
-  .paper-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.4rem; }
-  .paper-grid::before {
-    content: ""; position: absolute; top: .4rem; bottom: .4rem; left: 50%;
-    border-left: 1px solid var(--hairline);
+  .paper-grid { display: grid; grid-template-columns: 1fr; }
+  .paper-grid article, .rail-item {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
   }
-  .paper-grid article { border-top: 1px solid var(--hairline); padding: .65rem 0 .7rem; }
-  .paper-grid h3 { font-size: 1.02rem; font-weight: 700; line-height: 1.5; margin-bottom: .15rem; text-wrap: balance; }
+  .paper-grid h3, .rail-item h3, .idea h3 {
+    font-size: var(--fs-title); font-weight: 700; line-height: 1.5;
+    margin: 0 0 var(--s-1); text-wrap: balance; overflow-wrap: anywhere;
+  }
   h3 a:hover, h3 a:focus-visible { color: var(--red); outline: none; }
   .orig {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: .68rem; color: var(--ink-faint); font-style: italic;
-    margin-bottom: .25rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    font-family: var(--font-en);
+    font-size: var(--fs-meta); color: var(--ink-faint); font-style: italic;
+    margin: 0 0 var(--s-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
-  .why { font-size: .8rem; color: var(--ink-soft); text-align: justify; }
+  .why { color: var(--ink-soft); text-align: justify; margin: 0; max-width: var(--measure); }
   .why b { color: var(--ink); font-weight: 700; }
-  .why b::before { content: ""; }
 
-  /* ---- 右侧窄栏 ---- */
-  .rail section { margin-bottom: 1.6rem; }
-  .rail-item { border-top: 1px solid var(--hairline); padding: .5rem 0 .55rem; }
-  .rail-item h3 { font-size: .9rem; font-weight: 700; line-height: 1.5; margin-bottom: .1rem; }
-  .rail-item .why { font-size: .76rem; }
-  .rail-item .meta { margin-bottom: .1rem; }
+  .rail section { margin-bottom: var(--s-6); }
 
   /* ---- 选题灵感:尾版 ---- */
-  .ideas { margin-top: 2rem; }
+  .ideas { margin-top: var(--s-6); }
   .ideas-rule-thick { border-top: 2px solid var(--ink); margin-bottom: 2px; }
-  .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: 1rem; }
-  .idea-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .idea { padding: .2rem 1.1rem .3rem; display: flex; flex-direction: column; gap: .3rem; }
-  .idea:first-child { padding-left: 0; }
-  .idea + .idea { border-left: 1px solid var(--hairline); }
+  .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+  .idea-grid { display: grid; grid-template-columns: 1fr; }
+  .idea {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-2);
+  }
   .idea .diff {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: .66rem; letter-spacing: .12em; color: var(--red);
+    font-size: var(--fs-meta); letter-spacing: .12em; color: var(--red);
+    font-variant-numeric: tabular-nums;
     display: flex; justify-content: space-between; align-items: baseline;
   }
   .idea .diff .kind { color: var(--ink-faint); }
-  .idea h3 { font-size: .95rem; font-weight: 700; line-height: 1.5; text-wrap: balance; }
-  .idea .body { font-size: .76rem; color: var(--ink-soft); text-align: justify; flex: 1; }
-  .idea .uses, .idea .skills { font-size: .7rem; color: var(--ink-faint); line-height: 1.7; }
+  .idea h3 { margin: 0; }
+  .idea .body { color: var(--ink-soft); text-align: justify; margin: 0; flex: 1; max-width: var(--measure); }
+  .idea .uses, .idea .skills { font-size: var(--fs-meta); color: var(--ink-faint); line-height: 1.7; margin: 0; }
   .idea .uses b, .idea .skills b { color: var(--ink-soft); font-weight: 700; }
   .idea .uses a { border-bottom: 1px solid var(--hairline); }
   .idea .uses a:hover, .idea .uses a:focus-visible { color: var(--red); border-bottom-color: var(--red); outline: none; }
+  .idea .uses a.volref { color: var(--red); border-bottom-color: var(--red); font-variant-numeric: tabular-nums; }
 
-  /* ---- 往期回顾 ---- */
-  .backissues { margin-top: 2rem; }
-  .bi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: .7rem; }
-  .backissue {
-    font: inherit; color: inherit; text-align: left; cursor: pointer;
-    background: none; border: 1px solid var(--hairline);
-    padding: .5rem .75rem .55rem;
-    display: flex; flex-direction: column; gap: .15rem;
-  }
-  .backissue:hover, .backissue:focus-visible { border-color: var(--red); outline: none; }
-  .bi-no {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: .64rem; letter-spacing: .1em; color: var(--red);
-    display: flex; justify-content: space-between; align-items: baseline;
-  }
-  .bi-no .bi-date { color: var(--ink-faint); }
-  .bi-cur { color: var(--paper); background: var(--red); padding: 0 .35rem; }
-  .backissue h3 { font-size: .84rem; font-weight: 700; line-height: 1.5; }
-  .bi-count { font-size: .66rem; color: var(--ink-faint); }
-
-  /* ---- 往期全版浮层 ---- */
+  /* ---- 条目详情浮层 ---- */
   .issue-overlay {
-    position: fixed; inset: 0; background: rgba(15,15,15,.58);
-    z-index: 60; overflow-y: auto; padding: 2.2rem 1rem;
+    position: fixed; inset: 0; background: var(--scrim);
+    z-index: var(--z-modal); overflow-y: auto; padding: var(--s-6) var(--s-4);
   }
   .issue-sheet {
     background: var(--paper); max-width: 44rem; margin: 0 auto;
-    padding: 1.5rem 2rem 1.8rem; position: relative;
-    box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    padding: var(--s-5) var(--s-5) var(--s-6); position: relative;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
   }
   .issue-close {
-    position: absolute; top: .7rem; right: .8rem;
-    font: inherit; line-height: 1; font-size: .95rem;
+    position: absolute; top: var(--s-2); right: var(--s-2);
+    font-family: inherit; font-size: var(--fs-body); line-height: 1;
     background: none; border: 1px solid var(--hairline); color: var(--ink-soft);
-    width: 1.7rem; height: 1.7rem; cursor: pointer;
+    width: 44px; height: 44px; cursor: pointer;
   }
   .issue-close:hover, .issue-close:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
-  .iv-head { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: .55rem; margin-bottom: 1rem; }
-  .iv-head .t { font-size: 1.25rem; font-weight: 900; color: var(--red); letter-spacing: .12em; }
+  .iv-head { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: var(--s-2); margin-bottom: var(--s-4); }
+  .iv-head .t { font-size: var(--fs-title); font-weight: 900; color: var(--red); letter-spacing: .12em; }
   .iv-head .m {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: .66rem; color: var(--ink-faint); letter-spacing: .12em; margin-top: .2rem;
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums; margin-top: var(--s-1);
   }
-  .iv-sec {
-    display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .3em;
-    background: var(--ink); color: var(--paper); padding: .02rem .55rem .02rem .85rem;
-    margin: 1rem 0 .3rem;
+  .dv-title {
+    font-size: var(--fs-title); font-weight: 900; line-height: 1.5;
+    margin: var(--s-1) 0; text-wrap: balance; overflow-wrap: anywhere;
   }
-  .iv-item { border-top: 1px solid var(--hairline); padding: .45rem 0 .5rem; }
-  .iv-item:first-of-type { border-top: none; }
-  .iv-item .meta { margin-bottom: .1rem; }
-  .iv-item h5 { font-size: .92rem; font-weight: 700; line-height: 1.55; margin-bottom: .05rem; }
-  .iv-item h5 a:hover, .iv-item h5 a:focus-visible { color: var(--red); outline: none; }
-  .iv-item .orig { margin-bottom: .15rem; }
-  .iv-item .why { font-size: .78rem; }
-  .iv-idea-level {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: .64rem; letter-spacing: .1em; color: var(--red); margin-right: .5rem;
-  }
-
-  /* ---- 条目详情 ---- */
-  .has-detail { cursor: pointer; }
-  .has-detail:hover { background: var(--red-soft); }
-  .more {
-    font-family: "SF Mono", Menlo, Consolas, monospace;
-    font-size: .66rem; color: var(--red); margin-left: .45rem; white-space: nowrap;
-  }
-  .dv-title { font-size: 1.15rem; font-weight: 900; line-height: 1.5; margin: .15rem 0 .1rem; text-wrap: balance; }
-  .dv-detail { margin-top: .5rem; }
-  .dv-detail p { font-size: .87rem; color: var(--ink-soft); text-align: justify; margin: 0 0 .6rem; }
+  .dv-detail { margin-top: var(--s-3); }
+  .dv-detail p { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-3); }
   .dv-detail b { color: var(--red); font-weight: 700; }
-  .dv-link { margin-top: .9rem; border-top: 1px solid var(--hairline); padding-top: .6rem; }
+  .dv-link { margin-top: var(--s-4); border-top: 1px solid var(--hairline); padding-top: var(--s-3); }
   .dv-link a { color: var(--red); border-bottom: 1px solid var(--red); }
+
+  .has-detail { cursor: pointer; }
+  .more {
+    font-size: var(--fs-meta); color: var(--red); margin-left: var(--s-2); white-space: nowrap;
+  }
 
   /* ---- 报尾 ---- */
   footer {
-    margin-top: 2rem; border-top: 1px solid var(--ink); padding-top: .55rem;
-    font-size: .7rem; color: var(--ink-faint); text-align: center; line-height: 2;
+    margin-top: var(--s-6); border-top: 1px solid var(--ink); padding-top: var(--s-3);
+    font-size: var(--fs-meta); color: var(--ink-faint); text-align: center; line-height: 2;
+    font-variant-numeric: tabular-nums;
   }
   footer::before {
     content: ""; display: block; border-top: 3px solid var(--ink);
-    margin: -0.55rem 0 2px; transform: translateY(-3px);
+    margin: calc(-1 * var(--s-3)) 0 2px; transform: translateY(-3px);
   }
 
-  @media (max-width: 900px) {
-    .sheet { padding: 1.4rem 1.2rem 1.6rem; }
-    .cols { grid-template-columns: 1fr; }
-    .cols > section { padding-right: 0; }
-    .rail { border-left: none; padding-left: 0; border-top: 2px solid var(--ink); padding-top: 1rem; margin-top: 1.4rem;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; align-items: start; }
-    .focus { grid-template-columns: 1fr; }
-    .focus article + article { border-left: none; border-top: 1px solid var(--hairline); }
-    .idea-grid { grid-template-columns: 1fr 1fr; }
-    .idea { padding: .2rem 1.1rem .8rem 0; }
-    .idea + .idea { border-left: none; }
-    .idea:nth-child(even) { border-left: 1px solid var(--hairline); padding-left: 1.1rem; }
+  /* ---- ≥40rem:平板,纸张浮起、双列 ---- */
+  @media (min-width: 40rem) {
+    body { padding: var(--s-6) var(--s-4) var(--s-6); }
+    .sheet {
+      --sheet-pad: 2rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 30px rgba(0, 0, 0, .16);
+    }
+    .paper-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-6); position: relative; }
+    .paper-grid::before {
+      content: ""; position: absolute; top: var(--s-2); bottom: var(--s-2); left: 50%;
+      border-left: 1px solid var(--hairline);
+    }
+    .idea-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-5); }
+    .idea:nth-child(odd) { border-top: 1px solid var(--hairline); }
   }
-  @media (max-width: 640px) {
-    body { padding: 0; }
-    .sheet { box-shadow: none; }
-    .paper-grid { grid-template-columns: 1fr; }
-    .paper-grid::before { display: none; }
-    .rail { grid-template-columns: 1fr; }
-    .idea-grid { grid-template-columns: 1fr; }
-    .idea, .idea:nth-child(even) { border-left: none; padding-left: 0; }
-    .baoyan { display: none; }
-    h1 { flex: 1; }
+
+  /* ---- ≥56.25rem(900px):桌面报纸 ---- */
+  @media (min-width: 56.25rem) {
+    .sheet { --sheet-pad: 2.4rem; }
+    .focus { grid-template-columns: 1.2fr 1fr; }
+    .focus article { padding: var(--s-4) var(--s-5) var(--s-4) 0; }
+    .focus article + article { border-top: none; border-left: 1px solid var(--hairline); padding-left: var(--s-5); padding-right: 0; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; }
+    .cols > section { padding-right: var(--s-5); }
+    .rail { border-left: 1px solid var(--hairline); padding-left: var(--s-5); }
+    main[data-filter] .cols { grid-template-columns: 1fr; }
+    main[data-filter] .cols > section { padding-right: 0; }
+    main[data-filter] .rail { border-left: none; padding-left: 0; }
+    .idea-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+    .idea { border-top: none; padding: var(--s-1) var(--s-4) var(--s-2); }
+    .idea:first-child { padding-left: 0; }
+    .idea + .idea { border-left: 1px solid var(--hairline); }
   }
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
-
+<script>
+/* 主题初始化:尽早执行避免闪烁。localStorage 记忆,默认跟随系统 */
+(function () {
+  try {
+    var t = localStorage.getItem('radar-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
 <div class="sheet">
   <header>
-    <div class="baoyan-row">
-      <div class="baoyan">
-        <span class="mono">VOL.009</span><br>
-        2026年8月2日<br>星期日
-      </div>
-      <h1>音乐科技雷达</h1>
-      <div class="baoyan">
-        每日 07:00 出版<br>
-        <span class="mono">收录 4 条</span><br>
-        <span class="mono">选题 4 个</span>
-      </div>
+    <div class="utility">
+      <span class="vol-line">VOL.010 · 2026年8月4日 · 星期二</span>
+      <nav class="u-nav" aria-label="站点">
+        <a class="u-btn" href="archive.html">往期</a>
+        <button class="u-btn" id="theme-toggle" type="button" aria-label="切换深浅色">深色</button>
+      </nav>
     </div>
+    <h1><a href="./index.html">音乐科技雷达</a></h1>
     <p class="mast-sub">数字音乐智能处理 · 学术前沿 × 开源工具 × 行业动态</p>
+    <p class="mast-counts">收录 13 条 · 选题 4 个 · 每日 07:00 出版</p>
     <canvas id="wave" aria-hidden="true"></canvas>
     <div class="wenwu"></div>
     <div class="wenwu-thin"></div>
   </header>
 
-  <!-- ==================== 本报头条 ==================== -->
-  <div class="focus">
+  <nav class="tabs" role="tablist" aria-label="板块分栏">
+    <button class="tab" type="button" role="tab" data-sec="all" aria-selected="true">全部</button>
+    <button class="tab" type="button" role="tab" data-sec="papers" aria-selected="false">学术</button>
+    <button class="tab" type="button" role="tab" data-sec="oss" aria-selected="false">开源</button>
+    <button class="tab" type="button" role="tab" data-sec="industry" aria-selected="false">行业</button>
+    <button class="tab" type="button" role="tab" data-sec="ideas" aria-selected="false">选题</button>
+  </nav>
+
+  <main id="main">
+    <!-- ==================== 本报头条 ==================== -->
+    <section class="focus" data-block="focus" aria-label="本报头条">
     <article>
-      <div class="meta"><span class="hot">本报头条</span><span class="tag">音乐认知/多任务</span><span class="mono-part">HN 34pt · 07-24</span></div>
-      <h3><a href="https://www.jefftk.com/p/learning-musical-multitasking" target="_blank" rel="noopener">学习音乐多任务：认知负荷与实践策略</a></h3>
-      <p class="body">这是一篇关于音乐多任务学习的个人实践笔记，作者把同时练多种乐器和舞蹈的经验拆成了注意力分配、动作自动化和认知负荷三条线索。</p>
-      <p class="why"><b>为什么值得看:</b>它值得看，是因为设计任何练琴辅助工具或 AI 陪练系统之前，都需要先理解人脑是怎么把技能从无意识提到下意识层面的。</p>
+      <div class="meta"><span class="hot">本报头条</span><span class="tag">音乐生成</span><span class="src-part">arXiv · cs.SD · 08-03</span></div>
+      <h3><a href="https://arxiv.org/abs/2608.01920" target="_blank" rel="noopener">P-MUSE：可选MIDI提示的统一器乐音乐合成与编辑模型</a></h3>
+      <p class="orig">P-MUSE: Prompt-MIDI-Optional Model for Unified Instrumental Music Synthesis and Editing</p>
+      <p class="body">P-MUSE 提出了一种提示-MIDI-可选模型，既能仅凭参考音频进行器乐音色克隆与生成，也能在提供对齐 MIDI 时实现更精细的音符级编辑。</p>
+      <p class="why"><b>为什么值得看:</b>它把「只能听小样生成」和「按谱面精修」两条路径统一到一个框架里，对 AI 辅助作曲和编曲研究非常有启发。</p>
     </article>
     <article>
-      <div class="meta"><span class="hot">行业要闻</span><span class="tag">多媒体生成/产品发布</span><span class="mono-part">GitHub · 198★ · 07-17</span></div>
-      <h3><a href="https://github.com/flatkey-ai/flatkey-cli" target="_blank" rel="noopener">Flatkey CLI：面向创作者的开源多媒体生成命令行工具</a></h3>
-      <p class="body">Flatkey 把图像、视频、音频、字幕和模型发现整合进一个命令行界面，可以批量生成短视频、配乐候选或广告素材。</p>
-      <p class="why"><b>为什么值得看:</b>对音乐人来说，它提供了一种把视觉和声音草图工作流写成脚本、减少重复劳动的新可能。</p>
+      <div class="meta"><span class="hot">行业要闻</span><span class="tag">版权诉讼</span><span class="src-part">MusicTech · 08-03</span></div>
+      <h3><a href="https://musictech.com/news/industry/suno-copyright-infringement-germany" target="_blank" rel="noopener">德国法院裁定 Suno AI 训练侵权，GEMA 赢得关键版权诉讼</a></h3>
+      <p class="orig">German court says Suno’s AI training infringed copyright in landmark ruling</p>
+      <p class="body">德国慕尼黑法院判定 Suno 在模型训练中使用受版权保护的音乐作品构成侵权，并驳回了合理使用的辩护。</p>
+      <p class="why"><b>为什么值得看:</b>这是欧洲首例针对 AI 音乐生成公司的版权裁决，可能直接影响未来 AI 音乐训练数据的授权与合规模式。</p>
     </article>
-  </div>
-
-  <div class="cols">
-    <!-- ==================== 学术前沿(双列) ==================== -->
-    <section>
-      <div class="sec-head">
-        <h2>学术前沿</h2><span class="en">Papers</span><span class="rule"></span>
-      </div>
-      <div class="paper-grid">
-
-      </div>
     </section>
 
-    <!-- ==================== 右栏:开源 + 行业 ==================== -->
-    <div class="rail">
-      <section>
+    <div class="cols">
+      <!-- ==================== 学术前沿 ==================== -->
+      <section data-block="papers" aria-label="学术前沿">
         <div class="sec-head">
-          <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
+          <h2>学术前沿</h2><span class="en">Papers</span><span class="rule"></span>
         </div>
-        <div class="rail-item">
-          <div class="meta"><span class="tag">音效/交互</span><span class="mono-part">Vue · 142★</span></div>
-          <h3><a href="https://github.com/romainsimon/uisfx" target="_blank" rel="noopener">uisfx：为界面设计的开源 UI 音效库</a></h3>
-          <p class="why">uisfx 把界面里常用的短音效打包成一个仓库，覆盖点击、悬停、成功、错误、开关等场景。<b>对做音乐交互作品的同学来说，它是快速获得声音反馈的现成素材。</b></p>
-        </div>
-        <div class="rail-item">
-          <div class="meta"><span class="tag">音乐平台</span><span class="mono-part">Vue · 116★</span></div>
-          <h3><a href="https://github.com/zhuyao-opendeveloper/musicist" target="_blank" rel="noopener">Musicist：可部署的开源在线音乐网站</a></h3>
-          <p class="why">Musicist 是一个用 Vue 写的开源在线音乐播放站点前端，适合作为个人作品集、课程项目或小型独立音乐平台的起点。</p>
+        <div class="paper-grid">
+
+        <article>
+          <div class="meta"><span class="tag">音乐×视觉/交互艺术</span><span class="src-part">arXiv · cs.HC · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.02219" target="_blank" rel="noopener">Sounding Canvas：把画作变成可触摸的多模态声音装置</a></h3>
+          <p class="orig">Sounding Canvas: Embedding Algorithms in Networked, Sensorial Sound Art</p>
+          <p class="why">Sounding Canvas 在画布中嵌入电容传感器、实时决策模型和网络通信，让观众的触摸触发来自画面本身的沉浸式空间化音效。<b>它把算法「藏」进艺术品内部，是音乐科技、交互设计与声音艺术交叉的典型样本。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音频修复</span><span class="src-part">arXiv · cs.SD · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01972" target="_blank" rel="noopener">LOUDAR：用潜在空间优化与扩散先验修复退化音乐</a></h3>
+          <p class="orig">Music Restoration via Latent Operator Optimization and Diffusion Model Priors</p>
+          <p class="why">LOUDAR 把音乐修复当成「未知失真下的反问题」，无需成对训练数据或预先知道失真类型即可恢复干净音频。<b>它摆脱了传统方法对特定失真的依赖，对老唱片、低质量录音和未知损坏的修复都很有想象空间。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">评测/音乐教育</span><span class="src-part">arXiv · cs.AI · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01783" target="_blank" rel="noopener">用 GPT-4o-mini 自动批改和声与曲式分析题</a></h3>
+          <p class="orig">Comparative Validation of GPT-4o-mini and Teacher Mean Scores for Automated Scoring of Music Analysis Responses: Single-Pass Deployment, Repeatability, and Strategy-Specific Bias</p>
+          <p class="why">研究用 300 份大学级别的音乐分析答题，比较 GPT-4o-mini 与教师平均分的评分一致性。<b>它为大规模音乐素养评测提供了自动化参考，也让我们看到大模型在音乐专业知识评估上的边界。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">鼓转录/源分离</span><span class="src-part">arXiv · cs.SD · 08-02</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01093" target="_blank" rel="noopener">Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成</a></h3>
+          <p class="orig">Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion</p>
+          <p class="why">该工作把鼓转录从「直接识别」改成「先分离五种鼓 stem，再检测事件」的两步框架。<b>它同时输出可编辑的分轨和符号事件，直接服务于后期混音、采样和智能编曲。</b></p>
+        </article>
+
+        <article>
+          <div class="meta"><span class="tag">音乐×VR/交互艺术</span><span class="src-part">arXiv · cs.HC · 08-03</span></div>
+          <h3><a href="https://arxiv.org/abs/2608.01688" target="_blank" rel="noopener">Beyond Score-Based Gamification：为颈椎康复设计时空音乐化 VR 体验</a></h3>
+          <p class="orig">Beyond One-Size-Fits-All: Personalized and Culturally Adaptive Emotional TTS via Interactive Optimization of Individual Emotion Perception Spaces</p>
+          <p class="why">该研究为慢性颈痛康复设计了一套不依赖分数、而以时空音乐体验驱动的 VR 系统。<b>它把枯燥的治疗动作转化为具有情感支持的沉浸式音乐互动，对音乐治疗和运动游戏化都有参考价值。</b></p>
+        </article>
+
         </div>
       </section>
 
-      <section>
-        <div class="sec-head">
-          <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
+      <!-- ==================== 右栏:开源 + 行业 ==================== -->
+      <div class="rail">
+        <section data-block="oss" aria-label="开源工具">
+          <div class="sec-head">
+            <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐生成</span><span class="src-part">Hugging Face · 0★</span></div>
+          <h3><a href="https://huggingface.co/maolandaw/ACE-Step-1.5-burn" target="_blank" rel="noopener">ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face</a></h3>
+          <p class="why">maolandaw 上传了 ACE-Step 1.5 的 burn 版本检查点，面向开放的音乐生成研究。<b>ACE-Step 是近期开源社区中备受关注的端到端音乐生成模型，适合想在本地跑通完整作曲流程的同学。</b></p>
         </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐生成/浏览器推理</span><span class="src-part">Hugging Face · 0★</span></div>
+          <h3><a href="https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU" target="_blank" rel="noopener">ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现</a></h3>
+          <p class="why">这个仓库把 ACE-Step v1.5 XL Turbo 转换成了 ONNX 格式并支持 WebGPU，能在浏览器里本地跑音乐生成。<b>它降低了音乐生成模型的部署门槛，让前端和交互艺术项目可以直接集成。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音效/音乐生成</span><span class="src-part">Hugging Face · 27★</span></div>
+          <h3><a href="https://huggingface.co/stabilityai/stable-audio-3-optimized" target="_blank" rel="noopener">Stability AI 发布 Stable Audio 3 优化版本</a></h3>
+          <p class="why">stabilityai 放出了 Stable Audio 3 的优化版检查点，适合生成音乐与音效。<b>它代表了开源社区在高质量音频生成模型上的持续迭代，值得关注其架构改进和许可条款。</b></p>
+        </div>
+        </section>
 
-      </section>
+        <section data-block="industry" aria-label="行业动态">
+          <div class="sec-head">
+            <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">行业政策</span><span class="src-part">EDM.com · via Google News · 08-04</span></div>
+          <h3><a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE1ha1Y0Qi1NZGhTZWdGa2hKa0V4UmdnZS1QbjhNaEc3X0Q0dFVwRFJ2RndMTjJhanhyXzFsQzJIVFRkS18wMWNOZzBTWElfeTBuMlFuWElWNjFlUXFoNm5KTnZ0Q1pVY004M3Y0VVM4VGg1ZERzMUo4eW1n?oc=5&amp;hl=en-US&amp;gl=US&amp;ceid=US%3Aen" target="_blank" rel="noopener">IFPI 收紧官方榜单规则：无授权 AI 音乐将更难上榜</a></h3>
+          <p class="why">国际唱片业协会 IFPI 宣布在旗下多个关键国际榜单中立即实施更严格的 AI 音乐标识与资格审核。<b>这意味着大规模涌入流媒体的 AI 生成曲目将受到更直接的榜单监管，影响流量分配和产业统计。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音乐硬件/交互界面</span><span class="src-part">cdm.link · 08-03</span></div>
+          <h3><a href="https://cdm.link/push-hack-very-unauthorized-access-to-push-3s-display-files-midi-and-more" target="_blank" rel="noopener">Push Hack 让 Ableton Push 3 屏幕、文件与 MIDI 全面开放</a></h3>
+          <p class="why">第三方开发者 Federico Pepe 发布了非官方的 Push Hack，可完整接管 Ableton Push 3 的显示屏、存储和 MIDI。<b>它把这款硬件从 Live 专属控制器变成了通用音乐交互平台，对 DIY 乐器和 NIME 研究很有启发。</b></p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">版权/政策</span><span class="src-part">조선일보 · via Google News · 08-04</span></div>
+          <h3><a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxQSGVKTFNWLUhWbXNwMEZHd2dpZXlHalBOODVKbm83ZFBZX1JLdkdaRzBnRUh0TWpZS29qN0JuWktpMk03czBtaUZzVjM0Vnk5V3FmZ2c4bjRCT3dsVEpRZ1lZUFNhYllrek1zRnFIVUpCUzFxeVVIYjlrRzBKdzN5QU9ESFh6ZVh3cjNacA?oc=5&amp;hl=en-US&amp;gl=US&amp;ceid=US%3Aen" target="_blank" rel="noopener">韩国允许在人类参与下为 AI 音乐登记版权</a></h3>
+          <p class="why">韩国著作权委员会发布指南，明确在人类创造性贡献足够的前提下，AI 辅助创作的音乐可以申请版权保护。<b>这为 AI 音乐产业的合规路径提供了亚洲首个较明确的官方指引。</b></p>
+        </div>
+        </section>
+      </div>
     </div>
-  </div>
 
-  <!-- ==================== 选题灵感 ==================== -->
-  <section class="ideas">
-    <div class="ideas-rule-thick"></div>
-    <div class="ideas-rule-thin"></div>
-    <div class="sec-head">
-      <h2>选题灵感</h2><span class="en">Project Ideas</span>
-      <span class="rule"></span><span class="note">基于近期各期积累 · 按难度从低到高</span>
-    </div>
-    <div class="idea-grid">
+    <!-- ==================== 选题灵感 ==================== -->
+    <section class="ideas" data-block="ideas" aria-label="选题灵感">
+      <div class="ideas-rule-thick"></div>
+      <div class="ideas-rule-thin"></div>
+      <div class="sec-head">
+        <h2>选题灵感</h2><span class="en">Project Ideas</span>
+        <span class="rule"></span><span class="note">基于近期各期积累 · 按难度从低到高</span>
+      </div>
+      <div class="idea-grid">
 
       <article class="idea">
         <div class="diff"><span>▮▯▯ 入门</span><span class="kind">工具</span></div>
-        <h3>练习多任务拆分记录器</h3>
-        <p class="body">参考《学习音乐多任务》里的注意力分层思路，做一个网页或小程序：把一首曲子按声部、肢体动作拆成可循环的小段落，记录每天能同时兼顾几项并画进步曲线。需要：JavaScript/Python 基础 · 前端框架 · 简单数据库。</p>
-        <p class="uses"><b>基于:</b><a href="https://www.jefftk.com/p/learning-musical-multitasking" target="_blank" rel="noopener">学习音乐多任务：认知负荷与实践策略</a></p>
-      </article>
-
-      <article class="idea">
-        <div class="diff"><span>▮▯▯ 入门</span><span class="kind">交互作品</span></div>
-        <h3>开源音乐网站的封面舞台改造</h3>
-        <p class="body">fork musicist，把播放页改成全屏封面舞台，加入同步歌词高亮和主题色自动提取，让它更像一个可展示作品的独立播放器。需要：Vue · CSS 动画 · 音频标签 API。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/zhuyao-opendeveloper/musicist" target="_blank" rel="noopener">Musicist：可部署的开源在线音乐网站</a></p>
-      </article>
-
-      <article class="idea">
-        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
-        <h3>UI 音效与交互事件匹配器</h3>
-        <p class="body">在 uisfx 的基础上为每个短音效标注情绪和动作类型，做一个网页演示：悬停、点击、拖拽、错误提示自动匹配不同音效，并导出配置给 Unity/网页项目。需要：JavaScript · 音效分类 · 前端。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/romainsimon/uisfx" target="_blank" rel="noopener">uisfx：为界面设计的开源 UI 音效库</a></p>
+        <h3>和声/曲式 AI 助教网页</h3>
+        <p class="body">做一个小工具：上传学生的和声或曲式分析文字答案，按教师评分细则自动输出四个维度得分，并用不同颜色标出 AI 认为可疑的错误点；最终可导出一份「AI 评分 vs 教师均分」偏差表。第一步：选一道本学期做过的和声/曲式题，准备好参考答案与 1-4 维度的评分细则，用 GPT-4o-mini 对同一答案连续评分 5 次，记录它在哪些子项上最不稳定。需要：Python/JS 基础 · GPT-4o-mini API · 和声/曲式知识 · 基础统计。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2608.01783" target="_blank" rel="noopener">用 GPT-4o-mini 自动批改和声与曲式分析题</a></p>
       </article>
 
       <article class="idea">
         <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">交互作品</span></div>
-        <h3>命令行音乐视觉草图批量生成器</h3>
-        <p class="body">用 Flatkey CLI 的音频/视频生成能力，为同一首 demo 批量输出十种封面加十五秒试听视频，再用主观打分选出最佳视觉方向。需要：Node.js · 命令行脚本 · 基础音视频处理 · 设计审美。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/flatkey-ai/flatkey-cli" target="_blank" rel="noopener">Flatkey CLI：面向创作者的开源多媒体生成命令行工具</a></p>
+        <h3>可触摸画布的空间声景网页</h3>
+        <p class="body">做一张网页版「会发声的画」：上传一幅画作，点击或触摸画面不同区域会触发对应声源，并通过 Web Audio API 的 PannerNode 让声音听起来从画面相应位置发出。第一步：选一幅自己的画或一张无版权图片，用 HTML Canvas 或 &lt;map&gt; 划定 4-6 个触摸区，为每个区准备一段短音效或乐器 loop，写 50 行 JS 实现位置声像与触发逻辑。需要：HTML/CSS/JS · Web Audio API · 基础声音编辑 · 空间音频概念。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2608.02219" target="_blank" rel="noopener">Sounding Canvas：把画作变成可触摸的多模态声音装置</a></p>
       </article>
 
-    </div>
-  </section>
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
+        <h3>浏览器本地文本到音乐生成器</h3>
+        <p class="body">基于 ACE-Step v1.5 XL Turbo 的 ONNX+WebGPU 实现，做一个单页应用：用户在输入框写提示词，模型在浏览器本地推理生成音乐并直接播放，无需后端服务器。第一步：打开 Hugging Face 上的 ACE-Step ONNX+WebGPU 仓库，用 Chrome/Edge（支持 WebGPU）跑通示例，确认能本地生成 5-10 秒音频；然后把输入框、生成按钮和 audio 标签包成一个可分享页面。需要：JavaScript · ONNX Runtime / WebGPU · Hugging Face 模型加载 · 基础音频播放。</p>
+        <p class="uses"><b>基于:</b><a href="https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU" target="_blank" rel="noopener">ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现</a> · <a href="https://huggingface.co/maolandaw/ACE-Step-1.5-burn" target="_blank" rel="noopener">ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face</a></p>
+      </article>
 
-  <!-- ==================== 往期回顾 ==================== -->
-  <section class="backissues">
-    <div class="sec-head">
-      <h2>往期回顾</h2><span class="en">Archives</span>
-      <span class="rule"></span><span class="note">点击任意一期查看当期全版</span>
-    </div>
-    <div class="bi-grid" id="bi-grid"></div>
-  </section>
+      <article class="idea">
+        <div class="diff"><span>▮▮▮ 硬核</span><span class="kind">研究</span></div>
+        <h3>鼓组分离-检测一体化评测工具</h3>
+        <p class="body">复现 Separate-and-Detect 模型，对 5-10 首不同风格歌曲同时输出 5 条鼓 stem 与对应 MIDI 鼓谱，再用 mir_eval 和 audio_eval 计算 onset F1、SDR 等指标，最终生成一份可对比表格与可视化报告，可扩展为 ISMIR/ICASSP 的 demo 或短文。第一步：找到论文主页或 arXiv 附带的代码/数据集链接，跑通官方 demo；如果没有本地 GPU，先在云端用预训练权重对 1 首歌推理，确认能拿到 kick/snare/hat/tom/cymbal 分轨和 MIDI。需要：Python · 鼓转录/源分离基础 · mir_eval · GPU 或云端算力 · 实验设计与统计。</p>
+        <p class="uses"><b>基于:</b><a href="https://arxiv.org/abs/2608.01093" target="_blank" rel="noopener">Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成</a> · <a href="https://github.com/shwj114514/audio_eval" target="_blank" rel="noopener">audio_eval：可组合的开源音频生成与重建评测工具箱</a> <a class="volref" href="./issues/vol-006.html">VOL.006</a></p>
+      </article>
+
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按"数字音乐智能处理"相关度筛选,宁缺毋滥</span><br>
-    <span class="mono">音乐科技雷达 · GENERATED 2026-08-02 · 每日 07:00 出版</span>
+    <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按“数字音乐智能处理”相关度筛选,宁缺毋滥</span><br>
+    <span>音乐科技雷达 · 第 010 期 · 2026年8月4日 · 每日 07:00 出版 · <a href="archive.html" style="border-bottom:1px solid var(--hairline)">往期回顾</a></span>
   </footer>
 </div>
 
-<script type="application/json" id="radar-archive">
-{
-  "note": "机器可读存档:历期收录条目与选题,供每日编辑 agent 跨期去重、积累素材池、生成选题,并供页内「往期回顾」脚本渲染往期全版。字段必须填全(items: vol/pub/date/sec/tag/title/url/src/orig/why/hot/detail(通俗三段:【这是什么】【为什么值得关注】【怎么入手】,段间以\\n分隔);ideas: vol/level/kind/title/body)。每期追加当期内容,保留最近 90 天且 items 不超过 400 条,超出删最旧。pub 是该条所属期的出版日期。",
-  "items": [
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-22",
-      "sec": "papers",
-      "tag": "音乐生成",
-      "title": "全曲生成新框架:分层自回归规划 + 流匹配渲染",
-      "url": "https://arxiv.org/abs/2607.20253",
-      "src": "arXiv · cs.SD",
-      "orig": "Pushing the Frontier of Full-Song Generation",
-      "why": "统一框架支持歌词生曲、文本生曲和属性控制:先规划整曲结构,再渲染高保真音频。\"规划+渲染\"两段式正在成为全曲生成的主流范式。",
-      "hot": "本报头条",
-      "detail": "【这是什么】教 AI 从零唱出一整首歌的系统:给它歌词、一句风格描述(比如『伤感的流行民谣、女声』),它输出带人声、伴奏、编曲的完整歌曲。和 Suno 这类商业产品做的是同一件事,但这篇把技术方案公开写了出来。\n【为什么值得关注】它分两步走:先像作曲家一样规划整首歌的结构(主歌副歌桥段怎么安排),再像录音棚一样把规划『渲染』成高质量音频。这种先谋篇、后落笔的思路正在成为全曲生成的标准做法,想了解 AI 音乐生成的现状,读这一篇能看清整个技术版图。\n【怎么入手】先只读摘要和框架图,搞清『规划』和『渲染』各自负责什么;有余力再看它怎么表示音乐结构。不需要复现,当技术地图读。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-22",
-      "sec": "papers",
-      "tag": "符号音乐",
-      "title": "RPPNet:用\"节奏—音高基元\"解决旋律的长期结构断裂",
-      "url": "https://arxiv.org/abs/2607.19776",
-      "src": "arXiv",
-      "orig": "Perceptually-Grouped Rhythm-Pitch Primitives for Melody Generation",
-      "why": "按小节建模与人类乐句感知不符;改用感知分组基元生成有完整乐句结构的旋律。适合做课程报告或复现选题。",
-      "detail": "【这是什么】一个写旋律的 AI。以往的模型按小节切分音乐来学习,但人耳听到的『乐句』经常跨小节,所以 AI 写的旋律常常东一句西一句、没有整体感。这篇改成按听感上的节奏—音高小单元来建模,让旋律有完整的起承转合。\n【为什么值得关注】结构感是 AI 作曲最老大难的问题,这篇的切入点非常音乐学——它相信人怎么听,模型就该怎么学。对音乐学院的学生特别友好:论乐句划分,你比工程师更专业。\n【怎么入手】需要一点符号音乐(MIDI 层面)生成的背景。很适合做课程报告:对比它和传统按小节建模的输出,用你的乐理知识评价谁的乐句更自然。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-21",
-      "sec": "papers",
-      "tag": "AI 制作",
-      "title": "RIME:让 AI Agent 接管音乐后期制作的迭代流程",
-      "url": "https://arxiv.org/abs/2607.19605",
-      "src": "arXiv",
-      "orig": "Enabling Large-Scale Agentic Post-Production",
-      "why": "把混音修音等反复精修环节做成 Agent 工作流。\"Agent + DAW\"是今年音乐科技的新叙事,离行业落地更近。",
-      "detail": "【这是什么】音乐生成模型一次给你一首『成品』,但真实的音乐制作是无数次小修改:这里响度压一点、那里人声亮一点。RIME 把这些后期精修环节交给 AI Agent(能自己规划并执行多步任务的 AI)批量完成。\n【为什么值得关注】它代表一个新方向:AI 不再是一键出歌的黑盒,而是像助理混音师一样进入你的工作流程。对学音乐制作的人来说,这比生成模型更贴近实际工作方式,也预示了未来 DAW 插件的形态。\n【怎么入手】读它分析『音乐后期为什么难自动化』的部分即可,不需要跑代码。可以顺着想:你自己混音时的哪些操作,能被这样描述并交给 AI?"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-22",
-      "sec": "papers",
-      "tag": "评测",
-      "title": "AI 翻唱到底错在哪?可定位错误的诊断式评测框架",
-      "url": "https://arxiv.org/abs/2607.19688",
-      "src": "arXiv",
-      "orig": "A Diagnostic Evaluation Framework for AI-Generated Cover Songs",
-      "why": "用乐理 + 声学特征把\"伴奏和声全错\"这类局部错误定位出来。懂乐理的人做评测研究有天然优势。",
-      "detail": "【这是什么】AI 翻唱的歌『哪里不对劲』往往说不清:人声还在调上,但伴奏的和声功能全错了。这篇做了一个体检报告式的评测框架,用乐理特征加声学特征把错误定位到具体位置,而不是只给一个总分。\n【为什么值得关注】生成模型满天飞,但『怎么科学地评价生成的音乐』研究很少,而这恰恰需要乐理功底——正是音乐学院学生的主场。这类研究目前发论文的性价比很高。\n【怎么入手】重点看它选了哪些乐理特征(和声功能、调性、编曲完整度)以及怎么把特征变成可计算的指标。这套思路可以直接搬进你自己的评测研究。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-15",
-      "sec": "papers",
-      "tag": "音乐×视觉",
-      "title": "音乐驱动的 360° 沉浸式视频生成",
-      "url": "https://arxiv.org/abs/2607.13471",
-      "src": "arXiv",
-      "orig": "Bring Music The Horizon: Music-Driven 360° Video Generation",
-      "why": "从音乐直接生成全景视频,不依赖歌词。可对接 VR 音乐会、沉浸式展演等场景。",
-      "detail": "【这是什么】给一段音乐,AI 生成一支 360° 全景视频——戴上 VR 头显就像站在这首音乐构成的世界里。以前的音乐可视化要么靠歌词、要么是平面视频,这篇直接做成沉浸式。\n【为什么值得关注】音乐×视觉的交叉正在从『给 MV 配画面』升级为『用画面构造音乐空间』,VR 音乐会、沉浸式展演都是现成的落地场景。做新媒体艺术方向,这是很好的技术参照。\n【怎么入手】先看它的演示视频感受效果,再看音乐特征如何映射到视觉运动(节奏对应镜头、音色对应材质)。做自己的作品不必用它的模型,借它的映射思路即可。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-21",
-      "sec": "papers",
-      "tag": "交互设计",
-      "title": "为\"看不见\"而设计:盲人及低视力者的弦乐学习交互",
-      "url": "https://arxiv.org/abs/2607.18598",
-      "src": "arXiv",
-      "orig": "Supporting Embodied String Learning for Musicians with Blindness",
-      "why": "弓弦教学高度依赖视觉示范,研究探索非视觉的具身交互设计。标准 CHI 路数,可借鉴其用户研究方法。",
-      "detail": "【这是什么】拉弓弦乐器高度依赖『看老师示范』,盲人和低视力学习者因此很难入门。这篇先通过访谈搞清他们的真实困难,再探索用触觉、声音提示等非视觉方式辅助学琴的设计方案。\n【为什么值得关注】这是一篇标准的人机交互(HCI)研究:先深入理解用户,再做设计。它展示了音乐教育、无障碍与交互设计如何组合成一个有社会价值的研究方向,方法论完全可以搬到你自己的调研里。\n【怎么入手】重点读研究方法部分:访谈怎么设计、用户困难怎么归纳成设计机会。不需要任何技术背景。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-18",
-      "sec": "papers",
-      "tag": "演唱评测",
-      "title": "一个总分够吗?用时间曲线评估整首歌的演唱质量",
-      "url": "https://arxiv.org/abs/2607.16599",
-      "src": "arXiv",
-      "orig": "Assessing Singing Quality of Songs with Temporal Score Curves",
-      "why": "把演唱评估从短片段扩展到整曲,能看出哪一段唱崩了。与 K 歌打分、声乐教学工具直接相关。",
-      "detail": "【这是什么】现有的唱歌打分只能对短片段打分,这篇把评估拉长到整首歌,输出一条随时间起伏的质量曲线——高潮唱崩了还是尾音不稳,曲线上一眼可见。\n【为什么值得关注】这正是 K 歌 App 打分和 AI 声乐陪练的核心技术,学术和产品离得非常近。对声乐背景的人来说,你能判断它的曲线与人耳感受是否一致——这个判断本身就有研究价值。\n【怎么入手】看它如何定义逐段质量、用什么特征计算。想动手的话,配合现成的音高提取工具就能做出一个简化版。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-21",
-      "sec": "papers",
-      "tag": "交互音乐",
-      "title": "量子隐形传态玩音乐:多智能体交互音乐系统",
-      "url": "https://arxiv.org/abs/2607.19212",
-      "src": "arXiv",
-      "orig": "Quantum Teleportation in Multi-Agent Systems for Interactive Music",
-      "why": "人类演奏者与量子态编码的音乐智能体实时合奏。NIME 风格实验,可作新媒体演出创作灵感。",
-      "detail": "【这是什么】一场实验性演出:把旋律和节奏编码成量子态,音乐智能体之间用量子隐形传态互相传递音乐信息,人类演奏者与它们实时合奏。\n【为什么值得关注】不用纠结量子物理——它的价值在于展示『新技术如何变成乐器』的想象力,是 NIME(新乐器界面)社区的典型作品。做实验音乐、新媒体演出,这类论文就是灵感库。\n【怎么入手】当创作案例读:看它如何把抽象技术转译成可演奏的规则、演出如何组织。物理细节可以完全跳过。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-23",
-      "sec": "oss",
-      "tag": "推理引擎",
-      "title": "audio.cpp:纯 C++ 音频模型本地推理",
-      "url": "https://github.com/0xShug0/audio.cpp",
-      "src": "C++ · 842★",
-      "why": "ggml 系一体化引擎,TTS/识别/音乐生成免 Python 本地跑。音频模型的\"llama.cpp 时刻\"。",
-      "detail": "【这是什么】一个纯 C++ 写的音频 AI 引擎:语音合成、语音识别、变声、音乐生成都能在你自己的电脑上直接跑——不用装 Python、不用连云端、不花 API 钱。\n【为什么值得关注】当年 llama.cpp 让每个人都能在本地跑大语言模型,这个项目正在对音频模型做同样的事。本地化意味着隐私、零成本,以及可以塞进自己的作品里——比如给交互装置加一个完全离线的声音 AI。\n【怎么入手】会用命令行就能试:下载、编译、跑自带示例。想集成到作品里,再研究它的接口。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-23",
-      "sec": "oss",
-      "tag": "音乐转谱",
-      "title": "MuScriptor:多乐器自动转谱模型",
-      "url": "https://github.com/muscriptor/muscriptor",
-      "src": "Kyutai · 825★",
-      "why": "从混合音频直接转出各乐器乐谱。采谱、教学、建数据集都用得上。",
-      "detail": "【这是什么】听歌写谱的 AI:给它一段多乐器混合的录音,它分别转写出各个乐器的乐谱。由做出著名语音模型 Moshi 的法国实验室 Kyutai 参与开发,免费开源。\n【为什么值得关注】自动转谱是音乐信息检索领域的核心难题,顶级实验室开源意味着可用性上了一个台阶。扒谱、制作教学素材、构建数据集,都直接受益。\n【怎么入手】用你熟悉的曲子测它:转出来的谱和你耳朵扒的差多少?复杂配器哪里会错?认真做完这个测评,本身就是一篇有价值的报告。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-23",
-      "sec": "oss",
-      "tag": "音乐推荐",
-      "title": "Embeat:基于内容的音乐推荐系统",
-      "url": "https://github.com/gdstudio-org/Embeat",
-      "src": "Python · 200★",
-      "why": "在 Spotify 4500 万曲目上训练。MIR 最典型的工业应用,代码可作学习样本。",
-      "detail": "【这是什么】一个开源的音乐推荐系统,在 Spotify 的 4500 万曲目上训练。它不靠『听这首歌的人也听了那首』的用户行为,而是直接分析音频内容本身的相似性来推荐。\n【为什么值得关注】基于内容的推荐建立在『机器听懂音乐』之上,是 MIR 技术最典型的工业应用。想知道流媒体推荐背后的原理,读它的代码比读论文直观。\n【怎么入手】先看 README 了解流程:音频变成特征向量,再做相似度检索。有 Python 基础可以跑通小规模示例,重点理解『音乐向量化』这个核心概念。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-23",
-      "sec": "oss",
-      "tag": "声音×交互",
-      "title": "Cuelume:给界面交互配音的\"声音调色板\"",
-      "url": "https://github.com/Danilaa1/cuelume",
-      "src": "TS · 958★",
-      "why": "按钮、开关等 UI 反馈音效库。声音交互设计是音乐生的交叉就业方向。",
-      "detail": "【这是什么】一套给界面配音的音效库:按钮按下、开关切换、任务完成,每个交互动作都配上精心设计的声音反馈。开发者不懂声音设计,也能直接拿来用。\n【为什么值得关注】UI 声音设计是个被忽视的交叉职业方向——产品公司需要,但懂声音的人少。这个项目展示了它如何被产品化:声音如何分类、命名、成套交付。\n【怎么入手】去项目页把整套音效听一遍,分析它的设计语言:确认音为什么短促上扬?错误音为什么低沉?写下这套分析,就是现成的求职作品集素材。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-15",
-      "sec": "industry",
-      "tag": "版权",
-      "title": "黑客攻破 Suno:训练数据被证实爬自 YouTube、Deezer 和 Genius",
-      "url": "https://www.404media.co/hack-reveals-suno-ai-music-generator-scraped-youtube-deezer-and-genius/",
-      "src": "404 Media",
-      "why": "泄露资料显示其大规模抓取流媒体与歌词平台内容,为唱片业诉讼提供新证据。训练数据合规是决定 AI 音乐行业走向的核心变量。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】黑客攻破了头部 AI 音乐生成公司 Suno 的内部资料,证实其训练数据大规模爬取自 YouTube、Deezer 和歌词网站 Genius——此前这只是唱片业的猜测,现在有了实证。\n【为什么值得关注】各大唱片公司正在起诉 AI 音乐公司,这份证据可能改变诉讼走向,进而决定『AI 生成音乐能否商用、如何授权』的行业规则。版权规则定型之前,整个行业格局都是暂时的——这直接关系到你未来的职业环境。\n【怎么入手】持续关注两件事:诉讼的判决结果,以及 Suno 们是否转向授权数据。可以顺带了解『训练数据授权』这个正在形成的新产业。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-16",
-      "sec": "industry",
-      "tag": "AI 创作",
-      "title": "100 美元做一支 AI 音乐 MV:两大模型全流程对比",
-      "url": "https://www.tryai.dev/blog/ai-music-video-arena-claude-vs-gpt-5.6",
-      "src": "HN 396pt",
-      "why": "作曲、视觉、剪辑全流程实测。展示了 AI 音乐内容生产的真实能力边界和成本。",
-      "detail": "【这是什么】一位创作者只花 100 美元,用两家的 AI 模型各做了一支完整的音乐 MV(作曲、画面、剪辑全流程),把过程、成本和成片效果公开对比,在技术社区引发热议。\n【为什么值得关注】它给出了 AI 内容生产的真实标尺:哪些环节 AI 已经够用、哪些还必须人来。对想用 AI 做作品的人,这是一份替你花了钱的踩坑报告。\n【怎么入手】通读原文,留意作者在每个环节的工具选择和返工原因;然后想一个问题:如果是你来做,音乐部分你能比 AI 好在哪?那就是你的不可替代性。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-02",
-      "sec": "industry",
-      "tag": "艺人态度",
-      "title": "\"怪人奥尔\"拒绝高价 AI 广告代言",
-      "url": "https://variety.com/2026/music/news/weird-al-yankovic-rejected-ai-commercial-money-offer-1236800794/",
-      "src": "Variety",
-      "why": "艺人群体对 AI 态度分化的又一注脚。创作者接受度直接影响音乐科技产品的市场空间。",
-      "detail": "【这是什么】以戏仿歌曲闻名的美国音乐人『怪人奥尔』拒绝了一支 AI 广告的高额报价——他不愿自己的形象和声音为 AI 产品背书。\n【为什么值得关注】艺人对 AI 的态度正在分化:有人授权数字分身,有人坚决抵制。这决定了 AI 音乐产品能拿到什么素材、市场接受度有多高。做音乐科技,理解创作者社群的情绪和立场,跟理解技术同样重要。\n【怎么入手】当行业风向标读。可以开始整理一份『知名艺人对 AI 的公开态度』清单,一年后回头看变化,会很有意思。"
-    },
-    {
-      "vol": 1,
-      "pub": "2026-07-23",
-      "date": "2026-07-13",
-      "sec": "industry",
-      "tag": "工具",
-      "title": "Show HN:从 YouTube 教学视频自动提取吉他谱",
-      "url": "https://github.com/marcelpanse/youtube-guitar-tab-parser",
-      "src": "HN 108pt",
-      "why": "视频理解 + 音乐转谱的轻量组合。学生阶段完全做得出来的独立项目范例。",
-      "detail": "【这是什么】一个开源小工具:输入 YouTube 吉他教学视频的链接,自动解析出六线谱。本质是视频理解加音乐转谱两项现成技术的轻量组合。\n【为什么值得关注】它证明了学生规模的个人项目也能做出有人用的音乐科技产品——不需要大模型、不需要融资,把两个现成技术拼对了就行。这是最值得模仿的独立项目形态。\n【怎么入手】读它的源码结构(不长):怎么拆视频、怎么识谱、怎么拼结果。然后想一个属于你自己的『两项现成技术的组合』。"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "papers",
-      "tag": "音频描述/评测",
-      "title": "结构化音频描述评测框架：用可控扰动验证模型是否真听懂",
-      "url": "http://arxiv.org/abs/2607.21424v1",
-      "src": "arXiv · cs.SD",
-      "orig": "An Evaluation Framework for Structured Audio Captions Validated by Controlled Perturbations",
-      "why": "现有自动音频描述模型开始输出结构化的多属性描述，但传统指标只能比较整句文本，没法分别衡量音色、事件、空间等维度。这篇论文提出用可控扰动生成已知错误的描述，来检验评测指标是否能准确发现对应缺陷。",
-      "detail": "【这是什么】自动音频描述就像给一段声音写一段听后感。过去模型只写一句话，现在越来越多模型会列出声音里有哪些事件、在什么位置、音色如何。这篇工作把描述拆成结构化的条目，并主动加入小错误，看看评测指标能不能像老师批改试卷一样指出哪一项错了。\n【为什么值得关注】对音乐科技来说，描述音乐作品、乐器、混音缺陷都离不开这种细粒度评测。如果指标不可靠，研究者就会误以为模型表现很好，实际上它在和声、节奏或空间感上出了问题。\n【怎么入手】可以先下载论文的评测脚本，用几段自己录的吉他或钢琴片段做实验：先让模型生成结构化描述，再手动改几个音高或节奏错误，看指标打分是否下降。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "papers",
-      "tag": "音乐×视觉/无障碍",
-      "title": "Sonic Stage：把对话视频变成可交互的空间声景，帮助视障观众理解场景",
-      "url": "http://arxiv.org/abs/2607.20835v1",
-      "src": "arXiv · cs.HC",
-      "orig": "Sonic Stage: Automatically Generating Interactive Spatial Soundscapes to Facilitate Dialogue Video Comprehension for Blind Viewers",
-      "why": "传统口述影像在对话密集场景会盖住台词，这篇工作把视频中的动作、位置和互动转成空间化的声音环境，让视障观众用耳朵“看见”画面。",
-      "detail": "【这是什么】Sonic Stage 给一段有人说话的视频自动配上三维声景：谁在左边走动、谁坐在右边、桌上有什么动作，都用声音的位置和质感表现出来。它不是为了取代口述影像，而是在台词密集时也能传递视觉信息。\n【为什么值得关注】这是声音设计和无障碍技术交叉的好例子。音乐科技专业的学生可以思考：音乐演出、MV、游戏过场动画里，怎么用空间声音引导观众注意力，而不是只靠视觉。\n【怎么入手】找一些没有对话的短片或舞蹈视频，尝试用简单的 Ambisonics 或立体声混音，把画面里的动作映射成声音位置，先做出一分钟可佩戴耳机体验的样本。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "papers",
-      "tag": "声音设计/歌声转换",
-      "title": "Designed Vocalizations 数据集：为电影、游戏里的怪物/机器人声音转换铺路",
-      "url": "http://arxiv.org/abs/2607.20951v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Designed Vocalizations Dataset: Sound-Designed Human and Animal Voices for Non-human Voice Conversion",
-      "why": "现有声音转换研究多聚焦自然语音，忽略了电影、游戏里常用的设计化人声。这个数据集收集了怪物低吼、机器人声等声音，为可控的非人类声音转换提供基准。",
-      "detail": "【这是什么】它把声音设计师做出来的非自然人声整理成公开数据集，包括怪物、机器人、卡通角色等类别。研究者可以像训练正常语音转换模型一样，用它训练模型，把一个人的声音变成这些风格。\n【为什么值得关注】游戏配乐、音效和虚拟歌手制作都需要这种声音角色化。比起只改音高，这种转换更关注音色和表现风格，是音乐科技里很有想象力的方向。\n【怎么入手】可以下载数据集中某个类别的少量样本，先用现成的声音转换框架做快速实验，听听自己的声音变成机器人或兽人后，哪些音乐性特征被保留、哪些被丢掉了。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "papers",
-      "tag": "音频水印/版权",
-      "title": "在神经音频编解码器潜伏空间里藏水印，保护 AI 生成音频",
-      "url": "http://arxiv.org/abs/2607.21132v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Investigating Codec-Internal Latent Audio Watermarking for Neural Codec Robustness",
-      "why": "神经音频编解码器会重新量化与合成声音，传统水印容易被破坏。这篇论文把 32 位消息嵌入编解码器内部的连续隐变量，让水印在多次转码后仍能被检出。",
-      "detail": "【这是什么】神经音频编解码器先把音频压缩成一串暗号，再还原成声音。传统水印加在波形上，容易被压缩洗掉。这篇工作把水印直接藏进编解码器中间那个连续隐空间里，相当于在暗号里做暗记，即使重新转码也很难掉。\n【为什么值得关注】随着 AI 音乐生成和流媒体分发越来越依赖编解码器，如何证明一段音频来自哪个模型、哪次生成，成为版权和溯源的关键。这个思路可以帮平台追踪内容来源，也能让音乐人保护自己的作品。\n【怎么入手】可以从论文的代码开始，用常见的开源编解码器生成一段音频，然后尝试在它 latent 层嵌入可识别的水印信息，再反复压缩/解压，看水印是否还能读出来。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-22",
-      "sec": "papers",
-      "tag": "音频理解",
-      "title": "Audio-Zero：不用人工标注，让音频大模型自己学会精细推理",
-      "url": "http://arxiv.org/abs/2607.20166v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Audio-Zero: Label-Free Self-Evolution for Fine-Grained Audio Reasoning",
-      "why": "现有音频大模型常被诟病只能做粗粒度识别，难以判断声音事件的先后顺序、重复和时长。Audio-Zero 提出一种无需人工标注的自我进化方法，让模型自己生成并筛选高质量训练信号，从而提升对音频细节的推理能力。",
-      "hot": "本报头条",
-      "detail": "【这是什么】Audio-Zero 就像一个会自己出题、自己批改的学生。它让音频大模型反复生成对同一段音频的描述，再挑出那些内部一致、细节更丰富的描述，用来重新训练自己。整个过程不需要人工写标签。\n【为什么值得关注】对音乐科技来说，这意味着未来可以让模型更细致地理解一段乐曲里的结构变化、乐器进出、节奏型重复，而不必先花大量人力标注。它也为音乐生成和 MIR 评测提供了更聪明的耳朵。\n【怎么入手】可以从论文开源的代码入手，先拿一段自己熟悉的流行歌做测试：让模型描述歌曲在 0–30 秒、30–60 秒里分别发生了什么，再人工检查它的描述是否准确。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-22",
-      "sec": "papers",
-      "tag": "音频处理/音效",
-      "title": "用黑箱优化逆向音频压缩器参数，让处理过的录音重现原始动态",
-      "url": "http://arxiv.org/abs/2607.19645v1",
-      "src": "arXiv · eess.AS",
-      "orig": "Black-Box Optimization for Identifying and Inverting Audio Dynamic Range Control Effects",
-      "why": "动态范围压缩是音乐制作里最常用的效果之一，但参数未知时很难去除。这篇论文把参数估计变成黑箱优化问题，在感知特征空间里搜索，使恢复的信号更接近原始录音。",
-      "detail": "【这是什么】动态范围压缩就像给声音装上自动音量旋钮，响的地方压下去、轻的地方提上来。很多老录音或混音后的音频已经经过压缩，但参数丢失了。这篇研究不拆开效果器，而是像听音辨参数一样，用优化算法猜出压缩器的设置，再尝试把效果倒推回去。\n【为什么值得关注】对音乐修复、母带工程和音效逆向工程都有用。它提供了一种思路：当我们不知道处理链路时，可以用听觉感知上相似的目标来反推参数。\n【怎么入手】可以用论文里的优化框架，从一段已经被压缩的鼓点或贝斯片段开始，先听原始 heavily compressed 版本，再和恢复后的版本对比，观察瞬态和动态感有没有回来。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-12",
-      "sec": "oss",
-      "tag": "音频推理/音乐生成",
-      "title": "audio.cpp-webui：纯 C++ 音频模型推理引擎的完整网页界面",
-      "url": "https://github.com/kigner/audio.cpp-webui",
-      "src": "C++ · 225★",
-      "why": "它在纯 C++ 的 audio.cpp 推理引擎上加了一个全任务 WebUI，支持语音合成、语音识别、音乐生成等，无需依赖 Python。",
-      "detail": "【这是什么】audio.cpp 是一个类似 llama.cpp 的音频推理引擎，把大模型量化后直接在本地运行。这个 WebUI 给它包了一个网页控制台，用户可以在浏览器里选择 TTS、ASR、音乐生成等任务，不用写命令行。\n【为什么值得关注】对音乐科技学生来说，它提供了一个低延迟、可本地部署的实验平台。你可以快速测试不同的音乐生成或语音模型，而不必搭建复杂的 Python 环境。\n【怎么入手】按照 README 编译后，在浏览器打开界面，先用预置的音乐生成模型生成几秒旋律，再尝试替换模型文件，看不同参数对速度和音质的影响。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-06-30",
-      "sec": "oss",
-      "tag": "音乐可视化/播放器",
-      "title": "Mineradio：带 3D 可视化的本地音乐播放器",
-      "url": "https://github.com/ww085213/Mineradio-LX-Music",
-      "src": "HTML · 230★",
-      "why": "这是一个可独立运行的本地音乐播放器，支持歌词舞台、桌面歌词和 3D 可视化，还能导入 LX Music 歌单。",
-      "detail": "【这是什么】Mineradio 把本地音乐播放、歌词展示和三维可视化塞进一个轻量应用。它不只是放歌，还会根据音乐的节奏和频谱生成实时画面，像把播放界面变成一个小舞台。\n【为什么值得关注】音乐可视化是音乐×视觉交互的经典入口。这个开源项目可以帮你理解怎么把音频特征转换成画面运动，也适合改成演出 VJ 工具或装置原型。\n【怎么入手】下载 release 版本，导入几首自己制作的曲目，重点观察它怎么用频谱驱动 3D 粒子或几何变化。然后尝试替换可视化着色器，做出符合你作品风格的视觉。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-24",
-      "sec": "industry",
-      "tag": "产品发布",
-      "title": "Binaural Studio 亮相：自动匹配音乐调性的双耳节拍播放器",
-      "url": "https://github.com/henrygabriels/binaural-studio",
-      "src": "HN 18pt",
-      "why": "一位独立开发者在 Hacker News 展示了这个小工具，它能识别当前音乐的调性并叠加同调双耳节拍，吸引了不少关注音频体验的网友。",
-      "detail": "【这是什么】这是一个刚亮相的小型网页应用。用户播放本地音乐时，工具会先分析调性，再生成一个与该调匹配的双耳节拍层，叠加在音乐上。界面简单，适合当做一个音乐加脑波辅助的原型。\n【为什么值得关注】它代表了一种轻量化的音乐科技创业方向：不做复杂生成，而是基于现有音频做实时增强和交互。把音乐分析和小众听觉体验结合，很适合学生快速做 MVP。\n【怎么入手】可以去 HN 评论区看用户反馈，然后 fork 仓库，把双耳节拍改成可跟随音乐速度变化的节奏层，做一个更动态的冥想或专注应用。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-19",
-      "sec": "industry",
-      "tag": "流媒体/音频质量",
-      "title": "SoundCloud 解释 AAC 转码为何低通滤波：平台音质与兼容性的权衡",
-      "url": "https://developers.soundcloud.com/blog/less-is-more-why-soundcloud-low-passes-its-aac-transcodings/",
-      "src": "HN 28pt",
-      "why": "SoundCloud 官方披露在 AAC 转码过程中主动低通滤波，以控制编码伪影并兼容旧设备。这为音乐人、母带工程师和流媒体研究者讨论平台音质与交付标准提供了第一手资料。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】SoundCloud 的开发者博客说明，在把用户上传的高质量音频转成 AAC 流媒体格式时，他们会主动切掉一部分极高频。官方理由是控制编码伪影，让多数普通播放设备听起来更稳定。\n【为什么值得关注】对音乐制作人和学生来说，这解释了为什么同一首歌在 SoundCloud 上听起来可能比其他平台闷。它也让平台透明度、交付标准和听众体验之间的权衡成为热议话题。\n【怎么入手】可以上传一段自己包含丰富高频的合成器或镲片录音，分别在 SoundCloud 和其他平台播放，用频谱分析工具比较 16 kHz 以上的能量差异。",
-      "vol": 2,
-      "pub": "2026-07-25"
-    },
-    {
-      "date": "2026-07-09",
-      "sec": "papers",
-      "tag": "音乐认知",
-      "title": "婴儿对音乐的身体反应：出生后第一年的纵向研究",
-      "url": "https://elifesciences.org/articles/107088",
-      "src": "eLife",
-      "orig": "Auditory and spontaneous movement responses to music over first postnatal year",
-      "why": "研究团队追踪了婴儿在出生第一年内听不同音乐时的听觉反应与自发动作，发现节奏和音色会诱发越来越协调的身体摆动。它把音乐感知从主观审美拉回可观测的行为数据，对音乐推荐和生成系统理解情感反应很有启发。",
-      "hot": "本报头条",
-      "detail": "【这是什么】这是一项发展心理学实验，研究者给0到12个月大的婴儿播放带有不同节奏和音色的音乐片段，同时记录他们的头部转动、手脚摆动等自发动作。实验持续了将近一年，想看看刚出生的宝宝对音乐是被动接收，还是会随着时间主动做出身体回应。结果发现，婴儿对音乐的反应并非一成不变，而是随着年龄增长变得更明显、更有节奏感。\n【为什么值得关注】对音乐科技来说，最难得的是把模糊的喜欢/不喜欢变成可测量的行为指标。婴儿还不会用语言描述感受，所以他们的动作就像一份原始的情感反馈，能帮我们理解音乐的哪些要素真正驱动身体反应。如果把这套思路迁移到AI生成音乐的评测，就可以从单纯的听觉打分扩展到身体-情绪层面。\n【怎么入手】eLife论文通常附带实验数据和刺激音频，可以下载后尝试用简单的动作检测或音频特征提取方法复现部分结果。也可以只截取论文中的音乐片段作为小数据集，训练一个预测动作强度的浅层模型。进一步还能把结论用于设计面向儿童或特殊群体的互动音乐应用。",
-      "vol": 3,
-      "pub": "2026-07-26"
-    },
-    {
-      "date": "2026-07-20",
-      "sec": "papers",
-      "tag": "音乐神经科学",
-      "title": "我们为什么爱音乐？关于音乐愉悦感的综述",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6353111/",
-      "src": "Frontiers in Psychology · PMC",
-      "orig": "Why do we love music? An overview of current debates",
-      "why": "这是一篇关于音乐引发愉悦感的神经机制与理论争议的综述，梳理了预期、奖赏、社会联结等几种解释。虽然没有直接给出生成算法，但它把听众为什么会被一段旋律打动讲得更清楚，对设计更能打动人的音乐AI有参考价值。",
-      "detail": "【这是什么】这篇综述整理了心理学和神经科学里关于音乐为什么会让人快乐的多种假说。有的研究者强调音乐带来的预期和意外，比如一个和弦解决时产生的满足感；也有的强调社会交往、节奏同步带来的群体归属感。论文把这些观点放在一起比较，展示了音乐愉悦感其实是一个多维问题。\n【为什么值得关注】对数字音乐智能处理来说，如果只知道怎么生成音符，却不知道音符为什么能打动人，做出来的音乐很容易冷冰冰。这篇综述把审美体验拆成了预期违背、奖赏系统和情感记忆等模块，相当于给音乐AI提供了一份需求文档。理解这些维度后，生成或推荐系统可以有意识地去操控紧张-解决、情绪弧线等。\n【怎么入手】把论文里的几种理论做成一个自评量表，先拿几首自己熟悉的流行歌做打分实验。然后可以尝试把这些维度变成可量化的特征，比如旋律意外性、节奏起伏、歌词情感，再用它们去评估AI生成的片段。最终目标是做一个音乐打动人程度的预测小工具。",
-      "vol": 3,
-      "pub": "2026-07-26"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "industry",
-      "tag": "多模态音频",
-      "title": "Flux 3：能同时生成图像、视频、音频与动作预测的多模态模型",
-      "url": "https://bfl.ai/blog/flux-3",
-      "src": "BFL.ai · HN 11pt",
-      "why": "BFL.ai发布了新一代多模态模型Flux 3，把图像、视频、音频和动作预测整合进一个统一模型。它意味着音乐短片、MV或声音设计可能不再需要分别调用图像生成、视频生成和音乐生成三个模型，一个模型就能统一调度。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】Flux 3是Black Forest Labs推出的多模态基础模型，支持图像、视频、音频和动作预测。它不只是把几个独立功能拼在一起，而是让模型在训练时同时接触视觉、声音和动作数据，从而学会跨模态关联。也就是说，你给一段描述，它可能同时生成一段配合画面节奏的音乐和相应动作。\n【为什么值得关注】对音乐科技最直接的影响是声音设计、MV和互动装置的效率会大幅提高。以后做一支音乐视频，可以让同一个模型统一生成分镜、画面和配乐，避免不同模型在节奏、情绪上各说各话。对做音乐×视觉作品的同学来说，这种端到端能力可能改变创作流程。\n【怎么入手】先关注BFL.ai是否会放出API或试用入口，拿到后可以用同一组提示词分别生成图像、视频和音频，然后对比它们在节奏、情绪上是否一致。也可以自己收集少量短视频-音乐对，用Flux 3的音频输出做主观评测。如果API允许，可以做一个网页小工具，输入歌词或情绪词，输出一段带画面的MV草稿。",
-      "vol": 3,
-      "pub": "2026-07-26"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "industry",
-      "tag": "AI视频",
-      "title": "Palmier Pro：为AI而生的开源 macOS 视频编辑器",
-      "url": "https://github.com/palmier-io/palmier-pro",
-      "src": "GitHub · HN 187pt",
-      "why": "这是一个完全开源的macOS视频编辑器，目标是让AI能力直接嵌入剪辑工作流。对音乐视频创作者来说，可以用它快速把AI生成的素材剪成MV，而不需要导出到多个付费软件之间倒腾。",
-      "detail": "【这是什么】Palmier Pro是一款开源的macOS视频剪辑软件，专门为AI工作流设计。它允许用户在本地导入、剪辑和调用AI模型生成的素材，而不是把所有片段传到云端。界面和功能更偏向现代短视频和独立创作者。\n【为什么值得关注】音乐MV和视觉作品的制作通常需要在多个工具之间跳来跳去：先在AI平台生成画面，再导入剪辑软件，最后对节拍。Palmier Pro把开源和AI集成做在一起，未来可能让音乐人能直接在自己电脑上完成从生成到剪辑的闭环。开源也意味着你可以根据音乐场景定制快捷键或自动化脚本。\n【怎么入手】项目已经开源，可以在GitHub下载源码并尝试在macOS上编译运行。可以先导入一段自己的作品和几段AI生成的视觉素材，测试它的剪辑流畅度和对音频轨道的支持。如果熟悉Swift或macOS开发，还可以尝试给它加一个自动对齐音乐节拍点的功能。",
-      "vol": 3,
-      "pub": "2026-07-26"
-    },
-    {
-      "date": "2026-07-05",
-      "sec": "oss",
-      "tag": "音乐播放器",
-      "title": "YTubic：基于 Tauri 2 的 YouTube Music 桌面客户端",
-      "url": "https://github.com/NUber-dev/YTubic",
-      "src": "GitHub · TypeScript · 222★",
-      "why": "这是一个用Tauri 2和React写的Windows桌面版YouTube Music客户端，界面简洁且响应快。适合想学习如何用现代Web技术打包音乐播放器的新手参考。",
-      "detail": "【这是什么】YTubic是一个非官方的YouTube Music桌面客户端，使用Tauri 2和React开发，面向Windows平台。它把网页版音乐服务装进一个原生窗口，并加入了键盘快捷键、系统托盘等桌面体验。Tauri 2的优势是用Web前端写界面，同时后端资源占用比Electron低很多。\n【为什么值得关注】对音乐科技学生来说，它是一个很完整的现代桌面应用示例。你可以看到如何把流媒体音乐服务的API、播放控制和桌面UI结合在一起。如果想做一个自己的音乐播放器、歌词可视化工具或私人云音乐客户端，YTubic的代码结构和打包方式都能直接借鉴。\n【怎么入手】仓库已开源，可以直接clone并在Windows上按说明编译。可以先运行它，观察它的播放控制、播放列表加载和界面切换。然后可以尝试修改前端，加入歌词显示或本地音频导入功能，作为课程作业或小型作品。",
-      "vol": 3,
-      "pub": "2026-07-26"
-    },
-    {
-      "date": "2026-07-02",
-      "sec": "oss",
-      "tag": "AI视频配乐",
-      "title": "灵剪：一句话生成带配乐与音效的中文短视频",
-      "url": "https://github.com/dososo/blcaptain-lingjian-video",
-      "src": "GitHub · Python · 218★",
-      "why": "这是一个开源的中文短视频生成项目，输入一句话就能自动产出脚本、配音、画面、配乐、字幕和音效。对音乐科技学生来说，最值得关注的是它如何把背景音乐和音效与视频内容统一调度。",
-      "detail": "【这是什么】灵剪是一个面向中文短视频的自动化生成工具，开源在GitHub上。它把脚本撰写、配音、画面生成、配乐、字幕和音效串成一条流水线，每一步都可以逐关审核。你输入一句描述，它就能输出一条可发布级别的短视频草稿。\n【为什么值得关注】音乐科技里一直有个难题：给视频配的音乐不仅要好听，还要和内容节奏、情绪对上。灵剪把配乐和音效作为视频生成的一部分，相当于把音乐×视觉的协作从后期剪辑提前到了生成阶段。研究它的代码可以看到AI是如何为每个镜头选择情绪和节奏的。\n【怎么入手】把项目clone到本地，按照说明尝试生成几条短视频，重点观察它生成的配乐和音效。可以自己改写提示词，看看音乐风格会怎么变化。然后可以提取它的音乐生成或选择模块，单独做成一个给视频自动配乐的网页小工具。",
-      "vol": 3,
-      "pub": "2026-07-26"
-    },
-    {
-      "date": "2026-07-02",
-      "sec": "papers",
-      "tag": "音频格式",
-      "title": "高解析音乐下载为何听不出差别",
-      "url": "https://people.xiph.org/~xiphmont/demo/neil-young.html#toc_wd2bm",
-      "src": "HN 135pt",
-      "why": "这篇长文用采样定理和听觉极限拆解 24bit/192kHz 音乐下载的营销迷思。它是一篇训练数字音乐学生用信号处理知识判断商业标准的关键读物。",
-      "hot": "本报头条",
-      "detail": "【这是什么】这是 Xiph.org 的 Monty 写的一篇经典长文，用采样定理和人的听觉极限说明：绝大多数情况下，16bit/44.1kHz 已经能完整记录音乐，继续提高位深和采样率并不会带来可闻的提升。文章还把高解析度音乐营销里常见的「细节更多」「空气感更强」等说法逐条拆解。\\n【为什么值得关注】音乐科技学生经常要处理母带、流媒体格式和商业宣传里的 Hi-Res 概念。这篇文章能帮你建立用信号处理知识判断商业话语的能力，避免被参数营销误导。它也可以作为音乐产业数字格式标准课程讨论的入口。\\n【怎么入手】用 FFmpeg 把一段标称 24bit/96kHz 的音频分别降采样到 44.1kHz/16bit，再和原文件做 AB 盲听测试。记录自己和朋友能否稳定区分，把结果和文章中的理论对照，写成一页短报告。",
-      "vol": 4,
-      "pub": "2026-07-27"
-    },
-    {
-      "date": "2026-07-26",
-      "sec": "oss",
-      "tag": "音频处理",
-      "title": "FFmpeg 磁带音色模拟脚本",
-      "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
-      "src": "HN 50pt",
-      "why": "这个仓库提供 FFmpeg 滤镜链，把数字音频模拟成磁带录制效果，包括高频衰减、饱和、底噪和抖晃。适合复古风格制作和快速学习失真与滤波如何改变音色。",
-      "detail": "【这是什么】这个项目用 FFmpeg 的音频滤镜把数字音频变成听起来像磁带录制的版本，包括高频衰减、饱和失真、底噪和抖晃等效果。相当于在电脑里搭了一个虚拟磁带机，一键就能把干净的数字音频工作站导出变成复古演示质感。\\n【为什么值得关注】磁带音色是低保真、蒸汽波、卧室流行等风格常用的听觉符号。学生做复古风格作品时，不需要去买老磁带机，用这个脚本就能批量做对比。它还方便你理解不同失真、滤波参数如何改变音色。\\n【怎么入手】下载仓库里的脚本，先用一首短歌做输入，观察每个滤镜开关前后的频谱变化。再试着把参数和网页音频的卷积与波形整形节点对应起来，做成可以在浏览器里实时调节的磁带效果器。",
-      "vol": 4,
-      "pub": "2026-07-27"
-    },
-    {
-      "date": "2026-07-08",
-      "sec": "oss",
-      "tag": "音乐播放",
-      "title": "在线芯片音乐电台 Chiptune Radio",
-      "url": "https://chiptune-radio.alephvoid.com/",
-      "src": "HN 77pt",
-      "why": "一个浏览器里的芯片音乐电台，集中播放 8 位和 16 位风格的 chiptune 作品。适合当作复古游戏配乐的灵感库和有限资源合成案例。",
-      "detail": "【这是什么】Chiptune Radio 是一个在线电台，专门播放芯片音乐，也就是 8 位机、16 位机游戏风格的电子音乐。它把大量原本分散在论坛和演示场景里的作品集中起来，可以直接在浏览器里连续播放。\\n【为什么值得关注】芯片音乐是数字音乐史的重要分支，对理解有限采样率、合成器音色和音乐叙事都有帮助。学生在学习数字音频或复古游戏配乐时，可以把它当作源源不断的素材库和灵感来源。\\n【怎么入手】打开电台，听半小时并记录三到五首最喜欢的曲目。然后尝试用熟悉的合成器或 Tracker 软件复刻其中一首的主旋律，重点观察它是如何用极少的音色资源制造辨识度的。",
-      "vol": 4,
-      "pub": "2026-07-27"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "industry",
-      "tag": "硬件产品",
-      "title": "Pentaton LP 自研音乐播放器诞生记",
-      "url": "https://pentaton.app/blog/2026-07-12-introducing-pentaton-lp/",
-      "src": "HN 169pt",
-      "why": "作者从 PCB 设计、3D 打印到 C 语言固件，自己造了一台黑胶风格的高解析音乐播放器。这是软硬件一体重建音乐聆听仪式感的近期案例。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】Pentaton LP 是一位作者自己设计并制造的黑胶风格音乐播放器，通过 3D 打印外壳、定制 PCB 和 C 语言固件来播放高解析度音乐。它不是手机或流媒体盒子，而是一台把数字文件重新模拟成唱片机仪式的独立设备。\\n【为什么值得关注】在 AI 生成音乐和流媒体主导的今天，仍然有创作者愿意从硬件角度重建音乐聆听体验。这个案例把工业设计、嵌入式编程和音乐播放场景结合了起来，适合对音乐科技实体化感兴趣的学生。它也提醒我们，软件之外，听觉体验还受到设备、交互和仪式感的影响。\\n【怎么入手】读一遍博客，记下作者从声音目标倒推硬件设计的流程。然后用 Arduino 或树莓派搭一个最小可播放版：把 WAV 文件通过数模转换芯片输出，再加入一个实体旋钮控制播放进度，体验软硬件一起塑造声音的过程。",
-      "vol": 4,
-      "pub": "2026-07-27"
-    },
-    {
-      "date": "2026-07-16",
-      "sec": "industry",
-      "tag": "版权/流媒体",
-      "title": "音乐盗版的失落快感与平台时代",
-      "url": "https://www.pigeonsandplanes.com/read/music-piracy-what-cd-oink-nine-inch-nails-streaming",
-      "src": "HN 852pt",
-      "why": "这篇文章回顾了 2000 年代音乐盗版社区的文化，指出这些地下分享网络其实是歌单与算法推荐的民间原型。",
-      "detail": "【这是什么】这篇文章回顾了 2000 年代音乐盗版论坛、私人群体和非正式分享网络如何塑造了当时的音乐文化，也记录了流媒体时代这些地下档案馆的消失。它把盗版描述成一种带有情感记忆的社交行为，而不只是法律问题。\\n【为什么值得关注】理解音乐传播史对设计今天的推荐系统、版权机制和社区产品都有帮助。文中提到的分享列表、互评、稀有资源等现象，正是后来流媒体歌单和算法推荐的民间原型。对音乐平台研究者来说，这是难得的用户视角资料。\\n【怎么入手】边读边列出五个文中提到的盗版时代社交行为，再对应到 Spotify、网易云、Bandcamp 等平台的现代功能。思考哪些体验被保留、哪些被算法取代，可以做成一次小组讨论或产品分析报告。",
-      "vol": 4,
-      "pub": "2026-07-27"
-    },
-    {
-      "date": "2026-07-16",
-      "sec": "industry",
-      "tag": "版权/分发",
-      "title": "音乐人 Derek Webb 为何宁选免费下载也不靠 Spotify",
-      "url": "https://derekwebb.tumblr.com/post/13503899950/giving-it-away-how-free-music-makes-more-than",
-      "src": "HN 75pt",
-      "why": "2011 年音乐人 Derek Webb 用自身收入对比说明，直接免费下载加捐赠可能比流媒体分成更划算。对当下 AI 冲击版税的讨论仍有参考价值。",
-      "detail": "【这是什么】这是音乐人 Derek Webb 在 2011 年写的一篇长文，解释他为什么主动把专辑免费下载和捐赠模式看得比重流媒体分成更重要。他用自己的收入数据对比了直接卖给粉丝和通过 Spotify 播放的差距。\\n【为什么值得关注】当 AI 音乐进一步冲击版税和流媒体分成时，音乐人如何选择分发和盈利模式又成了热点。这篇文章提供了一个早期案例：音乐人绕过平台直接触达听众。对音乐产业研究来说，它是分析独立音乐人收入结构的历史参考。\\n【怎么入手】把文中提到的数据换算成现在的流媒体版税标准，做一张 2011 年与 2026 年收入对比表。再结合近期 AI 版权诉讼，讨论小型音乐人应采取的收入策略。",
-      "vol": 4,
-      "pub": "2026-07-27"
-    },
-    {
-      "date": "2026-07-12",
-      "sec": "papers",
-      "tag": "音乐生成",
-      "title": "基于动作预训练与对比对齐的舞蹈转音乐生成",
-      "url": "http://arxiv.org/abs/2607.10537v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Dance to Music Generation leveraging Pre-training with Unpaired data and Contrastive Alignment",
-      "why": "提出一种无需成对舞乐数据即可根据人体关节点生成伴奏音乐的方法，通过预训练加对比学习把动作节奏与音乐节奏对齐。该方法让编舞辅助和实时伴奏更可行，也为音乐生成引入了身体运动这一全新控制维度。",
-      "hot": "本报头条",
-      "detail": "【这是什么】这是一套把舞蹈动作变成音乐的系统。研究者用手机或摄像头就能捕捉到的人体骨架点作为输入，让 AI 根据肢体的速度、重力和节奏生成一段伴奏。它不需要大量一一对应的舞乐数据，而是先用无配对视频和音频做预训练，再用对比学习把动作片段和听起来更搭的音乐片段拉近。\n【为什么值得关注】对音乐学院的同学来说，这意味着可以用身体姿态直接指挥音乐生成。编舞课、即兴演出、甚至舞蹈游戏的实时配乐都能用。动作和音乐之间的节奏、情绪一致性也第一次被量化为可训练的目标。\n【怎么入手】先用 MediaPipe 或 OpenPose 提取一段自己跳舞的视频骨架，再找一段现成的音乐生成模型做对照。重点不是从零训练大模型，而是复现论文里的对比损失和节奏评估指标，看看自己的动作能生成多自然的音乐。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-13",
-      "sec": "papers",
-      "tag": "音效生成",
-      "title": "面向长篇叙事电影的连贯多模态背景声景生成框架",
-      "url": "http://arxiv.org/abs/2607.11364v1",
-      "src": "arXiv · cs.SD",
-      "orig": "BackgroundMellow: A Multi-Modal Cohesive Framework for Narrative-Driven Rich Cinematic Soundscape Generation",
-      "why": "把小说或剧本段落自动扩展成一段有情节推进感、情绪起伏的电影级环境音效和背景音乐，解决现有文本到音频模型只生产孤立音效的痛点。对影视配乐、游戏剧情音频和有声内容制作有直接参考价值。",
-      "detail": "【这是什么】BackgroundMellow 是一个故事到音频的生成框架。你输入一段叙事文本，它不只生成一个门铃声或雨声，而是根据情节发展产出一段连续、有层次的声景，包含环境音、情绪性音效甚至暗示性背景音乐。\n【为什么值得关注】音乐学院做影视配乐或声音设计的同学可以把它当成自动气氛草图工具。它能帮你在拿到画面之前就生成情绪参考轨，也可以作为后期配乐的情绪时间线草稿。\n【怎么入手】用一两段短篇小说或剧本做输入，观察生成音频在情节转折处的变化。对照传统的手动铺音效流程，记录哪些情绪转折被准确表达、哪些被弱化，整理成一份小型的叙事声景评测表。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-20",
-      "sec": "papers",
-      "tag": "音效生成",
-      "title": "面向3D高斯场景的填充感知撞击音效生成",
-      "url": "http://arxiv.org/abs/2607.17773v1",
-      "src": "arXiv · cs.CV / eess.AS",
-      "orig": "FillGauss: Fine-Grained Filling-Aware Impact Sound Generation for 3D Gaussian Splatting",
-      "why": "根据物体内部的填充状态生成更真实的碰撞声，填补了现有视觉到音频方法只考虑外壳的空白。对虚拟乐器、交互装置中的物理建模声音有启发。",
-      "detail": "【这是什么】FillGauss 让计算机在看到或建模一个物体时，能根据它是空心还是装满东西来生成不同的撞击声。比如同样一个木箱，空箱和装满沙子的箱子落地声音明显不同，这个系统能自动学到这种区别。\n【为什么值得关注】音乐科技中的很多交互装置和虚拟乐器都需要可信的物理声音。如果将来做数字打击乐或沉浸式剧场，物体内部材质和填充度会影响音色，这项技术提供了从三维模型直接合成音效的途径。\n【怎么入手】找一些简单的 3D 模型和对应的真实撞击录音，用论文提出的填充感知模块做对比实验。先从单一声源开始，再尝试把生成的声音接入 Unity 或 Blender 做交互原型。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-14",
-      "sec": "papers",
-      "tag": "MIR/情感",
-      "title": "跨域多模态情感描述符，用于数字对象的视觉对比",
-      "url": "http://arxiv.org/abs/2607.12958v1",
-      "src": "arXiv · cs.MM",
-      "orig": "CD-MED: Cross-Domain Multimodal Emotion Descriptor for Visual Comparison of Digital Objects",
-      "why": "提出一个统一情感描述空间，让电影、歌曲等不同模态对象能在同一语义坐标下比较情绪强度。对自动配乐、跨模态推荐和音乐情绪标注都有用。",
-      "detail": "【这是什么】一首歌和一部电影很难直接比较哪个更悲伤，因为它们的信息形态不同。CD-MED 把它们都映射到一个共享的情感描述空间，比如愉悦度、唤起度、支配度等维度，让你可以像看色谱一样对比不同作品。\n【为什么值得关注】做智能配乐时，经常需要把视频情绪曲线和音乐情绪曲线匹配起来。这个框架提供了一种可解释的中间表示，便于设计更透明的推荐和生成系统。\n【怎么入手】选十首不同情绪的流行歌和对应的电影片段，分别用现成的情感识别模型抽取特征，再用论文的方法投影到同一空间，画成散点图，看看同情绪的作品是否聚类。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-14",
-      "sec": "papers",
-      "tag": "评测/情感识别",
-      "title": "多模态情绪识别真的需要超过10亿参数的大模型吗",
-      "url": "http://arxiv.org/abs/2607.12787v1",
-      "src": "arXiv · cs.CL",
-      "orig": "Do We Really Need Multimodal Emotion Language Models Larger Than 1B Parameters?",
-      "why": "通过蒸馏和模态对齐，在不到10亿参数的小模型上取得与7B以上多模态大模型相当的多模态情绪识别效果。对音乐情绪分析轻量部署和低资源研究有参考意义。",
-      "detail": "【这是什么】研究者在视频、音频、文本三种模态上训练了一个很小的多模态情绪识别模型，并用大模型当老师进行蒸馏。他们发现，只要对齐做得好，小模型也能理解复杂情绪。\n【为什么值得关注】音乐情绪分析常常需要实时、低延迟、可本地运行。这个工作说明，不必追求最大模型，精巧的模态融合和数据筛选就能让音频情绪识别跑在普通电脑上。\n【怎么入手】拿一组带情绪标签的音乐短片或MV，用论文开源的轻量模型或类似架构做推理，比较它和 CLAP、LLaVA 等较大模型在情绪分类上的准确率与推理速度。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-26",
-      "sec": "oss",
-      "tag": "音乐视频/工具",
-      "title": "Weave：浏览器内用 FFmpeg 直接渲染的视频编辑器",
-      "url": "https://github.com/thiagoalbrecht/weave",
-      "src": "HN 16pt · TypeScript / FFmpeg",
-      "why": "一个完全在浏览器里运行、调用 FFmpeg 完成导出的开源剪辑工具，适合做轻量级音乐 MV 或演出回顾视频，不需要安装专业软件。",
-      "detail": "【这是什么】Weave 是一个网页视频编辑器，剪辑、转码、导出全部在浏览器里完成。它借助 FFmpeg 的 WebAssembly 版本直接把时间线渲染成 MP4，等于把一个小型后期工作站搬进了网页。\n【为什么值得关注】对做音乐视频的同学来说，这意味着可以在任何电脑上快速剪辑演出素材、加字幕、套模板，再一键导出。不需要担心剪辑软件和素材格式不兼容。\n【怎么入手】fork 项目后，把自己的演出录像导入时间线，尝试加入节拍标记并自动对齐视频切换点。也可以把它和音乐节拍检测库结合，做一个按鼓点自动剪切的插件。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-09",
-      "sec": "oss",
-      "tag": "AI音乐视频",
-      "title": "AI 驱动的本地优先浏览器视频编辑器",
-      "url": "https://github.com/MartinDelophy/ai-video-editor",
-      "src": "JavaScript · 352★",
-      "why": "集成 WebGPU 加速的 AI 音乐生成、语音旁白和自动字幕，目标是让个人创作者在浏览器里完成一条带配乐的视频。",
-      "detail": "【这是什么】这是一个开源的本地优先视频编辑器，强调数据不离开电脑。它内置了基于 WebGPU 的 AI 音乐、AI 修复、语音合成、说话头像和字幕生成功能，等于把多种 AI 能力串成一个剪辑流程。\n【为什么值得关注】音乐学院学生可以用它快速为短片、舞蹈录像或作品集配上原创 AI 音乐，并观察 AI 音乐和视频情绪是否匹配。它还能帮助理解 AI 能力如何嵌入传统剪辑工作流。\n【怎么入手】拉取代码后在本地跑起来，导入一段没有配乐的舞蹈视频，用内置 AI 音乐功能生成几条候选配乐，再邀请同学做盲听打分，记录哪类提示词最能贴合画面。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-17",
-      "sec": "industry",
-      "tag": "复古录音/硬件",
-      "title": "用现代设备把音乐录进磁带的真实体验",
-      "url": "https://swiftrocks.com/i-tried-to-record-music-onto-a-cassette-tape-using-modern-tech",
-      "src": "HN 24pt",
-      "why": "作者实测用现代声卡和磁带机录制数字音乐，对比了模拟磁带的失真、饱和与噪声特征。对理解模拟音色和复古效果器设计有直观帮助。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】这篇文章记录了一位开发者如何把电脑里的数字歌曲转录到磁带，再播放回录。过程中他测量了底噪、频响、饱和失真等指标，相当于给磁带这条模拟链路做了一次可读的实验报告。\n【为什么值得关注】很多同学做电子音乐或声音设计时都喜欢磁带质感，但插件参数往往凭感觉调。文章里的实测数据能帮你把温暖、低保真翻译成可复现的指标，也解释了磁带效果器为什么会那样响。\n【怎么入手】用 Audacity 或类似软件录制自己的作品到磁带再回采，记录频谱变化和总谐波失真。也可以参考 Cassette Simulation 脚本，把数字版本和磁带版本做 AB 对比。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-14",
-      "sec": "industry",
-      "tag": "音乐文化",
-      "title": "毁灭之声：音乐如何被冲突与灾害征用",
-      "url": "https://thebaffler.com/latest/the-music-of-destruction-fuelling",
-      "src": "HN 19pt",
-      "why": "一篇文化评论，探讨战争、灾难影像中音乐的使用伦理和传播机制，提醒技术人在做 AI 配乐和自动推荐时也要考虑语境与情感后果。",
-      "detail": "【这是什么】文章分析了在战争直播、灾难视频和极端内容里，背景音乐如何塑造观众的共情或麻木。它不是在讲技术，而是在讲音乐一旦和传播机器结合，会产生怎样的伦理张力。\n【为什么值得关注】作为音乐科技专业的学生，我们常常只关注生成得更好、推荐得更准，却很少讨论生成的音乐会被用在什么场景。这篇文章提供了一个批判视角，帮助你在设计算法时多想一层。\n【怎么入手】把它当作一次课堂讨论材料：选几条不同平台的短视频，分析其配乐如何影响情绪判断；再讨论如果你是平台算法设计师，会不会对某类音乐使用场景做提示或限制。",
-      "vol": 5,
-      "pub": "2026-07-28"
-    },
-    {
-      "date": "2026-07-28",
-      "sec": "papers",
-      "tag": "音乐理论",
-      "title": "《和声的科学解释》十四年后再引热议：音乐和声能否被数学建模",
-      "url": "https://arxiv.org/abs/1202.4212",
-      "src": "arXiv · 2012 · HN 93pt",
-      "orig": "Harmony Explained: Progress Towards a Scientific Theory of Music",
-      "why": "这篇论文尝试用数学模型解释为什么某些和弦听起来和谐。它把音乐理论从经验法则推向可计算框架，对 AI 音乐生成和理解有启发。",
-      "hot": "本报头条",
-      "detail": "【这是什么】这篇论文来自2012年，最近又在音乐技术社区被热转。作者试图回答一个老问题：为什么大三和弦听起来舒服，小二度听起来紧张。它把音程的和谐程度用频率比的简单性来解释，越简单的整数比越和谐。\n【为什么值得关注】如果和声可以被数学建模，我们就能用算法判断 AI 生成的和弦是否自然、预测不同文化下的调式偏好。这对自动伴奏、风格迁移和音乐推荐都有帮助。\n【怎么入手】先读论文前两节的直觉解释，再用 Python 把文中几个公式复现一遍，听听不同频率比的合成音。下一步可以把它接入和弦生成器，做一个人机对比实验。",
-      "vol": 6,
-      "pub": "2026-07-29"
-    },
-    {
-      "date": "2026-07-26",
-      "sec": "oss",
-      "tag": "音频编辑",
-      "title": "Rescript：浏览器里的基于转写稿的音频/视频编辑器",
-      "url": "https://github.com/wassgha/rescript",
-      "src": "TypeScript · 294★",
-      "why": "开源浏览器端音视频编辑器，通过转写稿让粗剪像改文档一样简单，适合快速处理播客和录音素材。",
-      "detail": "【这是什么】Rescript 是一个完全在浏览器里运行的开源音视频编辑器。它先把音频转成文字稿，然后你可以像改文档一样删改文字，对应的音视频片段会自动同步剪掉。这对音乐人来说，快速删掉录音里的口误或空白特别方便。\n【为什么值得关注】传统音频工作站功能强大但很重，Rescript 用浏览器加转写稿的方式降低了粗剪门槛。对于需要处理大量采访、播客或现场录音的音乐科技学生，它是一个很轻量的起点。\n【怎么入手】直接打开仓库里的在线演示，上传一段自己的录音或伴奏，试试用文字稿定位并删除片段。进阶可以研究它的 FFmpeg 导出流程，看看能否加入自动节拍检测和按拍切分。",
-      "vol": 6,
-      "pub": "2026-07-29"
-    },
-    {
-      "date": "2026-07-13",
-      "sec": "oss",
-      "tag": "评测",
-      "title": "audio_eval：可组合的开源音频生成与重建评测工具箱",
-      "url": "https://github.com/shwj114514/audio_eval",
-      "src": "Python · 113★",
-      "why": "把音频评测指标拆成可组合模块，方便系统对比 AI 生成音乐与真实录音的客观质量。",
-      "detail": "【这是什么】audio_eval 是一个 Python 工具箱，专门用来评测 AI 生成的音频或重建后的音频。它把客观指标做成可组合的模块，比如频谱一致性、动态范围、失真度等，你可以像搭积木一样拼装出自己的评测流程。\n【为什么值得关注】现在 AI 音乐生成模型越来越多，但很多论文只展示好听样例，缺少系统评测。这个工具箱让学生也能做规范的对比实验，不再只凭耳朵主观判断。\n【怎么入手】从仓库示例开始，用几首 AI 生成歌曲和真实录音跑一遍基础指标。然后尝试加入自己的音乐相关指标，比如节奏稳定性、和弦准确度，做一个本地评测报告。",
-      "vol": 6,
-      "pub": "2026-07-29"
-    },
-    {
-      "date": "2026-07-28",
-      "sec": "oss",
-      "tag": "符号音乐",
-      "title": "Xenharmlib 0.4.0：支持纯律的微分音音乐理论库",
-      "url": "https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html",
-      "src": "Python · HN 14pt",
-      "why": "音乐理论计算库新增纯律支持，可生成和可视化微分音阶与和弦，适合探索非平均律系统。",
-      "detail": "【这是什么】Xenharmlib 是一个用 Python 写的音乐理论库，专门处理非十二平均律的调音系统。最新版加入了纯律支持，可以计算和显示纯律音阶、和弦以及它们之间的音分差。\n【为什么值得关注】十二平均律只是众多调音系统之一，很多世界音乐、电子音乐和实验音乐使用纯律或微分音。有了这个库，你可以用代码探索这些调音系统，甚至生成对应的 MIDI 或音频。\n【怎么入手】安装库后先画一个纯律大三和弦的频率比图，听听它和平均律版本的差别。然后尝试写一个函数，把任意和弦标记转成纯律版本，接入你的作曲或生成工具。",
-      "vol": 6,
-      "pub": "2026-07-29"
-    },
-    {
-      "date": "2026-07-21",
-      "sec": "industry",
-      "tag": "音乐产品",
-      "title": "MeloX：参考 Apple Music 设计的第三方网易云客户端",
-      "url": "https://github.com/youshen2/MeloX",
-      "src": "Swift · 123★",
-      "why": "这是一款第三方网易云音乐客户端，用 SwiftUI 复刻了 Apple Music 的界面与动效。它展示了音乐流媒体产品从界面到播放的完整工程实现，适合学习音乐 App 的交互设计。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】MeloX 是一个为 iOS 原生开发的第三方网易云音乐客户端。作者用 SwiftUI 复刻了 iOS26 版 Apple Music 的液体玻璃设计，同时保留了网易云的歌单、播放等核心功能。\n【为什么值得关注】它展示了一个音乐 App 从界面到播放的完整工程：登录授权、歌单同步、播放器状态管理、视觉动效。对于想了解音乐流媒体产品如何落地的学生，这是一个很好的解剖样本。\n【怎么入手】如果你有 Mac 和 iOS 开发环境，可以克隆仓库编译运行，观察它的播放控制、歌词展示和歌单导入逻辑。重点看 SwiftUI 的动画和 Apple Music 式布局如何移植到第三方音乐服务。",
-      "vol": 6,
-      "pub": "2026-07-29"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "papers",
-      "tag": "歌声合成",
-      "title": "VocalRender：从真实作曲流程出发的歌声合成",
-      "url": "http://arxiv.org/abs/2607.27768v1",
-      "src": "arXiv · cs.SD",
-      "orig": "VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition",
-      "why": "VocalRender 提出一种直接读取歌词、音高、符点音符与时速的「谱原生」歌声合成系统，不需要预先给出每个音的精确时长，也不再依赖人工对齐的声学参考。它对音乐学院学生最直接的启示是：写谱软件里打出的音符，可以直接唱出来，而不必先录 demo 再对节奏。",
-      "hot": "本报头条",
-      "detail": "【这是什么】现有的歌声合成系统通常要求你先标好每个音唱多久，或者提供一段参考歌声来对齐；VocalRender 改成直接读取歌词、音高、符点音符和速度，像一位视唱练耳极好的歌手，看着谱子就能把歌哼出来。\n【为什么值得关注】对作曲者来说，这意味着写谱软件和 AI 歌手之间的墙被拆掉了一大部分；你只需要输出标准的 MusicXML 或 MIDI，就能获得一版可听的人声 demo，特别适合快速验证旋律与歌词的咬合。\n【怎么入手】可以先找几首熟悉的流行歌，把旋律和歌词整理成简单的音符序列，看看论文附带的模型或类似开源 SVS 工具能否直接读谱生成；重点观察切分音、附点节奏和换气处是否自然。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "papers",
-      "tag": "空间音频",
-      "title": "RIPPLE：直接生成多通道相位，而不是事后再恢复",
-      "url": "http://arxiv.org/abs/2607.27775v1",
-      "src": "arXiv · cs.SD",
-      "orig": "RIPPLE: Generating Multi-Channel Phase, Not Recovering It",
-      "why": "RIPPLE 把多通道音频的相位关系也交给生成模型同步学习，而不是先产生幅度谱再靠 Griffin-Lim 或声码器补相位。空间音频、Ambisonics 和地震波等场景里，通道之间的相位差才是「位置感」的来源，所以这项工作对沉浸声很重要。",
-      "detail": "【这是什么】多数音频生成模型只负责生成各个通道的幅度谱，相位要靠后处理算法硬补；RIPPLE 让模型在学习过程中就把不同通道之间的相位关系一起生成出来，相当于同时画出每个声道的波形位置。\n【为什么值得关注】空间音频、VR 声景和 Ambisonics 的沉浸感很大程度上取决于左右或上下声道到达时间的细微差别，也就是相位差；补出来的相位往往会让声像发虚，而直接生成相位有望让虚拟声源更稳定。\n【怎么入手】可以用一组立体声或四声道录音做实验：先分离各通道的相位差，再用论文思路训练一个简化版扩散模型，听听生成结果的空间定位是否比传统后处理更清晰。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "papers",
-      "tag": "声源分离",
-      "title": "CrowdioSet 与 PaRIRset：面向现场演出的音乐声源分离数据集",
-      "url": "http://arxiv.org/abs/2607.27828v1",
-      "src": "arXiv · cs.SD",
-      "orig": "CrowdioSet and PaRIRset: Two Datasets Towards Live Music Source Separation",
-      "why": "论文发布两个真实现场演出噪声数据集，并训练了一个对观众噪声、场馆混响更鲁棒的声源分离模型。因为现有分离模型多在干净录音室数据上训练，到演唱会现场往往崩掉，所以这个工作直接补上了从录音室到现场之间的鸿沟。",
-      "detail": "【这是什么】现有的音乐声源分离模型大多在录音室多轨上训练，遇到演唱会现场就水土不服；这套工作采集了真实场馆的环境声和观众噪声，还做了麦克风与扬声器的脉冲响应模拟，让模型见过「现场」。\n【为什么值得关注】如果你做伴奏提取、现场混音或直播分轨，常常会遇到观众欢呼和场馆混响把鼓和人声糊在一起；这套数据和方法能让分离结果在真实演出中少出很多伪影。\n【怎么入手】可以先从论文发布的数据集下载几条场馆噪声，把它叠到自己的录音室多轨上，看看现有分离模型会退化成什么样；再用作者提供的训练方案做少量微调，对比混响抑制效果。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "papers",
-      "tag": "符号音乐/评测",
-      "title": "用上下文嵌入评估富有表现力的钢琴 MIDI 演奏",
-      "url": "http://arxiv.org/abs/2607.27909v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Integrating Contextual Embeddings into Evaluation of Expressive MIDI Piano Performances",
-      "why": "研究者把音符之间的上下文信息编码进嵌入向量，用来比较两段钢琴演奏在表情处理上的相似度。传统方法只看单个音的时长、力度统计，忽略音与音之间的依赖，这篇论文给生成式钢琴演奏评测补上了缺失的一块。",
-      "detail": "【这是什么】评价一段钢琴演奏弹得「像不像」某个人，传统做法是比较每个音的力度、时长等数字；这篇论文把相邻音符的上下文也一起编码，形成能反映乐句呼吸和连断关系的向量。\n【为什么值得关注】对 AI 生成的钢琴演奏来说，单个音再准，如果乐句不会呼吸也会显得机械；加入上下文后，评测结果更接近人耳对「表情」的判断。\n【怎么入手】可以拿几位钢琴家的同一首曲子 MIDI，先用论文方法提取上下文嵌入，再做相似度排序，看看和你主观感受是否一致；也可以把它当成损失函数，训练一个更会「呼吸」的生成模型。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "papers",
-      "tag": "AIGC检测",
-      "title": "检测混合人-AI 音乐中的 AI 生成声部",
-      "url": "http://arxiv.org/abs/2607.26874v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Detection of AI-generated stems within hybrid human-AI music",
-      "why": "研究首次关注「人声、鼓、贝斯等分轨中哪些来自 AI」的细粒度检测问题。随着 AI 编曲工具越来越流行，未来一首歌可能只有几个轨是 AI 生成，这项研究给版权审核和平台标注提供了新工具。",
-      "detail": "【这是什么】现在判断一首歌是不是 AI 生成，通常针对整首；这篇论文把人声、鼓、贝斯、其他伴奏拆开，看能不能只挑出其中被 AI 生成的分轨。\n【为什么值得关注】未来很多作品是人录一轨、AI 补一轨的混合体，只标「整首歌 AI」或「整首歌人工」都不公平；能定位到具体声部，对平台审核和音乐人自证都更实用。\n【怎么入手】可以用 MUSDB18-HQ 这样的分轨数据集，把其中一轨替换成 AI 模型生成的同类型音轨，训练一个二分类器；再试试跨模型、跨风格的泛化能力，观察哪些声学痕迹最容易暴露。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "papers",
-      "tag": "数据集",
-      "title": "SKY-Piano：包含动作与多视角视频的钢琴演奏多模态数据集",
-      "url": "http://arxiv.org/abs/2607.27296v1",
-      "src": "arXiv · cs.SD",
-      "orig": "SKY-Piano: A Multimodal Piano Performance Dataset",
-      "why": "数据集收集了 19 位演奏者共 11 小时的音频、MIDI、动作捕捉、多视角视频和 MusicXML 乐谱。对于想做钢琴表演分析、人机对比或视听同步研究的同学，这是一份难得的「全要素」素材。",
-      "detail": "【这是什么】SKY-Piano 不仅录了钢琴声音和 MIDI，还同步拍了多视角视频、手部动作捕捉，并配上 MusicXML 乐谱，覆盖了专业与业余演奏者。\n【为什么值得关注】想要研究「钢琴家为什么这样弹」或让 AI 学会带肢体动作的表演，过去需要自己去实验室搭设备；这个数据集把音视频、运动和乐谱对齐好，直接可以动手分析。\n【怎么入手】可以从数据集中挑几段同一曲目的专业与业余版本，对比他们力度变化、速度起伏和手部动作的关系；也可以试着用动作特征预测音色或表情标记。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "papers",
-      "tag": "转谱",
-      "title": "显式音符事件化 + 音高有效性约束的吉他谱转写",
-      "url": "http://arxiv.org/abs/2607.26440v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Explicit Note-Event Tokenization and Pitch-Validity Constrained Decoding for MIDI-to-Tablature Transcription",
-      "why": "论文把 MIDI 转吉他谱的任务改成显式音符事件序列，并在解码时加入「这把吉他真能按出来」的约束。吉他同音高可出现在多根弦多个把位，过去模型容易输出违反乐器物理的指法，这篇方法让结果更 playable。",
-      "detail": "【这是什么】把 MIDI 转成吉他六线谱，关键是给每个音分配弦和品；这篇论文让模型按「音符事件」来生成，并在解码时排除这把吉他按不出来的组合。\n【为什么值得关注】很多自动生成的吉他谱会出现同一个手指要同时按两处、或者超出指板范围的情况；加入可演奏性约束后，出来的谱子更接近乐手真正会弹的版本。\n【怎么入手】可以先用一组带六线标注的 MIDI 数据集训练一个小模型，重点观察开放和弦、横按大横把位和滑音的预测；再请会吉他的同学盲测，看加了约束后错误率下降多少。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "papers",
-      "tag": "音乐生成",
-      "title": "MPEcho：旋律与音素感知的可控翻唱生成",
-      "url": "http://arxiv.org/abs/2607.26698v1",
-      "src": "arXiv · cs.SD",
-      "orig": "MPEcho: A Melody and Phoneme-Aware Generative Framework for Controllable Cover Song Generation",
-      "why": "MPEcho 在翻唱生成中显式加入音素信息，减少 AI 把原唱歌词唱错的问题。它让模型既保留原曲旋律，又能按目标风格重唱，对虚拟歌手和改编创作都有用。",
-      "detail": "【这是什么】翻唱生成希望保留原曲的旋律和歌词，只换掉伴奏和唱法；MPEcho 除了用音高线索，还显式建模音素，让 AI 不易把歌词唱串或吞掉。\n【为什么值得关注】很多 AI 翻唱听起来调子对，但仔细听会发现词含糊或错字；加入音素约束后，虚拟歌手做中文翻唱时咬字会更靠谱。\n【怎么入手】可以选几首歌词清晰的流行歌，用音素对齐工具生成标注，再训练一个轻量翻唱模型；重点评测副歌重复段和快速咬字的准确率。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "industry",
-      "tag": "产品发布",
-      "title": "通义千问 Qwen-Audio-3.0-Gen-Preview：统一音频生成预览",
-      "url": "http://arxiv.org/abs/2607.27011v2",
-      "src": "arXiv · 技术报告",
-      "orig": "Qwen-Audio-3.0-Gen-Preview Technical Report",
-      "why": "阿里通义实验室发布 Qwen-Audio-3.0-Gen-Preview，用 Diffusion Transformer 和共享 VAE 把语音、音效、音乐等异构音频元素组织成长时混合场景。这意味着一个模型就能从提示词直接生成包含多角色对白、环境声和背景音乐的完整音频，对影视、游戏配乐工作流有参考价值。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】Qwen-Audio-3.0-Gen-Preview 是一个非自回归的统一音频生成框架，能把人声、环境声、音乐等不同成分按提示词混合成一段完整音频。\n【为什么值得关注】过去做一段带对白、音效和背景音乐的场景，需要分别调用 TTS、SFX 和音乐生成模型再混音；这个预览版试图让一个大模型一次生成混好的长音频，省掉很多后期拼接。\n【怎么入手】可以下载预览模型，用几段游戏或短片脚本做提示词，听听它怎么处理背景音乐不压过人声；同时记录不同提示结构下音乐成分的稳定性。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "industry",
-      "tag": "讣闻",
-      "title": "法国音乐人 Kavinsky 去世，年仅 41 岁",
-      "url": "https://www.euronews.com/culture/2026/07/29/dj-kavinsky-known-for-his-track-nightcall-found-dead-at-his-paris-home",
-      "src": "euronews / HN 337pt",
-      "why": "以《Nightcall》等合成器流行作品闻名的法国音乐人 Kavinsky 在巴黎家中去世。他的复古合成器美学与 Daft Punk 等艺术家共同塑造了 2010 年代电子乐视觉风格，对电子音乐制作和影视配乐影响深远。",
-      "detail": "【这是什么】法国电子音乐人 Kavinsky 因电影《Drive》配乐《Nightcall》广为人知，近日被发现在巴黎住所去世，年仅 41 岁。\n【为什么值得关注】他的音乐把 80 年代合成器音色与电影感旋律结合，影响了后来很多电子乐和影视配乐的审美；对于研究电子音色、复古合成器编曲的同学，他是一个重要参考样本。\n【怎么入手】可以重新听一遍《Nightcall》和《OutRun》专辑，分析其中的合成器分层、侧链压缩和旋律写作；也可以试着用软件合成器复刻他标志性的厚重贝斯与混响人声。",
-      "vol": 7,
-      "pub": "2026-07-31"
-    },
-    {
-      "date": "2026-07-29",
-      "sec": "papers",
-      "tag": "评测/音乐生成安全",
-      "title": "AI 生成音乐检测的鲁棒性提升",
-      "url": "http://arxiv.org/abs/2607.27454v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Improved Robustness in AI-Generated Music Detection",
-      "why": "该研究提出了一种对速度和音高变化保持不变的检测流程，让 AI 音乐检测器在变速、变调后仍能保持较高准确率。它直接回应了当前检测器容易被简单后处理骗过的痛点，对版权审核和平台治理都很关键。",
-      "hot": "本报头条",
-      "detail": "【这是什么】AI 音乐生成器在频谱上留下的痕迹就像画家的笔触，现有检测器能识别这些笔触，但一旦有人把歌曲加速或升降调，笔触位置变了，检测器就懵了。这篇论文设计了一种对频率缩放不变的流程，先把音频变换到对音高变化不那么敏感的表示空间，再让分类器学习更本质的生成器指纹。\n【为什么值得关注】对于音乐人、平台和版权方来说，未来判断一首歌是不是 AI 生成不能只看原文件；盗用者很可能用变速、变调来规避检测。新方法在多种扰动下仍保持稳健，说明它抓到了更深层、更顽固的伪影，这对上线审核和取证工具都很重要。\n【怎么入手】可以先拿几首 Suno、Udio 生成的歌做人耳试听，再用 librosa 做 ±3 半音移调和 ±10% 变速，看看开源检测器是不是立刻失效；然后复现论文里的频移不变特征，比较前后准确率。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-28",
-      "sec": "papers",
-      "tag": "评测/源分离",
-      "title": "双耳音乐分离评测指标的可靠性研究",
-      "url": "http://arxiv.org/abs/2607.25919v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Spacing Out: On the Reliability of Binaural Music Source Separation Metrics",
-      "why": "论文通过主观实验比较了双耳与立体声音乐源分离的评测指标，发现常用指标并不能很好地反映空间感损失。它提醒我们在沉浸式音乐处理中，除了分离干净，还必须保住空间方位信息。",
-      "detail": "【这是什么】音乐源分离想把一首歌拆成人声、鼓、贝斯等轨道，常见评测只关心拆得干不干净。但当输入是带方位感的双耳音频时，分离算法往往会把人声位置搞糊，现有指标却算不出来。这篇论文组织了一场听音实验，比较了双耳和立体声条件下分离结果的真实听感。\n【为什么值得关注】做 VR 演出、空间音频混音或沉浸式音乐 App 时，我们最在意的是「声音从哪来」。如果评测指标只管波形相似，空间感却被悄悄破坏，那算法优化方向就偏了。研究指出需要把空间保真度纳入标准评测，这对未来工具设计是重要提醒。\n【怎么入手】可以先用一个开源分离模型处理几首双耳流行歌，然后把分离出的声部重新渲染成立体声和双耳两种版本，邀请同学做 AB 听评，再对照 SDR、SI-SDR 等指标，看看指标高分是否等于耳朵满意。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-28",
-      "sec": "papers",
-      "tag": "符号音乐/音乐认知",
-      "title": "用图神经网络重写的音乐预期模型",
-      "url": "http://arxiv.org/abs/2607.25787v1",
-      "src": "arXiv · cs.SD",
-      "orig": "GraphIDyOM: A graph-native Python reimplementation of IDyOM for musical expectation modelling",
-      "why": "IDyOM 是计算音乐预期领域的经典模型，新工作把它用图神经网络在 Python 里重新实现，更方便接入现代深度学习流程。它能逐音符预测 surprise，为旋律生成、即兴系统和人机合奏提供认知依据。",
-      "detail": "【这是什么】听旋律时，大脑会对下一个音高、节奏有个预期，越偏离预期越觉得惊讶。IDyOM 就是用来计算这种逐音符预期的模型。GraphIDyOM 把原来难用的实现换成了基于图神经网络的 Python 版本，既保留了模型原理，又能方便地和 PyTorch 等现代工具对接。\n【为什么值得关注】做自动伴奏、旋律生成或人机即兴演奏时，如果系统能预判听众的惊讶度，就能主动控制张力曲线，让音乐更有戏剧性。新版还开放了内部记忆结构，适合拿来做可视化或生成可解释的创作辅助。\n【怎么入手】可以选几首巴赫或流行旋律的 MIDI，用 GraphIDyOM 计算每个音符的 surprise 值，再画成热力图；接着尝试把高 surprise 的位置映射到灯光或合成器音色变化，做一个能「看见预期」的小 demo。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-28",
-      "sec": "papers",
-      "tag": "评测/音乐生成安全",
-      "title": "零样本 AI 音乐检测方法",
-      "url": "http://arxiv.org/abs/2607.25530v1",
-      "src": "arXiv · cs.SD",
-      "orig": "Finding the noise: Zero-shot AI Music Detection",
-      "why": "针对不断出现的未知 AI 音乐生成器，作者提出不依赖训练数据、用「找噪声」思路做零样本检测。它把生成音频中残留的高频伪影当作线索，有望解决新模型一发布检测器就过时的问题。",
-      "detail": "【这是什么】AI 音乐生成模型就像不同的工厂，每家的产品都会留下独特痕迹，但这些痕迹天天变。这篇论文换了个思路：不学习某个工厂的特征，而是找生成音频里普遍存在、真人录音不会有的「噪声指纹」，从而在没有见过新模型时也能判断。\n【为什么值得关注】Suno、Udio 们更新迭代很快，传统检测器训练完一批数据，下一版模型可能就骗过它了。零样本方法更像「找共性」，对新出现的生成器有一定泛化能力，这对内容平台的长期风控很有吸引力。\n【怎么入手】可以收集一些公开 AI 生成歌曲和真实录音，用论文思路提取高频残差特征，画几个分布图看两者是否分开；再拿一个最新发布的模型作品做测试，看看零样本方法是不是真的能识别它。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "papers",
-      "tag": "符号音乐/视觉",
-      "title": "计算机动态乐谱的可读性数学框架",
-      "url": "http://arxiv.org/abs/2607.28155v1",
-      "src": "arXiv · cs.HC",
-      "orig": "A Mathematical Framework for Reading the Autopsias' Meta - Compositional System",
-      "why": "论文用数学工具分析计算机动态乐谱的可读性问题，为动画、算法生成的复杂记谱系统建立了形式化描述。它连接了当代记谱法、视觉艺术与演奏实践。",
-      "detail": "【这是什么】传统五线谱是静态的，但当代电子音乐、交互作品里经常出现会动、会变形、带影像的「动态乐谱」。这些乐谱给演奏者带来阅读困难。这篇论文提出一套数学框架，把乐谱元素、动画和演奏动作形式化，帮助判断哪些设计更容易读、哪些容易误导。\n【为什么值得关注】对于做新媒体音乐、视觉化记谱或交互演出的人来说，好看不等于好用。论文提供了从可读性角度评估动态乐谱的工具，能让你在写谱阶段就预测演奏者会不会看错节奏或指法。\n【怎么入手】可以选一段自己写的电子音乐，用 TouchDesigner 或网页动画做一个简单动态谱，然后邀请同学试奏并记录误读位置；再用论文里的可读性维度反过头来修改动画速度和符号布局。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "industry",
-      "tag": "音乐生成/产品",
-      "title": "Google 发布 Lyria 3.5 音乐生成模型",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5/",
-      "src": "Google Blog",
-      "why": "Google 的 Lyria 3.5 在旋律性、歌词和歌声方面做了提升，继续在音乐生成的可控性和自然度上推进。它既是产品迭代，也反映了科技巨头在 AI 音乐上的投入节奏。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】Lyria 是 Google DeepMind 推出的音乐生成模型，新的 3.5 版本号称在旋律更顺、歌词更准、歌声更自然上有进步。它通过 Google 的实验平台对外提供，普通用户也能输入提示词生成较长片段。\n【为什么值得关注】AI 音乐生成正在从「能出声音」走向「像首歌」，歌词和声乐的稳定性一直是短板。Lyria 3.5 的更新意味着生成结果更接近可用 demo，对创作者、广告配乐和短视频行业都有直接影响。\n【怎么入手】可以申请 Google Labs 的试用，拿同一组中文歌词分别用 Lyria 3.5 和现有开源模型生成，从旋律连贯性、咬字清晰度和副歌记忆点做主观对比，记录差异。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-30",
-      "sec": "industry",
-      "tag": "产品发布/开源",
-      "title": "Mere Run：本地多模态生成命令行工具",
-      "url": "https://github.com/sawfwair/mere-run",
-      "src": "HN 14pt",
-      "why": "这个命令行工具把文本、图像、视频、音乐和 3D 生成都装进一个无 Python 依赖的本地入口，适合快速实验跨模态创作流程。",
-      "detail": "【这是什么】mere-run 是一个命令行客户端，用户不用装 Python 环境，就能在本地调用多个开源模型生成图像、视频、音频、3D 甚至音乐。它把模型下载、参数配置和输出管理封装成统一命令。\n【为什么值得关注】对做跨媒介作品的学生来说，最麻烦的是每个模型都有不同环境。一个统一 CLI 能让你把「用一段旋律生成视觉」或「给视频自动配乐」变成可复现的脚本，非常适合快速做原型。\n【怎么入手】可以 clone 仓库，用内置的音乐生成命令生成一段伴奏，再调用视频生成模块给这段音乐配画面，最后把两者对齐导出，做一个 AI 生成 MV 的最小流程 demo。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-23",
-      "sec": "oss",
-      "tag": "音乐播放",
-      "title": "Myx：带反应式主题的终端 Spotify 播放器",
-      "url": "https://github.com/HaseebKhalid1507/Myx",
-      "src": "Rust · 139★",
-      "why": "一个运行在终端里的 Spotify 播放器，支持根据专辑封面自动切换主题，适合喜欢命令行和极简界面的用户。",
-      "detail": "【这是什么】Myx 用 Rust 写成，把 Spotify 的播放控制搬进终端，界面会根据当前播放歌曲的封面色调自动换颜色。它不需要图形界面，适合服务器、老电脑或开发者日常使用。\n【为什么值得关注】对学音乐科技的学生来说，播放器不只是听歌工具，也可以研究如何把音频元数据映射到视觉主题。Myx 代码量不大，是学习「音乐信息如何驱动界面」的好样本。\n【怎么入手】在 Linux 或 macOS 上安装 Rust 工具链，注册 Spotify 开发者应用获取 API key，编译运行后观察主题切换逻辑；可以尝试把封面主色调提取出来，再额外驱动一个 LED 灯条或 MIDI 灯光。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-08",
-      "sec": "oss",
-      "tag": "音乐交互界面",
-      "title": "Music Island：Windows 顶部音乐灵动岛",
-      "url": "https://github.com/redheadesign/music-island",
-      "src": "Rust · 226★",
-      "why": "一个 Windows 顶部状态栏的「音乐岛」，能显示任意播放器正在播放的歌曲信息，并可选直连 Yandex Music 桌面应用。",
-      "detail": "【这是什么】Music Island 常驻在屏幕顶部边缘，像手机上的灵动岛一样显示当前歌曲名、艺术家和封面，还能控制播放暂停。它兼容 Windows 系统媒体传输控制，所以不局限于某一款播放器。\n【为什么值得关注】它把系统级音乐控制和桌面视觉提示结合起来，是做「环境化音乐界面」的小而美案例。对研究 NIME 或桌面音乐交互的同学，它是很好的逆向工程和改造对象。\n【怎么入手】下载 release 版本，尝试替换界面皮肤和动画；也可以把它和 Yandex Music 或 Spotify 的 SMTC 数据打通，做一个自己的桌面歌词或可视化小挂件。",
-      "vol": 8,
-      "pub": "2026-08-01"
-    },
-    {
-      "date": "2026-07-24",
-      "sec": "papers",
-      "tag": "音乐认知/多任务",
-      "title": "学习音乐多任务：认知负荷与实践策略",
-      "url": "https://www.jefftk.com/p/learning-musical-multitasking",
-      "src": "HN 34pt",
-      "why": "这是一篇关于音乐多任务学习的个人实践笔记，作者把同时练多种乐器和舞蹈的经验拆成了注意力分配、动作自动化和认知负荷三条线索。它值得看，是因为设计任何练琴辅助工具或 AI 陪练系统之前，都需要先理解人脑是怎么把技能从无意识提到下意识层面的。",
-      "hot": "本报头条",
-      "detail": "【这是什么】 Jeff Kaufman 在这篇博客里记录了自己同时学吉他、钢琴和舞蹈时遇到的瓶颈。他发现大脑在同一时间能处理的“有意识控制”非常有限，所以练习的核心不是硬撑，而是把基本功变成下意识动作。文章用了很多日常例子，比如边弹吉他边唱歌、边打鼓边数拍子，来说明注意力切换带来的卡顿。\n【为什么值得关注】 对音乐科技学生来说，这篇文章是设计练习辅助软件前的必修课。如果你要做节拍器、慢练器、自动纠错或 AI 陪练，必须先理解人脑是怎么分层的：哪些技能需要专注，哪些应该被自动化。忽略了这一点，再强的算法也可能让用户越练越累。\n【怎么入手】 可以先用文中的思路做一份“技能分解表”，把一首曲子的技术点按自动化程度打分。然后选一个自己最熟悉的乐器，记录一周内练习时的心流状态。最后把这些观察整理成交互设计需求，看看哪些环节最适合交给程序辅助。",
-      "vol": 9,
-      "pub": "2026-08-02"
-    },
-    {
-      "date": "2026-07-12",
-      "sec": "oss",
-      "tag": "音效/交互",
-      "title": "uisfx：为界面设计的开源 UI 音效库",
-      "url": "https://github.com/romainsimon/uisfx",
-      "src": "Vue · 142★",
-      "why": "uisfx 把界面里常用的短音效打包成一个仓库，覆盖点击、悬停、成功、错误、开关等场景。对做音乐交互作品的同学来说，它是快速获得声音反馈的现成素材。",
-      "detail": "【这是什么】 uisfx 是一个开源的短音效集合，每个文件都很短、体积很小，适合直接插进网页或 App。它的分类方式贴近设计师语言，比如成功、警告、切换、删除，而不是按声学参数命名。这意味着即使不懂合成器，也能快速找到合适的提示音。\n【为什么值得关注】 音乐科技不只是做歌和做乐器，演出控制、互动装置、音乐游戏都需要大量 UI 音效。uisfx 提供了一种“拿来即用”的最低门槛方案，让你可以把注意力放在交互逻辑上。它的开源属性也方便你按项目风格替换或剪辑里面的声音。\n【怎么入手】 先克隆仓库，在浏览器里试听所有音效，选出最符合你项目气质的几种。然后用 Howler.js 或 Web Audio API 写一个触发演示：不同按钮对应不同事件声音。最后尝试把其中几个音效叠上一层轻微混响或滤波，让它和你的主视觉风格更统一。",
-      "vol": 9,
-      "pub": "2026-08-02"
-    },
-    {
-      "date": "2026-07-17",
-      "sec": "industry",
-      "tag": "多媒体生成/产品发布",
-      "title": "Flatkey CLI：面向创作者的开源多媒体生成命令行工具",
-      "url": "https://github.com/flatkey-ai/flatkey-cli",
-      "src": "GitHub · 198★",
-      "why": "Flatkey 把图像、视频、音频、字幕和模型发现整合进一个命令行界面，可以批量生成短视频、配乐候选或广告素材。对音乐人来说，它提供了一种把视觉和声音草图工作流写成脚本、减少重复劳动的新可能。",
-      "hot": "行业要闻",
-      "detail": "【这是什么】 Flatkey 是一个可以在本地运行的命令行工厂，输入提示词或参数后，它能一次性产出图片、视频、音频轨道和配套字幕。它更像一个把多种开源模型串起来的“瑞士军刀”，而不是一个单点工具。目前支持的功能覆盖了从素材生成到后期合成的整条粗剪链路。\n【为什么值得关注】 音乐科技越来越多地和视频、封面、社交媒体物料绑定，独立音乐人常常要同时当导演和设计师。Flatkey 提供了一种“用代码批量出草图”的可能：你可以写一段脚本，让电脑 overnight 生成十个版本的封面加十五秒试听视频。虽然它还不是专业级 DAW，但作为创意前期的探索器很合适。\n【怎么入手】 先在本地安装 Node.js 环境，跑一遍官方示例，看音频输出是什么格式和质量。然后挑一首自己的 demo，写一条脚本生成三段不同视觉风格的十五秒短片，分别配上同一首歌的 A/B/C 段落。最后把这些素材导入到剪辑软件里比较，找出最符合你审美的组合。",
-      "vol": 9,
-      "pub": "2026-08-02"
-    },
-    {
-      "date": "2026-07-08",
-      "sec": "oss",
-      "tag": "音乐平台",
-      "title": "Musicist：可部署的开源在线音乐网站",
-      "url": "https://github.com/zhuyao-opendeveloper/musicist",
-      "src": "Vue · 116★",
-      "why": "Musicist 是一个用 Vue 写的开源在线音乐播放站点前端，适合作为个人作品集、课程项目或小型独立音乐平台的起点。",
-      "detail": "【这是什么】 Musicist 是一个在线音乐网站的前端模板，包含播放列表、专辑列表、播放控制和响应式布局。它本身不提供曲库，但结构清晰，容易替换成自己的音频文件或接入第三方音源。对想拥有一个“自己域名下的音乐页面”的人来说，它是一个现成骨架。\n【为什么值得关注】 在流媒体平台主导的今天，独立音乐人越来越需要可控的展示空间。Musicist 提供了一种低成本的自建方案：你可以保留页面风格、数据和交互逻辑，而不被平台算法绑架。它也适合音乐科技课程做“从设计到部署”的期末项目。\n【怎么入手】 先把仓库跑起来，替换成自己的几首作品封面和音频链接。然后尝试加入歌词同步高亮或深色模式切换，让页面更有个人特色。如果会一点后端，可以接一个简单的数据库，实现上传歌曲和管理歌单。",
-      "vol": 9,
-      "pub": "2026-08-02"
-    }
-  ],
-  "ideas": [
-    {
-      "vol": 1,
-      "level": "入门",
-      "kind": "工具",
-      "title": "「听歌出谱」网页小工具",
-      "body": "给 MuScriptor 的开源转谱模型包一个网页界面:上传录音,输出各乐器乐谱并可播放对照。需要:Python 基础 · 少量前端。"
-    },
-    {
-      "vol": 1,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "实时音乐可视化演出/装置",
-      "body": "用 Web Audio API 提取现场音频特征,驱动 Canvas/WebGL 实时生成视觉。需要:JavaScript · 声学特征基础。"
-    },
-    {
-      "vol": 1,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "「哪句唱崩了」K 歌诊断器",
-      "body": "用现成音高提取库对翻唱录音生成随时间变化的质量曲线,标出走音段落。需要:Python 音频处理 · 数据可视化。"
-    },
-    {
-      "vol": 1,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "AI 生成音乐的诊断式评测研究",
-      "body": "构建中文流行歌评测集,用乐理+声学特征分析 AI 生成作品的局部错误,瞄准 ISMIR/ICASSP。需要:乐理 + MIR 工具链 · 实验设计。"
-    },
-    {
-      "vol": 2,
-      "level": "入门",
-      "kind": "工具",
-      "title": "一句话音乐点评小工具",
-      "body": "做一个网页或命令行小工具：上传一段录音，自动生成包含结构、乐器、情绪等维度的结构化短评，并高亮可能听错的地方。可以从开源音频语言模型或 API 入手，先用几首自己熟悉的歌做快速验证。需要：Python 基础 · 音频大模型 API 或本地模型 · 前端基础。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.20166v1",
-          "title": "Audio-Zero：不用人工标注，让音频大模型自己学会精细推理"
-        }
-      ]
-    },
-    {
-      "vol": 2,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "效果器参数逆向小工具",
-      "body": "参考黑箱优化 DRC 论文，做一个网页或插件：上传一段被压缩过的鼓点或人声，自动猜测压缩器的阈值、比率、起音/释音参数，并生成一个尽量恢复动态的反向版本。可以先用简化参数空间做离线实验。需要：Python · 音频处理库 · 优化库（如 scipy/nevergrad）· 效果器基础。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.19645v1",
-          "title": "用黑箱优化逆向音频压缩器参数，让处理过的录音重现原始动态"
-        }
-      ]
-    },
-    {
-      "vol": 2,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "舞蹈/剧情短片的空间声景增强版",
-      "body": "参考 Sonic Stage，为一段没有密集对话的舞蹈或短片自动生成空间声景，让戴耳机的观众能靠声音判断动作方向和位置。可以做成可佩戴耳机体验的网页。需要：Python · 空间音频工具（Ambisonics/HOA）· 视频分析。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.20835v1",
-          "title": "Sonic Stage：把对话视频变成可交互的空间声景，帮助视障观众理解场景"
-        }
-      ]
-    },
-    {
-      "vol": 2,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "AI 生成音乐的诊断式评测研究",
-      "body": "构建中文流行歌评测集，用乐理和声学特征分析 AI 生成作品的局部错误，瞄准 ISMIR 或 ICASSP。可以从翻唱/伴奏生成开始，再扩展到完整歌曲。需要：乐理 + MIR 工具链 · 实验设计 · 统计分析。",
-      "based_on": [
-        {
-          "vol": 1,
-          "url": "https://arxiv.org/abs/2607.19688v1",
-          "title": "基于乐理与声学特征的 AI 生成翻唱诊断评测框架"
-        }
-      ]
-    },
-    {
-      "vol": 3,
-      "level": "入门",
-      "kind": "产品原型",
-      "title": "AI短视频配乐一致性打分器",
-      "body": "用灵剪等工具批量生成几条主题相近的中文短视频，自己从节奏匹配、情绪一致性、听觉突出度等维度给每段配乐打分，最后汇总成一个可对比的评测表格。需要：Python基础 · 短视频生成工具（如灵剪）· 乐理。",
-      "based_on": [
-        {
-          "url": "https://github.com/dososo/blcaptain-lingjian-video",
-          "title": "灵剪：一句话生成带配乐与音效的中文短视频"
-        }
-      ]
-    },
-    {
-      "vol": 3,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "YTubic 桌面音乐可视化增强版",
-      "body": "在 YTubic 的 Tauri+React 前端里加入 Web Audio API 可视化层，让播放中的音乐实时驱动频谱或粒子动画，并支持切换几种视觉风格。需要：JavaScript · Tauri 基础 · Web Audio API/Canvas。",
-      "based_on": [
-        {
-          "url": "https://github.com/NUber-dev/YTubic",
-          "title": "YTubic：基于 Tauri 2 的 YouTube Music 桌面客户端"
-        }
-      ]
-    },
-    {
-      "vol": 3,
-      "level": "进阶",
-      "kind": "研究/工具",
-      "title": "Flux 3 音乐视觉一致性评测网页",
-      "body": "收集若干组同一主题的提示词，调用 Flux 3 分别生成图像、视频和音频，然后从速度、调性、情绪三个维度量化它们的匹配程度，并用网页展示对比结果。需要：API访问 · Python/JS · 音视频基础特征分析。",
-      "based_on": [
-        {
-          "url": "https://bfl.ai/blog/flux-3",
-          "title": "Flux 3：能同时生成图像、视频、音频与动作预测的多模态模型"
-        },
-        {
-          "url": "https://github.com/palmier-io/palmier-pro",
-          "title": "Palmier Pro：为AI而生的开源 macOS 视频编辑器"
-        }
-      ]
-    },
-    {
-      "vol": 3,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "婴儿身体反应驱动的AI音乐评测",
-      "body": "复现 eLife 论文中的刺激音乐和婴儿动作记录，建立音频特征到身体反应强度的预测模型，再用该模型评估 AI 生成的音乐是否能引起类似的身体共鸣。需要：信号处理 · 实验设计 · 统计分析。",
-      "based_on": [
-        {
-          "url": "https://elifesciences.org/articles/107088",
-          "title": "婴儿对音乐的身体反应：出生后第一年的纵向研究"
-        }
-      ]
-    },
-    {
-      "vol": 4,
-      "level": "入门",
-      "kind": "工具",
-      "title": "FFmpeg 磁带效果一键小程序",
-      "body": "参考 Cassette Simulation 脚本，写一个命令行或网页小工具：上传音频后选择「温暖磁带」「损坏磁带」等预设，一键输出处理后的文件。需要：Python 基础 · FFmpeg · 少量前端。",
-      "based_on": [
-        {
-          "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
-          "title": "FFmpeg 磁带音色模拟脚本"
-        }
-      ]
-    },
-    {
-      "vol": 4,
-      "level": "入门",
-      "kind": "交互作品",
-      "title": "芯片音乐 8-bit 实时可视化",
-      "body": "打开 Chiptune Radio，用 Web Audio API 提取节拍和频谱，驱动像素风格的实时画面，让芯片音乐的音色直接变成视觉上的方块跳跃。需要：JavaScript · Web Audio API · Canvas。",
-      "based_on": [
-        {
-          "url": "https://chiptune-radio.alephvoid.com/",
-          "title": "在线芯片音乐电台 Chiptune Radio"
-        }
-      ]
-    },
-    {
-      "vol": 4,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "Pentaton 风格的实体感音乐播放器",
-      "body": "用树莓派或电脑做一个播放本地 FLAC 的播放器，加入实体旋钮控制播放暂停，并显示专辑封面，重现 Pentaton LP 的仪式感。需要：Python 或嵌入式基础 · 硬件交互 · 音频播放库。",
-      "based_on": [
-        {
-          "url": "https://pentaton.app/blog/2026-07-12-introducing-pentaton-lp/",
-          "title": "Pentaton LP 自研音乐播放器诞生记"
-        }
-      ]
-    },
-    {
-      "vol": 4,
-      "level": "进阶",
-      "kind": "研究",
-      "title": "高解析度音频营销的盲听评测",
-      "body": "基于高解析音乐下载文章，设计一组 16bit/44.1kHz 与 24bit/96kHz 的 AB 盲听实验，用统计方法判断被试者能否区分，并分析不同音乐风格对结果的影响。需要：实验设计 · 统计分析 · FFmpeg。",
-      "based_on": [
-        {
-          "url": "https://people.xiph.org/~xiphmont/demo/neil-young.html#toc_wd2bm",
-          "title": "高解析音乐下载为何听不出差别"
-        }
-      ]
-    },
-    {
-      "vol": 5,
-      "level": "入门",
-      "kind": "工具",
-      "title": "节拍对齐的短视频粗剪器",
-      "body": "基于 Weave 或 ai-video-editor，做一个浏览器插件：上传视频和参考音乐，自动在强拍位置切分镜头并渲染成片。可以先从固定 BPM 的歌曲开始，避免复杂变速。需要：JavaScript 基础 · FFmpeg/视频时间线概念 · 节拍检测库（如 librosa）。",
-      "based_on": [
-        {
-          "url": "https://github.com/thiagoalbrecht/weave",
-          "title": "Weave：浏览器内用 FFmpeg 直接渲染的视频编辑器"
-        },
-        {
-          "url": "https://github.com/MartinDelophy/ai-video-editor",
-          "title": "AI 驱动的本地优先浏览器视频编辑器"
-        }
-      ]
-    },
-    {
-      "vol": 5,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "用舞蹈动作实时驱动电子伴奏",
-      "body": "用摄像头捕捉身体骨架，把关节速度、重心高低映射到鼓机触发、合成器滤波和音阶选择，让舞者成为乐器。可以先做离线版：录一段舞蹈，再生成 MIDI，最后接入硬件合成器演奏。需要：Python · MediaPipe/OpenPose · 基础 MIDI/合成器知识 · 舞蹈动作标注。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.10537v1",
-          "title": "基于动作预训练与对比对齐的舞蹈转音乐生成"
-        }
-      ]
-    },
-    {
-      "vol": 5,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "情绪曲线自动配乐推荐器",
-      "body": "输入一段无声短片或剧本，先用轻量多模态情绪模型提取逐秒情绪向量，再从本地音乐库检索情绪轨迹最相近的曲目作为配乐候选。可以扩展到用 BackgroundMellow 生成缺失的情绪段落。需要：Python · 视频/音频特征提取 · 相似度检索 · 基础乐理。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.12958v1",
-          "title": "跨域多模态情感描述符，用于数字对象的视觉对比"
-        },
-        {
-          "url": "http://arxiv.org/abs/2607.12787v1",
-          "title": "多模态情绪识别真的需要超过10亿参数的大模型吗"
-        },
-        {
-          "url": "http://arxiv.org/abs/2607.11364v1",
-          "title": "面向长篇叙事电影的连贯多模态背景声景生成框架"
-        }
-      ]
-    },
-    {
-      "vol": 5,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "舞蹈—音乐一致性的细粒度评测集",
-      "body": "复现并扩展舞蹈转音乐论文的对比对齐思路，收集多组专业舞者的动作视频和人工配乐，构建中文/流行舞种的评测基准，评估节奏、重拍、情绪三个维度。结果可投稿 ISMIR 或 ICASSP。需要：乐理 + MIR 工具链 · 深度学习框架 · 动作捕捉数据 · 统计评测方法。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.10537v1",
-          "title": "基于动作预训练与对比对齐的舞蹈转音乐生成"
-        },
-        {
-          "vol": 2,
-          "url": "https://arxiv.org/abs/2607.18598",
-          "title": "AI 生成音乐的诊断式评测研究"
-        }
-      ]
-    },
-    {
-      "vol": 6,
-      "level": "入门",
-      "kind": "工具",
-      "title": "微分音和弦查询器",
-      "body": "基于 Xenharmlib 0.4.0 的纯律支持，做一个网页小工具：输入和弦名，自动计算纯律频率比、与十二平均律的音分差，并播放对比。需要：Python 基础 · Xenharmlib · 少量前端。",
-      "based_on": [
-        {
-          "url": "https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html",
-          "title": "Xenharmlib 0.4.0：支持纯律的微分音音乐理论库"
-        }
-      ]
-    },
-    {
-      "vol": 6,
-      "level": "进阶",
-      "kind": "工具",
-      "title": "基于转写稿的音频粗剪增强版",
-      "body": "在 Rescript 的转写稿编辑基础上，加入静音检测和节拍切分，让音乐人或播客主可以按句子、段落或拍子快速粗剪音频。可以先做离线版。需要：JavaScript/TypeScript · FFmpeg · 基础音频特征。",
-      "based_on": [
-        {
-          "url": "https://github.com/wassgha/rescript",
-          "title": "Rescript：浏览器里的基于转写稿的音频/视频编辑器"
-        },
-        {
-          "vol": 5,
-          "url": "https://github.com/thiagoalbrecht/weave",
-          "title": "Weave"
-        }
-      ]
-    },
-    {
-      "vol": 6,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "液体玻璃风格本地音乐播放器",
-      "body": "参考 MeloX 的视觉设计，用网页或桌面技术做一个本地 FLAC 播放器，支持专辑封面、歌词舞台和3D可视化，重点复刻液体玻璃动效。需要：前端/桌面开发 · 本地文件读取 · 音频播放。",
-      "based_on": [
-        {
-          "url": "https://github.com/youshen2/MeloX",
-          "title": "MeloX：参考 Apple Music 设计的第三方网易云客户端"
-        },
-        {
-          "vol": 4,
-          "url": "https://github.com/ww085213/Mineradio-LX-Music",
-          "title": "Mineradio-LX-Music"
-        }
-      ]
-    },
-    {
-      "vol": 6,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "AI 生成音乐的多维诊断评测",
-      "body": "基于 audio_eval 工具箱，扩展音乐专用指标（和弦进行、旋律轮廓、节奏稳定性），构建中文流行歌评测集，系统对比几个开源模型。需要：乐理 + Python MIR 工具链 · 统计评测 · 实验设计。",
-      "based_on": [
-        {
-          "url": "https://github.com/shwj114514/audio_eval",
-          "title": "audio_eval：可组合的开源音频生成与重建评测工具箱"
-        },
-        {
-          "vol": 3,
-          "url": "https://elifesciences.org/articles/107088",
-          "title": "Auditory and spontaneous movement responses to music over first postnatal year"
-        }
-      ]
-    },
-    {
-      "vol": 7,
-      "level": "入门",
-      "kind": "工具",
-      "title": "变速/变调下的 AI 生成音乐检测小工具",
-      "body": "参考《Improved Robustness in AI-Generated Music Detection》的思路，写一个命令行或网页小工具：上传一段怀疑是 AI 生成的音乐，自动做 ±3 半音移调和 ±10% 变速，再调用检测模型看置信度是否还稳定，输出一份「鲁棒性报告」。需要：Python 基础 · librosa/pydub · 现成的 AI 音乐检测模型或 API · 少量前端。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.27454v1",
-          "title": "Improved Robustness in AI-Generated Music Detection"
-        }
-      ]
-    },
-    {
-      "vol": 7,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "谱原生歌声合成 Demo",
-      "body": "参考 VocalRender，把歌词、音高、符点音符和速度打包成一个简单输入格式，调用开源歌声合成模型生成 demo，并支持在网页上试听和微调换气点。可以从几首自己写的旋律开始，验证「写完谱就能听人声」的 workflow。需要：Python · 歌声合成工具链（如 DiffSinger/RVS）· MusicXML/MIDI 解析 · 前端基础。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.27768v1",
-          "title": "VocalRender: Score-Native Singing Voice Synthesis for Real-World Composition"
-        }
-      ]
-    },
-    {
-      "vol": 7,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "自然语言指挥的 Ableton / Max 参数控制器",
-      "body": "参考 LLM4OSC，做一个本地优先的小工具：用自然语言描述「把鼓组音量推大、加入一点混响」，由大模型生成 OSC 指令并实时发送给 Ableton Live 或 Max，同时校验地址和类型标签，避免演出时出错。可以先做离线指令生成，再接入 MIDI/OSC 发送。需要：Python · OSC 协议基础 · LLM API · Ableton/Max 基础。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.26024v1",
-          "title": "LLM4OSC: Profile-Bound Natural Language Control with Deterministic Validation for Open Sound Control"
-        }
-      ]
-    },
-    {
-      "vol": 7,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "多模态钢琴演奏的视听一致性评测",
-      "body": "基于 SKY-Piano 数据集，设计实验比较专业与业余演奏在手部动作幅度、轨迹和力度起伏上的可区分模式，并构建一个用动作特征预测表情标记的基准。结果可投向 ISMIR 或 NIME。需要：Python · 动作/视频特征提取 · 统计分析 · 钢琴演奏基础。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.27296v1",
-          "title": "SKY-Piano: A Multimodal Piano Performance Dataset"
-        }
-      ]
-    },
-    {
-      "vol": 8,
-      "level": "入门",
-      "kind": "工具",
-      "title": "AI 生成音乐检测鲁棒性速查器",
-      "body": "参考本期《AI 生成音乐检测的鲁棒性提升》的频移不变思路，写一个命令行或网页小工具：上传一段怀疑是 AI 生成的音乐，自动做 ±3 半音移调、±10% 变速、MP3 压缩等扰动，再调用检测模型观察置信度是否断崖下跌，输出一份各攻击下的鲁棒性折线图。需要：Python 基础 · librosa/pydub · 现成 AI 音乐检测模型或 API · 少量前端。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.27454v1",
-          "title": "AI 生成音乐检测的鲁棒性提升"
-        }
-      ]
-    },
-    {
-      "vol": 8,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "音符惊讶度的实时视觉化",
-      "body": "用 GraphIDyOM 对 MIDI 或 MusicXML 逐音符计算 surprise 和不确定性，把高惊讶度的音符映射成粒子爆发、颜色闪烁或灯光触发，做一个能「看见旋律悬念」的演出视觉。可以先从钢琴曲开始，再尝试实时 MIDI 输入。需要：Python · GraphIDyOM/符号音乐库 · p5.js 或 Three.js · 基础乐理。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.25787v1",
-          "title": "用图神经网络重写的音乐预期模型"
-        }
-      ]
-    },
-    {
-      "vol": 8,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "双耳音乐分离空间保真度评测站",
-      "body": "参考《双耳音乐分离评测指标的可靠性研究》的主观实验思路，搭一个网页 AB 评测平台：上传立体声歌曲，用开源分离模型拆出各声部，再分别渲染成立体声和双耳版本，让同学从空间定位感和分离清晰度打分，最后把主观分和客观指标画成散点图。需要：Python · 空间音频渲染（Ambisonics/Binaural）· 网页前端 · 基础统计。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.25919v1",
-          "title": "双耳音乐分离评测指标的可靠性研究"
-        }
-      ]
-    },
-    {
-      "vol": 8,
-      "level": "硬核",
-      "kind": "研究",
-      "title": "面向未知生成器的零样本 AI 音乐检测基准",
-      "body": "结合《零样本 AI 音乐检测方法》和《AI 生成音乐检测的鲁棒性提升》两条思路，收集多个公开 AI 音乐生成器（含不同版本）的作品，建立一个不断加入新模型的动态评测基准，重点测试检测器在「从未见过」模型和常见扰动下的泛化能力。结果可投稿 ISMIR/ICASSP。需要：Python MIR 工具链 · 机器学习 · 实验设计与统计分析 · 大量生成音频。",
-      "based_on": [
-        {
-          "url": "http://arxiv.org/abs/2607.25530v1",
-          "title": "零样本 AI 音乐检测方法"
-        },
-        {
-          "url": "http://arxiv.org/abs/2607.27454v1",
-          "title": "AI 生成音乐检测的鲁棒性提升"
-        }
-      ]
-    },
-    {
-      "vol": 9,
-      "level": "入门",
-      "kind": "工具",
-      "title": "练习多任务拆分记录器",
-      "body": "参考《学习音乐多任务》里的注意力分层思路，做一个网页或小程序：把一首曲子按声部、肢体动作拆成可循环的小段落，记录每天能同时兼顾几项并画进步曲线。需要：JavaScript/Python 基础 · 前端框架 · 简单数据库。",
-      "based_on": [
-        {
-          "url": "https://www.jefftk.com/p/learning-musical-multitasking",
-          "title": "学习音乐多任务：认知负荷与实践策略"
-        }
-      ]
-    },
-    {
-      "vol": 9,
-      "level": "入门",
-      "kind": "交互作品",
-      "title": "开源音乐网站的封面舞台改造",
-      "body": "fork musicist，把播放页改成全屏封面舞台，加入同步歌词高亮和主题色自动提取，让它更像一个可展示作品的独立播放器。需要：Vue · CSS 动画 · 音频标签 API。",
-      "based_on": [
-        {
-          "url": "https://github.com/zhuyao-opendeveloper/musicist",
-          "title": "Musicist：可部署的开源在线音乐网站"
-        }
-      ]
-    },
-    {
-      "vol": 9,
-      "level": "进阶",
-      "kind": "产品原型",
-      "title": "UI 音效与交互事件匹配器",
-      "body": "在 uisfx 的基础上为每个短音效标注情绪和动作类型，做一个网页演示：悬停、点击、拖拽、错误提示自动匹配不同音效，并导出配置给 Unity/网页项目。需要：JavaScript · 音效分类 · 前端。",
-      "based_on": [
-        {
-          "url": "https://github.com/romainsimon/uisfx",
-          "title": "uisfx：为界面设计的开源 UI 音效库"
-        }
-      ]
-    },
-    {
-      "vol": 9,
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "命令行音乐视觉草图批量生成器",
-      "body": "用 Flatkey CLI 的音频/视频生成能力，为同一首 demo 批量输出十种封面加十五秒试听视频，再用主观打分选出最佳视觉方向。需要：Node.js · 命令行脚本 · 基础音视频处理 · 设计审美。",
-      "based_on": [
-        {
-          "url": "https://github.com/flatkey-ai/flatkey-cli",
-          "title": "Flatkey CLI：面向创作者的开源多媒体生成命令行工具"
-        }
-      ]
-    }
-  ]
-}
+<script type="application/json" id="radar-issue">
+{"vol": 10, "pub": "2026-08-04", "items": [{"date": "2026-08-03", "sec": "papers", "tag": "音乐生成", "title": "P-MUSE：可选MIDI提示的统一器乐音乐合成与编辑模型", "url": "https://arxiv.org/abs/2608.01920", "src": "arXiv · cs.SD", "orig": "P-MUSE: Prompt-MIDI-Optional Model for Unified Instrumental Music Synthesis and Editing", "why": "P-MUSE 提出了一种提示-MIDI-可选模型，既能仅凭参考音频进行器乐音色克隆与生成，也能在提供对齐 MIDI 时实现更精细的音符级编辑。它把「只能听小样生成」和「按谱面精修」两条路径统一到一个框架里，对 AI 辅助作曲和编曲研究非常有启发。", "hot": "本报头条", "detail": "【这是什么】\nP-MUSE 是一个把 MIDI 和音频提示结合起来的器乐音乐生成模型。你可以给它一段目标乐器的演奏录音作为音色提示，也可以再附上一份 MIDI 文件；模型会把它渲染成完整的音乐片段。如果没有 MIDI，它就靠听觉模仿来把握旋律与节奏；如果有 MIDI，它还能做音符级编辑。\n【为什么值得关注】\n以前这类系统要么只能「听音生成」，可控性差；要么必须严格依赖配对的 MIDI 数据，准备工作量大。P-MUSE 让两种输入都可选，相当于给创作者提供了一个能 sketch 也能精修的 AI 乐器。对符号音乐与音频融合感兴趣的同学，可以直接看到它如何把离散音符和连续音色捏合在一起。\n【怎么入手】\n论文已经挂在 arXiv，数据集和模型细节在正文中。建议先读摘要与方法部分，再试着用它理解 MIDI-Optional 的训练策略，并思考能不能套用到自己的编曲工具上。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "音乐×视觉/交互艺术", "title": "Sounding Canvas：把画作变成可触摸的多模态声音装置", "url": "https://arxiv.org/abs/2608.02219", "src": "arXiv · cs.HC", "orig": "Sounding Canvas: Embedding Algorithms in Networked, Sensorial Sound Art", "why": "Sounding Canvas 在画布中嵌入电容传感器、实时决策模型和网络通信，让观众的触摸触发来自画面本身的沉浸式空间化音效。它把算法「藏」进艺术品内部，是音乐科技、交互设计与声音艺术交叉的典型样本。", "detail": "【这是什么】\n研究者做了一块能「听」的画布。观众伸手触碰画面不同位置时，隐藏在画布背后的传感器会捕捉触摸，实时生成并定位空间化音效，听起来就像声音真的从画里发出来一样。系统还集成了联网功能，让多个画布或远程参与者可以协同发声。\n【为什么值得关注】\n这个项目把传感、生成和网络塞进了传统绘画的物理载体，拓展了声音装置的创作语法。对于学习数字音乐智能处理的同学来说，它展示了如何把「可见」的视觉元素转译成「可听」的声场体验，也提示了博物馆、舞台和公共空间里的新交互可能。\n【怎么入手】\n论文给出了系统架构、离线视觉到声音的转译模型，以及硬件部署经验。你可以重点关注它如何把触摸位置映射到声源位置，并尝试用同样的思路改造一幅自己的画作或一个小型装置。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "音频修复", "title": "LOUDAR：用潜在空间优化与扩散先验修复退化音乐", "url": "https://arxiv.org/abs/2608.01972", "src": "arXiv · cs.SD", "orig": "Music Restoration via Latent Operator Optimization and Diffusion Model Priors", "why": "LOUDAR 把音乐修复当成「未知失真下的反问题」，无需成对训练数据或预先知道失真类型即可恢复干净音频。它摆脱了传统方法对特定失真的依赖，对老唱片、低质量录音和未知损坏的修复都很有想象空间。", "detail": "【这是什么】\n音乐修复通常要假设你知道录音是怎么变坏的，比如是磁带饱和、压缩失真还是噪声。LOUDAR 不一样：它先在潜空间里推断造成退化的「算子」，再用扩散模型的先验知识把声音补回来。就像一位修图师先猜照片经历了哪种模糊，再动手把它修清晰。\n【为什么值得关注】\n实际收藏的大量音乐录音，退化原因往往不明或混合多种问题。LOUDAR 提出的通用框架让模型面对未知损坏时也能「见招拆招」，这对数字档案馆、母带修复和音乐考古都是潜在利器。\n【怎么入手】\n论文在 arXiv 上已公开。可以从实验部分看它对哪些退化类型最有效，再想想能不能把它和已有的音频去噪、去混响工具串起来，做一条自动化的老录音修复管线。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "评测/音乐教育", "title": "用 GPT-4o-mini 自动批改和声与曲式分析题", "url": "https://arxiv.org/abs/2608.01783", "src": "arXiv · cs.AI", "orig": "Comparative Validation of GPT-4o-mini and Teacher Mean Scores for Automated Scoring of Music Analysis Responses: Single-Pass Deployment, Repeatability, and Strategy-Specific Bias", "why": "研究用 300 份大学级别的音乐分析答题，比较 GPT-4o-mini 与教师平均分的评分一致性。它为大规模音乐素养评测提供了自动化参考，也让我们看到大模型在音乐专业知识评估上的边界。", "detail": "【这是什么】\n和声与曲式分析题通常需要人工逐句批改，成本高且主观性强。这项研究把 GPT-4o-mini 当成自动阅卷员，按照和声、曲式等四个维度给 300 份学生答卷打分，并与多位老师的平均分对照。\n【为什么值得关注】\n它不只是又一个用大模型改作文的例子，而是把关注点放到音乐专业知识的结构化评估上。结果表明模型在部分维度上重复性不错，但也存在策略性偏差，这对未来设计 AI 辅助音乐教学系统很有借鉴。\n【怎么入手】\n论文附带了评分细则和实验分析。建议对照自己的乐理作业，看看 GPT 的失误集中在哪类和弦或曲式判断上，再思考如何设计更鲁棒的人机混合评分流程。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-02", "sec": "papers", "tag": "鼓转录/源分离", "title": "Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成", "url": "https://arxiv.org/abs/2608.01093", "src": "arXiv · cs.SD", "orig": "Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion", "why": "该工作把鼓转录从「直接识别」改成「先分离五种鼓 stem，再检测事件」的两步框架。它同时输出可编辑的分轨和符号事件，直接服务于后期混音、采样和智能编曲。", "detail": "【这是什么】\n自动鼓转录一般是直接从混音里听出 kick、snare 等打击事件。这篇文章则先让模型把鼓组拆成五条独立音轨，再在每条音轨上检测音符 onset。这样你既能拿到鼓谱，也能拿到可单独拖进 DAW 的鼓 stem。\n【为什么值得关注】\n对于做节拍分析、智能伴奏或自动混音的同学来说，这种分离-检测思路把「听到什么」和「能编辑什么」连在了一起。它让鼓转录不再只是输出标签，而是直接产生可用的制作素材。\n【怎么入手】\n论文模型基于潜扩散，代码和数据集可以关注作者主页或 arXiv 附带的链接。建议先跑通官方 demo，对比它和自己常用的鼓点识别工具在复杂编曲里的表现。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "papers", "tag": "音乐×VR/交互艺术", "title": "Beyond Score-Based Gamification：为颈椎康复设计时空音乐化 VR 体验", "url": "https://arxiv.org/abs/2608.01688", "src": "arXiv · cs.HC", "orig": "Beyond One-Size-Fits-All: Personalized and Culturally Adaptive Emotional TTS via Interactive Optimization of Individual Emotion Perception Spaces", "why": "该研究为慢性颈痛康复设计了一套不依赖分数、而以时空音乐体验驱动的 VR 系统。它把枯燥的治疗动作转化为具有情感支持的沉浸式音乐互动，对音乐治疗和运动游戏化都有参考价值。", "detail": "【这是什么】\n慢性颈痛患者常因害怕动作而中断康复。研究者用 VR 把颈部运动包装成一段随身体动作展开的音乐旅程：抬头、转头、侧屈都会触发对应的音符、和声或空间声像变化。重点不是打高分，而是让身体动作本身产生音乐表达。\n【为什么值得关注】\n这项工作跳出了「积分排行榜」的常规游戏化思路，展示了音乐如何成为康复动机的内在驱动。它也为设计音乐驱动的身体交互界面提供了新的案例。\n【怎么入手】\n论文详细描述了体验设计、音乐映射机制和用户反馈。可以重点看它如何把颈部活动范围映射到音高和节奏，再思考能否把类似逻辑用在舞蹈、手势音乐或其他体感交互作品中。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "oss", "tag": "音乐生成", "title": "ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face", "url": "https://huggingface.co/maolandaw/ACE-Step-1.5-burn", "src": "Hugging Face · 0★", "why": "maolandaw 上传了 ACE-Step 1.5 的 burn 版本检查点，面向开放的音乐生成研究。ACE-Step 是近期开源社区中备受关注的端到端音乐生成模型，适合想在本地跑通完整作曲流程的同学。", "detail": "【这是什么】\nACE-Step 是一款开源的音乐生成模型，能根据文本或音频提示生成包含旋律、和声与配器的音乐片段。这个仓库放出了 1.5 版本的预训练权重，方便研究者直接下载推理或做二次微调。\n【为什么值得关注】\n相比很多闭源音乐生成服务，开源检查点让你可以看到模型结构、控制生成过程，也更容易做学术研究或开发插件。1.5 版本通常在音质和可控性上有进一步提升。\n【怎么入手】\n打开 Hugging Face 仓库页面，查看模型卡里的许可证和示例代码。确保你有足够的显存或能用提供的量化版本，然后试着用一段文字描述生成一段短音乐。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "oss", "tag": "音乐生成/浏览器推理", "title": "ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现", "url": "https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU", "src": "Hugging Face · 0★", "why": "这个仓库把 ACE-Step v1.5 XL Turbo 转换成了 ONNX 格式并支持 WebGPU，能在浏览器里本地跑音乐生成。它降低了音乐生成模型的部署门槛，让前端和交互艺术项目可以直接集成。", "detail": "【这是什么】\nONNX 是一种让机器学习模型跨平台运行的格式，WebGPU 则让浏览器能调用显卡加速。把两者结合起来，意味着你不用安装 Python 环境，在网页里就能让模型生成音乐。\n【为什么值得关注】\n对于做网页音乐应用、在线乐器或交互装置的同学，这是一条「开箱即用」的路径。模型留在用户本地，也避免了把音频素材上传到云端。\n【怎么入手】\n仓库应该有示例网页或加载脚本。先用支持的浏览器打开 demo，看能否成功生成片段。然后再尝试把生成结果接入 Web Audio API，做成可即时试听的小工具。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-02", "sec": "oss", "tag": "音效/音乐生成", "title": "Stability AI 发布 Stable Audio 3 优化版本", "url": "https://huggingface.co/stabilityai/stable-audio-3-optimized", "src": "Hugging Face · 27★", "why": "stabilityai 放出了 Stable Audio 3 的优化版检查点，适合生成音乐与音效。它代表了开源社区在高质量音频生成模型上的持续迭代，值得关注其架构改进和许可条款。", "detail": "【这是什么】\nStable Audio 3 是 Stability AI 推出的音频生成模型，可以根据文本提示产出音乐或环境声。这个优化版本在推理速度和资源占用上做了改进，更便于在个人设备或服务器上部署。\n【为什么值得关注】\n对研究 AI 音乐生成的同学来说，跟踪官方优化版的更新能帮助你了解当前开源模型的工程天花板。同时，模型的许可证和可商用范围也直接影响后续项目选择。\n【怎么入手】\n访问 Hugging Face 模型卡，阅读使用说明和示例 notebook。可以先从生成 5-10 秒的短片段开始，听一听它在旋律连贯性和音色丰富度上的表现，再决定是否用于课程项目。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "industry", "tag": "版权诉讼", "title": "德国法院裁定 Suno AI 训练侵权，GEMA 赢得关键版权诉讼", "url": "https://musictech.com/news/industry/suno-copyright-infringement-germany", "src": "MusicTech", "orig": "German court says Suno’s AI training infringed copyright in landmark ruling", "why": "德国慕尼黑法院判定 Suno 在模型训练中使用受版权保护的音乐作品构成侵权，并驳回了合理使用的辩护。这是欧洲首例针对 AI 音乐生成公司的版权裁决，可能直接影响未来 AI 音乐训练数据的授权与合规模式。", "hot": "行业要闻", "detail": "【这是什么】\n德国音乐版权协会 GEMA 起诉 AI 音乐平台 Suno，认为其未经许可用大量版权歌曲训练模型。法院最终支持了 GEMA，认定这种训练方式侵犯版权，且不属于合理使用。Suno 可能面临高额赔偿，并需要调整其数据来源。\n【为什么值得关注】\n对音乐科技专业学生而言，这起判例把「AI 训练是否需要授权」这个理论问题变成了现实法律风险。它也可能改变生成式音乐平台的商业模式，让版权许可和数据透明成为行业焦点。\n【怎么入手】\n阅读 MusicTech 的判决报道和法院摘要，关注 Suno 是否会上诉以及美国同类案件的进展。可以结合自己的研究，思考如何在模型训练中合法使用音乐数据，或探索授权数据集与合成数据方案。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-04", "sec": "industry", "tag": "行业政策", "title": "IFPI 收紧官方榜单规则：无授权 AI 音乐将更难上榜", "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1ha1Y0Qi1NZGhTZWdGa2hKa0V4UmdnZS1QbjhNaEc3X0Q0dFVwRFJ2RndMTjJhanhyXzFsQzJIVFRkS18wMWNOZzBTWElfeTBuMlFuWElWNjFlUXFoNm5KTnZ0Q1pVY004M3Y0VVM4VGg1ZERzMUo4eW1n?oc=5&hl=en-US&gl=US&ceid=US%3Aen", "src": "EDM.com · via Google News", "why": "国际唱片业协会 IFPI 宣布在旗下多个关键国际榜单中立即实施更严格的 AI 音乐标识与资格审核。这意味着大规模涌入流媒体的 AI 生成曲目将受到更直接的榜单监管，影响流量分配和产业统计。", "detail": "【这是什么】\nIFPI 是全球唱片行业的代表性组织。面对 AI 音乐在流媒体平台的爆发式增长，IFPI 更新了官方榜单规则，要求对 AI 生成或深度参与的作品进行标注，并可能限制未获授权训练数据生成的曲目进入榜单。\n【为什么值得关注】\n榜单直接影响版权收入、曝光权和行业话语权。新规可能促使流媒体平台、AI 公司和唱片公司之间重新谈判数据使用与收益分配，也关系到未来人类创作者与 AI 生成内容的公平竞争。\n【怎么入手】\n查看 IFPI 官方公告和 EDM.com 的报道，梳理新规则中关于 AI 标注、人类贡献比例和训练数据授权的具体条款。可以把它和韩国、德国近期政策放在一起做比较分析。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-03", "sec": "industry", "tag": "音乐硬件/交互界面", "title": "Push Hack 让 Ableton Push 3 屏幕、文件与 MIDI 全面开放", "url": "https://cdm.link/push-hack-very-unauthorized-access-to-push-3s-display-files-midi-and-more", "src": "cdm.link", "why": "第三方开发者 Federico Pepe 发布了非官方的 Push Hack，可完整接管 Ableton Push 3 的显示屏、存储和 MIDI。它把这款硬件从 Live 专属控制器变成了通用音乐交互平台，对 DIY 乐器和 NIME 研究很有启发。", "detail": "【这是什么】\nAbleton Push 3 原本是为 Ableton Live 设计的控制器，屏幕和内部系统对外封闭。Push Hack 通过非官方手段破解了这套系统，让用户可以在 Push 的屏幕上运行自定义界面、读写文件、自由收发 MIDI。相当于给这台硬件装上了开放的 SDK。\n【为什么值得关注】\n对音乐交互设计来说，一台带有彩色显示屏、触控垫和丰富 MIDI 的硬件突然被「解放」，意味着可以把它改造成独立采样器、可视化乐器或演出控制器。这大大降低了自定义 NIME 设备的门槛。\n【怎么入手】\n到 cdm.link 阅读详细报道和作者发布的仓库链接。如果你手边有 Push 3，可以先了解破解风险与保修影响，再从简单的 MIDI 路由和自定义显示界面入手实验。", "vol": 10, "pub": "2026-08-04"}, {"date": "2026-08-04", "sec": "industry", "tag": "版权/政策", "title": "韩国允许在人类参与下为 AI 音乐登记版权", "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQSGVKTFNWLUhWbXNwMEZHd2dpZXlHalBOODVKbm83ZFBZX1JLdkdaRzBnRUh0TWpZS29qN0JuWktpMk03czBtaUZzVjM0Vnk5V3FmZ2c4bjRCT3dsVEpRZ1lZUFNhYllrek1zRnFIVUpCUzFxeVVIYjlrRzBKdzN5QU9ESFh6ZVh3cjNacA?oc=5&hl=en-US&gl=US&ceid=US%3Aen", "src": "조선일보 · via Google News", "why": "韩国著作权委员会发布指南，明确在人类创造性贡献足够的前提下，AI 辅助创作的音乐可以申请版权保护。这为 AI 音乐产业的合规路径提供了亚洲首个较明确的官方指引。", "detail": "【这是什么】\n韩国官方表示，如果人类在歌词、旋律、编曲或整体结构上有实质性创作投入，AI 只是辅助工具，那么作品仍然可以获得版权登记。反过来，主要由 AI 自动生成、缺乏人类贡献的内容则可能不受保护。\n【为什么值得关注】\n全球各国都在摸索 AI 生成内容的版权边界，韩国的表态比单纯禁止或放任更具操作性。它为 AI 音乐创作者、平台和投资者提供了一个可参考的合规框架。\n【怎么入手】\n查找韩国著作权委员会的英文或中文指南原文，整理其认定「人类贡献」的具体标准。可以把它与美国版权局、欧盟的相关立场做成对照表，用于课堂讨论或论文写作。", "vol": 10, "pub": "2026-08-04"}], "ideas": [{"vol": 10, "level": "入门", "kind": "工具", "title": "和声/曲式 AI 助教网页", "body": "做一个小工具：上传学生的和声或曲式分析文字答案，按教师评分细则自动输出四个维度得分，并用不同颜色标出 AI 认为可疑的错误点；最终可导出一份「AI 评分 vs 教师均分」偏差表。第一步：选一道本学期做过的和声/曲式题，准备好参考答案与 1-4 维度的评分细则，用 GPT-4o-mini 对同一答案连续评分 5 次，记录它在哪些子项上最不稳定。需要：Python/JS 基础 · GPT-4o-mini API · 和声/曲式知识 · 基础统计。", "based_on": [{"url": "https://arxiv.org/abs/2608.01783", "title": "用 GPT-4o-mini 自动批改和声与曲式分析题"}]}, {"vol": 10, "level": "进阶", "kind": "交互作品", "title": "可触摸画布的空间声景网页", "body": "做一张网页版「会发声的画」：上传一幅画作，点击或触摸画面不同区域会触发对应声源，并通过 Web Audio API 的 PannerNode 让声音听起来从画面相应位置发出。第一步：选一幅自己的画或一张无版权图片，用 HTML Canvas 或 \u003cmap> 划定 4-6 个触摸区，为每个区准备一段短音效或乐器 loop，写 50 行 JS 实现位置声像与触发逻辑。需要：HTML/CSS/JS · Web Audio API · 基础声音编辑 · 空间音频概念。", "based_on": [{"url": "https://arxiv.org/abs/2608.02219", "title": "Sounding Canvas：把画作变成可触摸的多模态声音装置"}]}, {"vol": 10, "level": "进阶", "kind": "产品原型", "title": "浏览器本地文本到音乐生成器", "body": "基于 ACE-Step v1.5 XL Turbo 的 ONNX+WebGPU 实现，做一个单页应用：用户在输入框写提示词，模型在浏览器本地推理生成音乐并直接播放，无需后端服务器。第一步：打开 Hugging Face 上的 ACE-Step ONNX+WebGPU 仓库，用 Chrome/Edge（支持 WebGPU）跑通示例，确认能本地生成 5-10 秒音频；然后把输入框、生成按钮和 audio 标签包成一个可分享页面。需要：JavaScript · ONNX Runtime / WebGPU · Hugging Face 模型加载 · 基础音频播放。", "based_on": [{"url": "https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU", "title": "ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现"}, {"url": "https://huggingface.co/maolandaw/ACE-Step-1.5-burn", "title": "ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face"}]}, {"vol": 10, "level": "硬核", "kind": "研究", "title": "鼓组分离-检测一体化评测工具", "body": "复现 Separate-and-Detect 模型，对 5-10 首不同风格歌曲同时输出 5 条鼓 stem 与对应 MIDI 鼓谱，再用 mir_eval 和 audio_eval 计算 onset F1、SDR 等指标，最终生成一份可对比表格与可视化报告，可扩展为 ISMIR/ICASSP 的 demo 或短文。第一步：找到论文主页或 arXiv 附带的代码/数据集链接，跑通官方 demo；如果没有本地 GPU，先在云端用预训练权重对 1 首歌推理，确认能拿到 kick/snare/hat/tom/cymbal 分轨和 MIDI。需要：Python · 鼓转录/源分离基础 · mir_eval · GPU 或云端算力 · 实验设计与统计。", "based_on": [{"url": "https://arxiv.org/abs/2608.01093", "title": "Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成"}, {"vol": 6, "url": "https://github.com/shwj114514/audio_eval", "title": "audio_eval：可组合的开源音频生成与重建评测工具箱"}]}]}
 </script>
 <script>
+/* 主题切换:localStorage 记忆,默认跟随 prefers-color-scheme */
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function current() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function sync() { btn.textContent = current() === 'dark' ? '浅色' : '深色'; }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('radar-theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+<script>
+/* 吸顶 tab 分栏:显示/隐藏对应板块,「全部」顺序通读 */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var main = document.getElementById('main');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('[data-block]'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var sec = tab.getAttribute('data-sec');
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      blocks.forEach(function (el) {
+        el.hidden = sec !== 'all' && el.getAttribute('data-block') !== sec;
+      });
+      if (sec === 'all') { main.removeAttribute('data-filter'); }
+      else { main.setAttribute('data-filter', sec); }
+    });
+  });
+})();
+</script>
+<script>
+/* 报头静态“印刷”波形:确定性伪随机包络,不做动画 */
 (function () {
   var c = document.getElementById('wave');
+  if (!c) return;
   var ctx = c.getContext('2d');
 
   function bars() {
@@ -1880,7 +588,6 @@
     var color = style.getPropertyValue('--ink').trim();
     var n = Math.floor(w / 4);
     for (var i = 0; i < n; i++) {
-      // 静态"印刷"波形:确定性伪随机包络,不做动画
       var x = i / n;
       var env = Math.sin(x * Math.PI) * (0.5 + 0.5 * Math.sin(x * 23 + 1.7) * Math.sin(x * 53 + 0.6));
       var amp = Math.max(0.06, Math.abs(env)) * (h * 0.92);
@@ -1900,25 +607,17 @@
 })();
 </script>
 <script>
-/* 往期回顾 + 条目详情:全部从 radar-archive 存档渲染 */
+/* 条目详情浮层:数据来自本期内嵌的 radar-issue JSON(仅当期 items+ideas) */
 (function () {
-  var raw = document.getElementById('radar-archive');
+  var raw = document.getElementById('radar-issue');
   if (!raw) return;
   var data;
   try { data = JSON.parse(raw.textContent); } catch (e) { return; }
-  var items = data.items || [], ideas = data.ideas || [];
+  var items = data.items || [];
   if (!items.length) return;
 
   var byUrl = {};
   items.forEach(function (it) { if (it.url && !byUrl[it.url]) byUrl[it.url] = it; });
-
-  var vols = {};
-  items.forEach(function (it) {
-    (vols[it.vol] = vols[it.vol] || { items: [], ideas: [] }).items.push(it);
-  });
-  ideas.forEach(function (id) { if (vols[id.vol]) vols[id.vol].ideas.push(id); });
-  var volNos = Object.keys(vols).map(Number).sort(function (a, b) { return b - a; });
-  var currentVol = volNos[0];
 
   function pad(n) { return String(n).padStart(3, '0'); }
   function esc(s) {
@@ -1926,47 +625,34 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
     });
   }
-  function pubDate(v) {
-    var d = '';
-    vols[v].items.forEach(function (it) { if ((it.pub || it.date || '') > d) d = it.pub || it.date || ''; });
-    return d;
-  }
   function metaHtml(it) {
     return '<div class="meta">' +
       (it.hot ? '<span class="hot">' + esc(it.hot) + '</span>' : '') +
       '<span class="tag">' + esc(it.tag) + '</span>' +
-      '<span class="mono-part">' + esc(it.src || '') + (it.date ? ' · ' + esc(it.date) : '') + '</span></div>';
+      '<span class="src-part">' + esc(it.src || '') + (it.date ? ' · ' + esc(it.date) : '') + '</span></div>';
   }
 
-  /* 浮层基础:支持叠放(详情可以开在往期之上) */
-  var openCount = 0;
-  function isTop(ov) {
-    var os = document.querySelectorAll('.issue-overlay');
-    return os.length && os[os.length - 1] === ov;
-  }
   function makeOverlay(label, inner) {
     var ov = document.createElement('div');
     ov.className = 'issue-overlay';
     ov.setAttribute('role', 'dialog');
     ov.setAttribute('aria-label', label);
-    ov.innerHTML = '<div class="issue-sheet"><button class="issue-close" aria-label="关闭">✕</button>' + inner + '</div>';
+    ov.innerHTML = '<div class="issue-sheet"><button class="issue-close" type="button" aria-label="关闭">✕</button>' + inner + '</div>';
     function close() {
       document.removeEventListener('keydown', onKey);
       ov.remove();
-      if (--openCount <= 0) { openCount = 0; document.body.style.overflow = ''; }
+      document.body.style.overflow = '';
     }
-    function onKey(e) { if (e.key === 'Escape' && isTop(ov)) close(); }
+    function onKey(e) { if (e.key === 'Escape') close(); }
     ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
     ov.querySelector('.issue-close').addEventListener('click', close);
     document.addEventListener('keydown', onKey);
     document.body.appendChild(ov);
-    openCount++;
     document.body.style.overflow = 'hidden';
     ov.querySelector('.issue-close').focus();
     return ov;
   }
 
-  /* 条目详情页 */
   function openDetail(it) {
     var text = it.detail || it.why || '';
     var paras = String(text).split(/\n+/).filter(Boolean).map(function (p) {
@@ -2000,65 +686,7 @@
       openDetail(it);
     });
   });
-
-  /* 缩略入口 */
-  var grid = document.getElementById('bi-grid');
-  if (grid) {
-    volNos.forEach(function (v) {
-      var g = vols[v];
-      var head = g.items.filter(function (it) { return it.hot; })[0] || g.items[0];
-      var b = document.createElement('button');
-      b.className = 'backissue';
-      b.setAttribute('aria-haspopup', 'dialog');
-      b.innerHTML =
-        '<span class="bi-no"><span>VOL.' + pad(v) + (v === currentVol ? ' <span class="bi-cur">本期</span>' : '') +
-        '</span><span class="bi-date">' + esc(pubDate(v)) + '</span></span>' +
-        '<h3>' + esc(head ? head.title : '') + '</h3>' +
-        '<span class="bi-count">收录 ' + g.items.length + ' 条 · 选题 ' + g.ideas.length + ' 个</span>';
-      b.addEventListener('click', function () { openIssue(v); });
-      grid.appendChild(b);
-    });
-  }
-
-  /* 往期全版浮层(条目同样可点开详情) */
-  var SEC = [
-    { key: 'papers', label: '学术前沿' },
-    { key: 'oss', label: '开源工具' },
-    { key: 'industry', label: '行业动态' }
-  ];
-  function openIssue(v) {
-    var g = vols[v];
-    var html = '<div class="iv-head"><div class="t">音乐科技雷达</div>' +
-      '<div class="m">VOL.' + pad(v) + ' · ' + esc(pubDate(v)) + ' · 收录 ' + g.items.length + ' 条</div></div>';
-    SEC.forEach(function (s) {
-      var list = g.items.filter(function (it) { return it.sec === s.key; });
-      if (!list.length) return;
-      list.sort(function (a, b) { return (b.hot ? 1 : 0) - (a.hot ? 1 : 0); });
-      html += '<div class="iv-sec">' + s.label + '</div>';
-      list.forEach(function (it) {
-        var canDetail = !!it.detail;
-        html += '<div class="iv-item' + (canDetail ? ' has-detail' : '') + '" data-url="' + esc(it.url) + '">' +
-          metaHtml(it) +
-          '<h5><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a>' +
-          (canDetail ? ' <span class="more">详情 ▸</span>' : '') + '</h5>' +
-          (it.orig ? '<p class="orig">' + esc(it.orig) + '</p>' : '') +
-          (it.why ? '<p class="why">' + esc(it.why) + '</p>' : '') + '</div>';
-      });
-    });
-    if (g.ideas.length) {
-      html += '<div class="iv-sec">选题灵感</div>';
-      g.ideas.forEach(function (id) {
-        html += '<div class="iv-item"><h5><span class="iv-idea-level">' + esc(id.level) + ' · ' + esc(id.kind) + '</span>' +
-          esc(id.title) + '</h5>' + (id.body ? '<p class="why">' + esc(id.body) + '</p>' : '') + '</div>';
-      });
-    }
-    var ov = makeOverlay('音乐科技雷达 第' + pad(v) + '期', html);
-    ov.addEventListener('click', function (e) {
-      var itEl = e.target.closest('.iv-item.has-detail');
-      if (!itEl || e.target.closest('a')) return;
-      var it = byUrl[itEl.getAttribute('data-url')];
-      if (it) openDetail(it);
-    });
-  }
 })();
 </script>
+</body>
+</html>

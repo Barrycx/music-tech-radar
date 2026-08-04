@@ -35,7 +35,7 @@ def main():
     ap = argparse.ArgumentParser(description="音乐科技雷达 · 每日总控")
     ap.add_argument("--mock", action="store_true", help="编辑步骤用内置假数据,不调 API")
     ap.add_argument("--no-mail", action="store_true", help="跳过邮件发送")
-    ap.add_argument("--page-url", default="", help="完整页面地址(传给邮件正文)")
+    ap.add_argument("--page-url", default="", help="站点根地址(传给邮件正文,自动拼期页/往期页链接)")
     args = ap.parse_args()
 
     today = datetime.now(TZ).strftime("%Y-%m-%d")

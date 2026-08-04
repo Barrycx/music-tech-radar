@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>音乐科技雷达 · 第 006 期</title>
+<style>
+  /* ============================================================
+     音乐科技雷达 · 每期页模板(redesign 2026-08)
+     genre: editorial · 报纸身份:白报纸 + 报头红 #c1301c + 宋体
+     字体 2 族:宋体(标题+正文)/ Georgia(仅英文原题)
+     字号 5 档:--fs-meta / --fs-body / --fs-title / --fs-focus / --fs-mast
+     ============================================================ */
+  :root {
+    /* 色:暖调中性 + 单一报头红 accent */
+    --desk: #dcdcd9;          /* 报纸下面的桌面 */
+    --paper: #fcfcfa;         /* 白报纸 */
+    --ink: #1a1a1a;           /* 油墨 */
+    --ink-soft: #454545;
+    --ink-faint: #7b7b78;
+    --hairline: #dbd9d4;
+    --red: #c1301c;           /* 报头红(品牌,不改) */
+    --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+
+    /* 字 */
+    --font-serif: "Songti SC", "Noto Serif SC", "STSong", "SimSun", "Source Han Serif SC", serif;
+    --font-en: Georgia, "Times New Roman", serif;   /* 仅英文原题 */
+
+    /* 字号:全页仅此 5 档 */
+    --fs-meta: .8125rem;      /* 13px 元信息/页脚 */
+    --fs-body: 1.0625rem;     /* 17px 正文 */
+    --fs-title: 1.25rem;      /* 20px 条目标题 */
+    --fs-focus: clamp(1.375rem, 1.05rem + 1.6vw, 1.625rem);  /* 头条标题 22–26px */
+    --fs-mast: clamp(2.2rem, 8vw + .5rem, 3.4rem);           /* 报名 */
+
+    /* 间距(4pt 基) */
+    --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2.5rem;
+
+    --measure: 34rem;         /* 17px × 约 32 汉字 */
+    --sheet-pad: 1.25rem;
+    --z-sticky: 200;
+    --z-modal: 400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --desk: #121212;        /* 中性深灰,非纯黑 */
+      --paper: #1d1d1b;
+      --ink: #e6e5e1;
+      --ink-soft: #b3b2ad;
+      --ink-faint: #8a8984;
+      --hairline: #3a3a37;
+      --red: #e2604e;
+      --red-soft: #e2604e26;
+      --scrim: rgba(0, 0, 0, .66);
+    }
+  }
+  :root[data-theme="light"] {
+    --desk: #dcdcd9; --paper: #fcfcfa; --ink: #1a1a1a; --ink-soft: #454545;
+    --ink-faint: #7b7b78; --hairline: #dbd9d4; --red: #c1301c; --red-soft: #c1301c1f;
+    --scrim: rgba(15, 15, 15, .58);
+  }
+  :root[data-theme="dark"] {
+    --desk: #121212; --paper: #1d1d1b; --ink: #e6e5e1; --ink-soft: #b3b2ad;
+    --ink-faint: #8a8984; --hairline: #3a3a37; --red: #e2604e; --red-soft: #e2604e26;
+    --scrim: rgba(0, 0, 0, .66);
+  }
+
+  html { overflow-x: clip; }
+  body {
+    overflow-x: clip;
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    padding: 0 0 var(--s-6);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* 深浅切换只做过渡色,0.2s,无其他动画 */
+  body, .sheet, .tabs, .tab, .u-btn, .issue-sheet {
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+  }
+
+  a { color: var(--ink); text-decoration: none; }
+
+  /* ---- 报纸纸张 ---- */
+  .sheet {
+    max-width: 70rem; margin: 0 auto;
+    background:
+      repeating-linear-gradient(2deg, transparent 0 6px, rgba(0, 0, 0, .006) 6px 7px),
+      var(--paper);
+    padding: var(--s-4) var(--sheet-pad) var(--s-6);
+  }
+
+  /* ---- 报头 ---- */
+  .utility {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: var(--s-3); margin-bottom: var(--s-2);
+  }
+  .vol-line {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .08em; font-variant-numeric: tabular-nums;
+  }
+  .u-nav { display: flex; gap: var(--s-2); }
+  .u-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; min-height: 44px; padding: 0 var(--s-3);
+    border: 1px solid var(--hairline); background: none; cursor: pointer;
+    font-family: inherit; font-size: var(--fs-meta); color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .u-btn:hover, .u-btn:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+
+  h1 {
+    font-size: var(--fs-mast);
+    font-weight: 900; letter-spacing: .12em; line-height: 1.15;
+    color: var(--red); text-align: center;
+    margin: var(--s-2) 0 0;
+  }
+  h1 a:hover, h1 a:focus-visible { color: var(--red); outline: none; }
+  .mast-sub {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-soft);
+    letter-spacing: .3em; margin: var(--s-2) 0 0;
+  }
+  .mast-counts {
+    text-align: center; font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums;
+    margin: var(--s-1) 0 0;
+  }
+  #wave { display: block; width: 100%; height: 26px; margin: var(--s-3) 0 var(--s-2); opacity: .85; }
+  /* 文武线 */
+  .wenwu { border-top: 3px solid var(--ink); margin-bottom: 2px; }
+  .wenwu + .wenwu-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+
+  /* ---- 吸顶分栏 tab ---- */
+  .tabs {
+    position: sticky; top: 0; z-index: var(--z-sticky);
+    display: flex;
+    margin: 0 calc(-1 * var(--sheet-pad)) var(--s-5);
+    padding: 0 var(--sheet-pad);
+    background: var(--paper);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .tab {
+    flex: 1 1 auto;
+    min-height: 44px; padding: 0 var(--s-2);
+    font-family: inherit; font-size: var(--fs-body);
+    background: none; border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--ink-soft); cursor: pointer; white-space: nowrap;
+  }
+  .tab:hover, .tab:focus-visible { color: var(--red); outline: none; }
+  .tab[aria-selected="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--red); }
+
+  [hidden] { display: none !important; }
+
+  /* ---- 栏头(标题反白) ---- */
+  .sec-head { display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-3); }
+  .sec-head h2 {
+    font-size: var(--fs-body); font-weight: 700; letter-spacing: .3em;
+    background: var(--ink); color: var(--paper);
+    padding: .05rem var(--s-3) .05rem var(--s-4);
+    margin: 0;
+  }
+  .sec-head .en {
+    font-size: var(--fs-meta); letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .sec-head .rule { flex: 1; border-top: 1px solid var(--hairline); }
+  .sec-head .note { font-size: var(--fs-meta); color: var(--ink-faint); }
+
+  /* ---- 本报头条 ---- */
+  .focus {
+    display: grid; grid-template-columns: 1fr;
+    border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
+    margin-bottom: var(--s-6);
+  }
+  .focus article { padding: var(--s-4) var(--s-2) var(--s-4) 0; }
+  .focus article + article { border-top: 1px solid var(--hairline); }
+  .focus h3 {
+    font-size: var(--fs-focus); font-weight: 900; line-height: 1.45;
+    margin: var(--s-2) 0; text-wrap: balance; letter-spacing: .02em;
+    overflow-wrap: anywhere;
+  }
+  .focus p.body { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-2); max-width: var(--measure); }
+
+  .meta {
+    display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); align-items: baseline;
+    font-size: var(--fs-meta); color: var(--ink-faint); font-variant-numeric: tabular-nums;
+    margin-bottom: var(--s-1);
+  }
+  .meta .src-part { letter-spacing: .06em; }
+  .tag { color: var(--ink-soft); }
+  .tag::before { content: "〔"; color: var(--ink-faint); }
+  .tag::after { content: "〕"; color: var(--ink-faint); }
+  .hot {
+    color: var(--paper); background: var(--red);
+    padding: .02rem .55rem; font-size: var(--fs-meta); letter-spacing: .18em;
+  }
+
+  /* ---- 学术/开源/行业 ---- */
+  .cols { display: block; }
+  main[data-filter] .cols { display: block; }
+
+  .paper-grid { display: grid; grid-template-columns: 1fr; }
+  .paper-grid article, .rail-item {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+  }
+  .paper-grid h3, .rail-item h3, .idea h3 {
+    font-size: var(--fs-title); font-weight: 700; line-height: 1.5;
+    margin: 0 0 var(--s-1); text-wrap: balance; overflow-wrap: anywhere;
+  }
+  h3 a:hover, h3 a:focus-visible { color: var(--red); outline: none; }
+  .orig {
+    font-family: var(--font-en);
+    font-size: var(--fs-meta); color: var(--ink-faint); font-style: italic;
+    margin: 0 0 var(--s-1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .why { color: var(--ink-soft); text-align: justify; margin: 0; max-width: var(--measure); }
+  .why b { color: var(--ink); font-weight: 700; }
+
+  .rail section { margin-bottom: var(--s-6); }
+
+  /* ---- 选题灵感:尾版 ---- */
+  .ideas { margin-top: var(--s-6); }
+  .ideas-rule-thick { border-top: 2px solid var(--ink); margin-bottom: 2px; }
+  .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
+  .idea-grid { display: grid; grid-template-columns: 1fr; }
+  .idea {
+    border-top: 1px solid var(--hairline);
+    padding: var(--s-3) 0 var(--s-4);
+    display: flex; flex-direction: column; gap: var(--s-2);
+  }
+  .idea .diff {
+    font-size: var(--fs-meta); letter-spacing: .12em; color: var(--red);
+    font-variant-numeric: tabular-nums;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .idea .diff .kind { color: var(--ink-faint); }
+  .idea h3 { margin: 0; }
+  .idea .body { color: var(--ink-soft); text-align: justify; margin: 0; flex: 1; max-width: var(--measure); }
+  .idea .uses, .idea .skills { font-size: var(--fs-meta); color: var(--ink-faint); line-height: 1.7; margin: 0; }
+  .idea .uses b, .idea .skills b { color: var(--ink-soft); font-weight: 700; }
+  .idea .uses a { border-bottom: 1px solid var(--hairline); }
+  .idea .uses a:hover, .idea .uses a:focus-visible { color: var(--red); border-bottom-color: var(--red); outline: none; }
+  .idea .uses a.volref { color: var(--red); border-bottom-color: var(--red); font-variant-numeric: tabular-nums; }
+
+  /* ---- 条目详情浮层 ---- */
+  .issue-overlay {
+    position: fixed; inset: 0; background: var(--scrim);
+    z-index: var(--z-modal); overflow-y: auto; padding: var(--s-6) var(--s-4);
+  }
+  .issue-sheet {
+    background: var(--paper); max-width: 44rem; margin: 0 auto;
+    padding: var(--s-5) var(--s-5) var(--s-6); position: relative;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+  }
+  .issue-close {
+    position: absolute; top: var(--s-2); right: var(--s-2);
+    font-family: inherit; font-size: var(--fs-body); line-height: 1;
+    background: none; border: 1px solid var(--hairline); color: var(--ink-soft);
+    width: 44px; height: 44px; cursor: pointer;
+  }
+  .issue-close:hover, .issue-close:focus-visible { color: var(--red); border-color: var(--red); outline: none; }
+  .iv-head { text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: var(--s-2); margin-bottom: var(--s-4); }
+  .iv-head .t { font-size: var(--fs-title); font-weight: 900; color: var(--red); letter-spacing: .12em; }
+  .iv-head .m {
+    font-size: var(--fs-meta); color: var(--ink-faint);
+    letter-spacing: .12em; font-variant-numeric: tabular-nums; margin-top: var(--s-1);
+  }
+  .dv-title {
+    font-size: var(--fs-title); font-weight: 900; line-height: 1.5;
+    margin: var(--s-1) 0; text-wrap: balance; overflow-wrap: anywhere;
+  }
+  .dv-detail { margin-top: var(--s-3); }
+  .dv-detail p { color: var(--ink-soft); text-align: justify; margin: 0 0 var(--s-3); }
+  .dv-detail b { color: var(--red); font-weight: 700; }
+  .dv-link { margin-top: var(--s-4); border-top: 1px solid var(--hairline); padding-top: var(--s-3); }
+  .dv-link a { color: var(--red); border-bottom: 1px solid var(--red); }
+
+  .has-detail { cursor: pointer; }
+  .more {
+    font-size: var(--fs-meta); color: var(--red); margin-left: var(--s-2); white-space: nowrap;
+  }
+
+  /* ---- 报尾 ---- */
+  footer {
+    margin-top: var(--s-6); border-top: 1px solid var(--ink); padding-top: var(--s-3);
+    font-size: var(--fs-meta); color: var(--ink-faint); text-align: center; line-height: 2;
+    font-variant-numeric: tabular-nums;
+  }
+  footer::before {
+    content: ""; display: block; border-top: 3px solid var(--ink);
+    margin: calc(-1 * var(--s-3)) 0 2px; transform: translateY(-3px);
+  }
+
+  /* ---- ≥40rem:平板,纸张浮起、双列 ---- */
+  @media (min-width: 40rem) {
+    body { padding: var(--s-6) var(--s-4) var(--s-6); }
+    .sheet {
+      --sheet-pad: 2rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 30px rgba(0, 0, 0, .16);
+    }
+    .paper-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-6); position: relative; }
+    .paper-grid::before {
+      content: ""; position: absolute; top: var(--s-2); bottom: var(--s-2); left: 50%;
+      border-left: 1px solid var(--hairline);
+    }
+    .idea-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-5); }
+    .idea:nth-child(odd) { border-top: 1px solid var(--hairline); }
+  }
+
+  /* ---- ≥56.25rem(900px):桌面报纸 ---- */
+  @media (min-width: 56.25rem) {
+    .sheet { --sheet-pad: 2.4rem; }
+    .focus { grid-template-columns: 1.2fr 1fr; }
+    .focus article { padding: var(--s-4) var(--s-5) var(--s-4) 0; }
+    .focus article + article { border-top: none; border-left: 1px solid var(--hairline); padding-left: var(--s-5); padding-right: 0; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; }
+    .cols > section { padding-right: var(--s-5); }
+    .rail { border-left: 1px solid var(--hairline); padding-left: var(--s-5); }
+    main[data-filter] .cols { grid-template-columns: 1fr; }
+    main[data-filter] .cols > section { padding-right: 0; }
+    main[data-filter] .rail { border-left: none; padding-left: 0; }
+    .idea-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+    .idea { border-top: none; padding: var(--s-1) var(--s-4) var(--s-2); }
+    .idea:first-child { padding-left: 0; }
+    .idea + .idea { border-left: 1px solid var(--hairline); }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<script>
+/* 主题初始化:尽早执行避免闪烁。localStorage 记忆,默认跟随系统 */
+(function () {
+  try {
+    var t = localStorage.getItem('radar-theme');
+    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div class="utility">
+      <span class="vol-line">VOL.006 · 2026年7月29日 · 星期三</span>
+      <nav class="u-nav" aria-label="站点">
+        <a class="u-btn" href="../archive.html">往期</a>
+        <button class="u-btn" id="theme-toggle" type="button" aria-label="切换深浅色">深色</button>
+      </nav>
+    </div>
+    <h1><a href="../index.html">音乐科技雷达</a></h1>
+    <p class="mast-sub">数字音乐智能处理 · 学术前沿 × 开源工具 × 行业动态</p>
+    <p class="mast-counts">收录 5 条 · 选题 4 个 · 每日 07:00 出版</p>
+    <canvas id="wave" aria-hidden="true"></canvas>
+    <div class="wenwu"></div>
+    <div class="wenwu-thin"></div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="板块分栏">
+    <button class="tab" type="button" role="tab" data-sec="all" aria-selected="true">全部</button>
+    <button class="tab" type="button" role="tab" data-sec="papers" aria-selected="false">学术</button>
+    <button class="tab" type="button" role="tab" data-sec="oss" aria-selected="false">开源</button>
+    <button class="tab" type="button" role="tab" data-sec="industry" aria-selected="false">行业</button>
+    <button class="tab" type="button" role="tab" data-sec="ideas" aria-selected="false">选题</button>
+  </nav>
+
+  <main id="main">
+    <!-- ==================== 本报头条 ==================== -->
+    <section class="focus" data-block="focus" aria-label="本报头条">
+    <article>
+      <div class="meta"><span class="hot">本报头条</span><span class="tag">音乐理论</span><span class="src-part">arXiv · 2012 · HN 93pt · 07-28</span></div>
+      <h3><a href="https://arxiv.org/abs/1202.4212" target="_blank" rel="noopener">《和声的科学解释》十四年后再引热议：音乐和声能否被数学建模</a></h3>
+      <p class="orig">Harmony Explained: Progress Towards a Scientific Theory of Music</p>
+      <p class="body">这篇论文尝试用数学模型解释为什么某些和弦听起来和谐。</p>
+      <p class="why"><b>为什么值得看:</b>它把音乐理论从经验法则推向可计算框架，对 AI 音乐生成和理解有启发。</p>
+    </article>
+    <article>
+      <div class="meta"><span class="hot">行业要闻</span><span class="tag">音乐产品</span><span class="src-part">Swift · 123★ · 07-21</span></div>
+      <h3><a href="https://github.com/youshen2/MeloX" target="_blank" rel="noopener">MeloX：参考 Apple Music 设计的第三方网易云客户端</a></h3>
+      <p class="body">这是一款第三方网易云音乐客户端，用 SwiftUI 复刻了 Apple Music 的界面与动效。</p>
+      <p class="why"><b>为什么值得看:</b>它展示了音乐流媒体产品从界面到播放的完整工程实现，适合学习音乐 App 的交互设计。</p>
+    </article>
+    </section>
+
+    <div class="cols">
+      <!-- ==================== 学术前沿 ==================== -->
+      <section data-block="papers" aria-label="学术前沿">
+        <div class="sec-head">
+          <h2>学术前沿</h2><span class="en">Papers</span><span class="rule"></span>
+        </div>
+        <div class="paper-grid">
+
+        </div>
+      </section>
+
+      <!-- ==================== 右栏:开源 + 行业 ==================== -->
+      <div class="rail">
+        <section data-block="oss" aria-label="开源工具">
+          <div class="sec-head">
+            <h2>开源工具</h2><span class="en">OSS</span><span class="rule"></span>
+          </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">音频编辑</span><span class="src-part">TypeScript · 294★</span></div>
+          <h3><a href="https://github.com/wassgha/rescript" target="_blank" rel="noopener">Rescript：浏览器里的基于转写稿的音频/视频编辑器</a></h3>
+          <p class="why">开源浏览器端音视频编辑器，通过转写稿让粗剪像改文档一样简单，适合快速处理播客和录音素材。</p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">评测</span><span class="src-part">Python · 113★</span></div>
+          <h3><a href="https://github.com/shwj114514/audio_eval" target="_blank" rel="noopener">audio_eval：可组合的开源音频生成与重建评测工具箱</a></h3>
+          <p class="why">把音频评测指标拆成可组合模块，方便系统对比 AI 生成音乐与真实录音的客观质量。</p>
+        </div>
+        <div class="rail-item">
+          <div class="meta"><span class="tag">符号音乐</span><span class="src-part">Python · HN 14pt</span></div>
+          <h3><a href="https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html" target="_blank" rel="noopener">Xenharmlib 0.4.0：支持纯律的微分音音乐理论库</a></h3>
+          <p class="why">音乐理论计算库新增纯律支持，可生成和可视化微分音阶与和弦，适合探索非平均律系统。</p>
+        </div>
+        </section>
+
+        <section data-block="industry" aria-label="行业动态">
+          <div class="sec-head">
+            <h2>行业动态</h2><span class="en">Industry</span><span class="rule"></span>
+          </div>
+
+        </section>
+      </div>
+    </div>
+
+    <!-- ==================== 选题灵感 ==================== -->
+    <section class="ideas" data-block="ideas" aria-label="选题灵感">
+      <div class="ideas-rule-thick"></div>
+      <div class="ideas-rule-thin"></div>
+      <div class="sec-head">
+        <h2>选题灵感</h2><span class="en">Project Ideas</span>
+        <span class="rule"></span><span class="note">基于近期各期积累 · 按难度从低到高</span>
+      </div>
+      <div class="idea-grid">
+
+      <article class="idea">
+        <div class="diff"><span>▮▯▯ 入门</span><span class="kind">工具</span></div>
+        <h3>微分音和弦查询器</h3>
+        <p class="body">基于 Xenharmlib 0.4.0 的纯律支持，做一个网页小工具：输入和弦名，自动计算纯律频率比、与十二平均律的音分差，并播放对比。需要：Python 基础 · Xenharmlib · 少量前端。</p>
+        <p class="uses"><b>基于:</b><a href="https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html" target="_blank" rel="noopener">Xenharmlib 0.4.0：支持纯律的微分音音乐理论库</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">工具</span></div>
+        <h3>基于转写稿的音频粗剪增强版</h3>
+        <p class="body">在 Rescript 的转写稿编辑基础上，加入静音检测和节拍切分，让音乐人或播客主可以按句子、段落或拍子快速粗剪音频。可以先做离线版。需要：JavaScript/TypeScript · FFmpeg · 基础音频特征。</p>
+        <p class="uses"><b>基于:</b><a href="https://github.com/wassgha/rescript" target="_blank" rel="noopener">Rescript：浏览器里的基于转写稿的音频/视频编辑器</a> · <a href="https://github.com/thiagoalbrecht/weave" target="_blank" rel="noopener">Weave</a> <a class="volref" href="../issues/vol-005.html">VOL.005</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
+        <h3>液体玻璃风格本地音乐播放器</h3>
+        <p class="body">参考 MeloX 的视觉设计，用网页或桌面技术做一个本地 FLAC 播放器，支持专辑封面、歌词舞台和3D可视化，重点复刻液体玻璃动效。需要：前端/桌面开发 · 本地文件读取 · 音频播放。</p>
+        <p class="uses"><b>基于:</b><a href="https://github.com/youshen2/MeloX" target="_blank" rel="noopener">MeloX：参考 Apple Music 设计的第三方网易云客户端</a> · <a href="https://github.com/ww085213/Mineradio-LX-Music" target="_blank" rel="noopener">Mineradio-LX-Music</a> <a class="volref" href="../issues/vol-004.html">VOL.004</a></p>
+      </article>
+
+      <article class="idea">
+        <div class="diff"><span>▮▮▮ 硬核</span><span class="kind">研究</span></div>
+        <h3>AI 生成音乐的多维诊断评测</h3>
+        <p class="body">基于 audio_eval 工具箱，扩展音乐专用指标（和弦进行、旋律轮廓、节奏稳定性），构建中文流行歌评测集，系统对比几个开源模型。需要：乐理 + Python MIR 工具链 · 统计评测 · 实验设计。</p>
+        <p class="uses"><b>基于:</b><a href="https://github.com/shwj114514/audio_eval" target="_blank" rel="noopener">audio_eval：可组合的开源音频生成与重建评测工具箱</a> · <a href="https://elifesciences.org/articles/107088" target="_blank" rel="noopener">Auditory and spontaneous movement responses to music over first postnatal year</a> <a class="volref" href="../issues/vol-003.html">VOL.003</a></p>
+      </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按“数字音乐智能处理”相关度筛选,宁缺毋滥</span><br>
+    <span>音乐科技雷达 · 第 006 期 · 2026年7月29日 · 每日 07:00 出版 · <a href="../archive.html" style="border-bottom:1px solid var(--hairline)">往期回顾</a></span>
+  </footer>
+</div>
+
+<script type="application/json" id="radar-issue">
+{"vol": 6, "pub": "2026-07-29", "items": [{"date": "2026-07-28", "sec": "papers", "tag": "音乐理论", "title": "《和声的科学解释》十四年后再引热议：音乐和声能否被数学建模", "url": "https://arxiv.org/abs/1202.4212", "src": "arXiv · 2012 · HN 93pt", "orig": "Harmony Explained: Progress Towards a Scientific Theory of Music", "why": "这篇论文尝试用数学模型解释为什么某些和弦听起来和谐。它把音乐理论从经验法则推向可计算框架，对 AI 音乐生成和理解有启发。", "hot": "本报头条", "detail": "【这是什么】这篇论文来自2012年，最近又在音乐技术社区被热转。作者试图回答一个老问题：为什么大三和弦听起来舒服，小二度听起来紧张。它把音程的和谐程度用频率比的简单性来解释，越简单的整数比越和谐。\n【为什么值得关注】如果和声可以被数学建模，我们就能用算法判断 AI 生成的和弦是否自然、预测不同文化下的调式偏好。这对自动伴奏、风格迁移和音乐推荐都有帮助。\n【怎么入手】先读论文前两节的直觉解释，再用 Python 把文中几个公式复现一遍，听听不同频率比的合成音。下一步可以把它接入和弦生成器，做一个人机对比实验。", "vol": 6, "pub": "2026-07-29"}, {"date": "2026-07-26", "sec": "oss", "tag": "音频编辑", "title": "Rescript：浏览器里的基于转写稿的音频/视频编辑器", "url": "https://github.com/wassgha/rescript", "src": "TypeScript · 294★", "why": "开源浏览器端音视频编辑器，通过转写稿让粗剪像改文档一样简单，适合快速处理播客和录音素材。", "detail": "【这是什么】Rescript 是一个完全在浏览器里运行的开源音视频编辑器。它先把音频转成文字稿，然后你可以像改文档一样删改文字，对应的音视频片段会自动同步剪掉。这对音乐人来说，快速删掉录音里的口误或空白特别方便。\n【为什么值得关注】传统音频工作站功能强大但很重，Rescript 用浏览器加转写稿的方式降低了粗剪门槛。对于需要处理大量采访、播客或现场录音的音乐科技学生，它是一个很轻量的起点。\n【怎么入手】直接打开仓库里的在线演示，上传一段自己的录音或伴奏，试试用文字稿定位并删除片段。进阶可以研究它的 FFmpeg 导出流程，看看能否加入自动节拍检测和按拍切分。", "vol": 6, "pub": "2026-07-29"}, {"date": "2026-07-13", "sec": "oss", "tag": "评测", "title": "audio_eval：可组合的开源音频生成与重建评测工具箱", "url": "https://github.com/shwj114514/audio_eval", "src": "Python · 113★", "why": "把音频评测指标拆成可组合模块，方便系统对比 AI 生成音乐与真实录音的客观质量。", "detail": "【这是什么】audio_eval 是一个 Python 工具箱，专门用来评测 AI 生成的音频或重建后的音频。它把客观指标做成可组合的模块，比如频谱一致性、动态范围、失真度等，你可以像搭积木一样拼装出自己的评测流程。\n【为什么值得关注】现在 AI 音乐生成模型越来越多，但很多论文只展示好听样例，缺少系统评测。这个工具箱让学生也能做规范的对比实验，不再只凭耳朵主观判断。\n【怎么入手】从仓库示例开始，用几首 AI 生成歌曲和真实录音跑一遍基础指标。然后尝试加入自己的音乐相关指标，比如节奏稳定性、和弦准确度，做一个本地评测报告。", "vol": 6, "pub": "2026-07-29"}, {"date": "2026-07-28", "sec": "oss", "tag": "符号音乐", "title": "Xenharmlib 0.4.0：支持纯律的微分音音乐理论库", "url": "https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html", "src": "Python · HN 14pt", "why": "音乐理论计算库新增纯律支持，可生成和可视化微分音阶与和弦，适合探索非平均律系统。", "detail": "【这是什么】Xenharmlib 是一个用 Python 写的音乐理论库，专门处理非十二平均律的调音系统。最新版加入了纯律支持，可以计算和显示纯律音阶、和弦以及它们之间的音分差。\n【为什么值得关注】十二平均律只是众多调音系统之一，很多世界音乐、电子音乐和实验音乐使用纯律或微分音。有了这个库，你可以用代码探索这些调音系统，甚至生成对应的 MIDI 或音频。\n【怎么入手】安装库后先画一个纯律大三和弦的频率比图，听听它和平均律版本的差别。然后尝试写一个函数，把任意和弦标记转成纯律版本，接入你的作曲或生成工具。", "vol": 6, "pub": "2026-07-29"}, {"date": "2026-07-21", "sec": "industry", "tag": "音乐产品", "title": "MeloX：参考 Apple Music 设计的第三方网易云客户端", "url": "https://github.com/youshen2/MeloX", "src": "Swift · 123★", "why": "这是一款第三方网易云音乐客户端，用 SwiftUI 复刻了 Apple Music 的界面与动效。它展示了音乐流媒体产品从界面到播放的完整工程实现，适合学习音乐 App 的交互设计。", "hot": "行业要闻", "detail": "【这是什么】MeloX 是一个为 iOS 原生开发的第三方网易云音乐客户端。作者用 SwiftUI 复刻了 iOS26 版 Apple Music 的液体玻璃设计，同时保留了网易云的歌单、播放等核心功能。\n【为什么值得关注】它展示了一个音乐 App 从界面到播放的完整工程：登录授权、歌单同步、播放器状态管理、视觉动效。对于想了解音乐流媒体产品如何落地的学生，这是一个很好的解剖样本。\n【怎么入手】如果你有 Mac 和 iOS 开发环境，可以克隆仓库编译运行，观察它的播放控制、歌词展示和歌单导入逻辑。重点看 SwiftUI 的动画和 Apple Music 式布局如何移植到第三方音乐服务。", "vol": 6, "pub": "2026-07-29"}], "ideas": [{"vol": 6, "level": "入门", "kind": "工具", "title": "微分音和弦查询器", "body": "基于 Xenharmlib 0.4.0 的纯律支持，做一个网页小工具：输入和弦名，自动计算纯律频率比、与十二平均律的音分差，并播放对比。需要：Python 基础 · Xenharmlib · 少量前端。", "based_on": [{"url": "https://xenharmlib.readthedocs.io/en/latest/whats_new_0_4_0.html", "title": "Xenharmlib 0.4.0：支持纯律的微分音音乐理论库"}]}, {"vol": 6, "level": "进阶", "kind": "工具", "title": "基于转写稿的音频粗剪增强版", "body": "在 Rescript 的转写稿编辑基础上，加入静音检测和节拍切分，让音乐人或播客主可以按句子、段落或拍子快速粗剪音频。可以先做离线版。需要：JavaScript/TypeScript · FFmpeg · 基础音频特征。", "based_on": [{"url": "https://github.com/wassgha/rescript", "title": "Rescript：浏览器里的基于转写稿的音频/视频编辑器"}, {"vol": 5, "url": "https://github.com/thiagoalbrecht/weave", "title": "Weave"}]}, {"vol": 6, "level": "进阶", "kind": "产品原型", "title": "液体玻璃风格本地音乐播放器", "body": "参考 MeloX 的视觉设计，用网页或桌面技术做一个本地 FLAC 播放器，支持专辑封面、歌词舞台和3D可视化，重点复刻液体玻璃动效。需要：前端/桌面开发 · 本地文件读取 · 音频播放。", "based_on": [{"url": "https://github.com/youshen2/MeloX", "title": "MeloX：参考 Apple Music 设计的第三方网易云客户端"}, {"vol": 4, "url": "https://github.com/ww085213/Mineradio-LX-Music", "title": "Mineradio-LX-Music"}]}, {"vol": 6, "level": "硬核", "kind": "研究", "title": "AI 生成音乐的多维诊断评测", "body": "基于 audio_eval 工具箱，扩展音乐专用指标（和弦进行、旋律轮廓、节奏稳定性），构建中文流行歌评测集，系统对比几个开源模型。需要：乐理 + Python MIR 工具链 · 统计评测 · 实验设计。", "based_on": [{"url": "https://github.com/shwj114514/audio_eval", "title": "audio_eval：可组合的开源音频生成与重建评测工具箱"}, {"vol": 3, "url": "https://elifesciences.org/articles/107088", "title": "Auditory and spontaneous movement responses to music over first postnatal year"}]}]}
+</script>
+<script>
+/* 主题切换:localStorage 记忆,默认跟随 prefers-color-scheme */
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  function current() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function sync() { btn.textContent = current() === 'dark' ? '浅色' : '深色'; }
+  btn.addEventListener('click', function () {
+    var next = current() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('radar-theme', next); } catch (e) {}
+    sync();
+  });
+  sync();
+})();
+</script>
+<script>
+/* 吸顶 tab 分栏:显示/隐藏对应板块,「全部」顺序通读 */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var main = document.getElementById('main');
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('[data-block]'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var sec = tab.getAttribute('data-sec');
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
+      blocks.forEach(function (el) {
+        el.hidden = sec !== 'all' && el.getAttribute('data-block') !== sec;
+      });
+      if (sec === 'all') { main.removeAttribute('data-filter'); }
+      else { main.setAttribute('data-filter', sec); }
+    });
+  });
+})();
+</script>
+<script>
+/* 报头静态“印刷”波形:确定性伪随机包络,不做动画 */
+(function () {
+  var c = document.getElementById('wave');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+
+  function bars() {
+    var dpr = window.devicePixelRatio || 1;
+    var w = c.clientWidth, h = c.clientHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var style = getComputedStyle(document.documentElement);
+    var color = style.getPropertyValue('--ink').trim();
+    var n = Math.floor(w / 4);
+    for (var i = 0; i < n; i++) {
+      var x = i / n;
+      var env = Math.sin(x * Math.PI) * (0.5 + 0.5 * Math.sin(x * 23 + 1.7) * Math.sin(x * 53 + 0.6));
+      var amp = Math.max(0.06, Math.abs(env)) * (h * 0.92);
+      ctx.fillStyle = color;
+      ctx.globalAlpha = 0.28 + 0.6 * Math.abs(env);
+      ctx.fillRect(i * 4, (h - amp) / 2, 1.6, amp);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  bars();
+  window.addEventListener('resize', bars);
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', bars);
+  }
+  new MutationObserver(bars).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+<script>
+/* 条目详情浮层:数据来自本期内嵌的 radar-issue JSON(仅当期 items+ideas) */
+(function () {
+  var raw = document.getElementById('radar-issue');
+  if (!raw) return;
+  var data;
+  try { data = JSON.parse(raw.textContent); } catch (e) { return; }
+  var items = data.items || [];
+  if (!items.length) return;
+
+  var byUrl = {};
+  items.forEach(function (it) { if (it.url && !byUrl[it.url]) byUrl[it.url] = it; });
+
+  function pad(n) { return String(n).padStart(3, '0'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  function metaHtml(it) {
+    return '<div class="meta">' +
+      (it.hot ? '<span class="hot">' + esc(it.hot) + '</span>' : '') +
+      '<span class="tag">' + esc(it.tag) + '</span>' +
+      '<span class="src-part">' + esc(it.src || '') + (it.date ? ' · ' + esc(it.date) : '') + '</span></div>';
+  }
+
+  function makeOverlay(label, inner) {
+    var ov = document.createElement('div');
+    ov.className = 'issue-overlay';
+    ov.setAttribute('role', 'dialog');
+    ov.setAttribute('aria-label', label);
+    ov.innerHTML = '<div class="issue-sheet"><button class="issue-close" type="button" aria-label="关闭">✕</button>' + inner + '</div>';
+    function close() {
+      document.removeEventListener('keydown', onKey);
+      ov.remove();
+      document.body.style.overflow = '';
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+    ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+    ov.querySelector('.issue-close').addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(ov);
+    document.body.style.overflow = 'hidden';
+    ov.querySelector('.issue-close').focus();
+    return ov;
+  }
+
+  function openDetail(it) {
+    var text = it.detail || it.why || '';
+    var paras = String(text).split(/\n+/).filter(Boolean).map(function (p) {
+      var m = p.match(/^【[^】]{1,12}】/);
+      if (m) return '<p><b>' + esc(m[0]) + '</b>' + esc(p.slice(m[0].length)) + '</p>';
+      return '<p>' + esc(p) + '</p>';
+    }).join('');
+    var inner = '<div class="iv-head"><div class="t">音乐科技雷达</div>' +
+      '<div class="m">条目详情 · VOL.' + pad(it.vol) + '</div></div>' +
+      metaHtml(it) +
+      '<h5 class="dv-title">' + esc(it.title) + '</h5>' +
+      (it.orig ? '<p class="orig" style="white-space:normal">' + esc(it.orig) + '</p>' : '') +
+      '<div class="dv-detail">' + paras + '</div>' +
+      '<p class="dv-link"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">阅读原文 ↗</a></p>';
+    makeOverlay('条目详情:' + it.title, inner);
+  }
+
+  /* 主版面条目 → 点击开详情(标题链接仍直达原文) */
+  document.querySelectorAll('.focus article, .paper-grid article, .rail-item').forEach(function (el) {
+    var a = el.querySelector('h3 a');
+    if (!a) return;
+    var it = byUrl[a.getAttribute('href')];
+    if (!it || !it.detail) return;
+    el.classList.add('has-detail');
+    var more = document.createElement('span');
+    more.className = 'more';
+    more.textContent = '详情 ▸';
+    (el.querySelector('.why') || el).appendChild(more);
+    el.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      openDetail(it);
+    });
+  });
+})();
+</script>
+</body>
+</html>
