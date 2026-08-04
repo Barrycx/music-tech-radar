@@ -174,7 +174,7 @@
 
   /* ---- 本报头条 ---- */
   .focus {
-    display: grid; grid-template-columns: 1fr;
+    display: grid; grid-template-columns: minmax(0, 1fr);
     border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline);
     margin-bottom: var(--s-6);
   }
@@ -205,7 +205,9 @@
   .cols { display: block; }
   main[data-filter] .cols { display: block; }
 
-  .paper-grid { display: grid; grid-template-columns: 1fr; }
+  .paper-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
+  /* 网格项目默认 min-width:auto,长 min-content(如 nowrap 的英文原题)会撑爆轨道,必须归零 */
+  .paper-grid article, .rail-item, .rail, .idea, .focus article { min-width: 0; }
   .paper-grid article, .rail-item {
     border-top: 1px solid var(--hairline);
     padding: var(--s-3) 0 var(--s-4);
@@ -229,7 +231,7 @@
   .ideas { margin-top: var(--s-6); }
   .ideas-rule-thick { border-top: 2px solid var(--ink); margin-bottom: 2px; }
   .ideas-rule-thin { border-top: 1px solid var(--ink); margin-bottom: var(--s-4); }
-  .idea-grid { display: grid; grid-template-columns: 1fr; }
+  .idea-grid { display: grid; grid-template-columns: minmax(0, 1fr); }
   .idea {
     border-top: 1px solid var(--hairline);
     padding: var(--s-3) 0 var(--s-4);
@@ -305,28 +307,28 @@
       --sheet-pad: 2rem;
       box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 30px rgba(0, 0, 0, .16);
     }
-    .paper-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-6); position: relative; }
+    .paper-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--s-6); position: relative; }
     .paper-grid::before {
       content: ""; position: absolute; top: var(--s-2); bottom: var(--s-2); left: 50%;
       border-left: 1px solid var(--hairline);
     }
-    .idea-grid { grid-template-columns: 1fr 1fr; column-gap: var(--s-5); }
+    .idea-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--s-5); }
     .idea:nth-child(odd) { border-top: 1px solid var(--hairline); }
   }
 
   /* ---- ≥56.25rem(900px):桌面报纸 ---- */
   @media (min-width: 56.25rem) {
     .sheet { --sheet-pad: 2.4rem; }
-    .focus { grid-template-columns: 1.2fr 1fr; }
+    .focus { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
     .focus article { padding: var(--s-4) var(--s-5) var(--s-4) 0; }
     .focus article + article { border-top: none; border-left: 1px solid var(--hairline); padding-left: var(--s-5); padding-right: 0; }
     .cols { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; }
     .cols > section { padding-right: var(--s-5); }
     .rail { border-left: 1px solid var(--hairline); padding-left: var(--s-5); }
-    main[data-filter] .cols { grid-template-columns: 1fr; }
+    main[data-filter] .cols { grid-template-columns: minmax(0, 1fr); }
     main[data-filter] .cols > section { padding-right: 0; }
     main[data-filter] .rail { border-left: none; padding-left: 0; }
-    .idea-grid { grid-template-columns: repeat(4, 1fr); column-gap: 0; }
+    .idea-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 0; }
     .idea { border-top: none; padding: var(--s-1) var(--s-4) var(--s-2); }
     .idea:first-child { padding-left: 0; }
     .idea + .idea { border-left: 1px solid var(--hairline); }
