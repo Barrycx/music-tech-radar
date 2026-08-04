@@ -27,9 +27,11 @@ SEC_NAMES = (("papers", "学术前沿"), ("oss", "开源工具"), ("industry", "
 
 def build_html(issue, issue_url, archive_url):
     vol, pub = issue["vol"], issue["pub"]
+    # 手机邮箱兼容性:不用裸 URL 当链接文字(不断行会把版面撑破),
+    # 容器和链接都加断行兜底;全部内联样式(邮件客户端会剥 <style>)
     parts = [
-        '<div style="font-family:Georgia,\'Songti SC\',serif;max-width:42rem;'
-        'color:#1a1a1a;line-height:1.8">',
+        '<div style="font-family:Georgia,\'Songti SC\',serif;max-width:42rem;width:100%;'
+        'color:#1a1a1a;line-height:1.8;word-break:break-word;overflow-wrap:anywhere">',
         f'<h2 style="color:#c1301c;letter-spacing:.1em">音乐科技雷达 '
         f'<span style="font-size:.8em;color:#666">第 {vol:03d} 期 · {pub}</span></h2>',
         "<p>早上好,今日份音乐×科技情报已出版。各板块速览如下,完整排版见网页版,详细解读见附件 Word。</p>",
@@ -49,10 +51,11 @@ def build_html(issue, issue_url, archive_url):
         parts.append('<p style="margin-bottom:.2rem"><b>■ 选题灵感</b></p><ul style="margin-top:.2rem">'
                      + "".join(f"<li>{i['level']} · {i['kind']}|{html.escape(i['title'])}</li>"
                                for i in issue["ideas"]) + "</ul>")
-    parts.append(f'<p>完整页面:<a href="{html.escape(issue_url, quote=True)}">{html.escape(issue_url)}</a></p>')
-    parts.append(f'<p style="color:#7b7b78;font-size:.85em">往期回顾:'
-                 f'<a href="{html.escape(archive_url, quote=True)}" style="color:#7b7b78">'
-                 f'{html.escape(archive_url)}</a></p>')
+    parts.append(f'<p>网页版全文(手机排版):'
+                 f'<a href="{html.escape(issue_url, quote=True)}" '
+                 f'style="color:#c1301c;word-break:break-all">点此打开本期</a></p>')
+    parts.append(f'<p style="color:#7b7b78;font-size:.85em">'
+                 f'<a href="{html.escape(archive_url, quote=True)}" style="color:#7b7b78">查看往期回顾</a></p>')
     parts.append('<p style="color:#7b7b78;font-size:.85em">音乐科技雷达 · 每日 07:00 出版 · '
                  "本邮件由自动出版系统发出</p></div>")
     return "\n".join(parts)
