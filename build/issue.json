@@ -2,194 +2,177 @@
   "items": [
     {
       "sec": "papers",
-      "tag": "音乐生成",
+      "tag": "MIR",
       "date": "2026-08-03",
-      "title": "P-MUSE：可选MIDI提示的统一器乐音乐合成与编辑模型",
-      "url": "https://arxiv.org/abs/2608.01920",
-      "src": "arXiv · cs.SD",
-      "orig": "P-MUSE: Prompt-MIDI-Optional Model for Unified Instrumental Music Synthesis and Editing",
-      "why": "P-MUSE 提出了一种提示-MIDI-可选模型，既能仅凭参考音频进行器乐音色克隆与生成，也能在提供对齐 MIDI 时实现更精细的音符级编辑。它把「只能听小样生成」和「按谱面精修」两条路径统一到一个框架里，对 AI 辅助作曲和编曲研究非常有启发。",
+      "title": "MERT跨文化流派分类：刚果音乐与国际流派对比",
+      "url": "https://doi.org/10.7759/s44389-026-00201-z",
+      "src": "OpenAlex",
+      "orig": "Cross-Cultural Music Genre Classification With Self-Supervised Music Transformers: A MERT-Based Transfer Learning Study on Congolese and International Genres",
+      "why": "本文把MERT自监督模型迁移到刚果本土与国际流派分类任务上，填补了非洲音乐在MIR研究中的数据空白。对数字音乐智能处理专业而言，这是观察大模型文化偏见和跨文化适应性的绝佳样本。",
       "hot": "本报头条",
-      "detail": "【这是什么】\nP-MUSE 是一个把 MIDI 和音频提示结合起来的器乐音乐生成模型。你可以给它一段目标乐器的演奏录音作为音色提示，也可以再附上一份 MIDI 文件；模型会把它渲染成完整的音乐片段。如果没有 MIDI，它就靠听觉模仿来把握旋律与节奏；如果有 MIDI，它还能做音符级编辑。\n【为什么值得关注】\n以前这类系统要么只能「听音生成」，可控性差；要么必须严格依赖配对的 MIDI 数据，准备工作量大。P-MUSE 让两种输入都可选，相当于给创作者提供了一个能 sketch 也能精修的 AI 乐器。对符号音乐与音频融合感兴趣的同学，可以直接看到它如何把离散音符和连续音色捏合在一起。\n【怎么入手】\n论文已经挂在 arXiv，数据集和模型细节在正文中。建议先读摘要与方法部分，再试着用它理解 MIDI-Optional 的训练策略，并思考能不能套用到自己的编曲工具上。"
+      "detail": "【这是什么】这是一项用自监督音乐Transformer做跨文化流派分类的研究。研究者以MERT模型为基础，在刚果（金）本土音乐和国际流行、摇滚等流派之间做迁移学习，把非洲音乐纳入主流MIR评测框架。\n【为什么值得关注】当前音乐信息检索领域的公开数据多集中在西方音乐，模型遇到非西方传统音乐时常常力不从心。这篇论文直接补上非洲音乐的空白，对做世界音乐、民族音乐数字化和公平评测的同学很有启发。\n【怎么入手】可以下载论文查看他们如何划分本地与国际流派，以及MERT微调前后的准确率变化；如果你手上有中国地方戏曲或少数民族音乐素材，也可以套用这套跨文化迁移思路做实验。"
     },
     {
       "sec": "papers",
-      "tag": "音乐×视觉/交互艺术",
-      "date": "2026-08-03",
-      "title": "Sounding Canvas：把画作变成可触摸的多模态声音装置",
-      "url": "https://arxiv.org/abs/2608.02219",
-      "src": "arXiv · cs.HC",
-      "orig": "Sounding Canvas: Embedding Algorithms in Networked, Sensorial Sound Art",
-      "why": "Sounding Canvas 在画布中嵌入电容传感器、实时决策模型和网络通信，让观众的触摸触发来自画面本身的沉浸式空间化音效。它把算法「藏」进艺术品内部，是音乐科技、交互设计与声音艺术交叉的典型样本。",
-      "detail": "【这是什么】\n研究者做了一块能「听」的画布。观众伸手触碰画面不同位置时，隐藏在画布背后的传感器会捕捉触摸，实时生成并定位空间化音效，听起来就像声音真的从画里发出来一样。系统还集成了联网功能，让多个画布或远程参与者可以协同发声。\n【为什么值得关注】\n这个项目把传感、生成和网络塞进了传统绘画的物理载体，拓展了声音装置的创作语法。对于学习数字音乐智能处理的同学来说，它展示了如何把「可见」的视觉元素转译成「可听」的声场体验，也提示了博物馆、舞台和公共空间里的新交互可能。\n【怎么入手】\n论文给出了系统架构、离线视觉到声音的转译模型，以及硬件部署经验。你可以重点关注它如何把触摸位置映射到声源位置，并尝试用同样的思路改造一幅自己的画作或一个小型装置。"
-    },
-    {
-      "sec": "papers",
-      "tag": "音频修复",
-      "date": "2026-08-03",
-      "title": "LOUDAR：用潜在空间优化与扩散先验修复退化音乐",
-      "url": "https://arxiv.org/abs/2608.01972",
-      "src": "arXiv · cs.SD",
-      "orig": "Music Restoration via Latent Operator Optimization and Diffusion Model Priors",
-      "why": "LOUDAR 把音乐修复当成「未知失真下的反问题」，无需成对训练数据或预先知道失真类型即可恢复干净音频。它摆脱了传统方法对特定失真的依赖，对老唱片、低质量录音和未知损坏的修复都很有想象空间。",
-      "detail": "【这是什么】\n音乐修复通常要假设你知道录音是怎么变坏的，比如是磁带饱和、压缩失真还是噪声。LOUDAR 不一样：它先在潜空间里推断造成退化的「算子」，再用扩散模型的先验知识把声音补回来。就像一位修图师先猜照片经历了哪种模糊，再动手把它修清晰。\n【为什么值得关注】\n实际收藏的大量音乐录音，退化原因往往不明或混合多种问题。LOUDAR 提出的通用框架让模型面对未知损坏时也能「见招拆招」，这对数字档案馆、母带修复和音乐考古都是潜在利器。\n【怎么入手】\n论文在 arXiv 上已公开。可以从实验部分看它对哪些退化类型最有效，再想想能不能把它和已有的音频去噪、去混响工具串起来，做一条自动化的老录音修复管线。"
-    },
-    {
-      "sec": "papers",
-      "tag": "评测/音乐教育",
-      "date": "2026-08-03",
-      "title": "用 GPT-4o-mini 自动批改和声与曲式分析题",
-      "url": "https://arxiv.org/abs/2608.01783",
-      "src": "arXiv · cs.AI",
-      "orig": "Comparative Validation of GPT-4o-mini and Teacher Mean Scores for Automated Scoring of Music Analysis Responses: Single-Pass Deployment, Repeatability, and Strategy-Specific Bias",
-      "why": "研究用 300 份大学级别的音乐分析答题，比较 GPT-4o-mini 与教师平均分的评分一致性。它为大规模音乐素养评测提供了自动化参考，也让我们看到大模型在音乐专业知识评估上的边界。",
-      "detail": "【这是什么】\n和声与曲式分析题通常需要人工逐句批改，成本高且主观性强。这项研究把 GPT-4o-mini 当成自动阅卷员，按照和声、曲式等四个维度给 300 份学生答卷打分，并与多位老师的平均分对照。\n【为什么值得关注】\n它不只是又一个用大模型改作文的例子，而是把关注点放到音乐专业知识的结构化评估上。结果表明模型在部分维度上重复性不错，但也存在策略性偏差，这对未来设计 AI 辅助音乐教学系统很有借鉴。\n【怎么入手】\n论文附带了评分细则和实验分析。建议对照自己的乐理作业，看看 GPT 的失误集中在哪类和弦或曲式判断上，再思考如何设计更鲁棒的人机混合评分流程。"
-    },
-    {
-      "sec": "papers",
-      "tag": "鼓转录/源分离",
+      "tag": "MIR",
       "date": "2026-08-02",
-      "title": "Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成",
-      "url": "https://arxiv.org/abs/2608.01093",
-      "src": "arXiv · cs.SD",
-      "orig": "Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion",
-      "why": "该工作把鼓转录从「直接识别」改成「先分离五种鼓 stem，再检测事件」的两步框架。它同时输出可编辑的分轨和符号事件，直接服务于后期混音、采样和智能编曲。",
-      "detail": "【这是什么】\n自动鼓转录一般是直接从混音里听出 kick、snare 等打击事件。这篇文章则先让模型把鼓组拆成五条独立音轨，再在每条音轨上检测音符 onset。这样你既能拿到鼓谱，也能拿到可单独拖进 DAW 的鼓 stem。\n【为什么值得关注】\n对于做节拍分析、智能伴奏或自动混音的同学来说，这种分离-检测思路把「听到什么」和「能编辑什么」连在了一起。它让鼓转录不再只是输出标签，而是直接产生可用的制作素材。\n【怎么入手】\n论文模型基于潜扩散，代码和数据集可以关注作者主页或 arXiv 附带的链接。建议先跑通官方 demo，对比它和自己常用的鼓点识别工具在复杂编曲里的表现。"
+      "title": "音乐基础模型中西音乐理解能力维度探测",
+      "url": "https://doi.org/10.3390/electronics15153421",
+      "src": "OpenAlex",
+      "orig": "Dimension-Wise Probing of Music Foundation Models for Chinese and Western Music: Timbre, Technique, Key, and Mode",
+      "why": "研究用探测任务拆解MERT、MuQ、CultureMERT在音色、古筝技法、西方调性和中国五声调式上的表现，直接比较中西音乐理解能力。",
+      "detail": "【这是什么】研究者用探测任务拆解MERT、MuQ、CultureMERT这几个音乐基础模型，分别测试它们在音色、古筝演奏技法、西方调性和中国五声调式上的表现。\n【为什么值得关注】我们常说大模型懂音乐，但懂的是五线谱思维还是民族调式思维，一直缺少系统比较。这篇文章把中西音乐特征拆成四个维度逐一检验，能帮我们看清这些模型的文化偏见和能力边界。\n【怎么入手】可以先读实验部分，看哪个模型在古筝技法识别上得分最高；做课程报告或研究选题时，这篇很适合当讨论音乐基础模型文化适应性的切入点。"
     },
     {
-      "sec": "papers",
-      "tag": "音乐×VR/交互艺术",
+      "sec": "oss",
+      "tag": "音视频生成",
       "date": "2026-08-03",
-      "title": "Beyond Score-Based Gamification：为颈椎康复设计时空音乐化 VR 体验",
-      "url": "https://arxiv.org/abs/2608.01688",
-      "src": "arXiv · cs.HC",
-      "orig": "Beyond One-Size-Fits-All: Personalized and Culturally Adaptive Emotional TTS via Interactive Optimization of Individual Emotion Perception Spaces",
-      "why": "该研究为慢性颈痛康复设计了一套不依赖分数、而以时空音乐体验驱动的 VR 系统。它把枯燥的治疗动作转化为具有情感支持的沉浸式音乐互动，对音乐治疗和运动游戏化都有参考价值。",
-      "detail": "【这是什么】\n慢性颈痛患者常因害怕动作而中断康复。研究者用 VR 把颈部运动包装成一段随身体动作展开的音乐旅程：抬头、转头、侧屈都会触发对应的音符、和声或空间声像变化。重点不是打高分，而是让身体动作本身产生音乐表达。\n【为什么值得关注】\n这项工作跳出了「积分排行榜」的常规游戏化思路，展示了音乐如何成为康复动机的内在驱动。它也为设计音乐驱动的身体交互界面提供了新的案例。\n【怎么入手】\n论文详细描述了体验设计、音乐映射机制和用户反馈。可以重点看它如何把颈部活动范围映射到音高和节奏，再思考能否把类似逻辑用在舞蹈、手势音乐或其他体感交互作品中。"
+      "title": "ComfyUI节点为MiniMax H3音视频模型加速",
+      "url": "https://github.com/xmarre/ComfyUI-Spectrum-MiniMax-H3",
+      "src": "GitHub · Python · 145★",
+      "why": "为ComfyUI中的MiniMax H3音视频模型提供频谱预测加速，可在跳过部分Transformer计算的同时保持生成质量。",
+      "detail": "【这是什么】这是一个给ComfyUI做的MiniMax H3音视频模型加速节点。它用频谱方法预测某些层的输出，从而跳过一部分Transformer计算，让生成速度更快。\n【为什么值得关注】AI音乐和AI视频生成都很吃算力，这个工具相当于在不影响太多质量的前提下给模型踩油门，对想本地跑音视频工作流的同学很实用。\n【怎么入手】需要先有ComfyUI和MiniMax H3的环境，再把节点克隆进去按README配置；想研究加速机理的同学可以重点看频谱预测和自适应调度的代码实现。"
+    },
+    {
+      "sec": "oss",
+      "tag": "音乐生成",
+      "date": "2026-08-04",
+      "title": "Stable Audio 3 medium bfloat16社区版",
+      "url": "https://huggingface.co/dummy9996/stable-audio-3-medium-bf16",
+      "src": "Hugging Face · 84↓",
+      "why": "社区版Stable Audio 3 medium的bfloat16精度变体，降低显存门槛，适合消费级显卡跑文本到音频生成。",
+      "detail": "【这是什么】这是社区用户把Stability AI的Stable Audio 3 medium模型转换成的bfloat16精度版本，体积和显存占用都比原版友好。\n【为什么值得关注】Stable Audio 3是近期受关注的文本到音频生成模型，这个变体让更多人能在消费级显卡上跑起来，适合做音效和短音乐素材的实验。\n【怎么入手】用Hugging Face的diffusers或transformers加载这个模型ID即可；生成时可以先从描述性提示入手，比如环境音效或电子loop，再逐步加入节奏和结构要求。"
     },
     {
       "sec": "oss",
       "tag": "音乐生成",
       "date": "2026-08-03",
-      "title": "ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face",
-      "url": "https://huggingface.co/maolandaw/ACE-Step-1.5-burn",
-      "src": "Hugging Face · 0★",
-      "why": "maolandaw 上传了 ACE-Step 1.5 的 burn 版本检查点，面向开放的音乐生成研究。ACE-Step 是近期开源社区中备受关注的端到端音乐生成模型，适合想在本地跑通完整作曲流程的同学。",
-      "detail": "【这是什么】\nACE-Step 是一款开源的音乐生成模型，能根据文本或音频提示生成包含旋律、和声与配器的音乐片段。这个仓库放出了 1.5 版本的预训练权重，方便研究者直接下载推理或做二次微调。\n【为什么值得关注】\n相比很多闭源音乐生成服务，开源检查点让你可以看到模型结构、控制生成过程，也更容易做学术研究或开发插件。1.5 版本通常在音质和可控性上有进一步提升。\n【怎么入手】\n打开 Hugging Face 仓库页面，查看模型卡里的许可证和示例代码。确保你有足够的显存或能用提供的量化版本，然后试着用一段文字描述生成一段短音乐。"
+      "title": "ACE-Step v1 3.5B音乐生成模型",
+      "url": "https://huggingface.co/drizzymedia/ACE-Step-v1-3.5B",
+      "src": "Hugging Face · 1♥",
+      "why": "ACE-Step音乐生成模型的35亿参数社区版本，支持从文本或结构提示生成音乐。",
+      "detail": "【这是什么】这是ACE-Step音乐生成模型的一个社区重发布版本，基于35亿参数规模，支持从文本或结构提示生成音乐。\n【为什么值得关注】ACE-Step在可控生成和长结构方面口碑不错，这个仓库为想本地部署或二次开发的同学提供了另一条获取路径。\n【怎么入手】到Hugging Face页面查看示例代码和推理脚本；建议先用简单提示生成30秒左右的片段，测试模型对风格、速度、乐器描述的理解程度。"
     },
     {
       "sec": "oss",
-      "tag": "音乐生成/浏览器推理",
+      "tag": "音乐生成",
       "date": "2026-08-03",
-      "title": "ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现",
-      "url": "https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU",
-      "src": "Hugging Face · 0★",
-      "why": "这个仓库把 ACE-Step v1.5 XL Turbo 转换成了 ONNX 格式并支持 WebGPU，能在浏览器里本地跑音乐生成。它降低了音乐生成模型的部署门槛，让前端和交互艺术项目可以直接集成。",
-      "detail": "【这是什么】\nONNX 是一种让机器学习模型跨平台运行的格式，WebGPU 则让浏览器能调用显卡加速。把两者结合起来，意味着你不用安装 Python 环境，在网页里就能让模型生成音乐。\n【为什么值得关注】\n对于做网页音乐应用、在线乐器或交互装置的同学，这是一条「开箱即用」的路径。模型留在用户本地，也避免了把音频素材上传到云端。\n【怎么入手】\n仓库应该有示例网页或加载脚本。先用支持的浏览器打开 demo，看能否成功生成片段。然后再尝试把生成结果接入 Web Audio API，做成可即时试听的小工具。"
-    },
-    {
-      "sec": "oss",
-      "tag": "音效/音乐生成",
-      "date": "2026-08-02",
-      "title": "Stability AI 发布 Stable Audio 3 优化版本",
-      "url": "https://huggingface.co/stabilityai/stable-audio-3-optimized",
-      "src": "Hugging Face · 27★",
-      "why": "stabilityai 放出了 Stable Audio 3 的优化版检查点，适合生成音乐与音效。它代表了开源社区在高质量音频生成模型上的持续迭代，值得关注其架构改进和许可条款。",
-      "detail": "【这是什么】\nStable Audio 3 是 Stability AI 推出的音频生成模型，可以根据文本提示产出音乐或环境声。这个优化版本在推理速度和资源占用上做了改进，更便于在个人设备或服务器上部署。\n【为什么值得关注】\n对研究 AI 音乐生成的同学来说，跟踪官方优化版的更新能帮助你了解当前开源模型的工程天花板。同时，模型的许可证和可商用范围也直接影响后续项目选择。\n【怎么入手】\n访问 Hugging Face 模型卡，阅读使用说明和示例 notebook。可以先从生成 5-10 秒的短片段开始，听一听它在旋律连贯性和音色丰富度上的表现，再决定是否用于课程项目。"
+      "title": "Stable Audio Open小模型CoreML移植",
+      "url": "https://huggingface.co/mlboydaisuke/Stable-Audio-Open-Small-CoreML",
+      "src": "Hugging Face · 34↓",
+      "why": "把Stable Audio Open小模型移植到苹果CoreML框架，让iOS和macOS设备能直接在本地跑音乐生成。",
+      "detail": "【这是什么】这是把Stable Audio Open小模型移植到苹果CoreML框架的版本，让iPhone、iPad和Mac能直接在本地跑音乐生成。\n【为什么值得关注】苹果生态做AI音乐生成一直不算方便，这个移植填补了移动端和桌面端本地推理的空白，对想在Apple设备上做实时音乐应用的同学很有价值。\n【怎么入手】需要macOS或iOS开发环境，参考Hugging Face页面上的CoreML转换和推理示例；可以先从文本提示生成短音频，再集成到自己的App或工作流里测试。"
     },
     {
       "sec": "industry",
-      "tag": "版权诉讼",
+      "tag": "版权",
       "date": "2026-08-03",
-      "title": "德国法院裁定 Suno AI 训练侵权，GEMA 赢得关键版权诉讼",
-      "url": "https://musictech.com/news/industry/suno-copyright-infringement-germany",
-      "src": "MusicTech",
-      "orig": "German court says Suno’s AI training infringed copyright in landmark ruling",
-      "why": "德国慕尼黑法院判定 Suno 在模型训练中使用受版权保护的音乐作品构成侵权，并驳回了合理使用的辩护。这是欧洲首例针对 AI 音乐生成公司的版权裁决，可能直接影响未来 AI 音乐训练数据的授权与合规模式。",
+      "title": "德国法院裁定Suno AI训练侵犯版权",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjBLM01uX0dLclpkY041M29fZHdIbm52RmhrcUxBdEhxZ1dzeVlHY25tRVJYcGRIejJ5ZjZZOU9RYnhsaFdGX0dWdG9aRGxpRDE5QzItNFNqWm9RVDRheEYxaFVuRm54aXh3cmRNLTlLSEV1ZVZ5azgzMDNtUGR4dVNjQUp2b0R1eldwSTVqeFJXMmJZQWl2MkxMNzFGYkxKM3ZR",
+      "src": "Reuters",
+      "why": "德国法院裁定Suno未经授权使用版权音乐训练模型构成侵权，并驳回其合理使用抗辩。这是欧洲首起AI音乐生成公司的版权败诉，可能重塑全球训练数据授权与平台合规边界。",
       "hot": "行业要闻",
-      "detail": "【这是什么】\n德国音乐版权协会 GEMA 起诉 AI 音乐平台 Suno，认为其未经许可用大量版权歌曲训练模型。法院最终支持了 GEMA，认定这种训练方式侵犯版权，且不属于合理使用。Suno 可能面临高额赔偿，并需要调整其数据来源。\n【为什么值得关注】\n对音乐科技专业学生而言，这起判例把「AI 训练是否需要授权」这个理论问题变成了现实法律风险。它也可能改变生成式音乐平台的商业模式，让版权许可和数据透明成为行业焦点。\n【怎么入手】\n阅读 MusicTech 的判决报道和法院摘要，关注 Suno 是否会上诉以及美国同类案件的进展。可以结合自己的研究，思考如何在模型训练中合法使用音乐数据，或探索授权数据集与合成数据方案。"
+      "detail": "【这是什么】德国法院裁定，AI音乐公司Suno在训练模型时使用了受版权保护的音乐，构成侵权，Suno提出的合理使用抗辩被驳回。这是欧洲首起针对AI音乐生成公司的版权判决。\n【为什么值得关注】这个判例直接挑战了AI公司未经许可抓取版权音乐训练的灰色地带，可能会影响Suno、Udio等平台的商业模式，也会推动全球训练数据授权制度的明朗化。\n【怎么入手】可以跟踪GEMA和Suno的后续上诉动态，同时关注国内法院对AI训练数据是否构成合理使用的态度；对做音乐生成的研究者来说，这是讨论数据合规绕不开的案例。"
+    },
+    {
+      "sec": "industry",
+      "tag": "平台动态",
+      "date": "2026-08-04",
+      "title": "Spotify联手Merlin扩展AI混音与翻唱",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQUFPSThXdWN0RWdCNk95d204YktVTFpMaXlZNmVFXzJsZXFLX0doaXpzYjFPX1Nzb2FYWXhvdlFhcWItVVBGZE9WaE5CSGFoVWhhUmluVzlNNXJXLUI2RDQ3cWd1RE9Vajl2NFB5ZmtRSm56OXZyUTJTUk9vRFhMVWRmS0tWcXV4cXhFRkVQNVZPR1RYN3lBWmR3",
+      "src": "TechCrunch",
+      "why": "Spotify与独立厂牌联盟Merlin合作，扩大AI混音和AI翻唱功能，推动AI二创从灰色地带走向平台正规服务。",
+      "detail": "【这是什么】Spotify宣布与独立音乐厂牌联盟Merlin合作，扩大其AI混音和AI翻唱功能，让更多独立艺人的作品可以参与这些AI驱动的再创作项目。\n【为什么值得关注】大厂开始把AI二创和版权授权打包谈判，这意味着未来AI翻唱、AI混音可能从灰色地带变成平台正规服务，也会改变流媒体分账的逻辑。\n【怎么入手】可以注册Spotify for Artists或Merlin会员页面查看合作条款，关注哪些独立厂牌首批加入；研究AI二创的同学可以对比Spotify和YouTube的授权策略。"
     },
     {
       "sec": "industry",
       "tag": "行业政策",
-      "date": "2026-08-04",
-      "title": "IFPI 收紧官方榜单规则：无授权 AI 音乐将更难上榜",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1ha1Y0Qi1NZGhTZWdGa2hKa0V4UmdnZS1QbjhNaEc3X0Q0dFVwRFJ2RndMTjJhanhyXzFsQzJIVFRkS18wMWNOZzBTWElfeTBuMlFuWElWNjFlUXFoNm5KTnZ0Q1pVY004M3Y0VVM4VGg1ZERzMUo4eW1n?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-      "src": "EDM.com · via Google News",
-      "why": "国际唱片业协会 IFPI 宣布在旗下多个关键国际榜单中立即实施更严格的 AI 音乐标识与资格审核。这意味着大规模涌入流媒体的 AI 生成曲目将受到更直接的榜单监管，影响流量分配和产业统计。",
-      "detail": "【这是什么】\nIFPI 是全球唱片行业的代表性组织。面对 AI 音乐在流媒体平台的爆发式增长，IFPI 更新了官方榜单规则，要求对 AI 生成或深度参与的作品进行标注，并可能限制未获授权训练数据生成的曲目进入榜单。\n【为什么值得关注】\n榜单直接影响版权收入、曝光权和行业话语权。新规可能促使流媒体平台、AI 公司和唱片公司之间重新谈判数据使用与收益分配，也关系到未来人类创作者与 AI 生成内容的公平竞争。\n【怎么入手】\n查看 IFPI 官方公告和 EDM.com 的报道，梳理新规则中关于 AI 标注、人类贡献比例和训练数据授权的具体条款。可以把它和韩国、德国近期政策放在一起做比较分析。"
-    },
-    {
-      "sec": "industry",
-      "tag": "音乐硬件/交互界面",
       "date": "2026-08-03",
-      "title": "Push Hack 让 Ableton Push 3 屏幕、文件与 MIDI 全面开放",
-      "url": "https://cdm.link/push-hack-very-unauthorized-access-to-push-3s-display-files-midi-and-more",
-      "src": "cdm.link",
-      "why": "第三方开发者 Federico Pepe 发布了非官方的 Push Hack，可完整接管 Ableton Push 3 的显示屏、存储和 MIDI。它把这款硬件从 Live 专属控制器变成了通用音乐交互平台，对 DIY 乐器和 NIME 研究很有启发。",
-      "detail": "【这是什么】\nAbleton Push 3 原本是为 Ableton Live 设计的控制器，屏幕和内部系统对外封闭。Push Hack 通过非官方手段破解了这套系统，让用户可以在 Push 的屏幕上运行自定义界面、读写文件、自由收发 MIDI。相当于给这台硬件装上了开放的 SDK。\n【为什么值得关注】\n对音乐交互设计来说，一台带有彩色显示屏、触控垫和丰富 MIDI 的硬件突然被「解放」，意味着可以把它改造成独立采样器、可视化乐器或演出控制器。这大大降低了自定义 NIME 设备的门槛。\n【怎么入手】\n到 cdm.link 阅读详细报道和作者发布的仓库链接。如果你手边有 Push 3，可以先了解破解风险与保修影响，再从简单的 MIDI 路由和自定义显示界面入手实验。"
+      "title": "IFPI拟禁止未标注AI音乐进入官方榜单",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYU9fYnNkVkg3dDR1MUstd2thbnU5T0VSMjFSanJ5X2ZCdngyT0RncDVjTzNwN0FTRXMyVTMyRHd3R1pQTUF4UlY0Y2JTMFY4TjlrU3ZLQzhybVE1azlTUTVGbTdLVUN2cUwyWkNzNzQ0WjNSaERzWFlaSGdRNkZGTUZZeGdwbmZPUm16bVpRVGtJSDdlbHhSdEV3",
+      "src": "The Verge",
+      "why": "主要唱片公司与独立厂牌联合IFPI提出AI音乐榜单新规，要求明确标注AI生成内容，否则不得进入官方排行榜。",
+      "detail": "【这是什么】主要唱片公司和独立厂牌联合向国际唱片业协会IFPI提出新规则，要求AI生成的音乐必须明确标注来源，否则不能进入官方榜单排名。\n【为什么值得关注】如果规则落地，AI歌曲在Billboard、UK榜等排行榜上的资格会被重新定义，这将直接影响AI音乐发行、宣传和收益分配。\n【怎么入手】可以阅读IFPI公布的提案原文，记录完全由AI生成、AI辅助创作、传统录音这几类标注方式；做音乐科技创业的同学要尽早考虑产品在榜单和流媒体平台上的披露义务。"
     },
     {
       "sec": "industry",
-      "tag": "版权/政策",
+      "tag": "硬件",
       "date": "2026-08-04",
-      "title": "韩国允许在人类参与下为 AI 音乐登记版权",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQSGVKTFNWLUhWbXNwMEZHd2dpZXlHalBOODVKbm83ZFBZX1JLdkdaRzBnRUh0TWpZS29qN0JuWktpMk03czBtaUZzVjM0Vnk5V3FmZ2c4bjRCT3dsVEpRZ1lZUFNhYllrek1zRnFIVUpCUzFxeVVIYjlrRzBKdzN5QU9ESFh6ZVh3cjNacA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-      "src": "조선일보 · via Google News",
-      "why": "韩国著作权委员会发布指南，明确在人类创造性贡献足够的前提下，AI 辅助创作的音乐可以申请版权保护。这为 AI 音乐产业的合规路径提供了亚洲首个较明确的官方指引。",
-      "detail": "【这是什么】\n韩国官方表示，如果人类在歌词、旋律、编曲或整体结构上有实质性创作投入，AI 只是辅助工具，那么作品仍然可以获得版权登记。反过来，主要由 AI 自动生成、缺乏人类贡献的内容则可能不受保护。\n【为什么值得关注】\n全球各国都在摸索 AI 生成内容的版权边界，韩国的表态比单纯禁止或放任更具操作性。它为 AI 音乐创作者、平台和投资者提供了一个可参考的合规框架。\n【怎么入手】\n查找韩国著作权委员会的英文或中文指南原文，整理其认定「人类贡献」的具体标准。可以把它与美国版权局、欧盟的相关立场做成对照表，用于课堂讨论或论文写作。"
+      "title": "Fender推出首款打击垫控制器Motion",
+      "url": "https://musictech.com/news/gear/fender-motion-controllers-studio-pro-integration",
+      "src": "MusicTech",
+      "why": "Fender首款打击垫控制器Motion正式发布，内置和弦模式并深度整合Fender Studio Pro软件。",
+      "detail": "【这是什么】Fender推出了首款打击垫控制器Fender Motion，内置和弦模式并采用FATAR手感打击垫，可与Fender Studio Pro软件深度整合。\n【为什么值得关注】传统吉他大厂开始做MIDI控制器和DAW整合，说明硬件边界正在模糊，吉他手、制作人、电子音乐人可能会共享同一套工作流。\n【怎么入手】去Fender官网或MusicTech看上手视频，重点关注它的和弦模式和与Studio Pro的自动映射；有MIDI控制器基础的同学可以评估它是否适合当主力打击垫。"
+    },
+    {
+      "sec": "industry",
+      "tag": "软件",
+      "date": "2026-08-04",
+      "title": "Steinberg庆VST 30周年并发布HALion 7.5",
+      "url": "https://musictech.com/news/gear/steinberg-is-celebrating-30-years-of-vst-and-25-years-of-halion",
+      "src": "MusicTech",
+      "why": "Steinberg庆祝VST插件格式诞生30周年，同时发布HALion 7.5并免费放出Neon、CS-40等早期经典插件的现代复刻版。",
+      "detail": "【这是什么】Steinberg庆祝VST插件格式诞生30周年，同时发布HALion 7.5采样合成器更新，并免费放出Neon、CS-40等早期经典插件的现代复刻版。\n【为什么值得关注】VST是整个软件音乐制作的基石格式，HALion 7.5代表了采样器与合成器的融合方向，对理解插件生态和音色设计都有帮助。\n【怎么入手】Steinberg官网可免费下载经典插件套装；HALion用户可以直接更新到7.5，体验新的调制和采样功能；想写插件的同学可以从VST SDK历史中学到很多设计取舍。"
     }
   ],
   "ideas": [
     {
       "level": "入门",
       "kind": "工具",
-      "title": "和声/曲式 AI 助教网页",
-      "body": "做一个小工具：上传学生的和声或曲式分析文字答案，按教师评分细则自动输出四个维度得分，并用不同颜色标出 AI 认为可疑的错误点；最终可导出一份「AI 评分 vs 教师均分」偏差表。第一步：选一道本学期做过的和声/曲式题，准备好参考答案与 1-4 维度的评分细则，用 GPT-4o-mini 对同一答案连续评分 5 次，记录它在哪些子项上最不稳定。需要：Python/JS 基础 · GPT-4o-mini API · 和声/曲式知识 · 基础统计。",
+      "title": "AI 音乐版权披露元数据生成器",
+      "body": "做什么：做一个单页网页工具，输入歌曲的创作者、AI 参与程度（完全 AI / AI 辅助 / 传统录音）、训练数据授权状态、人声克隆授权等信息后，自动生成一份 JSON-LD 格式的版权披露文件，可直接嵌入到音乐分发平台的元数据里。第一步怎么动手：打开本期 IFPI 榜单新规与德国 Suno 判决两篇报道，用表格整理出 5 个必须披露字段（如 AI 占比、素材授权、人声克隆许可），然后用 HTML+JavaScript 写一个带表单和 JSON 导出的单页应用。需要：HTML/CSS/JS 基础 · JSON-LD 元数据概念 · 阅读英文政策报道的能力。",
       "based_on": [
         {
-          "url": "https://arxiv.org/abs/2608.01783",
-          "title": "用 GPT-4o-mini 自动批改和声与曲式分析题"
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYU9fYnNkVkg3dDR1MUstd2thbnU5T0VSMjFSanJ5X2ZCdngyT0RncDVjTzNwN0FTRXMyVTMyRHd3R1pQTUF4UlY0Y2JTMFY4TjlrU3ZLQzhybVE1azlTUTVGbTdLVUN2cUwyWkNzNzQ0WjNSaERzWFlaSGdRNkZGTUZZeGdwbmZPUm16bVpRVGtJSDdlbHhSdEV3",
+          "title": "IFPI拟禁止未标注AI音乐进入官方榜单"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjBLM01uX0dLclpkY041M29fZHdIbm52RmhrcUxBdEhxZ1dzeVlHY25tRVJYcGRIejJ5ZjZZOU9RYnhsaFdGX0dWdG9aRGxpRDE5QzItNFNqWm9RVDRheEYxaFVuRm54aXh3cmRNLTlLSEV1ZVZ5azgzMDNtUGR4dVNjQUp2b0R1eldwSTVqeFJXMmJZQWl2MkxMNzFGYkxKM3ZR",
+          "title": "德国法院裁定Suno AI训练侵犯版权"
         }
       ]
     },
     {
-      "level": "进阶",
-      "kind": "交互作品",
-      "title": "可触摸画布的空间声景网页",
-      "body": "做一张网页版「会发声的画」：上传一幅画作，点击或触摸画面不同区域会触发对应声源，并通过 Web Audio API 的 PannerNode 让声音听起来从画面相应位置发出。第一步：选一幅自己的画或一张无版权图片，用 HTML Canvas 或 <map> 划定 4-6 个触摸区，为每个区准备一段短音效或乐器 loop，写 50 行 JS 实现位置声像与触发逻辑。需要：HTML/CSS/JS · Web Audio API · 基础声音编辑 · 空间音频概念。",
+      "level": "入门",
+      "kind": "工具/研究",
+      "title": "MERT 中西/中非流派小样本迁移实验",
+      "body": "做什么：做一个可复现的 Jupyter Notebook，收集约 40 段音频（例如 20 段中国地方戏曲/民歌 + 20 段国际流行，或复现论文中的刚果音乐 vs 国际流派），用 MERT 抽取嵌入后训练一个线性分类器，输出分类准确率、t-SNE 可视化和小型网页报告。第一步怎么动手：从 Hugging Face 加载 m-a-p/MERT-v1-330M，准备至少 20 段已标注的本地音乐与国际流行音乐（可从自己的曲库或公开数据集截取 10 秒片段），运行嵌入提取并用 sklearn LogisticRegression 得到 baseline F1。需要：Python · transformers · sklearn · 基础音频处理 · 乐理/音乐分类知识。",
       "based_on": [
         {
-          "url": "https://arxiv.org/abs/2608.02219",
-          "title": "Sounding Canvas：把画作变成可触摸的多模态声音装置"
+          "url": "https://doi.org/10.7759/s44389-026-00201-z",
+          "title": "MERT跨文化流派分类：刚果音乐与国际流派对比"
+        },
+        {
+          "url": "https://doi.org/10.3390/electronics15153421",
+          "title": "音乐基础模型中西音乐理解能力维度探测"
         }
       ]
     },
     {
       "level": "进阶",
       "kind": "产品原型",
-      "title": "浏览器本地文本到音乐生成器",
-      "body": "基于 ACE-Step v1.5 XL Turbo 的 ONNX+WebGPU 实现，做一个单页应用：用户在输入框写提示词，模型在浏览器本地推理生成音乐并直接播放，无需后端服务器。第一步：打开 Hugging Face 上的 ACE-Step ONNX+WebGPU 仓库，用 Chrome/Edge（支持 WebGPU）跑通示例，确认能本地生成 5-10 秒音频；然后把输入框、生成按钮和 audio 标签包成一个可分享页面。需要：JavaScript · ONNX Runtime / WebGPU · Hugging Face 模型加载 · 基础音频播放。",
+      "title": "iOS / macOS 本地文本到音乐 CoreML 小 App",
+      "body": "做什么：在 Apple 设备上实现一个 SwiftUI 应用，输入文本提示，调用转换后的 Stable Audio Open Small CoreML 模型本地推理，生成一段 5–10 秒音频并直接播放/保存。第一步怎么动手：在 Mac 上 clone mlboydaisuke/Stable-Audio-Open-Small-CoreML 仓库，按 README 用 Python 或 Swift 示例跑通第一次文本→音频生成，确认 mlpackage 文件路径与输入 shape 后，再新建 SwiftUI 项目把输入框、生成按钮和音频播放器串起来。需要：macOS / iOS 开发环境 · SwiftUI · CoreML · 基础音频播放。",
       "based_on": [
         {
-          "url": "https://huggingface.co/emb1ter/ACE-Step-v1.5-XL-Turbo-ONNX-WebGPU",
-          "title": "ACE-Step v1.5 XL Turbo 浏览器端 ONNX+WebGPU 实现"
-        },
-        {
-          "url": "https://huggingface.co/maolandaw/ACE-Step-1.5-burn",
-          "title": "ACE-Step 1.5 音乐生成模型检查点上架 Hugging Face"
+          "url": "https://huggingface.co/mlboydaisuke/Stable-Audio-Open-Small-CoreML",
+          "title": "Stable Audio Open小模型CoreML移植"
         }
       ]
     },
     {
       "level": "硬核",
       "kind": "研究",
-      "title": "鼓组分离-检测一体化评测工具",
-      "body": "复现 Separate-and-Detect 模型，对 5-10 首不同风格歌曲同时输出 5 条鼓 stem 与对应 MIDI 鼓谱，再用 mir_eval 和 audio_eval 计算 onset F1、SDR 等指标，最终生成一份可对比表格与可视化报告，可扩展为 ISMIR/ICASSP 的 demo 或短文。第一步：找到论文主页或 arXiv 附带的代码/数据集链接，跑通官方 demo；如果没有本地 GPU，先在云端用预训练权重对 1 首歌推理，确认能拿到 kick/snare/hat/tom/cymbal 分轨和 MIDI。需要：Python · 鼓转录/源分离基础 · mir_eval · GPU 或云端算力 · 实验设计与统计。",
+      "title": "音乐基础模型文化能力四维度探测工具箱",
+      "body": "做什么：构建一个可复现的探测基准，系统比较 MERT、MuQ、CultureMERT 在音色、古筝技法、西方调性、中国五声调式四个任务上的表现，输出每个模型在每个维度上的线性探测准确率、混淆矩阵和跨维度差异雷达图，形成一篇可投稿的课程论文或短篇技术报告。第一步怎么动手：收集/标注 50–80 段覆盖四个维度的音频（可从论文附录、公开古筝数据集和自己的曲库组合），先用三个模型分别提取 embedding，然后对其中一个维度训练线性 probe 并跑出混淆矩阵，确认流程后再扩展到全部维度。需要：Python · transformers · 音频标注 · 机器学习 · 统计检验 · 中西乐理。",
       "based_on": [
         {
-          "url": "https://arxiv.org/abs/2608.01093",
-          "title": "Separate-and-Detect：先做鼓组分轨再检测的联合鼓转录与 stem 生成"
+          "url": "https://doi.org/10.3390/electronics15153421",
+          "title": "音乐基础模型中西音乐理解能力维度探测"
+        },
+        {
+          "url": "https://doi.org/10.7759/s44389-026-00201-z",
+          "title": "MERT跨文化流派分类：刚果音乐与国际流派对比"
         },
         {
           "vol": 6,
@@ -199,6 +182,6 @@
       ]
     }
   ],
-  "vol": 10,
-  "pub": "2026-08-04"
+  "vol": 11,
+  "pub": "2026-08-05"
 }
