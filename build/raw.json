@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-08-07T09:43:08+08:00",
+  "fetched_at": "2026-08-08T07:40:44+08:00",
   "sources": {
     "arxiv_sd": [
       {
@@ -667,6 +667,22 @@
     "hn_music": [
       {
         "source": "hn",
+        "title": "libexpat now funded by the City of Munich for up to 6 months",
+        "url": "https://blog.hartwork.org/posts/libexpat-city-of-munich-open-source-sabbatical",
+        "points": 319,
+        "date": "2026-08-04",
+        "published": "2026-08-04"
+      },
+      {
+        "source": "hn",
+        "title": "Petri Nets as a Music Sequencer",
+        "url": "https://blog.stackdump.com/posts/petri-net-sequencer",
+        "points": 63,
+        "date": "2026-08-03",
+        "published": "2026-08-03"
+      },
+      {
+        "source": "hn",
         "title": "Google Flow Music launches Lyria 3.5 with advances in musicality, lyrics, vocals",
         "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/lyria-3-5",
         "points": 13,
@@ -688,6 +704,14 @@
         "points": 341,
         "date": "2026-07-29",
         "published": "2026-07-29"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Beakdown – a game inspired by Joust/Skirmish",
+        "url": "https://beakdown.fun",
+        "points": 11,
+        "date": "2026-07-28",
+        "published": "2026-07-28"
       },
       {
         "source": "hn",
@@ -784,46 +808,38 @@
         "points": 853,
         "date": "2026-07-16",
         "published": "2026-07-16"
-      },
-      {
-        "source": "hn",
-        "title": "Hack Reveals Suno AI Music Generator Scraped YouTube, Deezer, and Genius",
-        "url": "https://www.404media.co/hack-reveals-suno-ai-music-generator-scraped-youtube-deezer-and-genius",
-        "points": 34,
-        "date": "2026-07-15",
-        "published": "2026-07-15"
-      },
-      {
-        "source": "hn",
-        "title": "The Music of Destruction",
-        "url": "https://thebaffler.com/latest/the-music-of-destruction-fuelling",
-        "points": 19,
-        "date": "2026-07-14",
-        "published": "2026-07-14"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: An Interactive Guide for Castlevania II: Simon's Quest",
-        "url": "https://theultimatesimonsquestguide.com",
-        "points": 11,
-        "date": "2026-07-14",
-        "published": "2026-07-14"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: YouTube Guitar Tab Parser",
-        "url": "https://github.com/marcelpanse/youtube-guitar-tab-parser",
-        "points": 108,
-        "date": "2026-07-13",
-        "published": "2026-07-13"
       }
     ],
     "hn_audio": [
       {
         "source": "hn",
+        "title": "USA Today Co., partners with Palantir to analyze audience data",
+        "url": "https://www.niemanlab.org/2026/08/americas-largest-newspaper-chain-usa-today-co-partners-with-palantir-to-analyze-audience-data",
+        "points": 180,
+        "date": "2026-08-07",
+        "published": "2026-08-07"
+      },
+      {
+        "source": "hn",
+        "title": "Show HN: Sidebar – a private ESP32 intercom for five kids, no accounts",
+        "url": "https://www.sundaradnus.ca/writing/sidebar-building-a-ham-radio-for-my-son",
+        "points": 11,
+        "date": "2026-08-07",
+        "published": "2026-08-07"
+      },
+      {
+        "source": "hn",
+        "title": "Spin audit of SQD/QSCI quantum-chemistry benchmarks on iron–sulfur clusters",
+        "url": "https://zenodo.org/records/21359923",
+        "points": 16,
+        "date": "2026-08-06",
+        "published": "2026-08-06"
+      },
+      {
+        "source": "hn",
         "title": "Bioengineered chewing gum may offer a way to fight HPV and other microbes",
         "url": "https://www.sciencedaily.com/releases/2026/08/260803080917.htm",
-        "points": 49,
+        "points": 202,
         "date": "2026-08-06",
         "published": "2026-08-06"
       },
@@ -927,41 +943,17 @@
         "source": "hn",
         "title": "Birduino: A card-triggered audio player for [learning] the birds",
         "url": "https://hannahilea.com/blog/birduino",
-        "points": 58,
+        "points": 60,
         "date": "2026-07-30",
         "published": "2026-07-30"
       },
       {
         "source": "hn",
-        "title": "Launch HN: Prized (YC S26) – Let non-engineer staff build secure internal tools",
-        "url": "https://prized.dev",
-        "points": 79,
+        "title": "TypeStax: A type scale generator with vintage audio hardware interface",
+        "url": "https://www.typestax.com",
+        "points": 49,
         "date": "2026-07-30",
         "published": "2026-07-30"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Minute – Offline meeting notes on macOS with Whisper and llama.cpp",
-        "url": "https://github.com/mraza007/minute",
-        "points": 12,
-        "date": "2026-07-28",
-        "published": "2026-07-28"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Cynative – Read-only CLI in Go that explains your live infrastructure",
-        "url": "https://github.com/cynative/cynative",
-        "points": 16,
-        "date": "2026-07-28",
-        "published": "2026-07-28"
-      },
-      {
-        "source": "hn",
-        "title": "Show HN: Yap – OSS on-device voice dictation for macOS with no model to download",
-        "url": "https://github.com/FrigadeHQ/yap",
-        "points": 104,
-        "date": "2026-07-27",
-        "published": "2026-07-27"
       }
     ],
     "github": [
@@ -972,7 +964,7 @@
         "url": "https://github.com/QwenAudio/qwen-audio-agent",
         "description": "A realtime voice runtime that keeps Agents talking, working, and present.  Real-time Voice Runtime for AI Agents",
         "summary": "A realtime voice runtime that keeps Agents talking, working, and present.  Real-time Voice Runtime for AI Agents",
-        "stars": 1961,
+        "stars": 1982,
         "language": "JavaScript",
         "date": "2026-07-27",
         "published": "2026-07-27"
@@ -984,7 +976,7 @@
         "url": "https://github.com/wassgha/rescript",
         "description": "🎬 Open source, transcript-based video/audio editor that lives in the browser.",
         "summary": "🎬 Open source, transcript-based video/audio editor that lives in the browser.",
-        "stars": 630,
+        "stars": 641,
         "language": "TypeScript",
         "date": "2026-07-26",
         "published": "2026-07-26"
@@ -996,22 +988,10 @@
         "url": "https://github.com/AARomanov1985/Audio-Cassette-Simulation",
         "description": "This project simulates cassette tape audio profiles using ffmpeg",
         "summary": "This project simulates cassette tape audio profiles using ffmpeg",
-        "stars": 492,
+        "stars": 494,
         "language": "Shell",
         "date": "2026-07-22",
         "published": "2026-07-22"
-      },
-      {
-        "source": "github",
-        "full_name": "MartinDelophy/ai-video-editor",
-        "title": "MartinDelophy/ai-video-editor",
-        "url": "https://github.com/MartinDelophy/ai-video-editor",
-        "description": "Local-first browser AI video editor with WebGPU AI music, AI repair, voiceovers, captions, talking avatars, and deterministic export.",
-        "summary": "Local-first browser AI video editor with WebGPU AI music, AI repair, voiceovers, captions, talking avatars, and deterministic export.",
-        "stars": 464,
-        "language": "JavaScript",
-        "date": "2026-07-09",
-        "published": "2026-07-09"
       },
       {
         "source": "github",
@@ -1020,7 +1000,7 @@
         "url": "https://github.com/Audio8-AI/Audio8_TTS",
         "description": "SOTA-Class TTS at Compact Scale",
         "summary": "SOTA-Class TTS at Compact Scale",
-        "stars": 386,
+        "stars": 400,
         "language": "Python",
         "date": "2026-07-29",
         "published": "2026-07-29"
@@ -1032,7 +1012,7 @@
         "url": "https://github.com/Jane-xiaoer/paper-collage-ad-codex",
         "description": "Codex skill for complete paper-cut collage ad production, local IndexTTS-2 voice cloning, animation, audio and MP4 QC",
         "summary": "Codex skill for complete paper-cut collage ad production, local IndexTTS-2 voice cloning, animation, audio and MP4 QC",
-        "stars": 375,
+        "stars": 376,
         "language": "JavaScript",
         "date": "2026-07-10",
         "published": "2026-07-10"
@@ -1044,7 +1024,7 @@
         "url": "https://github.com/xmarre/ComfyUI-Spectrum-MiniMax-H3",
         "description": "Spectrum-based acceleration for ComfyUI’s native MiniMax H3 audio-video model. Forecasts post-transformer features with Chebyshev ridge regression to skip selected transformer evaluations, with adaptive scheduling, sampler-aware safeguards, CPU/VRAM history storage, and native fallbacks.",
         "summary": "Spectrum-based acceleration for ComfyUI’s native MiniMax H3 audio-video model. Forecasts post-transformer features with Chebyshev ridge regression to skip selected transformer evaluations, with adaptive scheduling, sampler-aware safeguards, CPU/VRAM history storage, and native fallbacks.",
-        "stars": 319,
+        "stars": 354,
         "language": "Python",
         "date": "2026-08-03",
         "published": "2026-08-03"
@@ -1056,10 +1036,22 @@
         "url": "https://github.com/flatkey-ai/flatkey-cli",
         "description": "Flatkey media generation CLI for images, videos, audio, text, credits, and model discovery.",
         "summary": "Flatkey media generation CLI for images, videos, audio, text, credits, and model discovery.",
-        "stars": 312,
+        "stars": 327,
         "language": "JavaScript",
         "date": "2026-07-17",
         "published": "2026-07-17"
+      },
+      {
+        "source": "github",
+        "full_name": "T8mars/comfyui-minimax-h3-audio-T8",
+        "title": "T8mars/comfyui-minimax-h3-audio-T8",
+        "url": "https://github.com/T8mars/comfyui-minimax-h3-audio-T8",
+        "description": "",
+        "summary": "",
+        "stars": 312,
+        "language": "Python",
+        "date": "2026-08-05",
+        "published": "2026-08-05"
       },
       {
         "source": "github",
@@ -1068,34 +1060,10 @@
         "url": "https://github.com/kigner/audio.cpp-webui",
         "description": "audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. TTS, ASR/STT, VAD, voice conversion, speaker diarization, music generation. No Python dependency.",
         "summary": "audio.cpp with a full-task WebUI - pure C++ audio-model inference engine powered by ggml. TTS, ASR/STT, VAD, voice conversion, speaker diarization, music generation. No Python dependency.",
-        "stars": 286,
+        "stars": 288,
         "language": "C++",
         "date": "2026-07-12",
         "published": "2026-07-12"
-      },
-      {
-        "source": "github",
-        "full_name": "romainsimon/uisfx",
-        "title": "romainsimon/uisfx",
-        "url": "https://github.com/romainsimon/uisfx",
-        "description": "UI Sound Effects for your interfaces",
-        "summary": "UI Sound Effects for your interfaces",
-        "stars": 168,
-        "language": "Vue",
-        "date": "2026-07-12",
-        "published": "2026-07-12"
-      },
-      {
-        "source": "github",
-        "full_name": "HaseebKhalid1507/Myx",
-        "title": "HaseebKhalid1507/Myx",
-        "url": "https://github.com/HaseebKhalid1507/Myx",
-        "description": "Spotify player for the terminal. With reactive themes.",
-        "summary": "Spotify player for the terminal. With reactive themes.",
-        "stars": 162,
-        "language": "Rust",
-        "date": "2026-07-23",
-        "published": "2026-07-23"
       },
       {
         "source": "github",
@@ -1104,22 +1072,22 @@
         "url": "https://github.com/liangnjupt/VisTouch",
         "description": "A large-scale synchronized vision–touch–audio dataset of robotic sliding contact",
         "summary": "A large-scale synchronized vision–touch–audio dataset of robotic sliding contact",
-        "stars": 158,
+        "stars": 205,
         "language": "Python",
         "date": "2026-07-31",
         "published": "2026-07-31"
       },
       {
         "source": "github",
-        "full_name": "youshen2/MeloX",
-        "title": "youshen2/MeloX",
-        "url": "https://github.com/youshen2/MeloX",
-        "description": "专为 iOS 原生开发的第三方网易云客户端，使用 SwiftUI 并基于液体玻璃设计，参考 iOS26 版 Apple Music 的 UI 并提供特色功能。",
-        "summary": "专为 iOS 原生开发的第三方网易云客户端，使用 SwiftUI 并基于液体玻璃设计，参考 iOS26 版 Apple Music 的 UI 并提供特色功能。",
-        "stars": 152,
-        "language": "Swift",
-        "date": "2026-07-21",
-        "published": "2026-07-21"
+        "full_name": "romainsimon/uisfx",
+        "title": "romainsimon/uisfx",
+        "url": "https://github.com/romainsimon/uisfx",
+        "description": "UI Sound Effects for your interfaces",
+        "summary": "UI Sound Effects for your interfaces",
+        "stars": 173,
+        "language": "Vue",
+        "date": "2026-07-12",
+        "published": "2026-07-12"
       },
       {
         "source": "github",
@@ -1128,10 +1096,46 @@
         "url": "https://github.com/markrussinovich/DoomPaint",
         "description": "Doom using MS Paint as a playable display by leveraging clipboard and paste. Includes Doom shareware and plays with music and sound effects.",
         "summary": "Doom using MS Paint as a playable display by leveraging clipboard and paste. Includes Doom shareware and plays with music and sound effects.",
-        "stars": 150,
+        "stars": 163,
         "language": "Python",
         "date": "2026-07-18",
         "published": "2026-07-18"
+      },
+      {
+        "source": "github",
+        "full_name": "HaseebKhalid1507/Myx",
+        "title": "HaseebKhalid1507/Myx",
+        "url": "https://github.com/HaseebKhalid1507/Myx",
+        "description": "Spotify player for the terminal. With reactive themes.",
+        "summary": "Spotify player for the terminal. With reactive themes.",
+        "stars": 163,
+        "language": "Rust",
+        "date": "2026-07-23",
+        "published": "2026-07-23"
+      },
+      {
+        "source": "github",
+        "full_name": "youshen2/MeloX",
+        "title": "youshen2/MeloX",
+        "url": "https://github.com/youshen2/MeloX",
+        "description": "专为 iOS 原生开发的第三方网易云客户端，使用 SwiftUI 并基于液体玻璃设计，参考 iOS26 版 Apple Music 的 UI 并提供特色功能。",
+        "summary": "专为 iOS 原生开发的第三方网易云客户端，使用 SwiftUI 并基于液体玻璃设计，参考 iOS26 版 Apple Music 的 UI 并提供特色功能。",
+        "stars": 154,
+        "language": "Swift",
+        "date": "2026-07-21",
+        "published": "2026-07-21"
+      },
+      {
+        "source": "github",
+        "full_name": "seesee75-commits/ComfyUI-MiniMaxH3-Director",
+        "title": "seesee75-commits/ComfyUI-MiniMaxH3-Director",
+        "url": "https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director",
+        "description": "A timeline editor for MiniMax H3 inside ComfyUI - storyboard prompts, first/last keyframes, image/video/audio references, joint audio, live sampling preview, retakes and shot chaining.",
+        "summary": "A timeline editor for MiniMax H3 inside ComfyUI - storyboard prompts, first/last keyframes, image/video/audio references, joint audio, live sampling preview, retakes and shot chaining.",
+        "stars": 152,
+        "language": "JavaScript",
+        "date": "2026-08-04",
+        "published": "2026-08-04"
       },
       {
         "source": "github",
@@ -1147,15 +1151,15 @@
       },
       {
         "source": "github",
-        "full_name": "seesee75-commits/ComfyUI-MiniMaxH3-Director",
-        "title": "seesee75-commits/ComfyUI-MiniMaxH3-Director",
-        "url": "https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director",
-        "description": "A timeline editor for MiniMax H3 inside ComfyUI - storyboard prompts, first/last keyframes, image/video/audio references, joint audio, live sampling preview, retakes and shot chaining.",
-        "summary": "A timeline editor for MiniMax H3 inside ComfyUI - storyboard prompts, first/last keyframes, image/video/audio references, joint audio, live sampling preview, retakes and shot chaining.",
-        "stars": 136,
-        "language": "JavaScript",
-        "date": "2026-08-04",
-        "published": "2026-08-04"
+        "full_name": "calesthio/generative-media-skills",
+        "title": "calesthio/generative-media-skills",
+        "url": "https://github.com/calesthio/generative-media-skills",
+        "description": "Research-backed agent skills and tools for premium image, video, audio, voice, and generative media production across AI coding assistants.",
+        "summary": "Research-backed agent skills and tools for premium image, video, audio, voice, and generative media production across AI coding assistants.",
+        "stars": 121,
+        "language": "Python",
+        "date": "2026-07-11",
+        "published": "2026-07-11"
       },
       {
         "source": "github",
@@ -1171,127 +1175,50 @@
       },
       {
         "source": "github",
-        "full_name": "calesthio/generative-media-skills",
-        "title": "calesthio/generative-media-skills",
-        "url": "https://github.com/calesthio/generative-media-skills",
-        "description": "Research-backed agent skills and tools for premium image, video, audio, voice, and generative media production across AI coding assistants.",
-        "summary": "Research-backed agent skills and tools for premium image, video, audio, voice, and generative media production across AI coding assistants.",
-        "stars": 117,
-        "language": "Python",
-        "date": "2026-07-11",
-        "published": "2026-07-11"
-      },
-      {
-        "source": "github",
         "full_name": "bennjordan/AlphaSteg",
         "title": "bennjordan/AlphaSteg",
         "url": "https://github.com/bennjordan/AlphaSteg",
         "description": "Hide, encode, and decode encrypted files, messages, and alternate audio streams in music hosted on popular streaming platforms (Spotify, Tidal, Bandcamp, etc). ",
         "summary": "Hide, encode, and decode encrypted files, messages, and alternate audio streams in music hosted on popular streaming platforms (Spotify, Tidal, Bandcamp, etc). ",
-        "stars": 99,
+        "stars": 101,
         "language": "Python",
         "date": "2026-08-02",
         "published": "2026-08-02"
       }
     ],
-    "openalex": [
-      {
-        "source": "openalex",
-        "title": "Equivariant Music Transformer",
-        "url": "https://doi.org/10.48550/arxiv.2608.03920",
-        "date": "2026-08-04",
-        "summary": "Humans recognize a musical passage even when it is shifted in time or transposed in pitch, indicating a notion of equivariance in the representation space. Our analysis, however, shows that standard music transformers map such time-shifted or pitch-transposed inputs onto uncorrelated representations: these models become progressively less equivariant as they scale in size or train longer. This sug",
-        "doi": "https://doi.org/10.48550/arxiv.2608.03920"
-      },
-      {
-        "source": "openalex",
-        "title": "Test Musical Recording",
-        "url": "https://bura.brunel.ac.uk/handle/2438/33647",
-        "date": "2026-08-04",
-        "summary": "Testing, 1, 2, 3",
-        "doi": ""
-      },
-      {
-        "source": "openalex",
-        "title": "Research on music emotion recognition and classification model based on deep learning",
-        "url": "https://doi.org/10.1007/s41060-026-01232-4",
-        "date": "2026-08-04",
-        "summary": "",
-        "doi": "https://doi.org/10.1007/s41060-026-01232-4"
-      },
-      {
-        "source": "openalex",
-        "title": "Learning Music Style for Piano Arrangement Through Cross-Modal Bootstrapping",
-        "url": "https://doi.org/10.48550/arxiv.2608.03050",
-        "date": "2026-08-04",
-        "summary": "What is music style? Though often described using text labels such as \"swing,\" \"classical,\" or \"emotional,\" the real style remains implicit and hidden in concrete music examples. In this paper, we introduce a cross-modal framework that learns implicit music styles from raw audio and applies them to symbolic music generation. Inspired by BLIP-2, our model leverages a Querying Transformer (Q-Former)",
-        "doi": "https://doi.org/10.48550/arxiv.2608.03050"
-      },
-      {
-        "source": "openalex",
-        "title": "Stable rankings, unstable shortlists: A cross-algorithm stability audit of SHAP feature attributions in composition-based band gap prediction",
-        "url": "https://doi.org/10.1016/j.nxmate.2026.103038",
-        "date": "2026-08-04",
-        "summary": "Shapley additive explanation (SHAP) values are the standard tool in materials informatics for ranking the compositional descriptors that govern a predicted property, and the resulting shortlist of top descriptors is routinely read as physical insight, yet its reproducibility across ordinary modelling choices is rarely tested. This communication audits the stability of global SHAP rankings for comp",
-        "doi": "https://doi.org/10.1016/j.nxmate.2026.103038"
-      },
-      {
-        "source": "openalex",
-        "title": "DDSynth-RL: Audio Synthesizer Inversion via Discrete Diffusion with Reinforcement Learning",
-        "url": "https://doi.org/10.48550/arxiv.2608.03032",
-        "date": "2026-08-04",
-        "summary": "Synthesizer inversion is challenging for two main reasons: 1) Distinct parameter configurations can produce perceptually similar sounds. 2) Parameter-space losses often fail to reflect rendered audio similarity, while the synthesizer being a non-differentiable black box prevents simple audio-domain supervision. To address the one-to-many mapping induced by the first challenge, we formulate synthes",
-        "doi": "https://doi.org/10.48550/arxiv.2608.03032"
-      },
-      {
-        "source": "openalex",
-        "title": "On the Geometry of Music Bandwidth Extension in Latent Spaces of Audio Codecs",
-        "url": "https://doi.org/10.48550/arxiv.2608.03721",
-        "date": "2026-08-04",
-        "summary": "Recent audio restoration increasingly relies on large-scale conditional latent generative modeling, including diffusion, Schrodinger Bridges, and Flow Matching variants, to invert degradations such as bandwidth limitation or noise. We present an analysis of the performance of various state-of-the-art methods compared to simple arithmetic transformations in the latent spaces of multiple neural code",
-        "doi": "https://doi.org/10.48550/arxiv.2608.03721"
-      }
-    ],
+    "openalex": [],
     "gnews_zh": [
       {
         "source": "gnews_zh",
-        "title": "谷歌AI音乐再升级！Lyria 3.5更会写歌、更懂唱歌，精准控制节奏和时长 - 华尔街见闻",
+        "title": "Suno计划推出新工具提升AI生成音乐透明度，举措是否足够引发争议-AI应用 - 至顶网",
+        "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE10T3NVdGM4R1l4VnFaaE0tVlpRRzVzSEpqSDBDWHB3YWQySGdLYmxQUElJMVNXWjFuanE2dndiTURXMTA5aDlpUXJacVpyREpESjJQUEFnaEE0YzhCamZmRTNFUTBDWHhhZlpJVmF3cw?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "至顶网",
+        "summary": "Suno计划推出新工具提升AI生成音乐透明度，举措是否足够引发争议-AI应用 至顶网"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "AI MUSIC DISTRIBUTION INC (AIZZ)收入构成- 主要构成部分 - Moomoo",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0xekRvWlhSak1XNUFDeURFV2NSUjJ4eVBNSl85YjNEWWU1bFg0Yjg4ekZhejhQaVJFTzNORk1nVXFPTDBkN0RWbTdxamlYdHlkOS1RZTdxSHlMSWZSOHFMdU9wWWo3YUZlcEdLdg?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-05",
+        "src_name": "Moomoo",
+        "summary": "AI MUSIC DISTRIBUTION INC (AIZZ)收入构成- 主要构成部分 Moomoo"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "谷歌AI音乐再升级！Lyria 3.5更会写歌、更懂唱歌，精准控制节奏和时长 - wallstreetcn.com",
         "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBtcU1walcwQ3ZHcHc4RGNfaUEtb3lhc3NvbjRUNGg4NVZEZ0RTQ3I3bWtMXzFrR01Xa1ZpcUd0MG1mMTl6NHM5Zlpaam9BNTNab2pV?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
         "date": "2026-07-29",
-        "src_name": "华尔街见闻",
-        "summary": "谷歌AI音乐再升级！Lyria 3.5更会写歌、更懂唱歌，精准控制节奏和时长 华尔街见闻"
+        "src_name": "wallstreetcn.com",
+        "summary": "谷歌AI音乐再升级！Lyria 3.5更会写歌、更懂唱歌，精准控制节奏和时长 wallstreetcn.com"
       },
       {
         "source": "gnews_zh",
-        "title": "谷歌 Flow Music 推出全新音乐生成模型Lyria 3.5-AI应用 - 至顶网",
-        "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBYaHdxemlkckN3d1JJM3U0MllPWERrc2dvSVZmYldpRVNDSWgyblNYaEJtWDB0MTFiRS1aTHRJZ1E5SU1CQ0FLcEJHVEZWMXdMNWZMTnBoY2dTV3JGaW9VRFRYOGJlMUdFR2EtYUk0UQ?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-07-30",
-        "src_name": "至顶网",
-        "summary": "谷歌 Flow Music 推出全新音乐生成模型Lyria 3.5-AI应用 至顶网"
-      },
-      {
-        "source": "gnews_zh",
-        "title": "梁志强再用AI创爱国歌曲！赞AI更“听话”，创作快很多 - vibes.8world.com",
-        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNZDhYbFVQR2Y4b0xuMk9FNS1nSjd2V0hrV1RVYlc1c3BMVGtMcFIwUTAxQk45SGo3WllXelNLSG9teXhWY1oxTzV2dHlnUy1PMjcwTzFoS0l0UThIM0dNaU55WU05d1hWd0NFbWJRRVFWc2ktX3Z1MW5VN01kSjlMNUhZWTRLRnhMMHhpVEZBeDU?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "vibes.8world.com",
-        "summary": "梁志强再用AI创爱国歌曲！赞AI更“听话”，创作快很多 vibes.8world.com"
-      },
-      {
-        "source": "gnews_zh",
-        "title": "AI MUSIC DISTRIBUTION INC财报日期，财务报告和业绩会 - Moomoo",
-        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBuTTYydnhZdjN4a2tMZGtZbUxQSnY4WXRheTNvbUlaNXVraTQ4cTBHOWVQTlc0UE1DNV9OeUl5U1JBXzdnZWhsbkN5SDRVRUxXQVE0YnhYNW04dzg0SjNv?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-07-30",
-        "src_name": "Moomoo",
-        "summary": "AI MUSIC DISTRIBUTION INC财报日期，财务报告和业绩会 Moomoo"
-      },
-      {
-        "source": "gnews_zh",
-        "title": "用AI写歌单曲版权已卖出5位数 “创作者”回应争议 - 央广网",
+        "title": "用AI写歌单曲版权已卖出5位数 “创作者”回应争议 - sc.cnr.cn",
         "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBTNEJqcXVxWFl6ZGx6clpKS1dVN29JZnpUNTRYTklVVDFGR1MtbFZSLTUwekc1QTVWckJ3Nl9OS25DX1NwU05xZHpfVVNmM1BfNDRKR1ppaEEyZklDSk1JNGNnbnF2TEJpX2ZLcG13?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
         "date": "2026-04-08",
-        "src_name": "央广网",
-        "summary": "用AI写歌单曲版权已卖出5位数 “创作者”回应争议 央广网"
+        "src_name": "sc.cnr.cn",
+        "summary": "用AI写歌单曲版权已卖出5位数 “创作者”回应争议 sc.cnr.cn"
       },
       {
         "source": "gnews_zh",
@@ -1319,19 +1246,43 @@
       },
       {
         "source": "gnews_zh",
-        "title": "2024年华语乐坛新歌达135.1万首，AI音乐占比激增但播放量集中度未变 - 虎嗅",
-        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1lUE4zZEd5R3RxVFNRRU9lTW9kMXY1WlBLNGprdDlVZmw2Z2VDOU9aRzZFS2M2UEN5NFZJUEdXMThSdm93Z09jZnZjZmYxS3FKQ0h3UA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-04-22",
-        "src_name": "虎嗅",
-        "summary": "2024年华语乐坛新歌达135.1万首，AI音乐占比激增但播放量集中度未变 虎嗅"
+        "title": "梁志强再用AI创爱国歌曲！赞AI更“听话”，创作快很多 - vibes by 8world",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNZDhYbFVQR2Y4b0xuMk9FNS1nSjd2V0hrV1RVYlc1c3BMVGtMcFIwUTAxQk45SGo3WllXelNLSG9teXhWY1oxTzV2dHlnUy1PMjcwTzFoS0l0UThIM0dNaU55WU05d1hWd0NFbWJRRVFWc2ktX3Z1MW5VN01kSjlMNUhZWTRLRnhMMHhpVEZBeDU?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-06",
+        "src_name": "vibes by 8world",
+        "summary": "梁志强再用AI创爱国歌曲！赞AI更“听话”，创作快很多 vibes by 8world"
       },
       {
         "source": "gnews_zh",
-        "title": "因涉AI创作，瑞典禁播这首歌 - BBC",
+        "title": "谷歌 Flow Music 推出全新音乐生成模型 Lyria 3.5 - 搜狐网",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE8yenlTS0Z2eXpVbmdGN0VFTG8tOGxwT1pWak1uME9jdktmODVYVW1oa01PWC1JZzJtMnQ3a1J2ODdSd2xzY0FYNFlIZVROZ21RX2c?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-07-30",
+        "src_name": "搜狐网",
+        "summary": "谷歌 Flow Music 推出全新音乐生成模型 Lyria 3.5 搜狐网"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "Music 2.5引爆港股AI行情 MiniMax盘中一度涨超20% - 财联社",
+        "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE80SDlRU1NYenYyWGpaTjFHNDlRMGFrSy1NdU9rajltOTFkT0lFZncwbXhEZDVtMVVoYVBiZEpnMHJDRnM0dUtOTA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-01-29",
+        "src_name": "财联社",
+        "summary": "Music 2.5引爆港股AI行情 MiniMax盘中一度涨超20% 财联社"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "因涉AI创作，瑞典禁播这首歌 - bbc.com",
         "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBCNkxEMU5mRnhLdDBid0NzeFVRTDVncW5TUl90VWY2WWFxMGlnZXFJa2hFdF9EMy1XVTBYSHpLMDhsU1Y5bFZXaGNOODdkNmtjbnNicGdTZHRYY3dtdm1rOXUwRGgwZ9IBa0FVX3lxTE1ObUVmVzF6WWJma1lmYllDSEFuaGlqVFRyV2ZuVWFqb3VyeHQ2VzAwQWR1SnRBVWZadkI5VjNOaW9XbV9IUWZNQzl3NThEdlJ6U3dxZjNhM3p1M05LMmExbTg2MVYxNFFndmFF?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
         "date": "2026-01-19",
-        "src_name": "BBC",
-        "summary": "因涉AI创作，瑞典禁播这首歌 BBC"
+        "src_name": "bbc.com",
+        "summary": "因涉AI创作，瑞典禁播这首歌 bbc.com"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "2024年华语乐坛新歌达135.1万首，AI音乐占比激增但播放量集中度未变 - huxiu.com",
+        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1lUE4zZEd5R3RxVFNRRU9lTW9kMXY1WlBLNGprdDlVZmw2Z2VDOU9aRzZFS2M2UEN5NFZJUEdXMThSdm93Z09jZnZjZmYxS3FKQ0h3UA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-04-22",
+        "src_name": "huxiu.com",
+        "summary": "2024年华语乐坛新歌达135.1万首，AI音乐占比激增但播放量集中度未变 huxiu.com"
       },
       {
         "source": "gnews_zh",
@@ -1343,11 +1294,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "紫牛头条｜喜欢的歌手竟可能是AI？音乐平台AI生成内容如何明确标注引争议 - 紫牛新闻",
+        "title": "紫牛头条｜喜欢的歌手竟可能是AI？音乐平台AI生成内容如何明确标注引争议 - yangtse.com",
         "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFA4alNrdVlsTHRMZGNNVHhubU9PaE5MYTlWS24tdTFScGFzbzZxT1RXOHdmYnd2ZDR1LUpFSnZTbTA2NVFGT1VFNkpZLS1pSDgxX1NxMDhLcWo2TXJLeHFrdDB1SDRVc2ZJMjZ0Y0R4aw?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
         "date": "2026-04-17",
-        "src_name": "紫牛新闻",
-        "summary": "紫牛头条｜喜欢的歌手竟可能是AI？音乐平台AI生成内容如何明确标注引争议 紫牛新闻"
+        "src_name": "yangtse.com",
+        "summary": "紫牛头条｜喜欢的歌手竟可能是AI？音乐平台AI生成内容如何明确标注引争议 yangtse.com"
       },
       {
         "source": "gnews_zh",
@@ -1359,16 +1310,24 @@
       },
       {
         "source": "gnews_zh",
-        "title": "20秒出歌，Cover自由，MiniMax 2.6如何让AI音乐快到追热点？ - QQ News",
-        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5yWTRFeGdXbWFTUzJtVkVBYWp6ZW5lbzJ3ajJoQ2NhMWlIQUpROWxpS0tkV09SZmxkY1IwZjJjbENuYlB6SVkyMDhQWTUxTHlzZWlyX3hB?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-04-10",
-        "src_name": "QQ News",
-        "summary": "20秒出歌，Cover自由，MiniMax 2.6如何让AI音乐快到追热点？ QQ News"
+        "title": "AI MUSIC DISTRIBUTION INC财报日期，财务报告和业绩会 - Moomoo",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBuTTYydnhZdjN4a2tMZGtZbUxQSnY4WXRheTNvbUlaNXVraTQ4cTBHOWVQTlc0UE1DNV9OeUl5U1JBXzdnZWhsbkN5SDRVRUxXQVE0YnhYNW04dzg0SjNv?oc=5",
+        "date": "2026-07-30",
+        "src_name": "Moomoo",
+        "summary": "AI MUSIC DISTRIBUTION INC财报日期，财务报告和业绩会 Moomoo"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "AI MUSIC DISTRIBUTION INC(AIZZ)股票期权链, 期权价格 - Moomoo",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBXUjNzZkI5ZzBrNlpTbnpvd2EyU0xzaEYtSlRWRFpBWXBCbnhBU3ptc2JabjYxUUxFNENCR01XX1NEYXp5N0hzbG5KeTQ0UWtRamdlRGZKU3I0MGhvOVdudzQ0MUxIUQ?oc=5",
+        "date": "2026-07-27",
+        "src_name": "Moomoo",
+        "summary": "AI MUSIC DISTRIBUTION INC(AIZZ)股票期权链, 期权价格 Moomoo"
       },
       {
         "source": "gnews_zh",
         "title": "AI音乐创作再提速！MiniMax发布Music 2.6，全球创作者免费体验14天_上观新闻 - shobserver.cn",
-        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE14Qzk1a2dxaE9IcnJpTXhFakZfWVJqUFpkOHRmM21pRk5pU3Q4QkVQX19CX1RObl94SGlqVjZCdlExcXhaQlBQRWdyYjJQUDN4c1hsU3pSaHJFYzA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE14Qzk1a2dxaE9IcnJpTXhFakZfWVJqUFpkOHRmM21pRk5pU3Q4QkVQX19CX1RObl94SGlqVjZCdlExcXhaQlBQRWdyYjJQUDN4c1hsU3pSaHJFYzA?oc=5",
         "date": "2026-04-11",
         "src_name": "shobserver.cn",
         "summary": "AI音乐创作再提速！MiniMax发布Music 2.6，全球创作者免费体验14天_上观新闻 shobserver.cn"
@@ -1399,11 +1358,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "AI写歌获五位数收入，版权问题何解？ - 新浪财经",
-        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQYnRySlBkNS1KeFFreEMyZ1VLVjIwUUxHd0cxWFNoWnBtNmJEZFgycFFkd1pDM3dDTk5VV29nU3l6ZlZZWmlmQVZ6TWI4dlJTT2lGWllOdlVYVk4wWlpiY1l1OEsyYmpxWmdMem11S2M1Z1hZQUg0NGxHUDRidUo2cmtTRkZrcHFvSkhEd1Jwb3ZuQQ?oc=5",
-        "date": "2026-04-12",
-        "src_name": "新浪财经",
-        "summary": "AI写歌获五位数收入，版权问题何解？ 新浪财经"
+        "title": "20秒出歌，Cover自由，MiniMax 2.6如何让AI音乐快到追热点？ - QQ News",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5yWTRFeGdXbWFTUzJtVkVBYWp6ZW5lbzJ3ajJoQ2NhMWlIQUpROWxpS0tkV09SZmxkY1IwZjJjbENuYlB6SVkyMDhQWTUxTHlzZWlyX3hB?oc=5",
+        "date": "2026-04-10",
+        "src_name": "QQ News",
+        "summary": "20秒出歌，Cover自由，MiniMax 2.6如何让AI音乐快到追热点？ QQ News"
       },
       {
         "source": "gnews_zh",
@@ -1415,19 +1374,19 @@
       },
       {
         "source": "gnews_zh",
-        "title": "亚马逊于商品页面推出AI音频问答功能 - 电子工程专辑",
-        "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5WVWtGdVV0YnRDTEE3YmxpQVFQTHNfWTA3ZVRIeVp2cVFWd3lvWEFrZmZLcV9RTlhnQ3dGV09xX3FkalotRXhzcVBnRVZRYV9MSTVV?oc=5",
-        "date": "2026-04-29",
-        "src_name": "电子工程专辑",
-        "summary": "亚马逊于商品页面推出AI音频问答功能 电子工程专辑"
-      },
-      {
-        "source": "gnews_zh",
         "title": "推动AI走向企业生产流程，中科闻歌布局决策智能体系 - 中华网",
         "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBrbHlzaEtxQTZrLTNJZldfUFN2NWk5N29OU2NtTzhBeldnWEVJTndqaXh5d1BFUVp5RGwyN0ZQd1JkS1llUGtOb3ZRUzJfdDM5WjhGRUNNREMtTmdXd2c?oc=5",
         "date": "2026-04-03",
         "src_name": "中华网",
         "summary": "推动AI走向企业生产流程，中科闻歌布局决策智能体系 中华网"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "亚马逊于商品页面推出AI音频问答功能 - 电子工程专辑",
+        "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5WVWtGdVV0YnRDTEE3YmxpQVFQTHNfWTA3ZVRIeVp2cVFWd3lvWEFrZmZLcV9RTlhnQ3dGV09xX3FkalotRXhzcVBnRVZRYV9MSTVV?oc=5",
+        "date": "2026-04-29",
+        "src_name": "电子工程专辑",
+        "summary": "亚马逊于商品页面推出AI音频问答功能 电子工程专辑"
       },
       {
         "source": "gnews_zh",
@@ -1452,14 +1411,6 @@
         "date": "2026-04-06",
         "src_name": "新浪财经",
         "summary": "小伙“一人公司”估值超3000万：用AI写歌 仅歌曲版权就赚了5位数 新浪财经"
-      },
-      {
-        "source": "gnews_zh",
-        "title": "大量 AI 音乐涌入 Apple Music 平台，但播放量仅占 0.5% - 新浪财经",
-        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9TNUx4bDlKN3lMc0hWcjI1bFhUS0lSbHgxVzVaeGI3V1ZhZVhpcUpqZ3k3czdzTjVrNXQ5dDh0Szk3ci1ZVDV2elRpamVNeVl4dUxZOGQyMHdaN3NXZmo0ejlSaFFJTGVTUlpVeS1aZlcwdEEycVlmSUc3RUtoMEU?oc=5",
-        "date": "2026-04-25",
-        "src_name": "新浪财经",
-        "summary": "大量 AI 音乐涌入 Apple Music 平台，但播放量仅占 0.5% 新浪财经"
       },
       {
         "source": "gnews_zh",
@@ -1503,11 +1454,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "AI入口之战！OpenAI下重注：音频会是未来的交互界面 - 华尔街见闻",
+        "title": "AI入口之战！OpenAI下重注：音频会是未来的交互界面 - wallstreetcn.com",
         "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1xa1Nidm1sVFloclJ4OUdXZ0ZVQ2dqMEw4RVgyckRmbFZyWUpJSmEwS2MtTjdzVGM2VnhBWmkyZEFJWmtfbi1PSVZ6TTRZUlU3MUVN?oc=5",
         "date": "2026-01-02",
-        "src_name": "华尔街见闻",
-        "summary": "AI入口之战！OpenAI下重注：音频会是未来的交互界面 华尔街见闻"
+        "src_name": "wallstreetcn.com",
+        "summary": "AI入口之战！OpenAI下重注：音频会是未来的交互界面 wallstreetcn.com"
       },
       {
         "source": "gnews_zh",
@@ -1535,14 +1486,6 @@
       },
       {
         "source": "gnews_zh",
-        "title": "美国各大唱片公司施压流媒体平台，要求AI生成歌曲强制标注标识 - 手机网易网",
-        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBybjNCR1ZyQTI5dmpxVkNHWUtRQTEwck5VdVJ4UmFwYVVVVmd3LWEtWjg0WXRhTjhHVFpiSy1wYl96dV9Bd2tXZDNVUFBZNmVtMU50MG5Wam91dkZNZXNLRGdn?oc=5",
-        "date": "2026-07-11",
-        "src_name": "手机网易网",
-        "summary": "美国各大唱片公司施压流媒体平台，要求AI生成歌曲强制标注标识 手机网易网"
-      },
-      {
-        "source": "gnews_zh",
         "title": "“音纪元”全国AI歌曲创作大赛正式启动 以AI之智共谱音乐新纪元 - 中华网",
         "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1sM3B5WWJfX3E1Y2RDR1Rjb3V0dHpzeXVrdlJWbG96WGc1Y1VpZkJ5NnBRQlVlc2lHREtBUnlEMUJlMWtTdmM4Mkdsdk1Ud2dZbVdPY1lPcm5LOWJ6aFE?oc=5",
         "date": "2025-10-20",
@@ -1559,11 +1502,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "Music 2.5引爆港股AI行情 MiniMax盘中一度涨超20% - 搜狐网",
-        "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5uWThHT2V5MW9XMnlXSWQxcEhpaEJjS00tQWJQSXFpRF9XdTA4TFBZYzVtRlBDM3J1Sm1WekU3MnlrVEZpazN0WkFPNEdyaDVD?oc=5",
-        "date": "2026-01-29",
-        "src_name": "搜狐网",
-        "summary": "Music 2.5引爆港股AI行情 MiniMax盘中一度涨超20% 搜狐网"
+        "title": "美国各大唱片公司施压流媒体平台，要求AI生成歌曲强制标注标识 - 手机网易网",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBybjNCR1ZyQTI5dmpxVkNHWUtRQTEwck5VdVJ4UmFwYVVVVmd3LWEtWjg0WXRhTjhHVFpiSy1wYl96dV9Bd2tXZDNVUFBZNmVtMU50MG5Wam91dkZNZXNLRGdn?oc=5",
+        "date": "2026-07-11",
+        "src_name": "手机网易网",
+        "summary": "美国各大唱片公司施压流媒体平台，要求AI生成歌曲强制标注标识 手机网易网"
       },
       {
         "source": "gnews_zh",
@@ -1575,14 +1518,6 @@
       },
       {
         "source": "gnews_zh",
-        "title": "唱片业联手施压流媒体：AI歌曲必须打标 - 手机网易网",
-        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5STU9wYjExZm9HZkFKTENUdEJMWjdGZ3lLVDRqRDNMd3lLdC1TSndSTGZ1eGJNd1F1T0VKeXdST1FfWHhZTXEzTFI1S2plcWZXTHZlaHliMXBzWV8yOEdfTF93?oc=5",
-        "date": "2026-07-10",
-        "src_name": "手机网易网",
-        "summary": "唱片业联手施压流媒体：AI歌曲必须打标 手机网易网"
-      },
-      {
-        "source": "gnews_zh",
         "title": "Spotify Stock Soars 15% After Announcing Major AI Music Deal - TIKR.com",
         "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPRG9RZHgxLVM3V2R2c3plSU9LWWw3QXpscENYY0ltYnNIaG5taEFrYjdvRVNjdHA3V0paZVh1YlplQ05fYms3Z3J3dmdfNmFEeXZCUkFLXzZLR1hPOFJFYVBMemZSTVhmVVIzUkxuWmFTOGxFamZBckU0SzV6R0lxZF9GdmlwVkVVZGRZOFpmeFNvb1k1cWI5NVBCcG9UNEE?oc=5",
         "date": "2026-05-25",
@@ -1591,27 +1526,35 @@
       },
       {
         "source": "gnews_zh",
-        "title": "AI歌手Xania Monet登顶Billboard成人R&B电台榜，单曲收入超5万美元 - 虎嗅",
+        "title": "唱片业联手施压流媒体：AI歌曲必须打标 - 手机网易网",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5STU9wYjExZm9HZkFKTENUdEJMWjdGZ3lLVDRqRDNMd3lLdC1TSndSTGZ1eGJNd1F1T0VKeXdST1FfWHhZTXEzTFI1S2plcWZXTHZlaHliMXBzWV8yOEdfTF93?oc=5",
+        "date": "2026-07-10",
+        "src_name": "手机网易网",
+        "summary": "唱片业联手施压流媒体：AI歌曲必须打标 手机网易网"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "AI歌手Xania Monet登顶Billboard成人R&B电台榜，单曲收入超5万美元 - huxiu.com",
         "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5oeHY1SnpSTGNramh4WGFyVDJ1S2I5MkdPdzlRanNocHFVUG5TS29nSUJ1djdHUzhGRnBUNlZzNUNLdlVuajN4TUZQR1ZTMnJnaFNyXw?oc=5",
         "date": "2025-11-13",
-        "src_name": "虎嗅",
-        "summary": "AI歌手Xania Monet登顶Billboard成人R&B电台榜，单曲收入超5万美元 虎嗅"
+        "src_name": "huxiu.com",
+        "summary": "AI歌手Xania Monet登顶Billboard成人R&B电台榜，单曲收入超5万美元 huxiu.com"
       },
       {
         "source": "gnews_zh",
-        "title": "报道：OpenAI首款“AI硬件”是“智能笔”或“音频设备”，由鸿海独家代工，预计今年或明年推出 - 华尔街见闻",
+        "title": "报道：OpenAI首款“AI硬件”是“智能笔”或“音频设备”，由鸿海独家代工，预计今年或明年推出 - wallstreetcn.com",
         "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE8wLXZQNmNzLVVfMVl2bVQ5c0Mwb0U4UThCaWR0RTNtQlVWcWtqTlBPNDBfQ1RlVDItcXlGVmJTUEp3dTZIZlZiQWpaVDVuWDc1RHpZ?oc=5",
         "date": "2026-01-02",
-        "src_name": "华尔街见闻",
-        "summary": "报道：OpenAI首款“AI硬件”是“智能笔”或“音频设备”，由鸿海独家代工，预计今年或明年推出 华尔街见闻"
+        "src_name": "wallstreetcn.com",
+        "summary": "报道：OpenAI首款“AI硬件”是“智能笔”或“音频设备”，由鸿海独家代工，预计今年或明年推出 wallstreetcn.com"
       },
       {
         "source": "gnews_zh",
-        "title": "AI生成歌曲首次登顶Billboard乡村榜引发音乐产业争议 - 虎嗅",
-        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE16TnRoTkJMemZtWE1pV29TVGlTTTRKaVZNZ245dURCYVhGSEVnYnR0alB3STFuZ0lWdFd3Y1hDY2szVy1MRVNIYlVCbUlIRW1OdGxPYw?oc=5",
-        "date": "2025-11-12",
-        "src_name": "虎嗅",
-        "summary": "AI生成歌曲首次登顶Billboard乡村榜引发音乐产业争议 虎嗅"
+        "title": "三星发布 Music Studio 5/7 全新 Wi-Fi 音箱，AI 功能加持 - QQ News",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9QSG9wZERxbC1RMHptNEpjMUNPQ2FvbnAtZWRmT2hicjRSeHhBcTZoTUVZN09iZGVMZW5kd0k2bmc3Zks2a2lSanNTREVORGNfbkpzWmln?oc=5",
+        "date": "2025-12-28",
+        "src_name": "QQ News",
+        "summary": "三星发布 Music Studio 5/7 全新 Wi-Fi 音箱，AI 功能加持 QQ News"
       },
       {
         "source": "gnews_zh",
@@ -1623,11 +1566,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "遇见AI | AI不到30秒就写完一首歌？AI唱的歌好听吗？ - vibes.8world.com",
+        "title": "遇见AI | AI不到30秒就写完一首歌？AI唱的歌好听吗？ - vibes by 8world",
         "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQOTc2aXpWd0VkTVdsUHlJT3M1cndwcjNXd0t0amYzTW5BMFZ4djgzcExERlpVY3BFMlRheVY0SDNleGdEQWlPWDhjZVktV3Z3Y25lVzF3LWl6RHQyWk9DQk9yWENoVXZYQTdHU2JDM0lDaWFORjBGblpsTlhjWlFYdWRPRGNwSldxMlZxVS1iX0EwQWJ2LTdsX3NvaDJRODRfZFNRbHhn?oc=5",
         "date": "2026-03-18",
-        "src_name": "vibes.8world.com",
-        "summary": "遇见AI | AI不到30秒就写完一首歌？AI唱的歌好听吗？ vibes.8world.com"
+        "src_name": "vibes by 8world",
+        "summary": "遇见AI | AI不到30秒就写完一首歌？AI唱的歌好听吗？ vibes by 8world"
       },
       {
         "source": "gnews_zh",
@@ -1671,11 +1614,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "MiniMax上线新一代音乐生成模型可生成整首歌曲 记者实测 - QQ News",
-        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9fQ01DTjZ5dHpXS3ZzeWxWbU0wLWY0VzNLMjJVVF82MnRsZEdOeGNPRVZGMGRxSERVSmt3WDF6UkJvdTA2QjV6RDRHc2d2dWxrZ2ZqZTdR?oc=5",
-        "date": "2025-09-14",
-        "src_name": "QQ News",
-        "summary": "MiniMax上线新一代音乐生成模型可生成整首歌曲 记者实测 QQ News"
+        "title": "10 款最佳 AI 音频增强器（2026年7月） - Unite.AI",
+        "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1QNWFyeDhyQzZ0QlUzSFlZbkI5dkJSVXVhczhlaDdDQjJrcFRGYjJEUEpyRDFTSkE5UzE5YkM4cE9ZZ01DM05FS1YxY0xJZ25TV1ROOVpuUDVXN0RrdnRPOQ?oc=5",
+        "date": "2026-05-23",
+        "src_name": "Unite.AI",
+        "summary": "10 款最佳 AI 音频增强器（2026年7月） Unite.AI"
       },
       {
         "source": "gnews_zh",
@@ -1687,11 +1630,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "10 款最佳 AI 音频增强器（2026年7月） - Unite.AI",
-        "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1QNWFyeDhyQzZ0QlUzSFlZbkI5dkJSVXVhczhlaDdDQjJrcFRGYjJEUEpyRDFTSkE5UzE5YkM4cE9ZZ01DM05FS1YxY0xJZ25TV1ROOVpuUDVXN0RrdnRPOQ?oc=5",
-        "date": "2026-05-23",
-        "src_name": "Unite.AI",
-        "summary": "10 款最佳 AI 音频增强器（2026年7月） Unite.AI"
+        "title": "MiniMax上线新一代音乐生成模型可生成整首歌曲 记者实测 - QQ News",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9fQ01DTjZ5dHpXS3ZzeWxWbU0wLWY0VzNLMjJVVF82MnRsZEdOeGNPRVZGMGRxSERVSmt3WDF6UkJvdTA2QjV6RDRHc2d2dWxrZ2ZqZTdR?oc=5",
+        "date": "2025-09-14",
+        "src_name": "QQ News",
+        "summary": "MiniMax上线新一代音乐生成模型可生成整首歌曲 记者实测 QQ News"
       },
       {
         "source": "gnews_zh",
@@ -1703,11 +1646,11 @@
       },
       {
         "source": "gnews_zh",
-        "title": "MiniMax Music 1.5：AI 谱写新篇章，音乐创作告别Demo 时代 - 51CTO",
+        "title": "MiniMax Music 1.5：AI 谱写新篇章，音乐创作告别Demo 时代 - 51cto.com",
         "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5pTXNZUkg4M1RsOTNNRHR2ZGFpcGhTbFBDd2pMQmluaDBXWW41NHY2dXkwdVVDQ1B2TUtXR2ZaX1cwZ3piQnh4VTYxRHE?oc=5",
         "date": "2025-09-12",
-        "src_name": "51CTO",
-        "summary": "MiniMax Music 1.5：AI 谱写新篇章，音乐创作告别Demo 时代 51CTO"
+        "src_name": "51cto.com",
+        "summary": "MiniMax Music 1.5：AI 谱写新篇章，音乐创作告别Demo 时代 51cto.com"
       },
       {
         "source": "gnews_zh",
@@ -1767,14 +1710,6 @@
       },
       {
         "source": "gnews_zh",
-        "title": "Eleven Music文字转音频AI模型问世：号称可以生成录音室级别人声音乐 - 新浪财经",
-        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA4NWdidGFiODR3RWxFaUlVanZNdjV4NVdkUFhmSm8tLWhrRHdTemxWcmd0Zy0wTDk3WmstNEhVajFqaThoWXpKQTluQVpIaFhsS011ZTRLejc1RkFnMURtMVprZlp1QTB1NVBwMS0xUDJGdU52bkE?oc=5",
-        "date": "2025-08-07",
-        "src_name": "新浪财经",
-        "summary": "Eleven Music文字转音频AI模型问世：号称可以生成录音室级别人声音乐 新浪财经"
-      },
-      {
-        "source": "gnews_zh",
         "title": "梁导爱国歌MV用AI重现李光耀音容引议论 政府：手法体现尊重态度 - 8world",
         "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcnZSN3h6MU1MbF92cC1BNktZTEFac0pibFZuc0F6ZFNmSjZyQlN3NnpOUEt2OHB5YzZ4Yk5IakFRVHgtVUVMTERaSHowdlNubS1hbmpweVpDS0FheUQ0SVRkYm9LcTNpTGU4RXRvZFVxTXg0bW05d1lTSWY2SUNBRGZDX3dRak15V0g2TWg2Y3ZkbUZkWGJZR3RVb0Q1YkZpdGJxOA?oc=5",
         "date": "2025-08-28",
@@ -1788,6 +1723,14 @@
         "date": "2025-05-23",
         "src_name": "Unite.AI",
         "summary": "10 个最佳 AI 音乐视频生成器（2026年7月） Unite.AI"
+      },
+      {
+        "source": "gnews_zh",
+        "title": "YouTube 为创作者推出免费AI 音乐制作工具- Google YouTube - cnbeta.com.tw",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFB6T2FwanpJR20xNkFkc19WcmRQREwtVUFFT0tTNFZMN1RvLUxObWlZX3Bidm1OSXNIaWlfeUYwWUdwWlFybXpTNENSX0hGN0FLUmg2akcxSFJuY3FGMktIcVlR?oc=5",
+        "date": "2025-04-11",
+        "src_name": "cnbeta.com.tw",
+        "summary": "YouTube 为创作者推出免费AI 音乐制作工具- Google YouTube cnbeta.com.tw"
       },
       {
         "source": "gnews_zh",
@@ -1809,19 +1752,35 @@
     "gnews_en": [
       {
         "source": "gnews_en",
-        "title": "AI Music Startup Suno Is Adding a Watermark to Songs as Legal Troubles Pile Up - Gizmodo",
-        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQQlR2STdnYkxOOXRTQXZxenI5dmEzcnZJbzdHblBWdm1TNUxUNGU1eW4yRndoTFdQWE91T3lqVmhtOW93YmVacGNhMjlabnhRMUh2eDA3MF8tanlXaUlaeVhXTGN3T25uMmRSSjJqZmpqbTE3YUIxNFdDZnJXVWVDdVFOZTJlTVpDWTQyWDh2Ty00WFdQX1ZfT3lqZFByM3Foa1pHRERydEthejFhVkE?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "Gizmodo",
-        "summary": "AI Music Startup Suno Is Adding a Watermark to Songs as Legal Troubles Pile Up Gizmodo"
+        "title": "Xania Monet’s AI music highlights our tolerance of fake art - U.S. Catholic",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdGF0ak1GUk03em5qMEJrdjY5SzcwMkpWN0F6WlpwaEJWMmxBVGJ3WDRwYWJNZmRYZnpUUUIzZjNITEgtLTE5QWRneHVISUpFMWcwNGxKWW5JcmRpOG1aNXlRWEd2YkljUTlKWk9leHk3WmVSRlN5Tmo2M3ZER2ZjUTBJWThHSmlMUUt1NDh0YWJqa1VXM2VRSWpJRGJuZTA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "U.S. Catholic",
+        "summary": "Xania Monet’s AI music highlights our tolerance of fake art U.S. Catholic"
       },
       {
         "source": "gnews_en",
-        "title": "Suno shares plans to combat spammy AI music - The Verge",
-        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNVG9sdU5pNVhRSFVmczhEcFVuOW9iSXBkV0d4TmlTa19mcFNHM3lCYnU1VXBJVkhuVkQ0WWJaczhPdDNWRE1CMG1yZlByempDSlpqOVJYUDlrVGRoQU5JMXQxWGdBbGVSYWY0ZVB6UHZxM2w4T2RCa0prbEhEYmRoV2tJSEVvVTFCX2ZxOTFqTDA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "The Verge",
-        "summary": "Suno shares plans to combat spammy AI music The Verge"
+        "title": "AI music company joins the vinyl record resurgence - Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOa2JVTGVUc3ZrbTJjM09XRE04cW42R0lRWUhhM205aFNUUE9SdHNCbFN3MkxhSW5Od0haSGlEYXhnU1lMTVJ2b05oZS1IeXhJcUlqY01xdVd4RHZFU212ZmVKY0VXUjhjdzJlZW5Ib2d1UDZtTTV2THN3TUdWc3ZFVDJaRFRhV1NwMmZqLWpPcU9ILVN2YVpxTkxJVnRSSjRfMEFhSlVrUy1ENlZwdm9ZY2xma2lsWHBiWmIwY01OUmktQkN1M0hLZXpyc0tEV05z?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "Los Angeles Times",
+        "summary": "AI music company joins the vinyl record resurgence Los Angeles Times"
+      },
+      {
+        "source": "gnews_en",
+        "title": "AI music generator Suno tightens rules to fight spam and address growing copyright concerns - the-decoder.com",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNWTZ3Y0FSZWNKY0duSHAzZldLSW1wa012eGtZVllxUEoyZ0hERXl1X3ZURXNJeFJQV1dOeTMyUE1waTFTQXpTSVlnU3pEZDV6NWhKVGxRQV9jcDlKWUh1c0xCSjkxQkNFZ19QMGMxUmUzeUtsbkh2b1p4VWxuclNfd3h5WEk3OVo2dm0zUXdtWmFCYzZrN0RZVjk5b3Y3NjVoZVhxX29ubW5vRzhOSDZJZ3R6NmhObUE?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "the-decoder.com",
+        "summary": "AI music generator Suno tightens rules to fight spam and address growing copyright concerns the-decoder.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Suno will watermark its AI songs as lawsuits mount - The Next Web",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNMk54TGNyRTM1b3NDMG45Y2pCUmVZREFMdmlOXzVaOV9rUmRJQjdKWkN6cXNyV2dtUFdQRnBxcEhQN0dGSXZ5bms2aTRlQXVkSUdVOFl6T3hmMzZUMjU4ZS1UTm9NTEMtN19mNm1QbFpBX1NCZjdWWkh4SW0teTgybHRJN3RFTUlCSWh2aGRR?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "The Next Web",
+        "summary": "Suno will watermark its AI songs as lawsuits mount The Next Web"
       },
       {
         "source": "gnews_en",
@@ -1833,43 +1792,35 @@
       },
       {
         "source": "gnews_en",
-        "title": "Does AI Music Matter to the Smart Home/AV Installer? - Essential Install",
-        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQbXhxZXkzRTB6R3BVNWxBekF6aEZVOF9YSWRnSTRURGNQYlJVQkI5TUxTdG5rTjB3UVlmZVpWSjRrQllSLVl1VjhGN2FDR0VqN1I5YU1iakJ3b1lyaTU3RzFJYnRZaEZIQ1Iybldqb0hKay1qc0lFbDZuOUtwNlNlNW5kNGVOTHhEVzhmV0FtbUJ1eXBN?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "Essential Install",
-        "summary": "Does AI Music Matter to the Smart Home/AV Installer? Essential Install"
+        "title": "AI Music Generator Suno Announces New Watermarking and Copyright Protection Tools - AI Insider",
+        "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPTXVQSDY3RlB5OWlJdlFrdWlydVl5cmdNUUdvVXJlelBKdDI1VkNHUVBhenY3azFQRWJOTEpvSGFmUFMwSkdoYWhPa1doY3M4aWRabWpjU1QwWGVwa3h6MkplTlBFUG4tTV9YSGlXRGlYbHdzWHAtR0tGc1pGSklabnVHeDdfb3IyRnJPNW1tR0JMdHNRWWtDbXVwM0h3TVFZbzhib0hBbkZyRnRwLUxjVmtxOVltS054ZFMw?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "AI Insider",
+        "summary": "AI Music Generator Suno Announces New Watermarking and Copyright Protection Tools AI Insider"
       },
       {
         "source": "gnews_en",
-        "title": "Record Companies Want to Regulate AI Tracks. How Do Their Proposals for Charts and Streaming Services Compare? - Billboard",
-        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYTVUSUxhdFZSeWE1V2cwZE5EcFMwckpOYkVTWHUzdHVfc1d3SkM5TUpJTWpISUV0NnlxQTNpaEVTZGdyNmhoYXgydFRzdFN1QjQ2MEJ0OXhudzJ2YUpDUWYxVEphZmhLMU9GMWtYTDN2Nm9BUmo0Rno4aDF2XzdaRWg4MzVBV0tRM01aUHMyUQ?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "title": "AI Music Startup Suno Is Adding a Watermark to Songs as Legal Troubles Pile Up - Gizmodo",
+        "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQQlR2STdnYkxOOXRTQXZxenI5dmEzcnZJbzdHblBWdm1TNUxUNGU1eW4yRndoTFdQWE91T3lqVmhtOW93YmVacGNhMjlabnhRMUh2eDA3MF8tanlXaUlaeVhXTGN3T25uMmRSSjJqZmpqbTE3YUIxNFdDZnJXVWVDdVFOZTJlTVpDWTQyWDh2Ty00WFdQX1ZfT3lqZFByM3Foa1pHRERydEthejFhVkE?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
         "date": "2026-08-06",
-        "src_name": "Billboard",
-        "summary": "Record Companies Want to Regulate AI Tracks. How Do Their Proposals for Charts and Streaming Services Compare? Billboard"
+        "src_name": "Gizmodo",
+        "summary": "AI Music Startup Suno Is Adding a Watermark to Songs as Legal Troubles Pile Up Gizmodo"
       },
       {
         "source": "gnews_en",
-        "title": "Suno is now letting users press their AI music slop to vinyl, thus alienating streaming services, artists and audiophiles - TechRadar",
-        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOOVlRVDFseWZUM2RRSzcwdV9HVkpMUjF6MUh6dkNrd1FNakw4MzVDSE16YVAycUliU016ME5IcGo3N0pXbmtVMHJRSkdMOGk3N2Q0ZTlSalotZ3FfbTJ3dGV3S1hFMlpOb3FSTG1oOGt3WFZpMElSUUstSnVRU3ZlLUhRVDRIZGRvQlBQSGxJLW84YVYtU1pvMlBTQzlTQTVwWDJwNzFzNVNJakJrbnNZTDBBNWlqMzdkaUhCTWdXU0Y5QzlROHlHR1RyRzZVcjRGM3NQelRvMkVLYjA0YURZdHlzeGZJdw?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "TechRadar",
-        "summary": "Suno is now letting users press their AI music slop to vinyl, thus alienating streaming services, artists and audiophiles TechRadar"
+        "title": "AI music generator loses a copyright case over using human art as 'inspiration' - Gamereactor UK",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOTDlXQ1JyZGJSS2R0Wl9US0tOUlU4WXVrY2FkdTUwSmhfUVRmb0tCU2NIdC13QUJFWXJBdGM4d1IyVXBldDYtdzJnRFYtVjdTd09naGo0alJVbTFmZ1pOMHhZUDVIZjVpSDN4eVRYcnZ1eWNSSFlTeDBDd0l2UnlKb0hLc3RoZGZRQ1FiWHdNTWFZXy03NjZoaE8xa0IycUNvNVRMYjBiVjJPWmRJQWZhdjJsOA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "Gamereactor UK",
+        "summary": "AI music generator loses a copyright case over using human art as 'inspiration' Gamereactor UK"
       },
       {
         "source": "gnews_en",
-        "title": "Suno Lays Out AI Music Principles After Copyright Fight - Unite.AI",
-        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQVXViUUhUSmpLWWlUa01XeUZ5SGZsazRtOWdJeHNQdjFDM1BaNW1uZ29za3BUWF9ubzZLa1QyUUVOaERKdGRMckU4VTUzR0hXSlRndVZvRVJfMjhnd25zbllkVXl4M1dqSUw4eEIwNXM1Ukt4M3RSQzNES1M3MmtuSzFQQQ?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "Unite.AI",
-        "summary": "Suno Lays Out AI Music Principles After Copyright Fight Unite.AI"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Suno adds AI music safeguards as copyright lawsuits intensify - Межа. Новини України.",
-        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE4zVmphMTd6Zndrelh6bVEyU2hHYkRiR2xFUVBLOVJjYmlhLURaZXhBbldKSDVsR3daVE9vYVEwbWtRYmpvQzhSS1JleFlHaUdjOTR0dDlnUEpzMUlNMXY0?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "Межа. Новини України.",
-        "summary": "Suno adds AI music safeguards as copyright lawsuits intensify Межа. Новини України."
+        "title": "'Great music is made by people': Suno spent years making AI music easy — now it’s trying to stop people making quite so much of it - techradar.com",
+        "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxPOFJuT0JUMHIxbDVSTWpyc3dRRzBaOGNwNFQ0SWFNamZ6TDB0Y2NNeWtwcU5iLUp5ZllJWXI1a0RYdWk4RFd3ZGQtMV9zakZZV2oxempKSEVpdFpFZEtSWDhLMkYxeFp3dHl6YnAxZnVubjhneVFqRWttSnlWdzBGUWdBcXRVV2ozd3UtRDk0M18tTS0xNVdaZ3drSkJOd1lIYlJLYVA3dWJoLVZqYlFQajhCNmNRYkRrSWNyUmpid2dSR0pud2RnaE1KOGFoNld4eVBvQVNZOC1scUpZTWxBVzM1QWg4dGV2VUx4Wm1EUTJ2RDhONkJTeUVfem5admxvaU5oNElnM1JVOGpO?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "techradar.com",
+        "summary": "'Great music is made by people': Suno spent years making AI music easy — now it’s trying to stop people making quite so much of it techradar.com"
       },
       {
         "source": "gnews_en",
@@ -1881,19 +1832,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "Empire of the Sun’s Luke Steele likens AI music tools to a “really smart guitar pedal” - Guitar.com",
-        "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPLWFXc1lRWGtjX2tRTDZpZzQyN1FmSS0yN3Q5ZGVyT29uYUJ1bVRKWkR1OG9zN2VRZ29rbnNYS0Y5QzdVWDNIVUtkbF8xTF9YMk5VLVFYd2xtaGVKQm83enNzbUwyNk5FMFdadUtMWmN6c0x4R0hscFJYQ3lmRll2MmoyVFBsZk9G?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "title": "Suno shares plans to combat spammy AI music - The Verge",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNVG9sdU5pNVhRSFVmczhEcFVuOW9iSXBkV0d4TmlTa19mcFNHM3lCYnU1VXBJVkhuVkQ0WWJaczhPdDNWRE1CMG1yZlByempDSlpqOVJYUDlrVGRoQU5JMXQxWGdBbGVSYWY0ZVB6UHZxM2w4T2RCa0prbEhEYmRoV2tJSEVvVTFCX2ZxOTFqTDA?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
         "date": "2026-08-06",
-        "src_name": "Guitar.com",
-        "summary": "Empire of the Sun’s Luke Steele likens AI music tools to a “really smart guitar pedal” Guitar.com"
-      },
-      {
-        "source": "gnews_en",
-        "title": "'Stolen intellectual property': German court rules AI music generator Suno broke copyright rules - Euronews",
-        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQUk5yVjF0ZHdJNzJXMFN5VmY4a2JSbGVLSHBxT0JTOVJEWU90cWwtLUxjbW13VWlOSmFmQkN2N0hfU2h0MXd1Ym8tRElzd1UyZlNJQkhuQzVEZ3BPY2YyQnVQOTJhT0lPYW16SFZRNGFJTnVTN0pjUjdXVF9XSmR2SmtVSW8xbXBDd0Q1YWlkOHJnbWswZHFCY19IMHlBdEVJa1RLcjFUNVR1eER3S05LS3NWWkJGOEVxZmhpREFVOWU3OE1YYWhjbWROTjZvbGc?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-05",
-        "src_name": "Euronews",
-        "summary": "'Stolen intellectual property': German court rules AI music generator Suno broke copyright rules Euronews"
+        "src_name": "The Verge",
+        "summary": "Suno shares plans to combat spammy AI music The Verge"
       },
       {
         "source": "gnews_en",
@@ -1905,27 +1848,43 @@
       },
       {
         "source": "gnews_en",
-        "title": "German court rules AI music firm Suno broke copyright rules - Reuters",
-        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjBLM01uX0dLclpkY041M29fZHdIbm52RmhrcUxBdEhxZ1dzeVlHY25tRVJYcGRIejJ5ZjZZOU9RYnhsaFdGX0dWdG9aRGxpRDE5QzItNFNqWm9RVDRheEYxaFVuRm54aXh3cmRNLTlLSEV1ZVZ5azgzMDNtUGR4dVNjQUp2b0R1eldwSTVqeFJXMmJZQWl2MkxMNzFGYkxKM3ZR?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-07-31",
-        "src_name": "Reuters",
-        "summary": "German court rules AI music firm Suno broke copyright rules Reuters"
+        "title": "'Stolen intellectual property': German court rules AI music generator Suno broke copyright rules - Euronews.com",
+        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQUk5yVjF0ZHdJNzJXMFN5VmY4a2JSbGVLSHBxT0JTOVJEWU90cWwtLUxjbW13VWlOSmFmQkN2N0hfU2h0MXd1Ym8tRElzd1UyZlNJQkhuQzVEZ3BPY2YyQnVQOTJhT0lPYW16SFZRNGFJTnVTN0pjUjdXVF9XSmR2SmtVSW8xbXBDd0Q1YWlkOHJnbWswZHFCY19IMHlBdEVJa1RLcjFUNVR1eER3S05LS3NWWkJGOEVxZmhpREFVOWU3OE1YYWhjbWROTjZvbGc?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-05",
+        "src_name": "Euronews.com",
+        "summary": "'Stolen intellectual property': German court rules AI music generator Suno broke copyright rules Euronews.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Suno Adds Audio Watermarks to AI Music as Legal Troubles Pile Up - The Mac Observer",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQVEllZGIxLXFNemtKQV9taUZtOWgzb1ctbUdJanE0M0hIelgwb3J2R0NHSHZrV3dHRzVmSWppT0J2ZzBBNUgxaVpMUlpmb2MtVm1NUHVVRHVZbFBvRXYyUnUtWGpRZDN6X0daelYzcGpZM2JvTWlIeklJLTV0WWhZZEpaWFlZaTlLcktIdjV3b3hFZUw1RDhaZVI5bWZiaFE?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "The Mac Observer",
+        "summary": "Suno Adds Audio Watermarks to AI Music as Legal Troubles Pile Up The Mac Observer"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Thomas Bangalter says he is \"not interested\" in AI music tools - We Rave You",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA4bmF3WE5LN2pOLVBzVnhfbDFFQ2lseDVFRk1xTkVMdUJHT25TSDY2ZENMRHhWR290T0dGYXpiYzlnYWxaUnNZZ2lnVUNNbUZyd1BMcUMxSllYekNGWXg1U180TVRBSTEyWTFUcHk0UU1UM2ZMb1RtTmQ3QQ?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "date": "2026-08-07",
+        "src_name": "We Rave You",
+        "summary": "Thomas Bangalter says he is \"not interested\" in AI music tools We Rave You"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Empire of the Sun’s Luke Steele likens AI music tools to a “really smart guitar pedal” - Guitar.com",
+        "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPLWFXc1lRWGtjX2tRTDZpZzQyN1FmSS0yN3Q5ZGVyT29uYUJ1bVRKWkR1OG9zN2VRZ29rbnNYS0Y5QzdVWDNIVUtkbF8xTF9YMk5VLVFYd2xtaGVKQm83enNzbUwyNk5FMFdadUtMWmN6c0x4R0hscFJYQ3lmRll2MmoyVFBsZk9G?oc=5",
+        "date": "2026-08-05",
+        "src_name": "Guitar.com",
+        "summary": "Empire of the Sun’s Luke Steele likens AI music tools to a “really smart guitar pedal” Guitar.com"
       },
       {
         "source": "gnews_en",
         "title": "Suno Loses Copyright Lawsuit To GEMA—AI Music Companies Should Worry - Forbes",
-        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQ1FDRnFFcnNOT3ctaTZadGZGT3F4SjhNSkROTEF3bHYwRzVuZkM0R0twWFlWMlpPelUwZkxnZm1kTWRXNkI0QmZFLVM5dTQxQUdkS1lhdldOVVFGUzhzejBtSnpLako0YjJtSV84SjI2N200aHV0eWtaRjZ2aE1NTnZ3MjVvRVpiZVhoOG5faFZmeFB3M1BrZ000NWFoOXJlUW9NR0tPMmVOWm1seElmczBic0xVN1hEYWpMRg?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
+        "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQ1FDRnFFcnNOT3ctaTZadGZGT3F4SjhNSkROTEF3bHYwRzVuZkM0R0twWFlWMlpPelUwZkxnZm1kTWRXNkI0QmZFLVM5dTQxQUdkS1lhdldOVVFGUzhzejBtSnpLako0YjJtSV84SjI2N200aHV0eWtaRjZ2aE1NTnZ3MjVvRVpiZVhoOG5faFZmeFB3M1BrZ000NWFoOXJlUW9NR0tPMmVOWm1seElmczBic0xVN1hEYWpMRg?oc=5",
         "date": "2026-08-05",
         "src_name": "Forbes",
         "summary": "Suno Loses Copyright Lawsuit To GEMA—AI Music Companies Should Worry Forbes"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Ex-Spotify Team Raises $10M to Bring Music AI to Shopping - The Tech Buzz",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOT1E2Q21CdWVJOS1QX2hYQldkdGdwY2pQQm00Z1IyQW80ZXB6R3JfQjliVEJxal96bFB1NHptbXB2ZEtfQTExNkxZNmdCc2RjOHVKRkZOUmJHYnFWVnNzY1hoQXBSSlI1LVZXOTU3WHdhdFphc3FKcUJwSVcyVjlKdEhNQ0pxeXdST3Znc0J3bVBHMU0?oc=5&hl=en-US&gl=US&ceid=US%3Aen",
-        "date": "2026-08-06",
-        "src_name": "The Tech Buzz",
-        "summary": "Ex-Spotify Team Raises $10M to Bring Music AI to Shopping The Tech Buzz"
       },
       {
         "source": "gnews_en",
@@ -1937,19 +1896,35 @@
       },
       {
         "source": "gnews_en",
-        "title": "OiiOii AI Launches AI Music Video Creator That Turns Songs Into Fully Produced Music Videos in Minutes - PR Newswire",
-        "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPdmoxbFU5TU4zQWJNV2g0ekxHOEZpZExHSklNZW5hclBzT0RreTF5QlU0MHVtSDVrS2YtRnpyZlgxMHYtYzkwTkxnTzBLdkxGOTN1SlFURDRFelozTjRmMFFNZDVuUnBBZm0yblpITkp5bUZYRThzWW8yVmVIMUFwS1NpYUtjZDVqaEdsQ2JFNXhZNFNWbG1zMktuNUVwc2w1N2RPUWJVZEVNR2tOSjg1SUUzWmJ5eGJnNkRFOHdEemVwYTZoRXUwYm45cUp6dDRSOXE2YmpBYmc2RlNNZGh3R2hrd0pZOTdyWFBCbnlsVQ?oc=5",
+        "title": "OiiOii AI Launches AI Music Video Creator That Turns Songs Into Fully Produced Music Videos in Minutes - Yahoo Finance",
+        "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQUlRRZzFGRTZDbG03dlFjOFZneFhLaVdnTm1VQ01xTFVoTWlRVGRuUXEzbmU3UXFkX1R1VXdmdDZYM1pwMjN1Nklrdnl5cEFZOEZ3MEE5Zi10UHczZmFUV3licl9nRnJ6V245dnNLdjBGNXdxZWp2T3c1X0pGcmlBazl3Z2xIek9mNlAzYXpjR0dNSXl3c1E?oc=5",
         "date": "2026-08-05",
-        "src_name": "PR Newswire",
-        "summary": "OiiOii AI Launches AI Music Video Creator That Turns Songs Into Fully Produced Music Videos in Minutes PR Newswire"
+        "src_name": "Yahoo Finance",
+        "summary": "OiiOii AI Launches AI Music Video Creator That Turns Songs Into Fully Produced Music Videos in Minutes Yahoo Finance"
       },
       {
         "source": "gnews_en",
-        "title": "Spotify Says Its AI Music Plans Won't Miss a Beat Without Every Major Label— Here's Why - Benzinga",
+        "title": "Why Online Course Creators Are Finally Taking Audio Seriously — and What AI Music Makes Possible - breakingac.com",
+        "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxONVIybHhxbkllbWpDQ0Y4Y2VubmM4djAtUjNCRXhLLUppTlU0T2ZMUmstTTdzR2Zwckd1dVVoRFFOTEoxSUZlZ1pTZHVITzE1ZERqQ1oyN2tja0VDSnEwSDA4X2dTRjBaQ3FXU182Nkh3Rlo5UTN3VkVNRGNqODZRS0V0TFh1SHhraF85bFVRWmhMbjR5bmtJNm1Ec2JiN0k5QlAzOTlaV2haaGVTV1pfRkVFdWlWcmwzZ0FXS1hnLVVhWGVuSmtFQUxHVGFRenFhYWNialM5d08?oc=5",
+        "date": "2026-08-06",
+        "src_name": "breakingac.com",
+        "summary": "Why Online Course Creators Are Finally Taking Audio Seriously — and What AI Music Makes Possible breakingac.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Court orders AI music generator Suno to pay copyright damages - Kursiv Media",
+        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPLVRHUTUtM09VNGVBY2g0VVpNREI5bzh6b21XWFpmZ293cXFMaW81dDNPTFZzeU9oeHdEbkVUQWM4V1NmbVFPM2QyUzFVRFBtRlZ3OXo4c1laUFBVTlF2clZYSktlTmVEcmdCbVM4d19nQXhIZlBSXzVJcGFJdXRMU3M0cnZTZFJxTFhDaU1Qd1N1VF93REpteUE2X2FCQWxybVJUOUc0d2pJel9LMWFZ0gG0AUFVX3lxTE12RGhlWTlxRk5NTlJKVjhyZU9VLXRMQXVvSnFOX2YxNXdxemtOdEVrWmdRWE5VU3paam5CemlKTldBUi1taTNrX2Jxbm5ERGUtNDlWNEhPUUNXaS1LS08wNVhmZmFzaU1TZjQteG15dUxFNjhmc2x1TFQxTkFqYWlIS01CWWNnb1NoV3oxY291WkQtZTFqSHhhc0tyc041Mmk4TGFCRVFHVG5CZU9CR3BHYnMyMQ?oc=5",
+        "date": "2026-08-06",
+        "src_name": "Kursiv Media",
+        "summary": "Court orders AI music generator Suno to pay copyright damages Kursiv Media"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Spotify Says Its AI Music Plans Won't Miss a Beat Without Every Major Label— Here's Why - Sony Group (NYS - Benzinga",
         "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOYUxJRE95d1NmaWFscV9aOGRMckhUMjhPZXBXakRtSExzc2FJcE1SY2ozQnUzWEVqVXNYeTQ1U0NuWmQ1VWtHRlo3Q2h3NEJwbnN0UUJlS1l4ZTlxT1dpbURnZGlxbGdCS3hFMUYxYzNmdWltMGxfNzhVN2pBSnhRT0U3Vlp6TzA2bS02QWFxYzNvR0dDbUxLQVBUS2J2LXU3eUFhOXV2bHdmUEp2azhHUmJmYVlPcm94RDFuNnNQNEZxbHRIcExjWjFCblZXU2k3STd1SmpERUEzQ00?oc=5",
         "date": "2026-08-05",
         "src_name": "Benzinga",
-        "summary": "Spotify Says Its AI Music Plans Won't Miss a Beat Without Every Major Label— Here's Why Benzinga"
+        "summary": "Spotify Says Its AI Music Plans Won't Miss a Beat Without Every Major Label— Here's Why - Sony Group (NYS Benzinga"
       },
       {
         "source": "gnews_en",
@@ -1961,6 +1936,30 @@
       },
       {
         "source": "gnews_en",
+        "title": "Suno is now letting users press their AI music slop to vinyl, thus alienating streaming services, artists and audiophiles - techradar.com",
+        "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxOOVlRVDFseWZUM2RRSzcwdV9HVkpMUjF6MUh6dkNrd1FNakw4MzVDSE16YVAycUliU016ME5IcGo3N0pXbmtVMHJRSkdMOGk3N2Q0ZTlSalotZ3FfbTJ3dGV3S1hFMlpOb3FSTG1oOGt3WFZpMElSUUstSnVRU3ZlLUhRVDRIZGRvQlBQSGxJLW84YVYtU1pvMlBTQzlTQTVwWDJwNzFzNVNJakJrbnNZTDBBNWlqMzdkaUhCTWdXU0Y5QzlROHlHR1RyRzZVcjRGM3NQelRvMkVLYjA0YURZdHlzeGZJdw?oc=5",
+        "date": "2026-08-06",
+        "src_name": "techradar.com",
+        "summary": "Suno is now letting users press their AI music slop to vinyl, thus alienating streaming services, artists and audiophiles techradar.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Does AI Music Matter to the Smart Home/AV Installer? - Essential Install",
+        "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQbXhxZXkzRTB6R3BVNWxBekF6aEZVOF9YSWRnSTRURGNQYlJVQkI5TUxTdG5rTjB3UVlmZVpWSjRrQllSLVl1VjhGN2FDR0VqN1I5YU1iakJ3b1lyaTU3RzFJYnRZaEZIQ1Iybldqb0hKay1qc0lFbDZuOUtwNlNlNW5kNGVOTHhEVzhmV0FtbUJ1eXBN?oc=5",
+        "date": "2026-08-06",
+        "src_name": "Essential Install",
+        "summary": "Does AI Music Matter to the Smart Home/AV Installer? Essential Install"
+      },
+      {
+        "source": "gnews_en",
+        "title": "AI music floods streaming platforms as artists fight for visibility and pay - Türkiye Today",
+        "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNSDFNNGctWU53YkNsMXhkdVpFZDhucXNMYXZhZGVNMno5YUYydjdHYU5zQ2k0dDNZYTJSTmJxMG5YRXRwRHlId09kWjJJdVpkNlVJY2M4c0s4Ym1teVdla29uQ1hvbjBCOVpTdm5mZC05dlkyX3VRYjdVS1MwN3BQNWh1bDF1MUtnN2xjVmFzWTdoQkpuQ1B2TFlvOENoSE9nbEJHamNMbEJWSnFhTjZsaTEzZ2RKYUNvMGlSdGhWNXZuYjF0aG1SM3I3Yw?oc=5",
+        "date": "2026-08-07",
+        "src_name": "Türkiye Today",
+        "summary": "AI music floods streaming platforms as artists fight for visibility and pay Türkiye Today"
+      },
+      {
+        "source": "gnews_en",
         "title": "Spotify Execs Bet People Will Pay for AI-Generated Music - Gizmodo",
         "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNQ3I3RzhDYmw2QlhILU5fX0tKTmdxTG5kbW5FWE1oLXJWNzVfdUk4ZzFrNk1zYVZHZ0VxV2NJUUZwNThEZ1NBb2dLWUg1NlBrMkI5WFlBSVFMeEVPNWsxTkhsU0xZTno3eTlLUDBzOWl3MjdzY0ZCd0tTdEpjcnhla05JbFNVa2RsOWNXc25QbGRsQlNoalA1OC1vZGI4QQ?oc=5",
         "date": "2026-08-04",
@@ -1969,43 +1968,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "Spotify expands AI remix and covers project with Merlin partnership - TechCrunch",
-        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQUFPSThXdWN0RWdCNk95d204YktVTFpMaXlZNmVFXzJsZXFLX0doaXpzYjFPX1Nzb2FYWXhvdlFhcWItVVBGZE9WaE5CSGFoVWhhUmluVzlNNXJXLUI2RDQ3cWd1RE9Vajl2NFB5ZmtRSm56OXZyUTJTUk9vRFhMVWRmS0tWcXV4cXhFRkVQNVZPR1RYN3lBWmR3?oc=5",
-        "date": "2026-08-04",
-        "src_name": "TechCrunch",
-        "summary": "Spotify expands AI remix and covers project with Merlin partnership TechCrunch"
-      },
-      {
-        "source": "gnews_en",
-        "title": "AI Music Company Suno Loses Copyright Case in Germany - Decrypt",
-        "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1RaEdWQnNqM195dmRlQmRjbHd1QW9BZDd1aVpOOTJrc1J0LXRyZDY2dlNqa2hvaXpNR19UUnZycDRQbnlMRlhZYlpkY0M4WkNPZGtjOUJWN093RC1hRjZhdWhFZk9iVmVOdGgtRE5jNNIBd0FVX3lxTFBVcTZXZHE0ZVRxWUttZl9CVlM3aU1jbVVabHBSLWJjX3k3cmxnZVBhVDZoOGVZdlVXejloTjVNWEE0Ump3S0JrRFFJdU1TOTQwTDNXUG5LV1dEOGpxcWJRWUNzQnNNTGJTS0JPMFJWUjAzQm5NSE44?oc=5",
-        "date": "2026-07-31",
-        "src_name": "Decrypt",
-        "summary": "AI Music Company Suno Loses Copyright Case in Germany Decrypt"
-      },
-      {
-        "source": "gnews_en",
-        "title": "AI Music Director Review Best Choice for Content Creators.png - thearabtribune.com",
+        "title": "AI Music Director Review Best Choice for Content Creators.png - The Arab Tribune",
         "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPS0RJSUUzTWZQNVhRN2sxVFZ5V1Myal9QNmw1bTNmV0JTYkxRWVR1SzZRd2QwRC1vWWFkdE1vRnd5MEVPamFlZ2Eya1NxMV9LbHlpY3RKaTZfanhqbjJ2blljZGJoUk5pRkk0M20yYTNfdXpLRWNMSHg0QUh1a0hVODBsdEZmZ2JmMEpreDgwWmFLQlFqMXdDQ05qeWk2ZENvTnVZYUpDTW44QmdoMUdkWjBMTVI1eUJhb3NtaHIzbUxKWjZEaXJjeThiaTBLamNMSkJzWHdFaw?oc=5",
         "date": "2026-08-05",
-        "src_name": "thearabtribune.com",
-        "summary": "AI Music Director Review Best Choice for Content Creators.png thearabtribune.com"
-      },
-      {
-        "source": "gnews_en",
-        "title": "From ‘Daddy Cool’ to the Docket: How Latham & Quinn Emanuel are Testing AI Music in Court - Law.com",
-        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPb3NQVEVuNFhGUjR3WUY5enhsb3dUTlNZMVdtZHJVWHJGRHp3d3VuR3VtbGhBQlZ0RUo1N1RPMXhVVjhsbTlKaFh2TnB3V2xZQlpMWm8ySV9GUzhKOVpwcE5kOWM3MTZ5TjdwMDBtT2Z5eTMtZDV5bkc3SE5uVGRDVjN4NVFTVzRTNkdLN2lUSTh1MjJjYVdXMnhpaFp3d2xHSG1vUjFsU2FWdVVGUk45dGZTemJJSkZOcGhIUXpCOWNlQ194emJYMk8yS1NRYjBfTm1tVW5B?oc=5",
-        "date": "2026-08-02",
-        "src_name": "Law.com",
-        "summary": "From ‘Daddy Cool’ to the Docket: How Latham & Quinn Emanuel are Testing AI Music in Court Law.com"
-      },
-      {
-        "source": "gnews_en",
-        "title": "At His First Show In Georgia, Moby Talks About ‘Music’s Ability to Reach Everybody – And to Reach Them In the Most Personal Way’ - Billboard",
-        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMXhzUk1wX25kU2ZnOURGLUtZeFdKVTNvOUNZcGpXUjRkRG1QMzRsTUJZaU8xOEV3NlYwRC1lUlpLLV9ITVNabnUyWTFTYkpRTGM2YWZhaXlhaHU4U1pSbmtfaTVlbkROOGRkQTUzeUVFdXZYSXgzT0IyNl9lamhkOTQ5SFlWRDh2b0haVlB3?oc=5",
-        "date": "2026-08-05",
-        "src_name": "Billboard",
-        "summary": "At His First Show In Georgia, Moby Talks About ‘Music’s Ability to Reach Everybody – And to Reach Them In the Most Personal Way’ Billboard"
+        "src_name": "The Arab Tribune",
+        "summary": "AI Music Director Review Best Choice for Content Creators.png The Arab Tribune"
       },
       {
         "source": "gnews_en",
@@ -2017,43 +1984,35 @@
       },
       {
         "source": "gnews_en",
-        "title": "Google upgrades AI music creation with Lyria 3.5 - RouteNote",
-        "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5fSVIxQW5fM1A5dkRCZmw4Ni01TkJzSUpHeXdaSlgyb2p5d24zN0JuQk4wWTIyWEZ6RnJWaEVQUXlwR0dJV3hNMnBVUC1rZTNhLUxiemVjT3ZwRkdEUEdkYmh0TQ?oc=5",
+        "title": "Major record labels propose guidelines for AI music on the charts - Los Angeles Times",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQU0NCNGNndGhzd3oxa19nQ3F3cTFrMGVNZDhTaHZ1eUxQTnQzTl9BbXkta0hTa1Y0RmNfdF9KZERHLWNPb1ZyNHZxNS1HMlBEakdQS2FFWm1CTkNLczRZdTNMSkpaOGJOMktxbUlsSnFQVjFVVWlneTdDb3l3RWFaUmpNaS1NbXRpYktiYWhWOEFfTmpzRWR6aEJaTThXTmo4SEZESGNydHc1Z1F1b2N4MFFrNlB1OW9aVElveEN1Y2Ztd3lVVTdUTWF3?oc=5",
+        "date": "2026-07-30",
+        "src_name": "Los Angeles Times",
+        "summary": "Major record labels propose guidelines for AI music on the charts Los Angeles Times"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Spotify expands AI remix and covers project with Merlin partnership - TechCrunch",
+        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQUFPSThXdWN0RWdCNk95d204YktVTFpMaXlZNmVFXzJsZXFLX0doaXpzYjFPX1Nzb2FYWXhvdlFhcWItVVBGZE9WaE5CSGFoVWhhUmluVzlNNXJXLUI2RDQ3cWd1RE9Vajl2NFB5ZmtRSm56OXZyUTJTUk9vRFhMVWRmS0tWcXV4cXhFRkVQNVZPR1RYN3lBWmR3?oc=5",
         "date": "2026-08-04",
-        "src_name": "RouteNote",
-        "summary": "Google upgrades AI music creation with Lyria 3.5 RouteNote"
+        "src_name": "TechCrunch",
+        "summary": "Spotify expands AI remix and covers project with Merlin partnership TechCrunch"
       },
       {
         "source": "gnews_en",
-        "title": "The Biggest Legal Battle in AI Music Just Took a Historic Turn... And It Could Change Every Song Generated by Artificial Intelligence. - lnt.ma",
-        "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQNWcxNXc2aFA3SE9POENwTzFjX20xSTdSd2xWQlZ5QkJuQkV2ZkxuUFN4ZVNkQTZESTkyRl9yMWNPWG11dFFoV0JRWXBZMTgySk9CYWtyM1d0UW4tbnE2TlJnSWFfR2JCZmp6RHhySHRyLV9UVDFjN3paSlkzZUdoWkpaM2FDeGxKRktQWXBrT1p1d1FHeUdzUkhUSlBGN2NVQTRZYWFmT2R5M1dzaXQ1QldxYmtramRyNjM0RjZPSXNaYWlVY0ppdjBHOGlTajZFSkFNOHV6Yk1IZmJCdTJr?oc=5",
-        "date": "2026-08-06",
-        "src_name": "lnt.ma",
-        "summary": "The Biggest Legal Battle in AI Music Just Took a Historic Turn... And It Could Change Every Song Generated by Artificial Intelligence. lnt.ma"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Spotify Expands AI Music Initiative With Merlin Licensing Deal, Teases Consent-Based Covers Tool - theaiinsider.tech",
-        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVmlFbWJrc1lkTEI0THdUQmpKZHpRNmlfak5QdWd4cnh0RXVGWm95MjJGUTdCSTBKaXFuZVJkbS1sblMwSmhPbUdiclJmSGx6c0oteTNXbnRzamt3UEd2Sk9nQ205WE12SGI1RkFld2pyZk5LSUVXX0RFNWFnWm5XODhQX05MV2Y4dDB5T3RmZWNhcktCT3pySEx1V2dfa3VPdFJXa0VaR3F4Q1ZpTjhkSFpSQU1FdXVzRjZ2MUVGZTJRQUlwUmE0UmhIOHUwUQ?oc=5",
+        "title": "At His First Show In Georgia, Moby Talks About ‘Music’s Ability to Reach Everybody – And to Reach Them In the Most Personal Way’ - billboard.com",
+        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMXhzUk1wX25kU2ZnOURGLUtZeFdKVTNvOUNZcGpXUjRkRG1QMzRsTUJZaU8xOEV3NlYwRC1lUlpLLV9ITVNabnUyWTFTYkpRTGM2YWZhaXlhaHU4U1pSbmtfaTVlbkROOGRkQTUzeUVFdXZYSXgzT0IyNl9lamhkOTQ5SFlWRDh2b0haVlB3?oc=5",
         "date": "2026-08-05",
-        "src_name": "theaiinsider.tech",
-        "summary": "Spotify Expands AI Music Initiative With Merlin Licensing Deal, Teases Consent-Based Covers Tool theaiinsider.tech"
+        "src_name": "billboard.com",
+        "summary": "At His First Show In Georgia, Moby Talks About ‘Music’s Ability to Reach Everybody – And to Reach Them In the Most Personal Way’ billboard.com"
       },
       {
         "source": "gnews_en",
-        "title": "AI Music Video Generators Compared: 5 Tools That Turn Your Track Into a Video in 2026 - NoHo Arts District",
-        "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5zSmF1TTNsaXBLUGpSVGUzSjZuRkM5UUhuajJtRklsNlF3ekx6SW9oTDlSVXZjWlFteHdRNnV0TjVhei1vY0plamtWZnFMNUt6MjRFRnc4OFN6UG9obnNkc3QwZGpqSmlkcTJFb25qb3FBUjg?oc=5",
-        "date": "2026-08-01",
-        "src_name": "NoHo Arts District",
-        "summary": "AI Music Video Generators Compared: 5 Tools That Turn Your Track Into a Video in 2026 NoHo Arts District"
-      },
-      {
-        "source": "gnews_en",
-        "title": "German court rules AI music generator Suno violated copyrights, rejects fair use defense - the-decoder.com",
-        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQU0gwNnhyWmdFOU9yNkpmak1ZNEtTY0c0UkpvSzYyT3FkdnpBLXVvTktsMGJQckJPM3FIUnZzbXlVOUpqNGFvYWdIVmk5RVVjZHdOWS1IRnNDRlh1NVQ4Zk5CNzJKSXc3VXNZejQ3QllkLUN3SFRnYmtiQ3RrOEo1WVAxQm5BZFc2bFRFb05JSTJ4dmJoTGpkM2NsWU40ZVVybUdONkx6eU9aVHV4LWxSQkJB?oc=5",
-        "date": "2026-08-01",
-        "src_name": "the-decoder.com",
-        "summary": "German court rules AI music generator Suno violated copyrights, rejects fair use defense the-decoder.com"
+        "title": "Suno adds AI music safeguards as copyright lawsuits intensify - Межа. Новини України.",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE4zVmphMTd6Zndrelh6bVEyU2hHYkRiR2xFUVBLOVJjYmlhLURaZXhBbldKSDVsR3daVE9vYVEwbWtRYmpvQzhSS1JleFlHaUdjOTR0dDlnUEpzMUlNMXY0?oc=5",
+        "date": "2026-08-06",
+        "src_name": "Межа. Новини України.",
+        "summary": "Suno adds AI music safeguards as copyright lawsuits intensify Межа. Новини України."
       },
       {
         "source": "gnews_en",
@@ -2065,6 +2024,22 @@
       },
       {
         "source": "gnews_en",
+        "title": "Spotify Expands AI Music Initiative With Merlin Licensing Deal, Teases Consent-Based Covers Tool - AI Insider",
+        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVmlFbWJrc1lkTEI0THdUQmpKZHpRNmlfak5QdWd4cnh0RXVGWm95MjJGUTdCSTBKaXFuZVJkbS1sblMwSmhPbUdiclJmSGx6c0oteTNXbnRzamt3UEd2Sk9nQ205WE12SGI1RkFld2pyZk5LSUVXX0RFNWFnWm5XODhQX05MV2Y4dDB5T3RmZWNhcktCT3pySEx1V2dfa3VPdFJXa0VaR3F4Q1ZpTjhkSFpSQU1FdXVzRjZ2MUVGZTJRQUlwUmE0UmhIOHUwUQ?oc=5",
+        "date": "2026-08-05",
+        "src_name": "AI Insider",
+        "summary": "Spotify Expands AI Music Initiative With Merlin Licensing Deal, Teases Consent-Based Covers Tool AI Insider"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Google upgrades AI music creation with Lyria 3.5 - RouteNote",
+        "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5fSVIxQW5fM1A5dkRCZmw4Ni01TkJzSUpHeXdaSlgyb2p5d24zN0JuQk4wWTIyWEZ6RnJWaEVQUXlwR0dJV3hNMnBVUC1rZTNhLUxiemVjT3ZwRkdEUEdkYmh0TQ?oc=5",
+        "date": "2026-08-04",
+        "src_name": "RouteNote",
+        "summary": "Google upgrades AI music creation with Lyria 3.5 RouteNote"
+      },
+      {
+        "source": "gnews_en",
         "title": "Human Songwriters Just Won a Landmark Case Against AI Music - relevantmagazine.com",
         "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQMC1HN0dOYzIzQnR5R2dSMlRMT0h3Q21PTU96RTZ4ci0tSk9sU3l5RWNQRmJmdUZmaDFTZGtSX3hfaldidlRmUnpmUEFJbE9vVURsX1lFTzl1emEtbmFFSy1NdkRzRHJzNTI3SzU5U3lWbDZSM3B6dUZwN3dvNW9DWlM0Q3NWVUlTQ3Y5c2tuWElmQWRxeURoWTloa21jY0U2TDByNDRHbEttTEZjT1E?oc=5",
         "date": "2026-08-05",
@@ -2073,27 +2048,43 @@
       },
       {
         "source": "gnews_en",
-        "title": "Major record labels propose guidelines for AI music on the charts - Los Angeles Times",
-        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQU0NCNGNndGhzd3oxa19nQ3F3cTFrMGVNZDhTaHZ1eUxQTnQzTl9BbXkta0hTa1Y0RmNfdF9KZERHLWNPb1ZyNHZxNS1HMlBEakdQS2FFWm1CTkNLczRZdTNMSkpaOGJOMktxbUlsSnFQVjFVVWlneTdDb3l3RWFaUmpNaS1NbXRpYktiYWhWOEFfTmpzRWR6aEJaTThXTmo4SEZESGNydHc1Z1F1b2N4MFFrNlB1OW9aVElveEN1Y2Ztd3lVVTdUTWF3?oc=5",
-        "date": "2026-07-30",
-        "src_name": "Los Angeles Times",
-        "summary": "Major record labels propose guidelines for AI music on the charts Los Angeles Times"
+        "title": "From ‘Daddy Cool’ to the Docket: How Latham & Quinn Emanuel are Testing AI Music in Court - Law.com",
+        "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPb3NQVEVuNFhGUjR3WUY5enhsb3dUTlNZMVdtZHJVWHJGRHp3d3VuR3VtbGhBQlZ0RUo1N1RPMXhVVjhsbTlKaFh2TnB3V2xZQlpMWm8ySV9GUzhKOVpwcE5kOWM3MTZ5TjdwMDBtT2Z5eTMtZDV5bkc3SE5uVGRDVjN4NVFTVzRTNkdLN2lUSTh1MjJjYVdXMnhpaFp3d2xHSG1vUjFsU2FWdVVGUk45dGZTemJJSkZOcGhIUXpCOWNlQ194emJYMk8yS1NRYjBfTm1tVW5B?oc=5",
+        "date": "2026-08-02",
+        "src_name": "Law.com",
+        "summary": "From ‘Daddy Cool’ to the Docket: How Latham & Quinn Emanuel are Testing AI Music in Court Law.com"
       },
       {
         "source": "gnews_en",
-        "title": "South Korea Ends AI Music Copyright Ban With Disclosure-First Registration Standard - Tech Times",
+        "title": "Suno Lays Out AI Music Principles After Copyright Fight - Unite.AI",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQVXViUUhUSmpLWWlUa01XeUZ5SGZsazRtOWdJeHNQdjFDM1BaNW1uZ29za3BUWF9ubzZLa1QyUUVOaERKdGRMckU4VTUzR0hXSlRndVZvRVJfMjhnd25zbllkVXl4M1dqSUw4eEIwNXM1Ukt4M3RSQzNES1M3MmtuSzFQQQ?oc=5",
+        "date": "2026-08-06",
+        "src_name": "Unite.AI",
+        "summary": "Suno Lays Out AI Music Principles After Copyright Fight Unite.AI"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Warner Music expects AI music deals to boost subscription streaming revenue from late 2026 - Music Business Worldwide",
+        "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQYjRvZlV0aWhNSlphTXgyVmdGSXRQaWpHRzFodFdZc0F5ZndzWjg4SVM3QldhY1FiWmF6c29qZjVZczROa0FSX1A4bFY3QlhIam5FWHljTlF4alZ5MnFCVFJpT2RGOVkzUjRtR2xZdktVOUpmeGxPZ3V2TWtmY1lCX2Y4RU5fUUFlSmNvMHVIaE56a0V1RmtnSjJseGVTWGt6SUZxeEl4WncwemROdWtSQUhWNGJTY0xPX0dsbGRiQ2hRTTNRYXpmZ09B?oc=5",
+        "date": "2026-08-06",
+        "src_name": "Music Business Worldwide",
+        "summary": "Warner Music expects AI music deals to boost subscription streaming revenue from late 2026 Music Business Worldwide"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Record Companies Want to Regulate AI Tracks. How Do Their Proposals for Charts and Streaming Services Compare? - billboard.com",
+        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYTVUSUxhdFZSeWE1V2cwZE5EcFMwckpOYkVTWHUzdHVfc1d3SkM5TUpJTWpISUV0NnlxQTNpaEVTZGdyNmhoYXgydFRzdFN1QjQ2MEJ0OXhudzJ2YUpDUWYxVEphZmhLMU9GMWtYTDN2Nm9BUmo0Rno4aDF2XzdaRWg4MzVBV0tRM01aUHMyUQ?oc=5",
+        "date": "2026-08-06",
+        "src_name": "billboard.com",
+        "summary": "Record Companies Want to Regulate AI Tracks. How Do Their Proposals for Charts and Streaming Services Compare? billboard.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "South Korea Ends AI Music Copyright Ban With Disclosure-First Registration Standard - techtimes.com",
         "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPbmJYb1pBWmtPLW9GeHpKMHlKaDhnbVZVM2lsWndIT1ZISEtHckRYWkJybEhiNktqaW4yYWt4bWxNblIxUVcxcks2cmM2Z2w2QndFY2hVakJpWWEteC04aFAzdExPQ05JelhzR0FfVHVNUUVMSFdqOW53dnNOOE9TMWpib3RNLXotVHJrX2d4X01HN0pMVC1VNDE5cVJsUmpnSG9HODgtekk5akdOOGtnZDltUl84SGw3bEotcFhVZnJyWFBHc3hmMG9qa05pZw?oc=5",
         "date": "2026-08-04",
-        "src_name": "Tech Times",
-        "summary": "South Korea Ends AI Music Copyright Ban With Disclosure-First Registration Standard Tech Times"
-      },
-      {
-        "source": "gnews_en",
-        "title": "AI Music Software Suno Loses Copyright Infringement Lawsuit - mxdwn Music",
-        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPV1lPTUc1cXl6bzhjYUxpQ09XcGxINFdMYmJ3ZlFSVk5URk9tQk5ObVV3VThlV25OZHNJRk5yMlBQalhoZkVvQjhnSU5xVWI0RkR6dDlPUV92cHdQUjF0SGdORlUtNlNwWnkzY2c2U1AyVkhzSHltOUkyX2g2ZHhyMHd2Y2ZrTGo1LWVDRDV4RGdlWEtla1o5eFNNWnpaSWhxWXfSAacBQVVfeXFMT1g0Umtza0VfLVdpMWNoR09ESkFLeU5mR05HQkpwR2dRT2RhRVp0ZUZheGo0Q3NnMWdiaFBXQXF4aE9pN3Rfb3R0XzhPSXJMdHBmUW5TNjJNWDR4dEk0akdjRHVRRkNHWWFmOXRaZEhtc0t2SmM2N1FvSkc0UjB5N3pkNGpvdldrcUpPamtybklqRENMS2Y4R0tGSTdzR0VHTmZQRHNqdmc?oc=5",
-        "date": "2026-08-05",
-        "src_name": "mxdwn Music",
-        "summary": "AI Music Software Suno Loses Copyright Infringement Lawsuit mxdwn Music"
+        "src_name": "techtimes.com",
+        "summary": "South Korea Ends AI Music Copyright Ban With Disclosure-First Registration Standard techtimes.com"
       },
       {
         "source": "gnews_en",
@@ -2105,19 +2096,27 @@
       },
       {
         "source": "gnews_en",
-        "title": "AI music generator Suno loses copyright infringement legal case - NME",
-        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQN01VYmdOSzE5YmJEaFU0c3VMX3ZSZUJSTlJJR3FlZk42T0dsQ29rM3QxZWNCaWpZOG8yM3pZajMtd2ExWG1jMUtVWFhvV0lhcURMaU0tZmZyN2p5UU9jRGw5bHNGa1NSRDZQQ3J3TDhQeWw1cGh2aTBGdWJBbWxaNkIwRHhDRHJtTnpQOWZvOXpNUzJINWdHZkg0SFU4YkVIWW1vTg?oc=5",
-        "date": "2026-08-04",
-        "src_name": "NME",
-        "summary": "AI music generator Suno loses copyright infringement legal case NME"
+        "title": "AI Music Software Suno Loses Copyright Infringement Lawsuit - mxdwn Music",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPV1lPTUc1cXl6bzhjYUxpQ09XcGxINFdMYmJ3ZlFSVk5URk9tQk5ObVV3VThlV25OZHNJRk5yMlBQalhoZkVvQjhnSU5xVWI0RkR6dDlPUV92cHdQUjF0SGdORlUtNlNwWnkzY2c2U1AyVkhzSHltOUkyX2g2ZHhyMHd2Y2ZrTGo1LWVDRDV4RGdlWEtla1o5eFNNWnpaSWhxWXfSAacBQVVfeXFMT1g0Umtza0VfLVdpMWNoR09ESkFLeU5mR05HQkpwR2dRT2RhRVp0ZUZheGo0Q3NnMWdiaFBXQXF4aE9pN3Rfb3R0XzhPSXJMdHBmUW5TNjJNWDR4dEk0akdjRHVRRkNHWWFmOXRaZEhtc0t2SmM2N1FvSkc0UjB5N3pkNGpvdldrcUpPamtybklqRENMS2Y4R0tGSTdzR0VHTmZQRHNqdmc?oc=5",
+        "date": "2026-08-05",
+        "src_name": "mxdwn Music",
+        "summary": "AI Music Software Suno Loses Copyright Infringement Lawsuit mxdwn Music"
       },
       {
         "source": "gnews_en",
-        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - The Detroit News",
-        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcHdNelRlSFJVbGdQRHJnanFWMlYyeTRfRzVSTVd6RFVDczFYZzdXanp0TlVqZGJ2Zi0tQzBrS3B3QlUydTdQQUpXbnRSdVFrWl9EbjdLMWN2UHY3eGNZSlk2UTVpUmp6QlpsV0I1WlphQ2FKMGVnTXU5cTAwTGtoQzM0ZmdwendpTTlJR2E0bUxNZ0xzcU1tenAxTjVkbEk4eENiRzVQc3dVVkdPSm51WUQtbkNqS0E?oc=5",
-        "date": "2026-08-01",
-        "src_name": "The Detroit News",
-        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace The Detroit News"
+        "title": "AI Music Company Suno Loses Copyright Case in Germany - Decrypt",
+        "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1RaEdWQnNqM195dmRlQmRjbHd1QW9BZDd1aVpOOTJrc1J0LXRyZDY2dlNqa2hvaXpNR19UUnZycDRQbnlMRlhZYlpkY0M4WkNPZGtjOUJWN093RC1hRjZhdWhFZk9iVmVOdGgtRE5jNNIBd0FVX3lxTFBVcTZXZHE0ZVRxWUttZl9CVlM3aU1jbVVabHBSLWJjX3k3cmxnZVBhVDZoOGVZdlVXejloTjVNWEE0Ump3S0JrRFFJdU1TOTQwTDNXUG5LV1dEOGpxcWJRWUNzQnNNTGJTS0JPMFJWUjAzQm5NSE44?oc=5",
+        "date": "2026-07-31",
+        "src_name": "Decrypt",
+        "summary": "AI Music Company Suno Loses Copyright Case in Germany Decrypt"
+      },
+      {
+        "source": "gnews_en",
+        "title": "German court rules AI music firm Suno broke copyright rules - Reuters",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjBLM01uX0dLclpkY041M29fZHdIbm52RmhrcUxBdEhxZ1dzeVlHY25tRVJYcGRIejJ5ZjZZOU9RYnhsaFdGX0dWdG9aRGxpRDE5QzItNFNqWm9RVDRheEYxaFVuRm54aXh3cmRNLTlLSEV1ZVZ5azgzMDNtUGR4dVNjQUp2b0R1eldwSTVqeFJXMmJZQWl2MkxMNzFGYkxKM3ZR?oc=5",
+        "date": "2026-07-31",
+        "src_name": "Reuters",
+        "summary": "German court rules AI music firm Suno broke copyright rules Reuters"
       },
       {
         "source": "gnews_en",
@@ -2137,6 +2136,14 @@
       },
       {
         "source": "gnews_en",
+        "title": "AI Music Video Generators Compared: 5 Tools That Turn Your Track Into a Video in 2026 - NoHo Arts District",
+        "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5zSmF1TTNsaXBLUGpSVGUzSjZuRkM5UUhuajJtRklsNlF3ekx6SW9oTDlSVXZjWlFteHdRNnV0TjVhei1vY0plamtWZnFMNUt6MjRFRnc4OFN6UG9obnNkc3QwZGpqSmlkcTJFb25qb3FBUjg?oc=5",
+        "date": "2026-08-01",
+        "src_name": "NoHo Arts District",
+        "summary": "AI Music Video Generators Compared: 5 Tools That Turn Your Track Into a Video in 2026 NoHo Arts District"
+      },
+      {
+        "source": "gnews_en",
         "title": "AI Music vs. My Parents - Nautilus | Science",
         "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE81anRxTDJDR2hBSHBTOVdyOHhOS1Nob2U0M0RQbVZ2cXY0XzVqRHFVVExwb2FFaEFBcVZvLWYyX3FuVm5LcTJFdWZQV1VtQzNQZ2VoS3RPOWVfRFJM?oc=5",
         "date": "2026-05-05",
@@ -2145,11 +2152,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "Milk & Honey Founder Files $5 Million Lawsuit Against Silicon Valley Power-Couple Over Alleged AI Music Swindle - Digital Music News",
-        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQSUZ3RFMydFlzNTM2RDM4dm90b2JfSHplOUJFM2ZkNk9CbjMzd3hXcG9OZE04Wm5DVGFTTl9VMThmSkRPU1Vid21CWHV4Q19FZ0taNkl5X05SdlF6X25HR01mM0xETkxsQ1RzZUctRU8zWFAwbk91YlMtWjYybXU1UnBGazJuVklJUmJpbFdFRVRyQQ?oc=5",
-        "date": "2026-08-03",
-        "src_name": "Digital Music News",
-        "summary": "Milk & Honey Founder Files $5 Million Lawsuit Against Silicon Valley Power-Couple Over Alleged AI Music Swindle Digital Music News"
+        "title": "AI music generator Suno loses copyright infringement legal case - NME",
+        "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQN01VYmdOSzE5YmJEaFU0c3VMX3ZSZUJSTlJJR3FlZk42T0dsQ29rM3QxZWNCaWpZOG8yM3pZajMtd2ExWG1jMUtVWFhvV0lhcURMaU0tZmZyN2p5UU9jRGw5bHNGa1NSRDZQQ3J3TDhQeWw1cGh2aTBGdWJBbWxaNkIwRHhDRHJtTnpQOWZvOXpNUzJINWdHZkg0SFU4YkVIWW1vTg?oc=5",
+        "date": "2026-08-04",
+        "src_name": "NME",
+        "summary": "AI music generator Suno loses copyright infringement legal case NME"
       },
       {
         "source": "gnews_en",
@@ -2161,19 +2168,35 @@
       },
       {
         "source": "gnews_en",
-        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - The Killeen Daily Herald",
-        "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNZnZSdUhqQThCQ2xReDRVRmRvX3JCV0lYSGtZbmhZTzZ5d1EwNlQ0RlR2cGlWcF9DS3RmbjhNT3p2NXFGbTFIR2VyMzVfVFNQWUhfdDBwMFJBSGhZdy12cmRvMkNyekJIZHNRMGtSc0NTTktTZzhESUNJUmNtUDdKemV4bWZnX3RPT3RUWWhaTHVvS2RzQnVURzNnSE90eklBWDdaRjVPMDZ4LUIybHBMaFl3UXBZQTlUUVpkaVd3b3JBWUM1XzlvbFZ5U3F5YlQ3aGd4QUpWN2ZJVDRvV3hBQ1VkT3JUazhBQThydFFHOC1ZOFk?oc=5",
+        "title": "German court rules AI music generator Suno violated copyrights, rejects fair use defense - the-decoder.com",
+        "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQU0gwNnhyWmdFOU9yNkpmak1ZNEtTY0c0UkpvSzYyT3FkdnpBLXVvTktsMGJQckJPM3FIUnZzbXlVOUpqNGFvYWdIVmk5RVVjZHdOWS1IRnNDRlh1NVQ4Zk5CNzJKSXc3VXNZejQ3QllkLUN3SFRnYmtiQ3RrOEo1WVAxQm5BZFc2bFRFb05JSTJ4dmJoTGpkM2NsWU40ZVVybUdONkx6eU9aVHV4LWxSQkJB?oc=5",
         "date": "2026-08-01",
-        "src_name": "The Killeen Daily Herald",
-        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace The Killeen Daily Herald"
+        "src_name": "the-decoder.com",
+        "summary": "German court rules AI music generator Suno violated copyrights, rejects fair use defense the-decoder.com"
       },
       {
         "source": "gnews_en",
-        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - Knoxville News Sentinel",
-        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNVVlXOThOVzJSa0dwNTJQU3RYTTR5UTdMdmJHblBrV2luNDE5M0ZZTENFMzhYSU90ak5uRGp4TG9qeWVHYTk2UHg0eG1ZeXdFRjlyWk5Zcmt6ZmNZZllWcmFON0ptUmcydG5RMFF3XzJZWmlKQ1pJdzZxdi0zTDZqVndqamUwb2pqbDR6eWVST0FGWkFUbkdqcFVfekJ2b2gyQzVnREtZMjhmWkxhWFdvX0Fkaw?oc=5",
-        "date": "2026-08-02",
-        "src_name": "Knoxville News Sentinel",
-        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace Knoxville News Sentinel"
+        "title": "Ex-Spotify Team Raises $10M to Bring Music AI to Shopping - The Tech Buzz",
+        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOT1E2Q21CdWVJOS1QX2hYQldkdGdwY2pQQm00Z1IyQW80ZXB6R3JfQjliVEJxal96bFB1NHptbXB2ZEtfQTExNkxZNmdCc2RjOHVKRkZOUmJHYnFWVnNzY1hoQXBSSlI1LVZXOTU3WHdhdFphc3FKcUJwSVcyVjlKdEhNQ0pxeXdST3Znc0J3bVBHMU0?oc=5",
+        "date": "2026-08-06",
+        "src_name": "The Tech Buzz",
+        "summary": "Ex-Spotify Team Raises $10M to Bring Music AI to Shopping The Tech Buzz"
+      },
+      {
+        "source": "gnews_en",
+        "title": "‘A hideous idea that makes me feel unclean’: AI music giant Suno is now letting you press your AI-generated tracks to vinyl, because nothing is sacred any more - Yahoo Tech",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQU3drWElBQmxhcHB6cmJHMzFkRTlORWVuZXN3SV8wVWFLUTZqYkVTVlFDRm5JdTFZSjU1Q1VaZEtKeUFuSGRJZWVFcUhuMTZvSVNqdmRaV0l1VFQzekE2aFpYVXlreFdPb2VPYTZibHZCRWNGQjRBalI3QmM1TTFzY2h3c1U1QWRTZVF3dA?oc=5",
+        "date": "2026-08-06",
+        "src_name": "Yahoo Tech",
+        "summary": "‘A hideous idea that makes me feel unclean’: AI music giant Suno is now letting you press your AI-generated tracks to vinyl, because nothing is sacred any more Yahoo Tech"
+      },
+      {
+        "source": "gnews_en",
+        "title": "KOMCA Retools AI Policy to Allow Machine-Assisted Copyrights - Digital Music News",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5qVmFrRHVHSU9ReUpxS0VHbWdkU3hzZ1E4V2xlN2NKeGRWY1V1UEFUUmJsOEtyUVRPelhYZjQ2TE5tckMzODNPTlJPbzg5M0RVeTZqQXcyNjNEWmowLXhtd21jbl9vTWtXbDl4NQ?oc=5",
+        "date": "2026-08-05",
+        "src_name": "Digital Music News",
+        "summary": "KOMCA Retools AI Policy to Allow Machine-Assisted Copyrights Digital Music News"
       },
       {
         "source": "gnews_en",
@@ -2185,35 +2208,27 @@
       },
       {
         "source": "gnews_en",
-        "title": "Exclusive | Silicon Valley couple schemes Grammy winner out of millions over AI music: suit - New York Post",
-        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaWlDODd3RDBwS0UwbXpzeTRCbGpKZ1UyaERyRi13bEZSdnViVy1feGVzeENTOVp3UlZkekJTWVAyWkFtb1d6SEgzbXBOdmNxb2FfUk5BbGhvbHJFaTh1dFh1SmVoUkkzTzFqWTlpM1RWNlFOR1hiUndtSkNSeDhRaVV3cExSWnBzMS00MTc2eV9GdFdvNDkyRkRPRzZybUViM1FsODJfMXZ5TXVhdjIyV2dScVVHR0ZfQk0tZFkwZFNwQQ?oc=5",
-        "date": "2026-08-02",
-        "src_name": "New York Post",
-        "summary": "Exclusive | Silicon Valley couple schemes Grammy winner out of millions over AI music: suit New York Post"
+        "title": "Suno Loses German Copyright Case Over AI Music - EDM House Network",
+        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNYjZrZnlLZU9pR3ZGdVA2RjhRTS1xWEYyb0VtV24tZW8tRWdibThMQThRejZNeWItRVVlSEdEQXg3NGZEak9oUll6T1VhdWwyQ0ZLRzRCazdkbzRESlpDYW9LbTJJamcwczQ5NjJmYkxzWHdoblNDeGp5NzYwcTNYTQ?oc=5",
+        "date": "2026-08-04",
+        "src_name": "EDM House Network",
+        "summary": "Suno Loses German Copyright Case Over AI Music EDM House Network"
       },
       {
         "source": "gnews_en",
-        "title": "François Pachet on Music Generation With AI - The Good Men Project",
-        "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNdmNoMkJWZ3k3VTNBTkIyUXQ2VmhwM0FJUUUwRGYyTzBYb212MFdwbGR3NDg5RmRFYTJFQ1YxLThRTGxudWJzN3R0MmZreG9aaUxSX2tfTVZMZW5UM3NfYXVYV3hZdEF6d1ZPemh5cWUyUURBamotSEZ2TWU0cDVZbU1zMFM5dDItT09Ya3djVDVKQQ?oc=5",
+        "title": "Sony Music Entertainment Files Fresh Lawsuit Against AI Music Company Udio - The Violin Channel",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQYTRSMzBMWHhWVjgwUzl0RkIxYlFGQ19vZVlGcW9jZmwxcDRCYzlXVVNCME5QQ1NERUF0emhMRnA5QlU4alB0ZWZPZkFrc0VuYlN2a1FGOXZuLXk3cnlFSlo1bTB3YzdKREZVSzd6SjRxd2tsMU40N0xmVkFGOGlxaGtibnFEb1ktNUp1WFpMc2lDdHU2VkJNQW14Uy1NUVVjMjZuaURZMA?oc=5",
         "date": "2026-07-26",
-        "src_name": "The Good Men Project",
-        "summary": "François Pachet on Music Generation With AI The Good Men Project"
+        "src_name": "The Violin Channel",
+        "summary": "Sony Music Entertainment Files Fresh Lawsuit Against AI Music Company Udio The Violin Channel"
       },
       {
         "source": "gnews_en",
-        "title": "Best AI Music Video Generator Tools in 2026: 7 Platforms Compared - criticalhit.net",
-        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQeU51ZXBNLUhNSkZwMnQtbE1LN2RYR29ZenVhbnlLT1N1TFBwWl9FYnRYaTg0Q3JwcDY3R1pJUWdfX004T0JBbkZGSldhU2puVTMtOHpwOVpkd0ZCY1VVSDIyZnlhWXRFc2J0WV9WSXk5enpjbHBtN3JmSlBvQUw5U2N2VDF2eG94VGVHV2NReFVkU1ZaejlFVnNJeG5xeEdxWEE?oc=5",
-        "date": "2026-08-03",
-        "src_name": "criticalhit.net",
-        "summary": "Best AI Music Video Generator Tools in 2026: 7 Platforms Compared criticalhit.net"
-      },
-      {
-        "source": "gnews_en",
-        "title": "GEMA Wins Landmark German Court Ruling Against AI Music Startup Suno - Startup Fortune",
-        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNaFRRZnp1c2paN1F4QmEwc0Zvb3pqSzRKVTVkNmpWRnl6a2ZUR1ZfSnlnOTBPWW5xajhKdThxSC1VZ0lBMDRWd1dCN0lvdjlQOTN5ZnBRSnlneDBCd0dYLWd4QTVOV295N25SQVpQbFlmN2NDdExoVUUzZGRsMUR5R2g5bzJmRDZNdzNueTFHZ3lwTzBKLUNERHE3bHg?oc=5",
+        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - The Detroit News",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcHdNelRlSFJVbGdQRHJnanFWMlYyeTRfRzVSTVd6RFVDczFYZzdXanp0TlVqZGJ2Zi0tQzBrS3B3QlUydTdQQUpXbnRSdVFrWl9EbjdLMWN2UHY3eGNZSlk2UTVpUmp6QlpsV0I1WlphQ2FKMGVnTXU5cTAwTGtoQzM0ZmdwendpTTlJR2E0bUxNZ0xzcU1tenAxTjVkbEk4eENiRzVQc3dVVkdPSm51WUQtbkNqS0E?oc=5",
         "date": "2026-08-01",
-        "src_name": "Startup Fortune",
-        "summary": "GEMA Wins Landmark German Court Ruling Against AI Music Startup Suno Startup Fortune"
+        "src_name": "The Detroit News",
+        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace The Detroit News"
       },
       {
         "source": "gnews_en",
@@ -2225,11 +2240,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "Sony Music Entertainment Files Fresh Lawsuit Against AI Music Company Udio - The Violin Channel",
-        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQYTRSMzBMWHhWVjgwUzl0RkIxYlFGQ19vZVlGcW9jZmwxcDRCYzlXVVNCME5QQ1NERUF0emhMRnA5QlU4alB0ZWZPZkFrc0VuYlN2a1FGOXZuLXk3cnlFSlo1bTB3YzdKREZVSzd6SjRxd2tsMU40N0xmVkFGOGlxaGtibnFEb1ktNUp1WFpMc2lDdHU2VkJNQW14Uy1NUVVjMjZuaURZMA?oc=5",
-        "date": "2026-07-25",
-        "src_name": "The Violin Channel",
-        "summary": "Sony Music Entertainment Files Fresh Lawsuit Against AI Music Company Udio The Violin Channel"
+        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - Knoxville News Sentinel",
+        "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNVVlXOThOVzJSa0dwNTJQU3RYTTR5UTdMdmJHblBrV2luNDE5M0ZZTENFMzhYSU90ak5uRGp4TG9qeWVHYTk2UHg0eG1ZeXdFRjlyWk5Zcmt6ZmNZZllWcmFON0ptUmcydG5RMFF3XzJZWmlKQ1pJdzZxdi0zTDZqVndqamUwb2pqbDR6eWVST0FGWkFUbkdqcFVfekJ2b2gyQzVnREtZMjhmWkxhWFdvX0Fkaw?oc=5",
+        "date": "2026-08-02",
+        "src_name": "Knoxville News Sentinel",
+        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace Knoxville News Sentinel"
       },
       {
         "source": "gnews_en",
@@ -2241,51 +2256,35 @@
       },
       {
         "source": "gnews_en",
-        "title": "Suno Loses German Copyright Case Over AI Music - EDM House Network",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNYjZrZnlLZU9pR3ZGdVA2RjhRTS1xWEYyb0VtV24tZW8tRWdibThMQThRejZNeWItRVVlSEdEQXg3NGZEak9oUll6T1VhdWwyQ0ZLRzRCazdkbzRESlpDYW9LbTJJamcwczQ5NjJmYkxzWHdoblNDeGp5NzYwcTNYTQ?oc=5",
-        "date": "2026-08-04",
-        "src_name": "EDM House Network",
-        "summary": "Suno Loses German Copyright Case Over AI Music EDM House Network"
+        "title": "Exclusive | Silicon Valley couple schemes Grammy winner out of millions over AI music: suit - New York Post",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaWlDODd3RDBwS0UwbXpzeTRCbGpKZ1UyaERyRi13bEZSdnViVy1feGVzeENTOVp3UlZkekJTWVAyWkFtb1d6SEgzbXBOdmNxb2FfUk5BbGhvbHJFaTh1dFh1SmVoUkkzTzFqWTlpM1RWNlFOR1hiUndtSkNSeDhRaVV3cExSWnBzMS00MTc2eV9GdFdvNDkyRkRPRzZybUViM1FsODJfMXZ5TXVhdjIyV2dScVVHR0ZfQk0tZFkwZFNwQQ?oc=5",
+        "date": "2026-08-02",
+        "src_name": "New York Post",
+        "summary": "Exclusive | Silicon Valley couple schemes Grammy winner out of millions over AI music: suit New York Post"
+      },
+      {
+        "source": "gnews_en",
+        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - The Killeen Daily Herald",
+        "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNZnZSdUhqQThCQ2xReDRVRmRvX3JCV0lYSGtZbmhZTzZ5d1EwNlQ0RlR2cGlWcF9DS3RmbjhNT3p2NXFGbTFIR2VyMzVfVFNQWUhfdDBwMFJBSGhZdy12cmRvMkNyekJIZHNRMGtSc0NTTktTZzhESUNJUmNtUDdKemV4bWZnX3RPT3RUWWhaTHVvS2RzQnVURzNnSE90eklBWDdaRjVPMDZ4LUIybHBMaFl3UXBZQTlUUVpkaVd3b3JBWUM1XzlvbFZ5U3F5YlQ3aGd4QUpWN2ZJVDRvV3hBQ1VkT3JUazhBQThydFFHOC1ZOFk?oc=5",
+        "date": "2026-08-01",
+        "src_name": "The Killeen Daily Herald",
+        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace The Killeen Daily Herald"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Best AI Music Video Generator Tools in 2026: 7 Platforms Compared - criticalhit.net",
+        "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQeU51ZXBNLUhNSkZwMnQtbE1LN2RYR29ZenVhbnlLT1N1TFBwWl9FYnRYaTg0Q3JwcDY3R1pJUWdfX004T0JBbkZGSldhU2puVTMtOHpwOVpkd0ZCY1VVSDIyZnlhWXRFc2J0WV9WSXk5enpjbHBtN3JmSlBvQUw5U2N2VDF2eG94VGVHV2NReFVkU1ZaejlFVnNJeG5xeEdxWEE?oc=5",
+        "date": "2026-08-03",
+        "src_name": "criticalhit.net",
+        "summary": "Best AI Music Video Generator Tools in 2026: 7 Platforms Compared criticalhit.net"
       },
       {
         "source": "gnews_en",
         "title": "German court rules that AI music firm violated copyrights - dw.com",
         "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOVnY2dXhLUnpIUnRjQ1c0UDJIVENRcmtkaHB0OGRYaUpyX1ZFbzVfZnltUmo4NGR4YXFvaXQzTjk5dkFRQ1A0V3UtTGNMdWpySFlNbVhiZ2s0ek5yVmhkUmt2UDZBSFg4SFdLU3VydG9jaU1reUlyMXlaRnFuQ2dUMHRINlg5ZTgtbll5N0IyYzNfYUtiR19TTE05Y9IBmwFBVV95cUxPUnJMWkxGcHIxT3lrcjdGaDhVWk16dFU2ZGw5ZG9sTnRES0FEakZfaEFab1liV0ZYa1RucDZsckktWUQzNWNsa0VUN05ncDJVQk5hdUttTW9QQ1loNkZsMGNVSXctdHdMWEYwaWN3VTVKMERLMF8zemdkOE9ERmlNcnBQZGlPd0dueFROeE9DTDVtcTVTaVFTZThXVQ?oc=5",
-        "date": "2026-07-30",
+        "date": "2026-07-31",
         "src_name": "dw.com",
         "summary": "German court rules that AI music firm violated copyrights dw.com"
-      },
-      {
-        "source": "gnews_en",
-        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - EIN Presswire",
-        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVHZLQmhuTjl3YmZHcVZFeVJrUzhiU1dGaFlTZ25PSnVZX0xkWFlVZmZnS1ZxZll0eDB2RG1pbW9VenpwVjIwaGxma2RodnlISjNmMXBMSnV5ZnMwUmNFZWJPejlKUFlkYmMwOFViNWxoNUhzSi1QN3JMeDF0X2dDY2lxVUJQZEtnbndyVklNQXZSS0oyeG1NT2tpWnZDN0J1UkNGQk8xR0VFRWc?oc=5",
-        "date": "2026-08-01",
-        "src_name": "EIN Presswire",
-        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace EIN Presswire"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Hack Reveals Suno AI Music Generator Scraped YouTube, Deezer, and Genius - 404media.co",
-        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbFdyOUxJRnF5MUtvd1VrX29iWkh5ck5vNkhzc0RpdGlzTXAyWkU0N3I2bVJkb193Nnp4MFJzUUZPbnNWdTNKd0ZRRmFraW1lWXI1TG8xN3ZobThmNnAxa2xUUmxvQW9aaEhQWTRXMWszSjN4TGVqekc0enlOVEdmN1RCMkhNU2tneGhJbThGMTJVaUg3SUUtWmhiNA?oc=5",
-        "date": "2026-07-15",
-        "src_name": "404media.co",
-        "summary": "Hack Reveals Suno AI Music Generator Scraped YouTube, Deezer, and Genius 404media.co"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Suno Loses Europe's First AI Music Copyright Ruling: Training Without Licensing Is Infringement - Tech Times",
-        "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNZm9YdXd1LVRQbzFsTmJaejJwVC1PWFZZM0VKVWVrcmFuRWhwWXFFTUJmclRwSkdTR09Sb01JQUlsdjkwVXNEX2xUV3NuemVMd1dKdXIxcVdPNVh2VXdKQ3RYV2ozYlNXWGg3aE9OUm9iR3dNR3NXb0ljU3dmUFZ5NjFnTlpxVDhpZ25yellNb1VSNm4xX1hHd1BoSEZsZmd4dERNYW8tRHVpNVpFc3NuRk55UzFMYzRFelJWMTFwMDd2M3JWOGt1Skh0LXhXN0p3Mk1ROWJWTllCcjV0dFE?oc=5",
-        "date": "2026-07-31",
-        "src_name": "Tech Times",
-        "summary": "Suno Loses Europe's First AI Music Copyright Ruling: Training Without Licensing Is Infringement Tech Times"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Stellar Blade Studio CEO Defends AI Music Video Amid Fan Backlash - OpenCritic",
-        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNUGtaYjVDSlhJcGNPNTI1bXlib05RZlpzY3lJQ0VwMlhyTEs4N3pteUtEZzhESThxYzdyRGFpZUozMVZjUlJFWDhjYTB6eVlwVGVYc0ktMGJLTC1JUlhuekhLTTlSYmNMZTNkUDNRc2ZMdE5LblhCdFptNlhhQndGY01oTEdfNEZjRktQeGhNVGpUaldiNkxFUEg0NU41R2du?oc=5",
-        "date": "2026-08-04",
-        "src_name": "OpenCritic",
-        "summary": "Stellar Blade Studio CEO Defends AI Music Video Amid Fan Backlash OpenCritic"
       },
       {
         "source": "gnews_en",
@@ -2305,6 +2304,22 @@
       },
       {
         "source": "gnews_en",
+        "title": "The Biggest Legal Battle in AI Music Just Took a Historic Turn... And It Could Change Every Song Generated by Artificial Intelligence. - lnt.ma",
+        "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQNWcxNXc2aFA3SE9POENwTzFjX20xSTdSd2xWQlZ5QkJuQkV2ZkxuUFN4ZVNkQTZESTkyRl9yMWNPWG11dFFoV0JRWXBZMTgySk9CYWtyM1d0UW4tbnE2TlJnSWFfR2JCZmp6RHhySHRyLV9UVDFjN3paSlkzZUdoWkpaM2FDeGxKRktQWXBrT1p1d1FHeUdzUkhUSlBGN2NVQTRZYWFmT2R5M1dzaXQ1QldxYmtramRyNjM0RjZPSXNaYWlVY0ppdjBHOGlTajZFSkFNOHV6Yk1IZmJCdTJr?oc=5",
+        "date": "2026-08-06",
+        "src_name": "lnt.ma",
+        "summary": "The Biggest Legal Battle in AI Music Just Took a Historic Turn... And It Could Change Every Song Generated by Artificial Intelligence. lnt.ma"
+      },
+      {
+        "source": "gnews_en",
+        "title": "GEMA Wins Landmark German Court Ruling Against AI Music Startup Suno - Startup Fortune",
+        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNaFRRZnp1c2paN1F4QmEwc0Zvb3pqSzRKVTVkNmpWRnl6a2ZUR1ZfSnlnOTBPWW5xajhKdThxSC1VZ0lBMDRWd1dCN0lvdjlQOTN5ZnBRSnlneDBCd0dYLWd4QTVOV295N25SQVpQbFlmN2NDdExoVUUzZGRsMUR5R2g5bzJmRDZNdzNueTFHZ3lwTzBKLUNERHE3bHg?oc=5",
+        "date": "2026-08-01",
+        "src_name": "Startup Fortune",
+        "summary": "GEMA Wins Landmark German Court Ruling Against AI Music Startup Suno Startup Fortune"
+      },
+      {
+        "source": "gnews_en",
         "title": "This free AI music detector will scan through your playlists for audio slop - Popular Science",
         "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNMW9iUkkzWFAyUW5VNllJQ2NEcTB3SHNsMWlCMVMta0hvTXh2TnBfY09BTTZMR0VBZFBhS0IzLXJNdmlsWDZwSkFMTC1vNHBZc1duYk41Ni10WXI2MTc5OHB6V2J5Y21wRVRYNy1zTmN2MW0wQ3lxa1lvNTZTTWpqT3RRa2FVYzZRRzlGcUtqTlFyUEVIUzJ3?oc=5",
         "date": "2026-07-25",
@@ -2313,11 +2328,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "GEMA wins court ruling on breach of copyright by AI music firm Suno - MusicWeek.com",
-        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbmFORUk2Tkt3UjM5MC1lQzNkSXVSVXRvelExTDhBNnc5RlhUVzItTDRiMkNONTgtd0JIdTE5dDNBVzhvWlFQRm8xVXJEc2ROOHY2RHBmeUhlblVnMnc2NFYtU0FieU9TMGpEZ3JHT1FTeGQ1WXFzYWxYdHlXaElKLXZhcEh6VUQ4YktNeDVuQzNPWENVb28yeWhpMU5xRE1WWEU1ZDBqZ0VNblpfNktTZ3hzQjZSb28?oc=5",
-        "date": "2026-07-31",
-        "src_name": "MusicWeek.com",
-        "summary": "GEMA wins court ruling on breach of copyright by AI music firm Suno MusicWeek.com"
+        "title": "Stellar Blade Studio CEO Defends AI Music Video Amid Fan Backlash - OpenCritic",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNUGtaYjVDSlhJcGNPNTI1bXlib05RZlpzY3lJQ0VwMlhyTEs4N3pteUtEZzhESThxYzdyRGFpZUozMVZjUlJFWDhjYTB6eVlwVGVYc0ktMGJLTC1JUlhuekhLTTlSYmNMZTNkUDNRc2ZMdE5LblhCdFptNlhhQndGY01oTEdfNEZjRktQeGhNVGpUaldiNkxFUEg0NU41R2du?oc=5",
+        "date": "2026-08-04",
+        "src_name": "OpenCritic",
+        "summary": "Stellar Blade Studio CEO Defends AI Music Video Amid Fan Backlash OpenCritic"
       },
       {
         "source": "gnews_en",
@@ -2329,22 +2344,6 @@
       },
       {
         "source": "gnews_en",
-        "title": "AI music platform Suno loses major copyright lawsuit in Europe - Limelight magazine",
-        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPQVZBalJHTmZGVW1qOTBVVlFlQ0R5eTF2VFNqZ1NMOU5GM0dCRmUxcDR1b3hWRXAtM3JSQ3N6SkpFelN0Rml1RlREZEhsaDFsMkM1T3ZyRzlFcDBMM2hIcGZYY1Job0tqMGJ0ZnVtT00zcHJybE5VaGUxMUdQWEVJQW5lMndDX2YtYnFRV3FPTFZxdmVXelNGRzhyLUtHaGs?oc=5",
-        "date": "2026-08-04",
-        "src_name": "Limelight magazine",
-        "summary": "AI music platform Suno loses major copyright lawsuit in Europe Limelight magazine"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Hackers Expose How AI Music App Suno Stole Decades Worth of Copyrighted Music - Futurism",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOM3hMVGdJb21rRWdSdVVmbDdvWm0tdGxFbFlyQ0ZsaTQtaUlMUGxyR0tCUGV1RFRkZW42enlQSzNvRHl1Q3dZVWhJeHFJdXlZTEtNczFmWEpncDEzV1BvV05sYUdFQUJVdWk4NFRqVWlsZXdrdl9BSDVBbWVsbmNUUg?oc=5",
-        "date": "2026-07-17",
-        "src_name": "Futurism",
-        "summary": "Hackers Expose How AI Music App Suno Stole Decades Worth of Copyrighted Music Futurism"
-      },
-      {
-        "source": "gnews_en",
         "title": "Listeners say they hate AI music — until they press play - University of Dayton",
         "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE85Nm9RUHhWQTB3TW9uNXR5YU5lb3dVdkZuNF9iYkJHaTNPN0gzS3RUb2NjMVZnZ2JKOW1TZVVEaVUtdklYNUFpcDY2bGoyNVhXbXdfMUpQM0VRVGRPZnd5aXl0Q2xsTlJ0TWYyWEFvcHlWZw?oc=5",
         "date": "2026-06-09",
@@ -2353,19 +2352,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "AI Bots Stole My Music - Philadelphia Magazine",
-        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE83amtXVXl2eFlBT25XaFJ4ak1wR2cwS1ZHVm93bDVTVW8tZU1oVHhoM2phZWV5QThMVm9UaFhMbllOZ251a3dwOXVyVHk1dE1tcDVtMGJiZnJwdFdsRnMweGxLT0pPanFhYWNRNWkzeTMtcUFfVzIyOElfWDl2dUk?oc=5",
-        "date": "2026-07-10",
-        "src_name": "Philadelphia Magazine",
-        "summary": "AI Bots Stole My Music Philadelphia Magazine"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Hack suggests AI music generator Suno scraped YouTube for training data - TechCrunch",
-        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQWlNGSkZwTkw2MFBtRkduTkNFZkVCcVhSZ2ZleDN6QmRaenU1cHZCWUZrZmtLM2h5NU1HZW5WVVZ1UGxMckxyQTh2TTJncXhXZnhUd0lVNWh6UVpfYXpuenNKVjhGUGtFMWpMVzdRNHZuVFZLOXV3emU2Q19WbmR6RkVjWW9kV3dTT1ozQU41NXNZZlU0X1dUVU5adDlLd0VJcGRwSkpCZ3pvdw?oc=5",
-        "date": "2026-07-15",
-        "src_name": "TechCrunch",
-        "summary": "Hack suggests AI music generator Suno scraped YouTube for training data TechCrunch"
+        "title": "LumiMusic Launches an All-in-One AI Music Creation Workspace - einpresswire.com",
+        "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPVHZLQmhuTjl3YmZHcVZFeVJrUzhiU1dGaFlTZ25PSnVZX0xkWFlVZmZnS1ZxZll0eDB2RG1pbW9VenpwVjIwaGxma2RodnlISjNmMXBMSnV5ZnMwUmNFZWJPejlKUFlkYmMwOFViNWxoNUhzSi1QN3JMeDF0X2dDY2lxVUJQZEtnbndyVklNQXZSS0oyeG1NT2tpWnZDN0J1UkNGQk8xR0VFRWc?oc=5",
+        "date": "2026-08-01",
+        "src_name": "einpresswire.com",
+        "summary": "LumiMusic Launches an All-in-One AI Music Creation Workspace einpresswire.com"
       },
       {
         "source": "gnews_en",
@@ -2377,11 +2368,43 @@
       },
       {
         "source": "gnews_en",
-        "title": "GEMA Wins Against Suno: Europe’s First AI Music Ruling—Here’s What’s Behind It - Basic Tutorials",
-        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPYzFWUnctWFNQZDV3TzdvOHdMdTNuZkw3YXR1Rmw1UnQ1M3cwR2pkRTc0eVZJZmFKeDFSZGYxOThRaXhVM1ExVy1xdUl4WkdPZ0dqZDRJcUZWZ0lrSWdnMDVEVDhpcHNZblFDZmRtR1pBNHBUNDAwR08yX2t3YUVadnlvWGUwaERBMnpOa2RjeGVTZ2JYenN1Z1RVbkRNNElrNllmUGtkMldjT3hn?oc=5",
-        "date": "2026-08-03",
-        "src_name": "Basic Tutorials",
-        "summary": "GEMA Wins Against Suno: Europe’s First AI Music Ruling—Here’s What’s Behind It Basic Tutorials"
+        "title": "Hackers Expose How AI Music App Suno Stole Decades Worth of Copyrighted Music - Futurism",
+        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOM3hMVGdJb21rRWdSdVVmbDdvWm0tdGxFbFlyQ0ZsaTQtaUlMUGxyR0tCUGV1RFRkZW42enlQSzNvRHl1Q3dZVWhJeHFJdXlZTEtNczFmWEpncDEzV1BvV05sYUdFQUJVdWk4NFRqVWlsZXdrdl9BSDVBbWVsbmNUUg?oc=5",
+        "date": "2026-07-17",
+        "src_name": "Futurism",
+        "summary": "Hackers Expose How AI Music App Suno Stole Decades Worth of Copyrighted Music Futurism"
+      },
+      {
+        "source": "gnews_en",
+        "title": "AI music platform Suno loses major copyright lawsuit in Europe - Limelight magazine",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPQVZBalJHTmZGVW1qOTBVVlFlQ0R5eTF2VFNqZ1NMOU5GM0dCRmUxcDR1b3hWRXAtM3JSQ3N6SkpFelN0Rml1RlREZEhsaDFsMkM1T3ZyRzlFcDBMM2hIcGZYY1Job0tqMGJ0ZnVtT00zcHJybE5VaGUxMUdQWEVJQW5lMndDX2YtYnFRV3FPTFZxdmVXelNGRzhyLUtHaGs?oc=5",
+        "date": "2026-08-04",
+        "src_name": "Limelight magazine",
+        "summary": "AI music platform Suno loses major copyright lawsuit in Europe Limelight magazine"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Hack suggests AI music generator Suno scraped YouTube for training data - TechCrunch",
+        "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQWlNGSkZwTkw2MFBtRkduTkNFZkVCcVhSZ2ZleDN6QmRaenU1cHZCWUZrZmtLM2h5NU1HZW5WVVZ1UGxMckxyQTh2TTJncXhXZnhUd0lVNWh6UVpfYXpuenNKVjhGUGtFMWpMVzdRNHZuVFZLOXV3emU2Q19WbmR6RkVjWW9kV3dTT1ozQU41NXNZZlU0X1dUVU5adDlLd0VJcGRwSkpCZ3pvdw?oc=5",
+        "date": "2026-07-15",
+        "src_name": "TechCrunch",
+        "summary": "Hack suggests AI music generator Suno scraped YouTube for training data TechCrunch"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Suno Loses Europe's First AI Music Copyright Ruling: Training Without Licensing Is Infringement - techtimes.com",
+        "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNZm9YdXd1LVRQbzFsTmJaejJwVC1PWFZZM0VKVWVrcmFuRWhwWXFFTUJmclRwSkdTR09Sb01JQUlsdjkwVXNEX2xUV3NuemVMd1dKdXIxcVdPNVh2VXdKQ3RYV2ozYlNXWGg3aE9OUm9iR3dNR3NXb0ljU3dmUFZ5NjFnTlpxVDhpZ25yellNb1VSNm4xX1hHd1BoSEZsZmd4dERNYW8tRHVpNVpFc3NuRk55UzFMYzRFelJWMTFwMDd2M3JWOGt1Skh0LXhXN0p3Mk1ROWJWTllCcjV0dFE?oc=5",
+        "date": "2026-07-31",
+        "src_name": "techtimes.com",
+        "summary": "Suno Loses Europe's First AI Music Copyright Ruling: Training Without Licensing Is Infringement techtimes.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Why new revelations about the training of AI music models hit close to home - wpln.org",
+        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNN3B0aFNVSjQ0THZBTkF1bVctNlEyRzV2Y1NkSXBDNmVZaGI5cmVOU0FnOHJ3YUhEYXZzV0YzRmU3VTNsVjhYcmQ1NURySXlFdjNZV0Jad3Q2czcyNnV6UFdBN2s2MlVIRG9TQmdhcHlCdHdpVkNxYnZSZmV4bFRHWXdneGdwWjJZUlhCZG1VWDdKQTRJVi04SnlfNG03TGM?oc=5",
+        "date": "2026-07-02",
+        "src_name": "wpln.org",
+        "summary": "Why new revelations about the training of AI music models hit close to home wpln.org"
       },
       {
         "source": "gnews_en",
@@ -2393,11 +2416,11 @@
       },
       {
         "source": "gnews_en",
-        "title": "Stellar Blade: Blood Rain studio CEO defends AI music video because Evie was originally \"created from head to toe\" by the devs, but fans say that's not the point - GamesRadar+",
-        "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxQVDVuV3FzMjVxeFdmbkxra0pNdmpkNERUdHV5d01yMDNzY181d0RxVXYzX0ljM3hEVlBNN2Mwbk1CS2FOZXhqOXlUMEZKRGE0Tmd4TFp0eVJWRW1vNkZxSHdKTXpTUmIwWGpxLVRBYURlc0dzenB6UEJBeUxGSGVaM0x4RFZDdXdwR3Fsalp6UUNYWXV4MHl0MldsNDRpYjdVa1dudlZwMFR6bVVLczhEcFVNaXVGYktjdTFkVngxT0dIYlFKclBMeUlGbGliRjdNSTZ1OEloTFBFSWJzWlZfYjFvTnJZcElkNm1TSV8wUW83VEpwZ1RtOE1wcEo4U2FVeUhQal9PbXp6RXp1c09WY01sa3E1cTRsRU80d3I3N081QVk?oc=5",
-        "date": "2026-08-04",
-        "src_name": "GamesRadar+",
-        "summary": "Stellar Blade: Blood Rain studio CEO defends AI music video because Evie was originally \"created from head to toe\" by the devs, but fans say that's not the point GamesRadar+"
+        "title": "AI Bots Stole My Music - Philadelphia Magazine",
+        "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE83amtXVXl2eFlBT25XaFJ4ak1wR2cwS1ZHVm93bDVTVW8tZU1oVHhoM2phZWV5QThMVm9UaFhMbllOZ251a3dwOXVyVHk1dE1tcDVtMGJiZnJwdFdsRnMweGxLT0pPanFhYWNRNWkzeTMtcUFfVzIyOElfWDl2dUk?oc=5",
+        "date": "2026-07-10",
+        "src_name": "Philadelphia Magazine",
+        "summary": "AI Bots Stole My Music Philadelphia Magazine"
       },
       {
         "source": "gnews_en",
@@ -2409,27 +2432,19 @@
       },
       {
         "source": "gnews_en",
-        "title": "Who’s listening to AI music? - spectator.com",
-        "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1QdGl2T0ZxOTlrakswVllCalQ4dENYNGhYNy16cVEwc1UtOVFQQzdlbFBqa2l4RUlXLWNYd05LZU9vODVSUkxXMHpZTmlTOTFfZDRCWW9WYlY4ZVhYTTdpekI2dlBZSGdM?oc=5",
-        "date": "2026-06-22",
-        "src_name": "spectator.com",
-        "summary": "Who’s listening to AI music? spectator.com"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Why new revelations about the training of AI music models hit close to home - WPLN News",
-        "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNN3B0aFNVSjQ0THZBTkF1bVctNlEyRzV2Y1NkSXBDNmVZaGI5cmVOU0FnOHJ3YUhEYXZzV0YzRmU3VTNsVjhYcmQ1NURySXlFdjNZV0Jad3Q2czcyNnV6UFdBN2s2MlVIRG9TQmdhcHlCdHdpVkNxYnZSZmV4bFRHWXdneGdwWjJZUlhCZG1VWDdKQTRJVi04SnlfNG03TGM?oc=5",
-        "date": "2026-07-02",
-        "src_name": "WPLN News",
-        "summary": "Why new revelations about the training of AI music models hit close to home WPLN News"
-      },
-      {
-        "source": "gnews_en",
         "title": "AI Music Generating Platform Suno Data Breach Affects over 55 Million People - CPO Magazine",
         "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQeExjd25xcDJ4Z2NVTFVPT1B2NW1pdmxRQy1HTWRxaDFsUmxaRzVyWUhETUQ5bERLOFFtaGNpQlExUTFOOFplMnpjMGFHUnlJQlBWTV8xZ3IyblVsa3NYV0hQVDI5MkNGY3VtbEUwWktac3pQaEc4NmpmdnI5WFdBNlNPMXhsSzhVSnZzdWNwZThWeDAzb3dHSW1EangyS0lLaFNmeFVBYkxSWkRPWlpNaTNqX0F3ZXZYQnREZw?oc=5",
         "date": "2026-07-28",
         "src_name": "CPO Magazine",
         "summary": "AI Music Generating Platform Suno Data Breach Affects over 55 Million People CPO Magazine"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Hack Reveals Suno AI Music Generator Scraped YouTube, Deezer, and Genius - 404 Media",
+        "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbFdyOUxJRnF5MUtvd1VrX29iWkh5ck5vNkhzc0RpdGlzTXAyWkU0N3I2bVJkb193Nnp4MFJzUUZPbnNWdTNKd0ZRRmFraW1lWXI1TG8xN3ZobThmNnAxa2xUUmxvQW9aaEhQWTRXMWszSjN4TGVqekc0enlOVEdmN1RCMkhNU2tneGhJbThGMTJVaUg3SUUtWmhiNA?oc=5",
+        "date": "2026-07-15",
+        "src_name": "404 Media",
+        "summary": "Hack Reveals Suno AI Music Generator Scraped YouTube, Deezer, and Genius 404 Media"
       },
       {
         "source": "gnews_en",
@@ -2441,27 +2456,19 @@
       },
       {
         "source": "gnews_en",
-        "title": "IFPI Backs Call for AI Music Labeling, Implements Immediate Change on Number of Key International Charts - Billboard",
-        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9TeXY4OU45MW15N2x1S1hNYjkzMGNfajdHQVZNRWwxUHFCOXgtUDVEbFRfaG5NSnN0OVZoWU0wc242aDJXUDg0VFEyOHJFQjR4dEhoc3FMLUF5bEd0cWs2bnJ6T2pHMmUyQ2ZRSjlzdU83alV4Wmc?oc=5",
-        "date": "2026-07-30",
-        "src_name": "Billboard",
-        "summary": "IFPI Backs Call for AI Music Labeling, Implements Immediate Change on Number of Key International Charts Billboard"
-      },
-      {
-        "source": "gnews_en",
-        "title": "The major labels propose rules to keep AI slop off the charts - The Verge",
-        "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYU9fYnNkVkg3dDR1MUstd2thbnU5T0VSMjFSanJ5X2ZCdngyT0RncDVjTzNwN0FTRXMyVTMyRHd3R1pQTUF4UlY0Y2JTMFY4TjlrU3ZLQzhybVE1azlTUTVGbTdLVUN2cUwyWkNzNzQ0WjNSaERzWFlaSGdRNkZGTUZZeGdwbmZPUm16bVpRVGtJSDdlbHhSdEV3?oc=5",
-        "date": "2026-07-31",
-        "src_name": "The Verge",
-        "summary": "The major labels propose rules to keep AI slop off the charts The Verge"
-      },
-      {
-        "source": "gnews_en",
         "title": "Consumers Prefer AI Music Until They’re Told It’s AI - promarket.org",
         "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQZEh0enNmcHNRQTZ4aDlKbjRGcG5Gb2YxWlUyWG10SlZWYTBNZnkwaWlROVlXRGh4UnNHQXAwMkxhN011VHZnU0hnWUdZcERsdFBPd0ZpZUd4ZGtiXzVtSjdjMzBIOUZqVWw5NXRqalBIMm8zUzdYbF82SFVQR1ZDbWIycEJfOUVNa3hIN1NLTjk?oc=5",
         "date": "2026-05-04",
         "src_name": "promarket.org",
         "summary": "Consumers Prefer AI Music Until They’re Told It’s AI promarket.org"
+      },
+      {
+        "source": "gnews_en",
+        "title": "GEMA wins court ruling on breach of copyright by AI music firm Suno - musicweek.com",
+        "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbmFORUk2Tkt3UjM5MC1lQzNkSXVSVXRvelExTDhBNnc5RlhUVzItTDRiMkNONTgtd0JIdTE5dDNBVzhvWlFQRm8xVXJEc2ROOHY2RHBmeUhlblVnMnc2NFYtU0FieU9TMGpEZ3JHT1FTeGQ1WXFzYWxYdHlXaElKLXZhcEh6VUQ4YktNeDVuQzNPWENVb28yeWhpMU5xRE1WWEU1ZDBqZ0VNblpfNktTZ3hzQjZSb28?oc=5",
+        "date": "2026-07-31",
+        "src_name": "musicweek.com",
+        "summary": "GEMA wins court ruling on breach of copyright by AI music firm Suno musicweek.com"
       },
       {
         "source": "gnews_en",
@@ -2473,19 +2480,35 @@
       },
       {
         "source": "gnews_en",
+        "title": "IFPI Backs Call for AI Music Labeling, Implements Immediate Change on Number of Key International Charts - billboard.com",
+        "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9TeXY4OU45MW15N2x1S1hNYjkzMGNfajdHQVZNRWwxUHFCOXgtUDVEbFRfaG5NSnN0OVZoWU0wc242aDJXUDg0VFEyOHJFQjR4dEhoc3FMLUF5bEd0cWs2bnJ6T2pHMmUyQ2ZRSjlzdU83alV4Wmc?oc=5",
+        "date": "2026-07-30",
+        "src_name": "billboard.com",
+        "summary": "IFPI Backs Call for AI Music Labeling, Implements Immediate Change on Number of Key International Charts billboard.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Stellar Blade: Blood Rain studio CEO defends AI music video because Evie was originally \"created from head to toe\" by the devs, but fans say that's not the point - GamesRadar+",
+        "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxQVDVuV3FzMjVxeFdmbkxra0pNdmpkNERUdHV5d01yMDNzY181d0RxVXYzX0ljM3hEVlBNN2Mwbk1CS2FOZXhqOXlUMEZKRGE0Tmd4TFp0eVJWRW1vNkZxSHdKTXpTUmIwWGpxLVRBYURlc0dzenB6UEJBeUxGSGVaM0x4RFZDdXdwR3Fsalp6UUNYWXV4MHl0MldsNDRpYjdVa1dudlZwMFR6bVVLczhEcFVNaXVGYktjdTFkVngxT0dIYlFKclBMeUlGbGliRjdNSTZ1OEloTFBFSWJzWlZfYjFvTnJZcElkNm1TSV8wUW83VEpwZ1RtOE1wcEo4U2FVeUhQal9PbXp6RXp1c09WY01sa3E1cTRsRU80d3I3N081QVk?oc=5",
+        "date": "2026-08-04",
+        "src_name": "GamesRadar+",
+        "summary": "Stellar Blade: Blood Rain studio CEO defends AI music video because Evie was originally \"created from head to toe\" by the devs, but fans say that's not the point GamesRadar+"
+      },
+      {
+        "source": "gnews_en",
+        "title": "GEMA Wins Against Suno: Europe’s First AI Music Ruling—Here’s What’s Behind It - Basic Tutorials",
+        "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPYzFWUnctWFNQZDV3TzdvOHdMdTNuZkw3YXR1Rmw1UnQ1M3cwR2pkRTc0eVZJZmFKeDFSZGYxOThRaXhVM1ExVy1xdUl4WkdPZ0dqZDRJcUZWZ0lrSWdnMDVEVDhpcHNZblFDZmRtR1pBNHBUNDAwR08yX2t3YUVadnlvWGUwaERBMnpOa2RjeGVTZ2JYenN1Z1RVbkRNNElrNllmUGtkMldjT3hn?oc=5",
+        "date": "2026-08-03",
+        "src_name": "Basic Tutorials",
+        "summary": "GEMA Wins Against Suno: Europe’s First AI Music Ruling—Here’s What’s Behind It Basic Tutorials"
+      },
+      {
+        "source": "gnews_en",
         "title": "AI music generator Suno breach affects 55M users, per Have I Been Pwned - TechCrunch",
         "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxONG9yYUE1alF3aF9hMC1KYWppQWtoZ1FUd1FOV0d5c3MzV2dCc1RvWUVDcGUzMWM0WmZSNXVIaE9GYTFTLWtmUi13UjlqdjJ3WlB4anllaU9fcUJ3cENvSnpweUNrWGg4ZE92cG9jQ253SDJqWTBZaUVmSFJkU0JORlhxU2p3LTJlN2pyenRUbHBwWFN1a1d2UTBNTXhhU0haeUZsQ1NmMlc?oc=5",
         "date": "2026-07-21",
         "src_name": "TechCrunch",
         "summary": "AI music generator Suno breach affects 55M users, per Have I Been Pwned TechCrunch"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Sony Escalates Legal Battle Against Udio With New $4.5 Billion AI Music Copyright Lawsuit - Law Commentary",
-        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNczBHVVVEWGg4aEN1b0tjNHBtOFE4UF9sai12bmppRU15S2VIeC1rd2NNdEdFeDhzWHA4R253UjQ1TE1IU2tLVmpTZlBRcndsd01CZnZ2UXE2QkhQaTZ3Q1BzVkw4Mnc2S2ctT242eVF4aDU0VFF5WXp4Xzg5Q0RldDhYR2J0WS1jaVZGMXR0QzE5ZmNzcWlvNFhrcTZfMWpMZUotT2tpYUJ6ekt1TjBKRkQ0aWUtYTZnUVRIckNDQ3g1ZS1j?oc=5",
-        "date": "2026-07-21",
-        "src_name": "Law Commentary",
-        "summary": "Sony Escalates Legal Battle Against Udio With New $4.5 Billion AI Music Copyright Lawsuit Law Commentary"
       },
       {
         "source": "gnews_en",
@@ -2497,19 +2520,27 @@
       },
       {
         "source": "gnews_en",
-        "title": "Mick Jagger Talks Olivia Rodrigo, AI Music - Stereogum",
-        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPTkxHVEFQYTJqYlRheHlHNkJ3a0xPNzlBTlVzWURUSTYzZXdCb1pnM0JjU19SeG5DS3JRVXFGSkd0YmowMFE4bjhMTWo2TXFSUGVxUVljZmVadUNoX1g5MDJHNFVXRTNMc2ZGNF9WMmRwSFVWcldRYm8zc2NBZ0ZQNXh3?oc=5",
-        "date": "2026-07-17",
-        "src_name": "Stereogum",
-        "summary": "Mick Jagger Talks Olivia Rodrigo, AI Music Stereogum"
+        "title": "Who’s listening to AI music? - spectator.com",
+        "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1QdGl2T0ZxOTlrakswVllCalQ4dENYNGhYNy16cVEwc1UtOVFQQzdlbFBqa2l4RUlXLWNYd05LZU9vODVSUkxXMHpZTmlTOTFfZDRCWW9WYlY4ZVhYTTdpekI2dlBZSGdM?oc=5",
+        "date": "2026-06-22",
+        "src_name": "spectator.com",
+        "summary": "Who’s listening to AI music? spectator.com"
       },
       {
         "source": "gnews_en",
-        "title": "Hack of Suno Reveals AI Music Generator Scraped Songs From YouTube, Deezer and More - edm.com",
-        "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPY0U4eWNFVEVPaGk0YzdVTkZLTFUzdEJ6TlI0WFBDbm5CRmI0TWlXVnVaVEdOTTdOU0hPRUU5YVZNYVFLa3M0T1BkTGJ3aVhuOFVFTlFHc3pWYWxjM0hLM21aZVlMTEd1dTROVWw5Z2ljY3RKWkxRaU5za2J4SE9TbnNBTWwzQXJ6c0lCMVRWUUtsSzBFY0llN3Zzc0c?oc=5",
-        "date": "2026-07-16",
-        "src_name": "edm.com",
-        "summary": "Hack of Suno Reveals AI Music Generator Scraped Songs From YouTube, Deezer and More edm.com"
+        "title": "Mick Jagger Talks Olivia Rodrigo, AI Music - stereogum.com",
+        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPTkxHVEFQYTJqYlRheHlHNkJ3a0xPNzlBTlVzWURUSTYzZXdCb1pnM0JjU19SeG5DS3JRVXFGSkd0YmowMFE4bjhMTWo2TXFSUGVxUVljZmVadUNoX1g5MDJHNFVXRTNMc2ZGNF9WMmRwSFVWcldRYm8zc2NBZ0ZQNXh3?oc=5",
+        "date": "2026-07-17",
+        "src_name": "stereogum.com",
+        "summary": "Mick Jagger Talks Olivia Rodrigo, AI Music stereogum.com"
+      },
+      {
+        "source": "gnews_en",
+        "title": "Sony Escalates Legal Battle Against Udio With New $4.5 Billion AI Music Copyright Lawsuit - Law Commentary",
+        "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNczBHVVVEWGg4aEN1b0tjNHBtOFE4UF9sai12bmppRU15S2VIeC1rd2NNdEdFeDhzWHA4R253UjQ1TE1IU2tLVmpTZlBRcndsd01CZnZ2UXE2QkhQaTZ3Q1BzVkw4Mnc2S2ctT242eVF4aDU0VFF5WXp4Xzg5Q0RldDhYR2J0WS1jaVZGMXR0QzE5ZmNzcWlvNFhrcTZfMWpMZUotT2tpYUJ6ekt1TjBKRkQ0aWUtYTZnUVRIckNDQ3g1ZS1j?oc=5",
+        "date": "2026-07-21",
+        "src_name": "Law Commentary",
+        "summary": "Sony Escalates Legal Battle Against Udio With New $4.5 Billion AI Music Copyright Lawsuit Law Commentary"
       },
       {
         "source": "gnews_en",
@@ -2518,97 +2549,16 @@
         "date": "2026-06-24",
         "src_name": "SiliconANGLE",
         "summary": "Modulate launches AI music detection as synthetic tracks flood streaming SiliconANGLE"
-      },
-      {
-        "source": "gnews_en",
-        "title": "GEMA vs. Suno: Munich Court Now Rules AI Music Training Illegal - Gearnews.com",
-        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5pdEdvbVRXRDdGQ0hla3hKcDN5RDVLeGlKSmZOVGVIYnlFWGtybFR4ZjNDNHF6eWwwNXcteFRycHA0RXI5dGFheXN4Z29xeTUxMEFqcEx3?oc=5",
-        "date": "2026-07-31",
-        "src_name": "Gearnews.com",
-        "summary": "GEMA vs. Suno: Munich Court Now Rules AI Music Training Illegal Gearnews.com"
-      },
-      {
-        "source": "gnews_en",
-        "title": "RIAA Pushes AI Music Labels — Will Streaming Services Comply? - Barrett Media",
-        "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFAyOVNJQ2JWbjZYRVYwWC0tN1BzemM5M1FfYTQ3MjZXbDl1bWt0RHVxY0NMaGhKVFU1aEo0dnF0TmZiLUp2QmZLQlpGdHk2bWUwcVJhTW1POWZWMHBqWGt1REgyYk1uMlNtbFVPTk9wVHJpUQ?oc=5",
-        "date": "2026-07-24",
-        "src_name": "Barrett Media",
-        "summary": "RIAA Pushes AI Music Labels — Will Streaming Services Comply? Barrett Media"
-      },
-      {
-        "source": "gnews_en",
-        "title": "80s synth pop icon Howard Jones shares surprising take on AI music - KTLA",
-        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5zc0FTeXkxWkxBSEFLTlJyYl8wQUFCbFF4Tnpha2hDbzE4Qm11V1F6WVdvMHpPTElNelBxYWFvSUtRcHpqaG1uZkxyYmdGYkVQNlpjemdkai1hVDE4a3FpcUlhazl4ZVnSAWxBVV95cUxONmZGb2x0VXZjRXlMNlR4YV9PSGV0V2tuWWg4cEJLX2dybFROU2lWSE12ZkJQVEpzbm1lcW9YZnN4TjUycGxaOWVTalhvXzFrckF1NHh6YTVmMmd6bkx6NFRhRkZSRDVyRmI1REo?oc=5",
-        "date": "2026-07-16",
-        "src_name": "KTLA",
-        "summary": "80s synth pop icon Howard Jones shares surprising take on AI music KTLA"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Why Sony Just Filed a New AI Music Copyright Lawsuit Against Udio - Billboard",
-        "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVnlWTTNHWDB5Z0gzUXo5VTBuVmNWYjlxNUNDaEIxeGJzZUtKWlZDNGRXbU1UajNvcE9YeVRhNmNsb3ZHajhSejJFdWNNcHJfWDVYMVVOWVJMa0N6NjBsU2ZnSjQyR2Fhd19LdE1yS0l1Mk1uaEF6SmVkX2FlSXA2LQ?oc=5",
-        "date": "2026-07-20",
-        "src_name": "Billboard",
-        "summary": "Why Sony Just Filed a New AI Music Copyright Lawsuit Against Udio Billboard"
-      },
-      {
-        "source": "gnews_en",
-        "title": "DiMA, Suno and Deezer respond to AI-music labelling proposal - Music Ally",
-        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNOXFtZ1V0UDkyYjZTRzB6ejVRb1B1enBWV0N2QmtsY2NOUFNBd0xiSVpzZVNZX0N5Y1dzOTNvalZxRGRTV1Y1VmFMX0xSNmhURmE0bEFuRFVMdTA3Mk4wQzcweW96NXRWeFktVEE2aGc4enNYQnFrdVE5WWRZbERFSEtyczNuMm5lX1NEcXQzcVdna2VhNGIzQQ?oc=5",
-        "date": "2026-07-13",
-        "src_name": "Music Ally",
-        "summary": "DiMA, Suno and Deezer respond to AI-music labelling proposal Music Ally"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Mick Jagger has one rule for AI music: Make it your own - Yahoo",
-        "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVzFEdzJrRUR6OXVsblRVM3BxU2hLX3JuR2U2UVZNU0hhdnM1TUw1LUpoTEdqVHM0ZWFxb2tJNUlLQzVIUXJLSEd1QUxXWEktdjdyTUU5NENqRWV1YXBKVnl3SFlTS3dpS1NIZW9ab1p5d3RIUGcxRjZLN1pvcHcyZzh0MmNISUdpbVEyM3htVTYxV2c?oc=5",
-        "date": "2026-07-17",
-        "src_name": "Yahoo",
-        "summary": "Mick Jagger has one rule for AI music: Make it your own Yahoo"
-      },
-      {
-        "source": "gnews_en",
-        "title": "AI Music Tops 50% of Daily Uploads on Deezer - Deezer Newsroom",
-        "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPRUtxdUVJclRsYmNNc1B3bjNnN0VzQmlCWmIzUjhSQ1RkLXNZS3MtUmY4RHZKNzhkSHVJRkJ6bkhPOHRZTDkxQ1BNUW1xQUpVUW1lZjljZDgtcGpKdllQZG5TNTRVeG5obnRfWnhFSy1kcHVfYUotWEJzeUU2OHdKWEN5WmtOcHVSWmlCNzVR?oc=5",
-        "date": "2026-07-21",
-        "src_name": "Deezer Newsroom",
-        "summary": "AI Music Tops 50% of Daily Uploads on Deezer Deezer Newsroom"
-      },
-      {
-        "source": "gnews_en",
-        "title": "The Recorded Music Industry Wants Labels on AI Music. How Could That Work? (FAQ) - Billboard",
-        "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQbEtKQUo3MjlWYXlhOEhJT1BrSlBYcFo2OEJCZkF5Q3ZKcUdkNjhDUGRYQ2JHdmlFbFdpQlpscHo2cWdNd0hiWlJYSFBjTnVWWmEtSDRIX0JuR01kdnd3UUJ3aFVmV3RlSWR6elZWUGRGTXdWSnhzdENtUFVzMFBkb3pha19qYms5V1IybHZZaw?oc=5",
-        "date": "2026-07-23",
-        "src_name": "Billboard",
-        "summary": "The Recorded Music Industry Wants Labels on AI Music. How Could That Work? (FAQ) Billboard"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Watch out, Suno: Google upgrades Lyria AI music model with ‘more realistic and emotionally nuanced vocals’ - Music Business Worldwide",
-        "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWUFCN19mQjlzMXZVZmIwRG9ERmhGcGtWV2pLdGM5d1c4MnYwU2F0SUhDMXhGaFV5WVo1UjF1Yzd4U0VsRS1ZOXNCd0dERjdZME1RMmhNYjZMcmV2SFNZSm1ZcjFZNnliYWJoQnpOdE4xbWlZMldoR2NZZFZ5cDdQVndaSEljS2s?oc=5",
-        "date": "2026-07-30",
-        "src_name": "Music Business Worldwide",
-        "summary": "Watch out, Suno: Google upgrades Lyria AI music model with ‘more realistic and emotionally nuanced vocals’ Music Business Worldwide"
-      },
-      {
-        "source": "gnews_en",
-        "title": "\"We would truly appreciate it if you could view the work with understanding in mind\" - Shift Up CEO defends Stellar Blade: Blood Rain's AI music video as online backlash grows - Eurogamer.net",
-        "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBCS3B5amVpNGRucjEyTGFzcUYwRzhxc2o0UGptZmtvSk5VMFp0TTBaa3hLdW5sckYya2VQNUIxX3ZJX2NXdXFTTnBHUzVhbmFMLVlnYXJkQWh0bkcxYVJhMFZMNy1CTFc5YTVYWVNwdGdnNFA3?oc=5",
-        "date": "2026-08-04",
-        "src_name": "Eurogamer.net",
-        "summary": "\"We would truly appreciate it if you could view the work with understanding in mind\" - Shift Up CEO defends Stellar Blade: Blood Rain's AI music video as online backlash grows Eurogamer.net"
-      },
-      {
-        "source": "gnews_en",
-        "title": "Here are the 30,000 songs Sony is suing Udio’s AI music generator over - The Verge",
-        "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1RWFN4TmNqQ2Z6dTZJckhzbXNzRXBpZ0xKN1dwSHBJbUtDdXVZc3JIYzI5YjRmN05FVW5zOTRRaFdkeHhadFczYWtKNVVFYnFFdF9GanR1T0tVWDN2YlJteW02ZmhwczB1OEZaejNVNzZ5NFhNSTBXUkpZd2RGUQ?oc=5",
-        "date": "2026-07-20",
-        "src_name": "The Verge",
-        "summary": "Here are the 30,000 songs Sony is suing Udio’s AI music generator over The Verge"
       }
     ],
     "hf_papers": [
+      {
+        "source": "hf_papers",
+        "title": "Interpretable MEG Decoding of Perceived Speech: Cortical Sources and the Stimulus Features That Drive Retrieval",
+        "url": "https://arxiv.org/abs/2608.01481",
+        "date": "2026-08-01",
+        "summary": "Short segments of perceived speech can be retrieved from non-invasive magnetoencephalographic (MEG) recordings by deep networks trained with a CLIP-style objective against wav2vec 2.0 audio embeddings. Yet their weights do not map onto electrophysiological quantities, and it remains unclear which speech properties drive retrieval. We build on a high-performing MEG-to-audio retrieval architecture b"
+      },
       {
         "source": "hf_papers",
         "title": "Lossless Tensor Compression as Program Synthesis",
@@ -2625,6 +2575,22 @@
       }
     ],
     "hf_models": [
+      {
+        "source": "hf_models",
+        "title": "pius-code/asha_twi_mms_adapter",
+        "url": "https://huggingface.co/pius-code/asha_twi_mms_adapter",
+        "date": "2026-08-07",
+        "downloads": 171,
+        "likes": 0
+      },
+      {
+        "source": "hf_models",
+        "title": "1mahfuz/btts-finetuned",
+        "url": "https://huggingface.co/1mahfuz/btts-finetuned",
+        "date": "2026-08-07",
+        "downloads": 0,
+        "likes": 0
+      },
       {
         "source": "hf_models",
         "title": "sumish67/senad-speecht5-som",
@@ -2659,18 +2625,10 @@
       },
       {
         "source": "hf_models",
-        "title": "pius-code/asha_twi_mms_adapter",
-        "url": "https://huggingface.co/pius-code/asha_twi_mms_adapter",
-        "date": "2026-08-04",
-        "downloads": 168,
-        "likes": 0
-      },
-      {
-        "source": "hf_models",
         "title": "kiran1254/speecht5_finetuned_emirhan_tr",
         "url": "https://huggingface.co/kiran1254/speecht5_finetuned_emirhan_tr",
         "date": "2026-08-04",
-        "downloads": 106,
+        "downloads": 109,
         "likes": 0
       },
       {
@@ -2686,7 +2644,7 @@
         "title": "dummy9996/stable-audio-3-medium-bf16",
         "url": "https://huggingface.co/dummy9996/stable-audio-3-medium-bf16",
         "date": "2026-08-04",
-        "downloads": 88,
+        "downloads": 89,
         "likes": 0
       },
       {
@@ -2710,7 +2668,7 @@
         "title": "Sumish34/senad-tts-som-finetuned-full",
         "url": "https://huggingface.co/Sumish34/senad-tts-som-finetuned-full",
         "date": "2026-08-03",
-        "downloads": 33,
+        "downloads": 34,
         "likes": 0
       },
       {
@@ -2726,7 +2684,7 @@
         "title": "mlboydaisuke/Stable-Audio-Open-Small-CoreML",
         "url": "https://huggingface.co/mlboydaisuke/Stable-Audio-Open-Small-CoreML",
         "date": "2026-08-03",
-        "downloads": 34,
+        "downloads": 36,
         "likes": 0
       },
       {
@@ -2750,15 +2708,15 @@
         "title": "stabilityai/stable-audio-3-optimized",
         "url": "https://huggingface.co/stabilityai/stable-audio-3-optimized",
         "date": "2026-08-02",
-        "downloads": 4606,
-        "likes": 27
+        "downloads": 4614,
+        "likes": 29
       },
       {
         "source": "hf_models",
         "title": "Lightricks/LTX-2.3-22b-LoRA-Foley-V2A",
         "url": "https://huggingface.co/Lightricks/LTX-2.3-22b-LoRA-Foley-V2A",
         "date": "2026-08-02",
-        "downloads": 2434,
+        "downloads": 2440,
         "likes": 31
       },
       {
@@ -2806,7 +2764,7 @@
         "title": "jasonvassallo/mlx-musicgen-stereo-large",
         "url": "https://huggingface.co/jasonvassallo/mlx-musicgen-stereo-large",
         "date": "2026-07-31",
-        "downloads": 99,
+        "downloads": 102,
         "likes": 0
       },
       {
@@ -2814,7 +2772,7 @@
         "title": "jasonvassallo/mlx-musicgen-stereo-medium",
         "url": "https://huggingface.co/jasonvassallo/mlx-musicgen-stereo-medium",
         "date": "2026-07-31",
-        "downloads": 76,
+        "downloads": 78,
         "likes": 0
       },
       {
@@ -2822,7 +2780,7 @@
         "title": "jasonvassallo/mlx-musicgen-stereo-small",
         "url": "https://huggingface.co/jasonvassallo/mlx-musicgen-stereo-small",
         "date": "2026-07-31",
-        "downloads": 76,
+        "downloads": 75,
         "likes": 0
       },
       {
@@ -2846,7 +2804,7 @@
         "title": "jasonvassallo/mlx-musicgen-small",
         "url": "https://huggingface.co/jasonvassallo/mlx-musicgen-small",
         "date": "2026-07-30",
-        "downloads": 80,
+        "downloads": 79,
         "likes": 0
       },
       {
@@ -2854,19 +2812,18 @@
         "title": "jasonvassallo/mlx-musicgen-melody-large",
         "url": "https://huggingface.co/jasonvassallo/mlx-musicgen-melody-large",
         "date": "2026-07-30",
-        "downloads": 85,
-        "likes": 0
-      },
-      {
-        "source": "hf_models",
-        "title": "jasonvassallo/mlx-musicgen-melody",
-        "url": "https://huggingface.co/jasonvassallo/mlx-musicgen-melody",
-        "date": "2026-07-30",
-        "downloads": 66,
+        "downloads": 88,
         "likes": 0
       }
     ],
     "rss_cdm": [
+      {
+        "source": "rss_cdm",
+        "title": "The strength of grieving together, in Felisha Ledesma and Snakeskin",
+        "url": "https://cdm.link/the-strength-of-grieving-together-in-felisha-ledesma-and-snakeskin",
+        "date": "2026-08-07",
+        "summary": "We live in a world of solitary trauma and unrealized grief. We can sit alone with our phones and see it reduced to images in an algorithm. We can see our loved ones go through trauma in ways we can't even understand or reach. In Palm of Hand, through extemporaneous collaboration between Snakeskin and Felisha Ledesma, Malmö and Beirut, there is a healing expression of all this agonizing, fragmented"
+      },
       {
         "source": "rss_cdm",
         "title": "The PlayStation Vita just got a new sampling groovebox and synth",
@@ -2929,16 +2886,37 @@
         "url": "https://cdm.link/deafman-transforms-ableton-live-colors-themes",
         "date": "2026-07-29",
         "summary": "DeafMan's creations for Ableton Live have evolved from a selection of cool retro themes to a vast library of complete color makeovers -- a \"visual system.\" And there's an insanely powerful new editor for managing themes, tweaking colors, creating customizations, and assigning color to tracks. It's more than just customization: it's a way of thinking about your workspace and music in hues and shade"
-      },
-      {
-        "source": "rss_cdm",
-        "title": "Owen Lake and the Tragic Loves have the cutest dinosaur music video",
-        "url": "https://cdm.link/owen-lake-and-the-tragic-loves-have-the-cutest-dinosaur-music-video",
-        "date": "2026-07-28",
-        "summary": "Owen Lake is back -- the alias of Jeff Snyder, who in these parts is best known for Snyderphonics, MPE innovator and Manta creator (of Princeton University). Here, we get twee-and-western, electro-country tunes with Anica Mrose Rissi that charmingly stick in your head, played partly on instruments Jeff invented, Electrosteel and Electrobass. And there's a music video with dinos! The post Owen Lake"
       }
     ],
     "rss_musictech": [
+      {
+        "source": "rss_musictech",
+        "title": "Score up to 30% off Teenage Engineering gear – plus more studio hardware deals you can’t miss this week",
+        "url": "https://musictech.com/news/gear/best-studio-hardware-deals",
+        "date": "2026-08-07",
+        "summary": "Here’s what’s worth adding to your cart while the discounts last. The post Score up to 30% off Teenage Engineering gear – plus more studio hardware deals you can’t miss this week appeared first on MusicTech ."
+      },
+      {
+        "source": "rss_musictech",
+        "title": "Sylvan Esso’s Amelia Meath says it’s “terrifying” how streaming has changed the way we consume music: “No one knows who they’re listening to now”",
+        "url": "https://musictech.com/news/music/sylvan-esso-streaming-terrifying",
+        "date": "2026-08-07",
+        "summary": "“A song is something they listen to for a week, then it is gone.” The post Sylvan Esso’s Amelia Meath says it’s “terrifying” how streaming has changed the way we consume music: “No one knows who they’re listening to now” appeared first on MusicTech ."
+      },
+      {
+        "source": "rss_musictech",
+        "title": "Alesis’s new partnership with iconic cymbal maker Zildjian aims to “raise the bar for electronic drums”",
+        "url": "https://musictech.com/news/music/alesis-partners-zildjan",
+        "date": "2026-08-07",
+        "summary": "Users can now gain access to studio-recorded cymbals hand-selected from Zildjian’s exclusive Artist Vault. The post Alesis’s new partnership with iconic cymbal maker Zildjian aims to “raise the bar for electronic drums” appeared first on MusicTech ."
+      },
+      {
+        "source": "rss_musictech",
+        "title": "The best new music plugins this week, free and paid",
+        "url": "https://musictech.com/news/gear/new-plugins-this-week",
+        "date": "2026-08-07",
+        "summary": "Software instruments, effects and mixing plugins – here’s everything fresh in the plugin marketplace this week. The post The best new music plugins this week, free and paid appeared first on MusicTech ."
+      },
       {
         "source": "rss_musictech",
         "title": "Suno CEO insists Suno is “responsible” and isn’t going to leave people behind: “Music is one of the oldest forms of human expression, and it has always evolved alongside technology”",
@@ -2980,50 +2958,43 @@
         "url": "https://musictech.com/news/gear/fender-motion-controllers-studio-pro-integration",
         "date": "2026-08-04",
         "summary": "Following their debut at the NAMM show, Fender's Motion controllers are finally here, bringing a built-in chord mode and specially made FATAR pads. The post Fender’s first-ever performance pad controllers have arrived – here’s everything you need to know about Fender Motion appeared first on MusicTech ."
-      },
-      {
-        "source": "rss_musictech",
-        "title": "Moby praises the UK for inventing rave culture",
-        "url": "https://musictech.com/news/music/moby-praises-the-uk-for-inventing-rave-culture",
-        "date": "2026-08-04",
-        "summary": "“This is where house music exploded. This is where techno exploded. I don’t think it’s overstating it. I don’t think it’s hyperbole,” the musician said during his headline set at Brighton’s On The Beach festival. The post Moby praises the UK for inventing rave culture appeared first on MusicTech ."
-      },
-      {
-        "source": "rss_musictech",
-        "title": "Best wired headphones under $500 in 2026: Our picks for mixing, DJing and music production",
-        "url": "https://musictech.com/guides/buyers-guide/best-headphones-all-purpose-wired-under-500",
-        "date": "2026-08-03",
-        "summary": "Mixing at home, recording in the studio or producing on the go? You’ll need a trusted pair of wired headphones — and these models punch above their price tag. The post Best wired headphones under $500 in 2026: Our picks for mixing, DJing and music production appeared first on MusicTech ."
-      },
-      {
-        "source": "rss_musictech",
-        "title": "“We just don’t see a point of ever being on a label again”: M. Shadows on Avenged Sevenfold’s new chapter as a fully independent band",
-        "url": "https://musictech.com/news/music/m-shadows-on-avenged-sevenfolds-new-chapter-as-a-fully-independent-band",
-        "date": "2026-08-03",
-        "summary": "Are record labels outdated? Avenged Sevenfold’s frontman weighs in. The post “We just don’t see a point of ever being on a label again”: M. Shadows on Avenged Sevenfold’s new chapter as a fully independent band appeared first on MusicTech ."
-      },
-      {
-        "source": "rss_musictech",
-        "title": "German court says Suno’s AI training infringed copyright in landmark ruling",
-        "url": "https://musictech.com/news/industry/suno-copyright-infringement-germany",
-        "date": "2026-08-03",
-        "summary": "“The fact that we can now enforce our rights in countries including the United States gives creators hope and confidence at a time of profound technological transformation,” says GEMA Supervisory Board chairman Dr Ralf Weigand. The post German court says Suno’s AI training infringed copyright in landmark ruling appeared first on MusicTech ."
       }
     ],
     "rss_synthtopia": [
       {
         "source": "rss_synthtopia",
-        "title": "SynthEdit Comes To Mac After 30 Years",
-        "url": "https://www.synthtopia.com/content/2026/08/06/synthedit-comes-to-mac-after-30-years",
-        "date": "2026-08-06",
-        "summary": "SynthEdit is a visual modular development environment for creating virtual instruments and audio effects, allowing users to design and export plugins without writing low-level DSP code.… Read More SynthEdit Comes To Mac After 30 Years"
+        "title": "Steinberg Celebrates 30 Years Of VSTs With Free Classics Collection",
+        "url": "https://www.synthtopia.com/content/2026/08/07/steinberg-celebrates-30-years-of-vsts-with-free-classics-collection",
+        "date": "2026-08-07",
+        "summary": "Steinberg is celebrating the 30th anniversary of the VST standard by making five of its classic software instruments and effects available as a free download.… Read More Steinberg Celebrates 30 Years Of VSTs With Free Classics Collection"
       },
       {
         "source": "rss_synthtopia",
-        "title": "New Album, Cognitive Dissonance, Explores Improvising With Piano & A Modular Synthesizer",
+        "title": "New Plugin, I Am Choir, Transforms Your Voice Into A Full Choir",
+        "url": "https://www.synthtopia.com/content/2026/08/07/new-plugin-i-am-choir-transforms-your-voice-into-a-full-choir",
+        "date": "2026-08-07",
+        "summary": "I AM CHOIR is an AI-powered vocal plugin that generates choir performances from a single vocal recording while following the source audio's lyrics, melody, and timing.… Read More New Plugin, I Am Choir, Transforms Your Voice Into A Full Choir"
+      },
+      {
+        "source": "rss_synthtopia",
+        "title": "William Orbit Has Died At The Age Of 69",
+        "url": "https://www.synthtopia.com/content/2026/08/07/william-orbit-has-died-at-the-age-of-69",
+        "date": "2026-08-07",
+        "summary": "Orbit's productions, and his approach to electronic music, have inspired countless musicians and leave a legacy that continues to shape modern pop and electronic music.… Read More William Orbit Has Died At The Age Of 69"
+      },
+      {
+        "source": "rss_synthtopia",
+        "title": "SynthEdit Comes To Mac After Nearly 40 Years",
+        "url": "https://www.synthtopia.com/content/2026/08/06/synthedit-comes-to-mac-after-30-years",
+        "date": "2026-08-06",
+        "summary": "SynthEdit is a visual modular development environment for creating virtual instruments and audio effects, allowing users to design and export plugins without writing low-level DSP code.… Read More SynthEdit Comes To Mac After Nearly 40 Years"
+      },
+      {
+        "source": "rss_synthtopia",
+        "title": "New Album, Consonant Dissonance, Explores Improvising With Piano & A Modular Synthesizer",
         "url": "https://www.synthtopia.com/content/2026/08/06/new-album-cognitive-dissonance-explores-improvising-with-piano-a-modular-synthesizer",
         "date": "2026-08-06",
-        "summary": "Synthesist and composer John C.S. Keston has released a new album, Consonant Dissonance, that explores improvising with piano and a modular synthesizer.… Read More New Album, Cognitive Dissonance, Explores Improvising With Piano & A Modular Synthesizer"
+        "summary": "Synthesist and composer John C.S. Keston has released a new album, Consonant Dissonance, that explores improvising with piano and a modular synthesizer.… Read More New Album, Consonant Dissonance, Explores Improvising With Piano & A Modular Synthesizer"
       },
       {
         "source": "rss_synthtopia",
@@ -3094,27 +3065,6 @@
         "url": "https://www.synthtopia.com/content/2026/07/31/roland-gokeys-3-minion-keyboard-coming-in-sept",
         "date": "2026-07-31",
         "summary": "GO:KEYS 3 Minion will feature a Minions yellow look, along with playable Minions voices.… Read More Roland GO:KEYS 3 Minion Keyboard Coming In Sept"
-      },
-      {
-        "source": "rss_synthtopia",
-        "title": "MD-7 ‘Pocket Synthesizer’ Combines Open-Source Synthesis With Motorized Touch Feedback",
-        "url": "https://www.synthtopia.com/content/2026/07/30/md-7-pocket-synthesizer-combines-open-source-synthesis-with-motorized-touch-feedback",
-        "date": "2026-07-30",
-        "summary": "Mach Devices' MD-7 is a compact hardware synthesizer featuring motorized haptic controls, an open-source firmware platform, a subtractive synth engine, sequencer, and drum looper.… Read More MD-7 ‘Pocket Synthesizer’ Combines Open-Source Synthesis With Motorized Touch Feedback"
-      },
-      {
-        "source": "rss_synthtopia",
-        "title": "Tim Exile Previews Karst Software Modular System",
-        "url": "https://www.synthtopia.com/content/2026/07/30/tim-exile-previews-karst-software-modular-system",
-        "date": "2026-07-30",
-        "summary": "Synthesist Tim Exile shared this preview of Karst - a digital modular for composing with systems.… Read More Tim Exile Previews Karst Software Modular System"
-      },
-      {
-        "source": "rss_synthtopia",
-        "title": "reFX Intros Rippler Physical Modeling Synthesizer",
-        "url": "https://www.synthtopia.com/content/2026/07/30/refx-intros-rippler-physical-modeling-synthesizer",
-        "date": "2026-07-30",
-        "summary": "reFX Rippler is a software synthesizer combining modal synthesis, physically modeled resonators, subtractive synthesis, modulation, effects, and MPE support in a dual-layer architecture.… Read More reFX Intros Rippler Physical Modeling Synthesizer"
       }
     ],
     "bluesky": []

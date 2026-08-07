@@ -352,11 +352,11 @@
     <div class="utility">
       <span class="vol-line">VOL.013 · 2026年8月8日 · 星期六</span>
       <nav class="u-nav" aria-label="站点">
-        <a class="u-btn" href="archive.html">往期</a>
+        <a class="u-btn" href="../archive.html">往期</a>
         <button class="u-btn" id="theme-toggle" type="button" aria-label="切换深浅色">深色</button>
       </nav>
     </div>
-    <h1><a href="./index.html">音乐科技雷达</a></h1>
+    <h1><a href="../index.html">音乐科技雷达</a></h1>
     <p class="mast-sub">数字音乐智能处理 · 学术前沿 × 开源工具 × 行业动态</p>
     <p class="mast-counts">收录 13 条 · 选题 4 个 · 每日 07:00 出版</p>
     <canvas id="wave" aria-hidden="true"></canvas>
@@ -510,7 +510,7 @@
         <div class="diff"><span>▮▮▯ 进阶</span><span class="kind">产品原型</span></div>
         <h3>基于音频参考的重拍驱动短视频分段生成工作流</h3>
         <p class="body">做什么：在 ComfyUI 里搭建一个可复用的 JSON 工作流：输入一首 30 秒歌曲，先用掩码扩散节拍跟踪模型输出稳定重拍位置，再用 MiniMax H3 Director 时间线节点以整首歌为全局音频参考，在每两个相邻重拍之间生成 2~4 秒画面，最终拼接成一段“镜头切换卡在重拍上、画面情绪随音频参考走”的短视频，并输出节拍对齐率和主观 A/B 评分表。第一步怎么动手：安装 ComfyUI 和本期 minimax-h3-audio-T8 节点，跑通官方 text→audio 示例；同时用 vol 12 的 masked diffusion beat tracking 代码或 librosa 在同样一首歌上标出前 8 个重拍，把两组时间戳摆在一起检查是否重合。『需要：』Python · ComfyUI/节点工作流 · 节拍跟踪（librosa 或论文模型） · 视频合成 · 音视频同步评测 · 基础统计。</p>
-        <p class="uses"><b>基于:</b><a href="https://github.com/T8mars/comfyui-minimax-h3-audio-T8" target="_blank" rel="noopener">ComfyUI节点：接入MiniMax H3音频生成</a> · <a href="https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director" target="_blank" rel="noopener">ComfyUI MiniMax H3 Director：音视时间线编辑节点</a> <a class="volref" href="./issues/vol-012.html">VOL.012</a> · <a href="https://arxiv.org/abs/2608.04624" target="_blank" rel="noopener">掩码扩散模型让节拍跟踪不再乱拍</a> <a class="volref" href="./issues/vol-012.html">VOL.012</a></p>
+        <p class="uses"><b>基于:</b><a href="https://github.com/T8mars/comfyui-minimax-h3-audio-T8" target="_blank" rel="noopener">ComfyUI节点：接入MiniMax H3音频生成</a> · <a href="https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director" target="_blank" rel="noopener">ComfyUI MiniMax H3 Director：音视时间线编辑节点</a> <a class="volref" href="../issues/vol-012.html">VOL.012</a> · <a href="https://arxiv.org/abs/2608.04624" target="_blank" rel="noopener">掩码扩散模型让节拍跟踪不再乱拍</a> <a class="volref" href="../issues/vol-012.html">VOL.012</a></p>
       </article>
 
       <article class="idea">
@@ -526,7 +526,7 @@
 
   <footer>
     <span>数据来源:arXiv(cs.SD / eess.AS / cs.HC / cs.MM)· Hacker News · GitHub — 按“数字音乐智能处理”相关度筛选,宁缺毋滥</span><br>
-    <span>音乐科技雷达 · 第 013 期 · 2026年8月8日 · 每日 07:00 出版 · <a href="archive.html" style="border-bottom:1px solid var(--hairline)">往期回顾</a></span>
+    <span>音乐科技雷达 · 第 013 期 · 2026年8月8日 · 每日 07:00 出版 · <a href="../archive.html" style="border-bottom:1px solid var(--hairline)">往期回顾</a></span>
   </footer>
 </div>
 
