@@ -2,186 +2,217 @@
   "items": [
     {
       "sec": "papers",
-      "tag": "MIR",
-      "date": "2026-08-03",
-      "title": "MERT跨文化流派分类：刚果音乐与国际流派对比",
-      "url": "https://doi.org/10.7759/s44389-026-00201-z",
-      "src": "OpenAlex",
-      "orig": "Cross-Cultural Music Genre Classification With Self-Supervised Music Transformers: A MERT-Based Transfer Learning Study on Congolese and International Genres",
-      "why": "本文把MERT自监督模型迁移到刚果本土与国际流派分类任务上，填补了非洲音乐在MIR研究中的数据空白。对数字音乐智能处理专业而言，这是观察大模型文化偏见和跨文化适应性的绝佳样本。",
+      "tag": "音乐转谱/MIR",
+      "date": "2026-08-06",
+      "title": "SheetSage-A2S：首个流行音乐音频转谱数据集与预训练特征方法",
+      "url": "https://arxiv.org/abs/2608.06165",
+      "src": "arXiv · cs.SD",
+      "orig": "Audio-to-Score Transcription using Pre-trained Features, Data Augmentation, and the New SheetSage-A2S Dataset",
       "hot": "本报头条",
-      "detail": "【这是什么】这是一项用自监督音乐Transformer做跨文化流派分类的研究。研究者以MERT模型为基础，在刚果（金）本土音乐和国际流行、摇滚等流派之间做迁移学习，把非洲音乐纳入主流MIR评测框架。\n【为什么值得关注】当前音乐信息检索领域的公开数据多集中在西方音乐，模型遇到非西方传统音乐时常常力不从心。这篇论文直接补上非洲音乐的空白，对做世界音乐、民族音乐数字化和公平评测的同学很有启发。\n【怎么入手】可以下载论文查看他们如何划分本地与国际流派，以及MERT微调前后的准确率变化；如果你手上有中国地方戏曲或少数民族音乐素材，也可以套用这套跨文化迁移思路做实验。"
+      "why": "推出首个面向流行音乐的音频转谱数据集 SheetSage-A2S，将预训练特征与数据增强引入 A2S 任务。它填补了流行音乐自动记谱长期缺少标注数据的空白，对 MIR、符号音乐与音乐出版都有直接推动作用。",
+      "detail": "【这是什么】SheetSage-A2S 是首个面向流行音乐（如流行、摇滚等）的音频转谱数据集，包含 9,468 个片段、6,066 首独特歌曲、约 61 小时音频，并采用 **kern 乐谱编码。研究团队还引入预训练特征与数据增强，训练模型从录音中直接输出可播放的乐谱。\\n【为什么值得关注】过去自动转谱多集中在古典钢琴，流行音乐数据集稀缺。该数据集填补了这一空白，让模型能学习更复杂的编曲、混响和电子音色。高质量的音频与乐谱对应关系，是 MIR 评估和符号音乐下游任务的重要基础。\\n【怎么入手】论文可在 arXiv 下载，数据集与代码链接通常附在论文中。建议尝试用它训练或评测转谱模型，看自己在流行歌曲上的自动记谱准确度。"
     },
     {
       "sec": "papers",
-      "tag": "MIR",
-      "date": "2026-08-02",
-      "title": "音乐基础模型中西音乐理解能力维度探测",
-      "url": "https://doi.org/10.3390/electronics15153421",
-      "src": "OpenAlex",
-      "orig": "Dimension-Wise Probing of Music Foundation Models for Chinese and Western Music: Timbre, Technique, Key, and Mode",
-      "why": "研究用探测任务拆解MERT、MuQ、CultureMERT在音色、古筝技法、西方调性和中国五声调式上的表现，直接比较中西音乐理解能力。",
-      "detail": "【这是什么】研究者用探测任务拆解MERT、MuQ、CultureMERT这几个音乐基础模型，分别测试它们在音色、古筝演奏技法、西方调性和中国五声调式上的表现。\n【为什么值得关注】我们常说大模型懂音乐，但懂的是五线谱思维还是民族调式思维，一直缺少系统比较。这篇文章把中西音乐特征拆成四个维度逐一检验，能帮我们看清这些模型的文化偏见和能力边界。\n【怎么入手】可以先读实验部分，看哪个模型在古筝技法识别上得分最高；做课程报告或研究选题时，这篇很适合当讨论音乐基础模型文化适应性的切入点。"
+      "tag": "自动混音",
+      "date": "2026-08-06",
+      "title": "把自动混音变成逐个加 Stem 的流水线",
+      "url": "https://arxiv.org/abs/2608.05506",
+      "src": "arXiv · cs.SD",
+      "orig": "Rethinking Automatic Music Mixing as Sequential Stem Blending",
+      "why": "把自动混音从并行处理改为逐轨顺序混入，更像人类混音师的工作流程。它有望解决多轨同时处理时乐器层次混乱的问题，提升自动混音的可解释性和音乐性。",
+      "detail": "【这是什么】传统自动混音像一次把所有轨道倒进搅拌机，所有乐器同步处理。这篇论文则模仿人类混音师，按顺序一轨一轨地混入，后加的轨道根据前面已经混好的声音做调整。\\n【为什么值得关注】这种顺序方式更容易让吉他、贝斯、鼓等乐器之间的相对音量关系变得自然，也便于加入风格化的混音步骤。它给自动混音提供了一种新范式，不再只靠端到端黑箱。\\n【怎么入手】可以把它作为参考实现，把现有分轨输入转换成顺序决策过程；论文代码发布后可复现并与现有并行模型做 A/B 对比。"
+    },
+    {
+      "sec": "papers",
+      "tag": "音频处理/吉他音色",
+      "date": "2026-08-06",
+      "title": "EG-VAE：电吉他音色迁移与去除统一框架",
+      "url": "https://arxiv.org/abs/2608.05513",
+      "src": "arXiv · cs.SD",
+      "orig": "EG-VAE: A Unified Framework for Electric Guitar Tone Transfer and Removal",
+      "why": "首次用统一框架同时完成电吉他音色迁移与音色去除，把两个强相关任务结合起来。它能帮助制作人在不重新录音的情况下更换吉他音色或还原干信号。",
+      "detail": "【这是什么】电吉他录音通常经过效果器、音箱模拟等润色。EG-VAE 同时做两件事：把一段录音的音色换成参考曲目的音色，以及把润色过的湿信号还原成干净的 DI 信号。用一个统一模型解决两个相互关联的问题。\\n【为什么值得关注】实际意义在于，音乐制作人可以更灵活地重配吉他音色，或去掉已有效果重新处理。相比独立处理，统一框架能共享音色建模，减少音色失真和伪影。\\n【怎么入手】论文有实验音频样本，可结合自己的电吉他 DI 或重放录音进行试听。研究为吉他音色库和数字效果器设计提供了新思路。"
+    },
+    {
+      "sec": "papers",
+      "tag": "符号音乐/音乐生成",
+      "date": "2026-08-05",
+      "title": "Diff-Symbo：文本控制的长时长符号音乐生成",
+      "url": "https://arxiv.org/abs/2608.05222",
+      "src": "arXiv · cs.SD",
+      "orig": "Diff-Symbo: Text-Controlled Long-Duration Symbolic Music Generation Using Autoregressive Latent Diffusion Model",
+      "why": "将自回归与潜在扩散结合，实现文本控制的长时长符号音乐生成。它为可控符号作曲与游戏配乐提供了新的生成模型思路。",
+      "detail": "【这是什么】用一句话让 AI 生成一段钢琴或乐队 MIDI，听起来像 MIDI 作曲助手。Diff-Symbo 把自回归语言模型和潜在扩散模型结合起来，在文本提示下生成更长、更连贯的符号音乐。\\n【为什么值得关注】相比短片段生成，它能保持数分钟的结构一致性，也支持通过文本调整风格。这对符号音乐创作、游戏配乐自动生成和可编辑乐谱都有帮助。\\n【怎么入手】论文提供模型与代码，懂 MIDI 的学生可以把自己的文本提示换成具体的调式、节奏描述，观察生成乐谱的可编辑性。"
+    },
+    {
+      "sec": "papers",
+      "tag": "节拍跟踪/MIR",
+      "date": "2026-08-05",
+      "title": "掩码扩散模型让节拍跟踪不再乱拍",
+      "url": "https://arxiv.org/abs/2608.04624",
+      "src": "arXiv · cs.SD",
+      "orig": "Masked diffusion enables coherent beat tracking",
+      "why": "用掩码扩散约束节拍跟踪输出，减少连续重拍和 tempo 跳变等不合理结果。它揭示了现有打拍模型在多种合理节拍候选中决策不稳的问题。",
+      "detail": "【这是什么】神经网络打拍子时经常会输出连续重拍或 tempo 忽快忽慢的奇怪结果，即便训练数据里没有这些问题。这篇论文认为，模型在推断时面对多个合理候选结果时学得不够清楚。\\n【为什么值得关注】作者用掩码扩散模型，让节拍器在生成拍子位置时考虑多种可能，并学会选择更稳定的序列。它把 beat tracking 从单纯分类变成受约束的生成任务。\\n【怎么入手】代码与模型发布后可用来处理自己的歌曲，观察在电子、爵士等节拍复杂音乐中的稳定性。研究也揭示了现有打拍子模型的脆弱性。"
+    },
+    {
+      "sec": "papers",
+      "tag": "自动混音/扩散模型",
+      "date": "2026-08-05",
+      "title": "Diff2Mix：用扩散模型与可微音效做可控音乐混音",
+      "url": "https://arxiv.org/abs/2608.05442",
+      "src": "arXiv · cs.SD",
+      "orig": "Diff2Mix: Controllable Music Mixing via Diffusion Models and Differentiable Audio Effects",
+      "why": "把扩散模型与可微音效链结合，让自动混音既有平衡度又能按风格调整。它是生成式音乐混音在专业音频工作流中的重要尝试。",
+      "detail": "【这是什么】自动混音不是只有一个正确答案，不同工程师对同一首歌的混音风格差异很大。Diff2Mix 在扩散模型中嵌入可微分的均衡、压缩等效果器，让系统既能做出平衡混音，又能按用户要求调整风格。\\n【为什么值得关注】这样用户可以在保留整体清晰度的同时，指定更暗的鼓声、更亮的人声或不同的混响长度。它是把生成式建模与专业音频处理链结合的一次尝试。\\n【怎么入手】可跟随论文复现，把扩散模型当作一个可学习的混音师，用参考混音作为风格引导，评估自己曲目的可控制性。"
+    },
+    {
+      "sec": "papers",
+      "tag": "评测/音乐转谱",
+      "date": "2026-08-05",
+      "title": "音乐转谱的双重评估：谱面相似度与回放相似度",
+      "url": "https://arxiv.org/abs/2608.04511",
+      "src": "arXiv · cs.SD",
+      "orig": "A Dual Evaluation for Music Transcription",
+      "why": "同时用乐谱相似度和回放相似度评估转谱结果，避免单一指标误导。它提醒我们自动转谱的好坏要看谱面也要听声音。",
+      "detail": "【这是什么】自动转谱结果有两个用途：打印出来给人看，或者重新播放给电脑听。前者看重五线谱与参考谱是否一致，后者看重播放出来的声音是否像原曲。\\n【为什么值得关注】这篇论文把光学乐谱识别里的符号相似度指标和音频层面的回放相似度指标放在一起，提出双轨评估。它提醒我们，一个转谱系统可能在视觉上接近参考谱，但听起来不像原录音。\\n【怎么入手】如果你在做转谱评测，可以借鉴这种双重视角，避免只看单一数字而误判系统好坏。"
+    },
+    {
+      "sec": "papers",
+      "tag": "MIR/版本识别",
+      "date": "2026-08-05",
+      "title": "DiVers：真实场景下的音乐版本识别数据集",
+      "url": "https://arxiv.org/abs/2608.04543",
+      "src": "arXiv · cs.SD",
+      "orig": "Towards Robust Version Identification in the Wild: A Dataset, Benchmark, and Fine-Tuning Study",
+      "why": "构建包含大量用户生成内容的真实场景版本识别数据集 DiVers。它让版本识别系统从温室数据集走向实际流媒体环境。",
+      "detail": "【这是什么】版本识别是帮你在无数翻唱、Remix 和现场版中找出同一首歌。现有数据集多为专业录音室版本，和真实世界差距大。DiVers 收集了大量用户生成内容与业余翻唱，构建更大规模的新基准。\\n【为什么值得关注】它让模型必须习惯不同音质、乐器配置和录音环境，是衡量版本识别是否能在流媒体平台上真正落地的试金石。\\n【怎么入手】论文提供数据集和评测脚本，可用来 fine-tune 并测试自己的翻唱检测系统。"
     },
     {
       "sec": "oss",
-      "tag": "音视频生成",
-      "date": "2026-08-03",
-      "title": "ComfyUI节点为MiniMax H3音视频模型加速",
-      "url": "https://github.com/xmarre/ComfyUI-Spectrum-MiniMax-H3",
-      "src": "GitHub · Python · 145★",
-      "why": "为ComfyUI中的MiniMax H3音视频模型提供频谱预测加速，可在跳过部分Transformer计算的同时保持生成质量。",
-      "detail": "【这是什么】这是一个给ComfyUI做的MiniMax H3音视频模型加速节点。它用频谱方法预测某些层的输出，从而跳过一部分Transformer计算，让生成速度更快。\n【为什么值得关注】AI音乐和AI视频生成都很吃算力，这个工具相当于在不影响太多质量的前提下给模型踩油门，对想本地跑音视频工作流的同学很实用。\n【怎么入手】需要先有ComfyUI和MiniMax H3的环境，再把节点克隆进去按README配置；想研究加速机理的同学可以重点看频谱预测和自适应调度的代码实现。"
+      "tag": "音效/音频生成",
+      "date": "2026-08-05",
+      "title": "OpenMoss Sound Effect MLX：MLX 上的文本到音效生成模型",
+      "url": "https://huggingface.co/appautomaton/openmoss-sound-effect-mlx",
+      "src": "Hugging Face · 1 like",
+      "why": "提供在 Apple Silicon 上本地运行的文本到音效生成模型，延迟低、无需联网。对交互媒体和声音装置创作有实用价值。",
+      "detail": "【这是什么】OpenMoss Sound Effect MLX 是一个发布在 Hugging Face 的音效生成模型，适配苹果 MLX 框架，可在 Mac 本地根据文本提示生成环境声、动作音效等。\\n【为什么值得关注】对音效和交互音乐创作而言，本地低延迟运行意味着可以即时把声音嵌入到游戏、装置或短视频中，不需要调用云端 API。\\n【怎么入手】可在 Hugging Face 模型页面下载权重，配合 MLX 环境运行。需要一定的 Python 基础，但模型体积不大，适合用来搭建原型或课堂小作品。"
     },
     {
       "sec": "oss",
-      "tag": "音乐生成",
+      "tag": "音视频生成/交互工具",
       "date": "2026-08-04",
-      "title": "Stable Audio 3 medium bfloat16社区版",
-      "url": "https://huggingface.co/dummy9996/stable-audio-3-medium-bf16",
-      "src": "Hugging Face · 84↓",
-      "why": "社区版Stable Audio 3 medium的bfloat16精度变体，降低显存门槛，适合消费级显卡跑文本到音频生成。",
-      "detail": "【这是什么】这是社区用户把Stability AI的Stable Audio 3 medium模型转换成的bfloat16精度版本，体积和显存占用都比原版友好。\n【为什么值得关注】Stable Audio 3是近期受关注的文本到音频生成模型，这个变体让更多人能在消费级显卡上跑起来，适合做音效和短音乐素材的实验。\n【怎么入手】用Hugging Face的diffusers或transformers加载这个模型ID即可；生成时可以先从描述性提示入手，比如环境音效或电子loop，再逐步加入节奏和结构要求。"
-    },
-    {
-      "sec": "oss",
-      "tag": "音乐生成",
-      "date": "2026-08-03",
-      "title": "ACE-Step v1 3.5B音乐生成模型",
-      "url": "https://huggingface.co/drizzymedia/ACE-Step-v1-3.5B",
-      "src": "Hugging Face · 1♥",
-      "why": "ACE-Step音乐生成模型的35亿参数社区版本，支持从文本或结构提示生成音乐。",
-      "detail": "【这是什么】这是ACE-Step音乐生成模型的一个社区重发布版本，基于35亿参数规模，支持从文本或结构提示生成音乐。\n【为什么值得关注】ACE-Step在可控生成和长结构方面口碑不错，这个仓库为想本地部署或二次开发的同学提供了另一条获取路径。\n【怎么入手】到Hugging Face页面查看示例代码和推理脚本；建议先用简单提示生成30秒左右的片段，测试模型对风格、速度、乐器描述的理解程度。"
-    },
-    {
-      "sec": "oss",
-      "tag": "音乐生成",
-      "date": "2026-08-03",
-      "title": "Stable Audio Open小模型CoreML移植",
-      "url": "https://huggingface.co/mlboydaisuke/Stable-Audio-Open-Small-CoreML",
-      "src": "Hugging Face · 34↓",
-      "why": "把Stable Audio Open小模型移植到苹果CoreML框架，让iOS和macOS设备能直接在本地跑音乐生成。",
-      "detail": "【这是什么】这是把Stable Audio Open小模型移植到苹果CoreML框架的版本，让iPhone、iPad和Mac能直接在本地跑音乐生成。\n【为什么值得关注】苹果生态做AI音乐生成一直不算方便，这个移植填补了移动端和桌面端本地推理的空白，对想在Apple设备上做实时音乐应用的同学很有价值。\n【怎么入手】需要macOS或iOS开发环境，参考Hugging Face页面上的CoreML转换和推理示例；可以先从文本提示生成短音频，再集成到自己的App或工作流里测试。"
+      "title": "ComfyUI MiniMax H3 Director：音视时间线编辑节点",
+      "url": "https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director",
+      "src": "GitHub · 136★ · JavaScript",
+      "why": "为 MiniMax H3 增加时间线编辑与音频参考，支持分段生成与重拍。适合把 AI 音视频生成做成可编排的 MV 或视觉音乐作品。",
+      "detail": "【这是什么】这是一个 ComfyUI 自定义节点，把 MiniMax H3 的视频生成流程变成时间线编辑器，可以安排故事板、首末关键帧、图像/视频/音频参考，并做采样预览和重拍。\\n【为什么值得关注】对于想尝试 AI 生成 MV 或声音可视化作品的学生，它把原本黑箱式的生成变成可分段、可替换素材的编排过程，更接近传统剪辑思维。\\n【怎么入手】在 ComfyUI 管理器搜索该节点安装，需要已有 MiniMax H3 相关环境。可先尝试替换其中的音频参考，看生成画面与声音的同步效果。"
     },
     {
       "sec": "industry",
-      "tag": "版权",
-      "date": "2026-08-03",
-      "title": "德国法院裁定Suno AI训练侵犯版权",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjBLM01uX0dLclpkY041M29fZHdIbm52RmhrcUxBdEhxZ1dzeVlHY25tRVJYcGRIejJ5ZjZZOU9RYnhsaFdGX0dWdG9aRGxpRDE5QzItNFNqWm9RVDRheEYxaFVuRm54aXh3cmRNLTlLSEV1ZVZ5azgzMDNtUGR4dVNjQUp2b0R1eldwSTVqeFJXMmJZQWl2MkxMNzFGYkxKM3ZR",
-      "src": "Reuters",
-      "why": "德国法院裁定Suno未经授权使用版权音乐训练模型构成侵权，并驳回其合理使用抗辩。这是欧洲首起AI音乐生成公司的版权败诉，可能重塑全球训练数据授权与平台合规边界。",
+      "tag": "版权/AI音乐",
+      "date": "2026-08-05",
+      "title": "德国法院裁定 Suno AI 音乐训练侵犯版权",
+      "url": "https://www.euronews.com/culture/2026/08/05/stolen-intellectual-property-german-court-rules-ai-music-generator-suno-broke-copyright-rules",
+      "src": "Euronews",
       "hot": "行业要闻",
-      "detail": "【这是什么】德国法院裁定，AI音乐公司Suno在训练模型时使用了受版权保护的音乐，构成侵权，Suno提出的合理使用抗辩被驳回。这是欧洲首起针对AI音乐生成公司的版权判决。\n【为什么值得关注】这个判例直接挑战了AI公司未经许可抓取版权音乐训练的灰色地带，可能会影响Suno、Udio等平台的商业模式，也会推动全球训练数据授权制度的明朗化。\n【怎么入手】可以跟踪GEMA和Suno的后续上诉动态，同时关注国内法院对AI训练数据是否构成合理使用的态度；对做音乐生成的研究者来说，这是讨论数据合规绕不开的案例。"
+      "why": "德国法院判定 Suno 在 AI 训练中使用版权作品侵犯 GEMA 会员权利，驳回合理使用抗辩。这是欧洲首例针对生成式 AI 音乐训练的版权裁决，可能改变全球 AI 音乐公司的授权策略。",
+      "detail": "【这是什么】德国法院裁定，AI 音乐生成平台 Suno 在模型训练阶段使用了 GEMA 会员作曲家和作词家的版权作品，构成侵权，且不符合合理使用或 TDM 例外。\\n【为什么值得关注】这是欧洲首份明确针对生成式 AI 音乐训练的版权判决，可能迫使 AI 音乐公司与权利集体管理组织谈判授权，也影响美国和全球类似诉讼。\\n【怎么入手】关注 Suno 与美国唱片业协会诉讼的后续进展，以及各大平台是否会据此调整训练数据采购或内容过滤策略。"
     },
     {
       "sec": "industry",
-      "tag": "平台动态",
-      "date": "2026-08-04",
-      "title": "Spotify联手Merlin扩展AI混音与翻唱",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQUFPSThXdWN0RWdCNk95d204YktVTFpMaXlZNmVFXzJsZXFLX0doaXpzYjFPX1Nzb2FYWXhvdlFhcWItVVBGZE9WaE5CSGFoVWhhUmluVzlNNXJXLUI2RDQ3cWd1RE9Vajl2NFB5ZmtRSm56OXZyUTJTUk9vRFhMVWRmS0tWcXV4cXhFRkVQNVZPR1RYN3lBWmR3",
-      "src": "TechCrunch",
-      "why": "Spotify与独立厂牌联盟Merlin合作，扩大AI混音和AI翻唱功能，推动AI二创从灰色地带走向平台正规服务。",
-      "detail": "【这是什么】Spotify宣布与独立音乐厂牌联盟Merlin合作，扩大其AI混音和AI翻唱功能，让更多独立艺人的作品可以参与这些AI驱动的再创作项目。\n【为什么值得关注】大厂开始把AI二创和版权授权打包谈判，这意味着未来AI翻唱、AI混音可能从灰色地带变成平台正规服务，也会改变流媒体分账的逻辑。\n【怎么入手】可以注册Spotify for Artists或Merlin会员页面查看合作条款，关注哪些独立厂牌首批加入；研究AI二创的同学可以对比Spotify和YouTube的授权策略。"
+      "tag": "AI音乐/流媒体",
+      "date": "2026-08-05",
+      "title": "Spotify 扩大 AI 音乐计划，与 Merlin 达成授权合作",
+      "url": "https://www.theaiinsider.tech/spotify-expands-ai-music-initiative-with-merlin-licensing-deal-teases-consent-based-covers-tool",
+      "src": "theaiinsider.tech",
+      "why": "Spotify 与独立音乐授权机构 Merlin 合作扩大 AI remix 与 cover 项目。这代表了一条在授权框架下推进 AI 音乐改编的商业化路径。",
+      "detail": "【这是什么】Spotify 与独立音乐版权组织 Merlin 达成协议，扩大此前备受关注的 AI remix 和 cover 项目，允许在授权框架下对独立音乐作品进行 AI 改编。\\n【为什么值得关注】与未经授权的 AI 训练不同，这种模式强调版权方同意和数据透明，可能为 AI 音乐商业化提供一条合规路径。\\n【怎么入手】关注 Spotify 是否会在应用内向用户开放 AI remix 功能，以及独立音乐人如何加入或退出该项目。"
     },
     {
       "sec": "industry",
-      "tag": "行业政策",
-      "date": "2026-08-03",
-      "title": "IFPI拟禁止未标注AI音乐进入官方榜单",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYU9fYnNkVkg3dDR1MUstd2thbnU5T0VSMjFSanJ5X2ZCdngyT0RncDVjTzNwN0FTRXMyVTMyRHd3R1pQTUF4UlY0Y2JTMFY4TjlrU3ZLQzhybVE1azlTUTVGbTdLVUN2cUwyWkNzNzQ0WjNSaERzWFlaSGdRNkZGTUZZeGdwbmZPUm16bVpRVGtJSDdlbHhSdEV3",
-      "src": "The Verge",
-      "why": "主要唱片公司与独立厂牌联合IFPI提出AI音乐榜单新规，要求明确标注AI生成内容，否则不得进入官方排行榜。",
-      "detail": "【这是什么】主要唱片公司和独立厂牌联合向国际唱片业协会IFPI提出新规则，要求AI生成的音乐必须明确标注来源，否则不能进入官方榜单排名。\n【为什么值得关注】如果规则落地，AI歌曲在Billboard、UK榜等排行榜上的资格会被重新定义，这将直接影响AI音乐发行、宣传和收益分配。\n【怎么入手】可以阅读IFPI公布的提案原文，记录完全由AI生成、AI辅助创作、传统录音这几类标注方式；做音乐科技创业的同学要尽早考虑产品在榜单和流媒体平台上的披露义务。"
+      "tag": "音乐硬件/开源",
+      "date": "2026-08-06",
+      "title": "PS Vita 变身掌上采样 groovebox 与合成器",
+      "url": "https://cdm.link/the-playstation-vita-just-got-a-new-sampling-groovebox-and-synth",
+      "src": "CDM",
+      "why": "开源项目 DS-8 Drumstream 让停产多年的 PS Vita 成为免费掌上音乐制作设备，支持 USB 多通道音频。它展示了旧硬件加开源软件在音乐创作中的生命力。",
+      "detail": "【这是什么】爱好者为索尼已停产的 PS Vita 开发了 DS-8 Drumstream，这是一款采样 groovebox 与合成器，完全开源免费，还支持通过自定义内核插件实现 USB 多通道音频。\\n【为什么值得关注】它展示了旧硬件加开源软件在音乐创作中的生命力，也为低成本的便携音乐工作站提供了新思路，对电子音乐即兴和现场演出很有启发。\\n【怎么入手】如果有 PS Vita 或可模拟环境，可下载 DS-8 Drumstream 固件与软件；也可研究其 USB 音频驱动方案，移植到其他掌上设备。"
     },
     {
       "sec": "industry",
-      "tag": "硬件",
-      "date": "2026-08-04",
-      "title": "Fender推出首款打击垫控制器Motion",
-      "url": "https://musictech.com/news/gear/fender-motion-controllers-studio-pro-integration",
-      "src": "MusicTech",
-      "why": "Fender首款打击垫控制器Motion正式发布，内置和弦模式并深度整合Fender Studio Pro软件。",
-      "detail": "【这是什么】Fender推出了首款打击垫控制器Fender Motion，内置和弦模式并采用FATAR手感打击垫，可与Fender Studio Pro软件深度整合。\n【为什么值得关注】传统吉他大厂开始做MIDI控制器和DAW整合，说明硬件边界正在模糊，吉他手、制作人、电子音乐人可能会共享同一套工作流。\n【怎么入手】去Fender官网或MusicTech看上手视频，重点关注它的和弦模式和与Studio Pro的自动映射；有MIDI控制器基础的同学可以评估它是否适合当主力打击垫。"
-    },
-    {
-      "sec": "industry",
-      "tag": "软件",
-      "date": "2026-08-04",
-      "title": "Steinberg庆VST 30周年并发布HALion 7.5",
-      "url": "https://musictech.com/news/gear/steinberg-is-celebrating-30-years-of-vst-and-25-years-of-halion",
-      "src": "MusicTech",
-      "why": "Steinberg庆祝VST插件格式诞生30周年，同时发布HALion 7.5并免费放出Neon、CS-40等早期经典插件的现代复刻版。",
-      "detail": "【这是什么】Steinberg庆祝VST插件格式诞生30周年，同时发布HALion 7.5采样合成器更新，并免费放出Neon、CS-40等早期经典插件的现代复刻版。\n【为什么值得关注】VST是整个软件音乐制作的基石格式，HALion 7.5代表了采样器与合成器的融合方向，对理解插件生态和音色设计都有帮助。\n【怎么入手】Steinberg官网可免费下载经典插件套装；HALion用户可以直接更新到7.5，体验新的调制和采样功能；想写插件的同学可以从VST SDK历史中学到很多设计取舍。"
+      "tag": "插件开发/音乐软件",
+      "date": "2026-08-06",
+      "title": "SynthEdit 在发布 30 年后登陆 Mac",
+      "url": "https://www.synthtopia.com/content/2026/08/06/synthedit-comes-to-mac-after-30-years",
+      "src": "Synthtopia",
+      "why": "可视化模块合成器开发工具 SynthEdit 在发布 30 年后登陆 Mac。它降低了开发虚拟乐器与音频效果插件的门槛，影响插件生态。",
+      "detail": "【这是什么】SynthEdit 是一个可视化模块开发环境，用户无需手写底层 DSP 代码，就能设计并导出虚拟乐器与音频效果插件。该工具诞生 30 年后，终于推出了 Mac 版本。\\n【为什么值得关注】对许多独立开发者和学生来说，SynthEdit 降低了进入插件开发的门槛，让创意音色设计更容易变成可在主流 DAW 中运行的 VST/AU 插件。\\n【怎么入手】可在 SynthEdit 官网下载 Mac 版本，尝试用模块化方式搭建一个简单的合成器或效果器，并导出插件到 Ableton Live 或 Logic 中测试。"
     }
   ],
   "ideas": [
     {
       "level": "入门",
       "kind": "工具",
-      "title": "AI 音乐版权披露元数据生成器",
-      "body": "做什么：做一个单页网页工具，输入歌曲的创作者、AI 参与程度（完全 AI / AI 辅助 / 传统录音）、训练数据授权状态、人声克隆授权等信息后，自动生成一份 JSON-LD 格式的版权披露文件，可直接嵌入到音乐分发平台的元数据里。第一步怎么动手：打开本期 IFPI 榜单新规与德国 Suno 判决两篇报道，用表格整理出 5 个必须披露字段（如 AI 占比、素材授权、人声克隆许可），然后用 HTML+JavaScript 写一个带表单和 JSON 导出的单页应用。需要：HTML/CSS/JS 基础 · JSON-LD 元数据概念 · 阅读英文政策报道的能力。",
+      "title": "流行音乐转谱双轨评测小工具",
+      "body": "做什么：基于 SheetSage-A2S 数据集，用任意开源音频转谱工具（如 Basic Pitch 或 SheetSage 官方 checkpoint）对若干首流行歌曲生成符号谱，并同时计算两套指标——谱面相似度（音符起始、音高、时值与参考谱的对齐）和回放相似度（将预测谱重新合成音频后与原录音做梅尔谱/色度距离），输出可对比的表格与散点图。第一步怎么动手：下载 SheetSage-A2S 数据集或先用论文提供的 5 个示例片段，安装 Basic Pitch 并跑通其中一首歌，得到预测 MIDI；然后分别用 music21 计算与参考谱的符号匹配率，用 librosa 计算重放音频与原音频的梅尔谱 MSE，把两个数字写进同一张 CSV。需要：Python 基础 · music21/librosa · 基本 MIDI 与五线谱知识 · 会运行开源预训练模型。",
       "based_on": [
         {
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYU9fYnNkVkg3dDR1MUstd2thbnU5T0VSMjFSanJ5X2ZCdngyT0RncDVjTzNwN0FTRXMyVTMyRHd3R1pQTUF4UlY0Y2JTMFY4TjlrU3ZLQzhybVE1azlTUTVGbTdLVUN2cUwyWkNzNzQ0WjNSaERzWFlaSGdRNkZGTUZZeGdwbmZPUm16bVpRVGtJSDdlbHhSdEV3",
-          "title": "IFPI拟禁止未标注AI音乐进入官方榜单"
+          "url": "https://arxiv.org/abs/2608.06165",
+          "title": "SheetSage-A2S：首个流行音乐音频转谱数据集与预训练特征方法"
         },
         {
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjBLM01uX0dLclpkY041M29fZHdIbm52RmhrcUxBdEhxZ1dzeVlHY25tRVJYcGRIejJ5ZjZZOU9RYnhsaFdGX0dWdG9aRGxpRDE5QzItNFNqWm9RVDRheEYxaFVuRm54aXh3cmRNLTlLSEV1ZVZ5azgzMDNtUGR4dVNjQUp2b0R1eldwSTVqeFJXMmJZQWl2MkxMNzFGYkxKM3ZR",
-          "title": "德国法院裁定Suno AI训练侵犯版权"
-        }
-      ]
-    },
-    {
-      "level": "入门",
-      "kind": "工具/研究",
-      "title": "MERT 中西/中非流派小样本迁移实验",
-      "body": "做什么：做一个可复现的 Jupyter Notebook，收集约 40 段音频（例如 20 段中国地方戏曲/民歌 + 20 段国际流行，或复现论文中的刚果音乐 vs 国际流派），用 MERT 抽取嵌入后训练一个线性分类器，输出分类准确率、t-SNE 可视化和小型网页报告。第一步怎么动手：从 Hugging Face 加载 m-a-p/MERT-v1-330M，准备至少 20 段已标注的本地音乐与国际流行音乐（可从自己的曲库或公开数据集截取 10 秒片段），运行嵌入提取并用 sklearn LogisticRegression 得到 baseline F1。需要：Python · transformers · sklearn · 基础音频处理 · 乐理/音乐分类知识。",
-      "based_on": [
-        {
-          "url": "https://doi.org/10.7759/s44389-026-00201-z",
-          "title": "MERT跨文化流派分类：刚果音乐与国际流派对比"
-        },
-        {
-          "url": "https://doi.org/10.3390/electronics15153421",
-          "title": "音乐基础模型中西音乐理解能力维度探测"
+          "url": "https://arxiv.org/abs/2608.04511",
+          "title": "音乐转谱的双重评估：谱面相似度与回放相似度"
         }
       ]
     },
     {
       "level": "进阶",
       "kind": "产品原型",
-      "title": "iOS / macOS 本地文本到音乐 CoreML 小 App",
-      "body": "做什么：在 Apple 设备上实现一个 SwiftUI 应用，输入文本提示，调用转换后的 Stable Audio Open Small CoreML 模型本地推理，生成一段 5–10 秒音频并直接播放/保存。第一步怎么动手：在 Mac 上 clone mlboydaisuke/Stable-Audio-Open-Small-CoreML 仓库，按 README 用 Python 或 Swift 示例跑通第一次文本→音频生成，确认 mlpackage 文件路径与输入 shape 后，再新建 SwiftUI 项目把输入框、生成按钮和音频播放器串起来。需要：macOS / iOS 开发环境 · SwiftUI · CoreML · 基础音频播放。",
+      "title": "顺序加轨自动混音原型",
+      "body": "做什么：做一个 Python 原型，接收 4-6 轨干声（鼓、贝斯、吉他、键盘、人声），模仿人类混音师按顺序混入：先以鼓为基底，再依次混入贝斯、吉他、键盘、人声，每步用可解释规则（RMS 响度匹配、频谱遮蔽互补、声像避让）自动输出增益、EQ 和声像参数，并渲染最终混音；最后与并行黑箱混音或参考混音做 A/B 试听与响度/频谱指标对比。第一步怎么动手：从 MUSDB18 或 MedleyDB 下载一歌曲的 4-5 条分轨，用 Python 写一段脚本先只混入鼓+贝斯，调节 RMS 使两轨响度一致，试听并保存 WAV；下一步再加入其他轨道。需要：Python · 音频处理（sox/pedalboard/librosa） · 基础混音概念（RMS、EQ、pan） · 可选深度学习环境。",
       "based_on": [
         {
-          "url": "https://huggingface.co/mlboydaisuke/Stable-Audio-Open-Small-CoreML",
-          "title": "Stable Audio Open小模型CoreML移植"
+          "url": "https://arxiv.org/abs/2608.05506",
+          "title": "把自动混音变成逐个加 Stem 的流水线"
+        },
+        {
+          "url": "https://arxiv.org/abs/2608.05442",
+          "title": "Diff2Mix：用扩散模型与可微音效做可控音乐混音"
+        }
+      ]
+    },
+    {
+      "level": "进阶",
+      "kind": "交互作品",
+      "title": "电吉他音色迁移/干声还原双模工作台",
+      "body": "做什么：基于 EG-VAE 统一模型，做一个可交互的网页或命令行工作台：上传一段湿电吉他录音（带效果器/音箱模拟），同时输出两条结果——换成参考曲目音色的迁移版本，以及去除效果还原的 DI 版本；前端提供 A/B 切换、频谱对比和可下载的干湿对比包。第一步怎么动手：打开 EG-VAE 论文主页和附带代码/音频示例，找到官方 checkpoint 或模型 API，用一条自己的电吉他录音和一段参考曲吉他片段跑通首次 inference，确认得到音色迁移后的文件和 DI 还原文件。需要：Python · 深度学习模型推理（PyTorch/TensorFlow） · 电吉他音色链基础 · 少量前端或 Streamlit。",
+      "based_on": [
+        {
+          "url": "https://arxiv.org/abs/2608.05513",
+          "title": "EG-VAE：电吉他音色迁移与去除统一框架"
         }
       ]
     },
     {
       "level": "硬核",
       "kind": "研究",
-      "title": "音乐基础模型文化能力四维度探测工具箱",
-      "body": "做什么：构建一个可复现的探测基准，系统比较 MERT、MuQ、CultureMERT 在音色、古筝技法、西方调性、中国五声调式四个任务上的表现，输出每个模型在每个维度上的线性探测准确率、混淆矩阵和跨维度差异雷达图，形成一篇可投稿的课程论文或短篇技术报告。第一步怎么动手：收集/标注 50–80 段覆盖四个维度的音频（可从论文附录、公开古筝数据集和自己的曲库组合），先用三个模型分别提取 embedding，然后对其中一个维度训练线性 probe 并跑出混淆矩阵，确认流程后再扩展到全部维度。需要：Python · transformers · 音频标注 · 机器学习 · 统计检验 · 中西乐理。",
+      "title": "音乐重拍驱动的 AI 音乐视频分段生成与一致性评测",
+      "body": "做什么：构建一个端到端研究原型，输入一首歌曲和若干场景文本提示，先用掩码扩散节拍跟踪模型提取稳定重拍位置，再用 ComfyUI MiniMax H3 Director 时间线节点把歌曲作为全局音频参考，在相邻重拍之间生成连续镜头/画面，最后评价生成视频与原音乐在视觉运动节奏、镜头切换重拍对齐率以及时序连贯性上的得分。可扩展为 ISMIR/NIME 论文。第一步怎么动手：在本地或云端安装 ComfyUI 与 MiniMax H3 Director 节点，运行官方示例 workflow 并在时间线中放入一首带明显节拍的音乐；同时用 beat tracking 论文代码或 librosa 在同样音乐上标出前 8 个重拍，目测关键帧是否与重拍重合。需要：Python · ComfyUI/Stable Diffusion 视频生成 · 节拍跟踪（librosa 或论文模型） · 视频/音频同步评测 · 统计学基础。",
       "based_on": [
         {
-          "url": "https://doi.org/10.3390/electronics15153421",
-          "title": "音乐基础模型中西音乐理解能力维度探测"
+          "url": "https://arxiv.org/abs/2608.04624",
+          "title": "掩码扩散模型让节拍跟踪不再乱拍"
         },
         {
-          "url": "https://doi.org/10.7759/s44389-026-00201-z",
-          "title": "MERT跨文化流派分类：刚果音乐与国际流派对比"
-        },
-        {
-          "vol": 6,
-          "url": "https://github.com/shwj114514/audio_eval",
-          "title": "audio_eval：可组合的开源音频生成与重建评测工具箱"
+          "url": "https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director",
+          "title": "ComfyUI MiniMax H3 Director：音视时间线编辑节点"
         }
       ]
     }
   ],
-  "vol": 11,
-  "pub": "2026-08-05"
+  "vol": 12,
+  "pub": "2026-08-07"
 }
